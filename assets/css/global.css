@@ -1,0 +1,78 @@
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: #111;
+  color: #fff;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+h1, h2, h3 {
+  text-shadow: 0 0 10px #ff00ff;
+}
+a {
+  text-decoration: none;
+  color: #00ffea;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #ff00ea;
+}
+
+/* Header and Navigation */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #222;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.navbar .logo img {
+  width: 50px;
+  height: auto;
+}
+.nav-menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu li {
+  margin: 0 10px;
+}
+.nav-menu li a {
+  font-size: 18px;
+  color: #00ffea;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+.nav-menu li a:hover {
+  transform: scale(1.05);
+  color: #ff00ea;
+}
+.nav-menu li a:active {
+  transform: scale(0.95);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #222;
+  margin-top: 20px;
+}
+footer .social-links a {
+  margin: 0 5px;
+  font-size: 16px;
+  color: #00ffea;
+  transition: color 0.3s ease;
+}
+footer .social-links a:hover {
+  color: #ff00ea;
+}

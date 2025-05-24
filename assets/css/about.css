@@ -1,0 +1,11 @@
+/* About Page Styling */
+.about-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+.about-content {
+  font-size: 18px;
+  color: #00ffea;
+}

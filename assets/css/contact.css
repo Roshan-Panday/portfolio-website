@@ -1,0 +1,88 @@
+/* assets/css/contact.css */
+/* Contact Page Styling */
+.contact-container {
+  background: rgba(30,30,30,0.9);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Two column layout for contact area */
+.contact-columns {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+/* Left column: Contact Form */
+.contact-form-section {
+  flex: 1;
+}
+.contact-form-section h1 {
+  margin-bottom: 20px;
+}
+.contact-form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contact-form-section input,
+.contact-form-section textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #00ffea;
+  border-radius: 5px;
+  background: #222;
+  color: #fff;
+}
+.contact-form-section button {
+  padding: 12px 20px;
+  background: #ff00ff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.3s ease;
+}
+.contact-form-section button:hover {
+  transform: scale(1.05);
+  background: #e600e6;
+}
+
+/* Right column: WhatsApp QR and Chat Link */
+.whatsapp-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.whatsapp-qr {
+  max-width: 50%;   /* Adjusted width to ensure the QR doesn't exceed desired size */
+  max-height: 250px; /* Sets a cap on the height so it aligns well with the form */
+  width: auto;
+  height: auto;
+  margin-bottom: 10px;
+}
+.whatsapp-section a {
+  color: #00ffea;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+.whatsapp-section a:hover {
+  color: #ff00ea;
+}
+
+/* Responsive Adjustment: Stack columns on small screens */
+@media (max-width: 768px) {
+  .contact-columns {
+    flex-direction: column;
+    align-items: center;
+  }
+  .whatsapp-section {
+    margin-top: 20px;
+  }
+}
