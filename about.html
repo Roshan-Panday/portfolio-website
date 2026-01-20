@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Roshan Panday</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        .identity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 40px; }
+        .identity-card { background: rgba(20, 20, 25, 0.6); border: 1px solid var(--border); border-radius: 12px; padding: 30px; transition: 0.3s; position: relative; overflow: hidden; }
+        .identity-card:hover { border-color: var(--accent); transform: translateY(-5px); background: rgba(20, 20, 25, 0.8); }
+        .card-icon-header { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
+
+        /* Hardware Section */
+        .hardware-box {
+            background: rgba(0,0,0,0.5); border: 1px solid #333; padding: 20px; border-radius: 8px; margin-top: 10px;
+        }
+        .spec-row { display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding: 8px 0; color: #aaa; font-size: 0.9rem; }
+        .spec-row span:last-child { color: var(--accent); font-weight: bold; }
+
+        /* Timeline Styling */
+        .history-log { margin-top: 80px; border-top: 1px solid var(--border); padding-top: 40px; }
+        .log-entry { display: flex; gap: 30px; margin-bottom: 40px; position: relative; }
+        .log-date { min-width: 140px; font-weight: 800; color: var(--accent); text-align: right; padding-top: 5px; }
+        .log-content { border-left: 2px solid #333; padding-left: 30px; padding-bottom: 10px; flex: 1; }
+        .log-entry:hover .log-content { border-left-color: var(--accent); }
+        .log-role { font-size: 1.1rem; color: white; margin-bottom: 5px; font-weight: 700; }
+        .log-org { font-size: 0.9rem; color: #888; margin-bottom: 10px; font-style: italic; }
+
+        @media (max-width: 900px) {
+            .identity-grid { grid-template-columns: 1fr; }
+            .log-entry { flex-direction: column; gap: 10px; }
+            .log-date { text-align: left; }
+            .log-content { border-left: 2px solid var(--accent); }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="neural-canvas"></canvas>
+
+    <div id="header-include"></div>
+
+    <section>
+        <div class="container">
+            
+            <div style="margin-top: 40px; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+                <h1 style="font-size: 2.5rem; color:white;">SYSTEM <span style="color:var(--accent);">PROFILE</span></h1>
+                <p style="color:#888; letter-spacing: 1px;">IDENTITY // VISION // STATUS</p>
+            </div>
+
+            <div class="identity-grid">
+                
+                <div class="identity-card" data-aos="fade-up">
+                    <div class="card-icon-header"><i class="fas fa-user-astronaut"></i></div>
+                    <h3 style="color:white; margin-bottom: 15px;">THE ORIGIN</h3>
+                    <p style="color:#ccc; line-height: 1.6; font-size: 0.95rem;">
+                        <strong>MCA Graduate & Full-Stack Developer.</strong>
+                        <br><br>
+                        I bridge the gap between heavy backend logic (C++, Java) and modern web systems. My journey started with a curiosity for how game engines handle complex logic, which evolved into a passion for System Architecture and AI.
+                    </p>
+                </div>
+
+                <div class="identity-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon-header"><i class="fas fa-eye"></i></div>
+                    <h3 style="color:white; margin-bottom: 15px;">THE VISION</h3>
+                    <p style="color:#ccc; line-height: 1.6; font-size: 0.95rem;">
+                        <strong>Offline Intelligence.</strong>
+                        <br><br>
+                        I am building the future of privacy-first AI. My flagship initiative, <em>Project ROSA</em>, focuses on running powerful Context-Aware Agents locally on consumer hardware, removing the dependency on cloud infrastructure.
+                    </p>
+                </div>
+
+                <div class="identity-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon-header"><i class="fas fa-chess-knight"></i></div>
+                    <h3 style="color:white; margin-bottom: 15px;">THE STRATEGY</h3>
+                    <p style="color:#ccc; line-height: 1.6; font-size: 0.95rem;">
+                        <strong>Competitive Analytics.</strong>
+                        <br><br>
+                        Before code, I mastered macro-strategy. As a former <strong>Global Rank (Tigreal)</strong> player in MLBB, I learned to analyze meta-data and predict outcomes under pressure. Today, I apply that same analytical rigor to system optimization.
+                    </p>
+                </div>
+
+            </div>
+
+            <div style="margin-top: 60px; display:flex; gap: 40px; flex-wrap:wrap; align-items:center;">
+                <div style="flex:1;" data-aos="fade-right">
+                    <h2 style="color:white; margin-bottom: 20px;"> <i class="fas fa-server" style="color:var(--accent);"></i> DEPLOYMENT_RIG</h2>
+                    <p style="color:#bbb; line-height:1.6;">
+                        I don't just write code; I build the machines that run it. My development environment is tuned for Local LLM inference and heavy rendering tasks.
+                    </p>
+                </div>
+                
+                <div style="flex:1; min-width: 300px;" data-aos="fade-left">
+                    <div class="hardware-box">
+                        <div class="spec-row"><span>GPU Node</span> <span>NVIDIA RTX 3070 Ti (8GB)</span></div>
+                        <div class="spec-row"><span>Memory</span> <span>16GB DDR4 High-Freq</span></div>
+                        <div class="spec-row"><span>Processor</span> <span>Intel Core Architecture</span></div>
+                        <div class="spec-row"><span>OS Environment</span> <span>Windows 11 / Linux (WSL2)</span></div>
+                        <div class="spec-row"><span>Primary Focus</span> <span>Offline AI & 3D Rendering</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-log">
+                <h2 style="color:white; margin-bottom: 40px;"> <i class="fas fa-history" style="color:var(--accent);"></i> EXECUTION_LOG</h2>
+
+                <div class="log-entry" data-aos="fade-left">
+                    <div class="log-date">JAN 2024 - PRESENT</div>
+                    <div class="log-content">
+                        <div class="log-role">Full-Stack Developer & AI Researcher</div>
+                        <div class="log-org">Freelance / Self-Employed</div>
+                        <p style="color:#ccc; font-size: 0.9rem;">
+                            Designed Project ROSA (Offline AI). Built custom PHP-based CMS platforms focused on SEO and performance. Applied analytics-driven insights for system optimization.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="log-entry" data-aos="fade-left">
+                    <div class="log-date">2023 (GRADUATED)</div>
+                    <div class="log-content">
+                        <div class="log-role">Master of Computer Applications (MCA)</div>
+                        <div class="log-org">Maharaja Agrasen Himalayan Garhwal University</div>
+                        <p style="color:#ccc; font-size: 0.9rem;">
+                            Specialized in Backend Systems and AI Solutions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="log-entry" data-aos="fade-left">
+                    <div class="log-date">MAR 2023 - APR 2023</div>
+                    <div class="log-content">
+                        <div class="log-role">Technical Support Assistant</div>
+                        <div class="log-org">MSB E-Trade Securities Ltd.</div>
+                        <p style="color:#ccc; font-size: 0.9rem;">
+                            Provided technical support for live trading software, troubleshooting user access and backend errors.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="log-entry" data-aos="fade-left">
+                    <div class="log-date">AUG 2021 - DEC 2022</div>
+                    <div class="log-content">
+                        <div class="log-role">Website & Office Coordinator</div>
+                        <div class="log-org">Labour Party of India</div>
+                        <p style="color:#ccc; font-size: 0.9rem;">
+                            Managed official digital records and website operations. Improved backend efficiency via SQL data organization.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="log-entry" data-aos="fade-left">
+                    <div class="log-date">2021 (GRADUATED)</div>
+                    <div class="log-content">
+                        <div class="log-role">Bachelor of Computer Applications (BCA)</div>
+                        <div class="log-org">Maharaja Agrasen Himalayan Garhwal University</div>
+                        <p style="color:#ccc; font-size: 0.9rem;">
+                            Core foundation in Web Technologies and C++.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="log-entry" data-aos="fade-left">
+                    <div class="log-date">JAN 2020 - MAR 2021</div>
+                    <div class="log-content">
+                        <div class="log-role">Executive Office Assistant (Virtual)</div>
+                        <div class="log-org">Shanti Samaj Sevi Samiti</div>
+                        <p style="color:#ccc; font-size: 0.9rem;">
+                            Managed office correspondence and data entry workflows in a virtual setup.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <div id="footer-include"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/includes.js"></script>
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>

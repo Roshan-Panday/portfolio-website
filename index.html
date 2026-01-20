@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roshan Panday | System Architect</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <style>
+        /* --- INLINE OVERRIDES TO GUARANTEE FIXES --- */
+
+        /* 1. FORCE TOP ALIGNMENT (Fixes the "Dropped Image" look) */
+        .hero-section {
+            min-height: auto; 
+            padding-top: 60px; 
+            padding-bottom: 80px;
+            display: flex;
+            /* CRITICAL: Forces Image to stay at the TOP */
+            align-items: flex-start !important; 
+            position: relative;
+        }
+
+        .hero-layout {
+            /* CRITICAL: Ensures internal layout aligns to top */
+            align-items: flex-start !important; 
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        /* 2. PROFILE IMAGE POSITIONING */
+        .profile-wrapper {
+            position: relative;
+            width: 320px; 
+            height: 320px;
+            display: flex; align-items: center; justify-content: center;
+            margin-left: 20px;
+            /* Fine-tune: Pushes image down just a tiny bit to align eyes with text */
+            margin-top: 10px; 
+        }
+        
+        .profile-glow {
+            position: absolute;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
+            animation: pulse-ring 4s infinite;
+            z-index: 1; 
+        }
+        
+        .profile-img {
+            width: 90%; height: 90%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #111;
+            position: relative; 
+            z-index: 10; 
+            background: #111;
+        }
+
+        /* 3. TYPING CURSOR STABILITY */
+        .auto-type {
+            color: var(--accent);
+            font-weight: 800;
+        }
+        
+        .typed-cursor {
+            font-size: 1.6rem;
+            color: var(--accent);
+            display: inline-block;
+            opacity: 1;
+            animation: typedjsBlink 0.7s infinite;
+        }
+
+        @keyframes typedjsBlink {
+            50% { opacity: 0.0; }
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+
+        /* 4. MOBILE & UTILS */
+        .tech-marquee-container {
+            width: 100%;
+            background: rgba(5,5,10,0.8);
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            padding: 20px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative; 
+            z-index: 5;
+        }
+
+        .mobile-menu-overlay, .hamburger { display: none !important; }
+        
+        @media (max-width: 900px) {
+            .hero-section { align-items: center !important; } 
+            .hero-layout { flex-direction: column-reverse; align-items: center !important; text-align: center; gap: 40px; }
+            .mobile-menu-overlay.active { display: flex !important; }
+            .hamburger { display: block !important; }
+            .profile-wrapper { width: 280px; height: 280px; margin: 0 auto; }
+            .hero-btns, .stat-hud, .hero-socials { justify-content: center; }
+            .hero-visual { justify-content: center !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="neural-canvas"></canvas>
+
+    <div id="header-include"></div>
+
+    <section id="home" class="hero-section">
+        <div class="container hero-layout">
+            
+            <div class="hero-content" data-aos="fade-right" style="flex:1;">
+                
+                <div style="display:inline-block; border:1px solid var(--accent); padding:6px 18px; border-radius:30px; margin-bottom:25px; background:rgba(0,242,255,0.05);">
+                    <span style="height:8px; width:8px; background:var(--accent); border-radius:50%; display:inline-block; margin-right:8px; box-shadow:0 0 8px var(--accent); animation: blink 1s infinite;"></span>
+                    <span style="color:var(--accent); font-size:0.85rem; font-weight:700; letter-spacing:2px;">SYSTEM ONLINE</span>
+                </div>
+                
+                <h1 class="glitch-text" style="font-size: 4.5rem; line-height: 1; margin-bottom: 15px; color:white; font-weight: 800;">
+                    Roshan Panday
+                </h1>
+                
+                <h2 style="font-size: 1.6rem; color:#888; font-family:'Courier New', monospace; margin-bottom: 25px; min-height: 1.5em; line-height: 1.5em;">
+                    I am a <span class="auto-type"></span>
+                </h2>
+                
+                <p style="color: #bbb; max-width: 550px; margin-bottom: 30px; line-height: 1.7; font-size: 1.1rem;">
+                    MCA Graduate & System Architect. I bridge the gap between <strong>Heavy Backend Logic</strong> and <strong>Creative Visuals</strong>, building Offline AI networks on local consumer hardware.
+                </p>
+
+                <div class="hero-socials" style="display: flex; gap: 20px; margin-bottom: 35px;">
+                    <a href="https://github.com/roshan-panday" target="_blank" style="color:#666; font-size:1.8rem;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='#666'"><i class="fab fa-github"></i></a>
+                    <a href="https://www.youtube.com/@tigml" target="_blank" style="color:#666; font-size:1.8rem;" onmouseover="this.style.color='#FF0000'" onmouseout="this.style.color='#666'"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/pandayroshan" target="_blank" style="color:#666; font-size:1.8rem;" onmouseover="this.style.color='#0077b5'" onmouseout="this.style.color='#666'"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                
+                <div class="hero-btns" style="display:flex; gap:20px;">
+                    <a href="projects.html" class="btn-neon">VIEW_WORK</a>
+                    <a href="assets/pdf/Roshan_Panday_CV.pdf" download class="btn-neon" style="background:transparent; color:white; border-color:white;">DOWNLOAD_CV</a>
+                </div>
+
+                <div class="stat-hud" style="display: flex; gap: 30px; margin-top: 40px;">
+                    <div>
+                        <h3 style="color:var(--accent); font-size: 2rem; margin:0;">3+</h3>
+                        <p style="color:#666; font-size:0.8rem; letter-spacing:1px; margin:0;">YEARS_EXP</p>
+                    </div>
+                    <div>
+                        <h3 style="color:var(--accent); font-size: 2rem; margin:0;">15+</h3>
+                        <p style="color:#666; font-size:0.8rem; letter-spacing:1px; margin:0;">PROJECTS</p>
+                    </div>
+                    <div>
+                        <h3 style="color:var(--accent); font-size: 2rem; margin:0;">MCA</h3>
+                        <p style="color:#666; font-size:0.8rem; letter-spacing:1px; margin:0;">DEGREE</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="hero-visual" data-aos="fade-left" style="flex:1; display:flex; justify-content:center;">
+                <div class="profile-wrapper">
+                    <div class="profile-glow"></div>
+                    <img src="assets/img/profile.jpg" class="profile-img" alt="Roshan Panday">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="tech-marquee-container">
+        <div class="tech-track" style="display: inline-block; animation: scroll-left 30s linear infinite;">
+            <i class="fab fa-python tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fab fa-php tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fab fa-js tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fas fa-database tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fab fa-react tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fab fa-linux tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fas fa-microchip tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fab fa-android tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            
+            <i class="fab fa-python tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fab fa-php tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fab fa-js tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fas fa-database tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fab fa-react tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fab fa-linux tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fas fa-microchip tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+            <i class="fab fa-android tech-icon" style="margin:0 40px; color:#666; font-size:2rem;"></i>
+        </div>
+    </div>
+
+    <section style="padding: 80px 0;">
+        <div class="container">
+            <h2 style="font-size: 1.5rem; color:white; margin-bottom: 40px; border-left: 4px solid var(--accent); padding-left: 20px; letter-spacing: 2px;">
+                CORE_ARSENAL
+            </h2>
+            
+            <div class="project-grid" style="grid-template-columns: repeat(4, 1fr); gap: 25px; margin-top:0;">
+                <div class="project-card" style="height: auto; padding: 30px; min-height: 250px; display:flex; flex-direction:column; justify-content:center;" onclick="location.href='projects.html'">
+                    <i class="fas fa-code" style="font-size: 3.5rem; color:var(--accent); margin-bottom: 20px;"></i>
+                    <h3 style="color:white; margin-bottom: 5px;">WEB_SYSTEMS</h3>
+                    <p style="font-size: 0.9rem; color:#888;">PHP, JS & CMS Architecture</p>
+                </div>
+                <div class="project-card" style="height: auto; padding: 30px; min-height: 250px; display:flex; flex-direction:column; justify-content:center;" onclick="location.href='projects.html'">
+                    <i class="fas fa-brain" style="font-size: 3.5rem; color:var(--accent); margin-bottom: 20px;"></i>
+                    <h3 style="color:white; margin-bottom: 5px;">AI_NODES</h3>
+                    <p style="font-size: 0.9rem; color:#888;">Offline Models & Avatars</p>
+                </div>
+                <div class="project-card" style="height: auto; padding: 30px; min-height: 250px; display:flex; flex-direction:column; justify-content:center;" onclick="location.href='gallery.html'">
+                    <i class="fas fa-paint-brush" style="font-size: 3.5rem; color:var(--accent); margin-bottom: 20px;"></i>
+                    <h3 style="color:white; margin-bottom: 5px;">CREATIVE_LOGS</h3>
+                    <p style="font-size: 0.9rem; color:#888;">Branding & Visual Assets</p>
+                </div>
+                <div class="project-card" style="height: auto; padding: 30px; min-height: 250px; display:flex; flex-direction:column; justify-content:center;" onclick="location.href='certifications.html'">
+                    <i class="fas fa-certificate" style="font-size: 3.5rem; color:var(--accent); margin-bottom: 20px;"></i>
+                    <h3 style="color:white; margin-bottom: 5px;">VERIFIED_KEYS</h3>
+                    <p style="font-size: 0.9rem; color:#888;">MCA & Cisco Credentials</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-include"></div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/includes.js"></script>
+    <script src="assets/js/script.js"></script>
+
+    <script>
+        // --- FINAL FIXED ANIMATION LOGIC ---
+        var typed = new Typed('.auto-type', {
+            strings: ["Full-Stack Developer", "AI Architect", "MCA Graduate", "System Builder"],
+            
+            typeSpeed: 60,   /* Comfortable reading speed */
+            backSpeed: 40,   /* Slower deletion to prevent "glitchy/swapping" feel */
+            
+            startDelay: 500,
+            backDelay: 3000, /* 3 Second pause: Gives plenty of time to read */
+            
+            smartBackspace: false, /* FALSE: Forces full deletion of line. Fixes overwrite glitch. */
+            loop: true
+        });
+    </script>
+    
+    <style>
+        @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    </style>
+
+</body>
+</html>

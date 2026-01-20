@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications | Roshan Panday</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <canvas id="neural-canvas"></canvas>
+
+    <div id="header-include"></div>
+
+    <section>
+        <div class="container">
+            <div style="margin-top: 40px; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+                <h1 style="font-size: 2.5rem; color:white;">VERIFIED <span style="color:var(--accent);">KEYS</span></h1>
+                <p style="color:#888; letter-spacing: 1px;">ACADEMIC & TECHNICAL CREDENTIALS</p>
+                <p style="font-size: 0.8rem; color:var(--accent); margin-top:5px;">[ CLICK ANY CERTIFICATE FOR DETAILS ]</p>
+            </div>
+            
+            <div class="gallery-grid">
+                
+                <div class="cert-item" data-aos="fade-up" 
+                     onclick="openModal('assets/img/certificates/degree-mca.png', '<h3 class=\'modal-title\'>Master of Computer Applications</h3><p class=\'modal-desc\'>Specialized in AI Architectures and System Design. Graduated with <strong>1st Division Honors</strong>. Covered Advanced Java, Database Management, and Neural Networks.</p>')">
+                    <img src="assets/img/certificates/degree-mca.png" alt="MCA Degree">
+                    <div class="overlay"><i class="fas fa-graduation-cap highlight"></i><h3>VIEW DETAILS</h3></div>
+                </div>
+
+                <div class="cert-item" data-aos="fade-up" data-aos-delay="100"
+                     onclick="openModal('assets/img/certificates/degree-bca.png', '<h3 class=\'modal-title\'>Bachelor of Computer Applications</h3><p class=\'modal-desc\'>Foundation in Software Development and Web Technologies. Focused on C++, Data Structures, and Core Networking principles.</p>')">
+                    <img src="assets/img/certificates/degree-bca.png" alt="BCA Degree">
+                    <div class="overlay"><i class="fas fa-user-graduate highlight"></i><h3>VIEW DETAILS</h3></div>
+                </div>
+
+                <div class="cert-item" data-aos="fade-up" data-aos-delay="200"
+                     onclick="openModal('assets/img/certificates/cisco-cybersecurity.png', '<h3 class=\'modal-title\'>Cisco: Intro to Cybersecurity</h3><p class=\'modal-desc\'>Validated understanding of modern threat landscapes, encryption protocols, and network defense strategies. <strong>Skills:</strong> Firewalls, VPNs, Malware Analysis.</p>')">
+                    <img src="assets/img/certificates/cisco-cybersecurity.png" alt="Cybersecurity">
+                    <div class="overlay"><i class="fas fa-shield-alt highlight"></i><h3>VIEW DETAILS</h3></div>
+                </div>
+
+                <div class="cert-item" data-aos="fade-up" data-aos-delay="300"
+                     onclick="openModal('assets/img/certificates/cisco-threat-mgmt.png', '<h3 class=\'modal-title\'>Cisco: Cyber Threat Management</h3><p class=\'modal-desc\'>Advanced certification focusing on threat detection, governance, and risk compliance. Validates ability to secure enterprise-level endpoints.</p>')">
+                    <img src="assets/img/certificates/cisco-threat-mgmt.png" alt="Threat Mgmt">
+                    <div class="overlay"><i class="fas fa-bug highlight"></i><h3>VIEW DETAILS</h3></div>
+                </div>
+
+                <div class="cert-item" data-aos="fade-up"
+                     onclick="openModal('assets/img/certificates/cisco-networking.png', '<h3 class=\'modal-title\'>Cisco: Networking Basics</h3><p class=\'modal-desc\'>Core routing and switching validation. Demonstrated proficiency in IP addressing, OSI Model layers, and LAN/WAN configurations.</p>')">
+                    <img src="assets/img/certificates/cisco-networking.png" alt="Networking">
+                    <div class="overlay"><i class="fas fa-network-wired highlight"></i><h3>VIEW DETAILS</h3></div>
+                </div>
+
+                <div class="cert-item" data-aos="fade-up" data-aos-delay="100"
+                     onclick="openModal('assets/img/certificates/cisco-hardware.png', '<h3 class=\'modal-title\'>Computer Hardware Engineering</h3><p class=\'modal-desc\'>Technical validation in component assembly, troubleshooting, and system maintenance. Bridging software logic with physical hardware constraints.</p>')">
+                    <img src="assets/img/certificates/cisco-hardware.png" alt="Hardware">
+                    <div class="overlay"><i class="fas fa-microchip highlight"></i><h3>VIEW DETAILS</h3></div>
+                </div>
+
+                <div class="cert-item" data-aos="fade-up" data-aos-delay="200"
+                     onclick="openModal('assets/img/certificates/cert-iitm.png', '<h3 class=\'modal-title\'>IITM Certification</h3><p class=\'modal-desc\'>Professional validation from Institute of Information Technology & Management. Focus on emerging tech standards and compliance.</p>')">
+                    <img src="assets/img/certificates/cert-iitm.png" alt="IITM">
+                    <div class="overlay"><i class="fas fa-university highlight"></i><h3>VIEW DETAILS</h3></div>
+                </div>
+
+                <div class="cert-item" data-aos="fade-up" data-aos-delay="300"
+                     onclick="openModal('assets/img/certificates/cert-bharat-vikas.png', '<h3 class=\'modal-title\'>Bharat Vikas Parishad Award</h3><p class=\'modal-desc\'>Recognition of Merit for participation in the Science and Economics of Sanitization webinar. Demonstrated engagement with public health tech initiatives.</p>')">
+                    <img src="assets/img/certificates/cert-bharat-vikas.png" alt="Award">
+                    <div class="overlay"><i class="fas fa-award highlight"></i><h3>VIEW DETAILS</h3></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-include"></div>
+
+    <div id="imageModal" class="modal" onclick="closeModal(event)">
+        <span class="close-modal" onclick="closeModal(event)">&times;</span>
+        
+        <div class="modal-body">
+            <img class="modal-content" id="img01" onclick="event.stopPropagation()">
+            
+            <div id="caption" onclick="event.stopPropagation()"></div>
+        </div>
+
+        <div class="zoom-controls" onclick="event.stopPropagation()">
+            <button class="zoom-btn" onclick="zoomOut()" title="Zoom Out"><i class="fas fa-minus"></i></button>
+            <button class="zoom-btn" onclick="resetZoom()" title="Reset Size"><i class="fas fa-compress"></i></button>
+            <button class="zoom-btn" onclick="zoomIn()" title="Zoom In"><i class="fas fa-plus"></i></button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/includes.js"></script>
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>

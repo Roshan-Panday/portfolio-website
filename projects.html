@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work | Roshan Panday</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <canvas id="neural-canvas"></canvas>
+
+    <div id="header-include"></div>
+
+    <section>
+        <div class="container">
+            <div style="margin-top: 40px; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+                <h1 style="font-size: 2.5rem; color:white;">DEPLOYMENT <span style="color:var(--accent);">LOG</span></h1>
+                <p style="color:#888; letter-spacing: 1px;">ACTIVE NODES & ARCHITECTURES</p>
+                <p style="font-size: 0.8rem; color:var(--accent); margin-top:5px;">[ CLICK ANY CARD TO ACCESS PROJECT FILE ]</p>
+            </div>
+            
+            <div class="project-grid">
+                
+                <div class="project-card" data-aos="fade-up"
+                     onclick="openProjectPanel(
+                        'Bhandari Adventure',
+                        'STATUS: LIVE // COMMERCIAL CMS',
+                        'The client needed a robust booking system capable of handling peak-season traffic without latency, while maintaining high SEO rankings.',
+                        'I engineered a custom PHP/MySQL architecture. By manually indexing the SQL database and optimizing asset delivery, I reduced page load times by 40% compared to their WordPress prototype.',
+                        ['Real-time Reservation Dashboard', 'Automated Email Confirmations', 'SEO-Optimized URL Structure'],
+                        'https://bhandariadventure.com/'
+                     )">
+                    <div class="card-status">● LIVE</div>
+                    <div class="card-image"><i class="fas fa-mountain" style="font-size: 4rem; color:var(--accent);"></i></div>
+                    <div class="card-info">
+                        <h3 style="color:white;">Bhandari Adventure</h3>
+                        <div class="tech-stack"><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span></div>
+                        <p style="color:#ccc; font-size: 0.9rem;">High-performance CMS built for adventure tourism.</p>
+                        <div class="click-hint"><i class="fas fa-folder-open"></i> OPEN PROJECT FILE</div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100"
+                     onclick="openProjectPanel(
+                        'Android Streamer',
+                        'STATUS: V1.0 // DEVELOPER TOOL',
+                        'Standard screen mirroring tools have high latency (200ms+), making them unusable for real-time debugging or gaming.',
+                        'I bypassed standard casting protocols by tapping directly into the Android Debug Bridge (ADB). The raw frame buffer is decoded via FFmpeg, achieving sub-50ms latency.',
+                        ['Zero-Lag Frame Buffer Access', 'USB & Wireless ADB Support', 'Low-Resource Client (C++)'],
+                        'https://github.com/roshan-panday'
+                     )">
+                    <div class="card-status" style="color:#3DDC84;">● STABLE</div>
+                    <div class="card-image"><i class="fab fa-android" style="font-size: 4rem; color:#3DDC84;"></i></div>
+                    <div class="card-info">
+                        <h3 style="color:white;">Android Streamer</h3>
+                        <div class="tech-stack"><span class="tech-tag" style="background:#3DDC84;">C++</span><span class="tech-tag secondary">ADB</span></div>
+                        <p style="color:#ccc; font-size: 0.9rem;">Low-latency screen mirroring via ADB & FFmpeg.</p>
+                        <div class="click-hint"><i class="fas fa-folder-open"></i> OPEN PROJECT FILE</div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200"
+                     onclick="openProjectPanel(
+                        '@tigml Analytics',
+                        'STATUS: ACTIVE // CONTENT STRATEGY',
+                        'The MOBA gaming market is saturated. Growing a channel requires predicting meta-shifts before they happen.',
+                        'I built a data analysis framework using Excel and game meta-data to identify hero win-rates and trends. This allows me to produce content that is statistically relevant to rank climbers.',
+                        ['Meta-Data Trend Analysis', 'Algorithmic Content Timing', 'Mechanics Breakdown Guides'],
+                        'https://www.youtube.com/@tigml'
+                     )">
+                    <div class="card-status" style="color:#ff0000;">● ANALYTICS</div>
+                    <div class="card-image"><i class="fas fa-chart-line" style="font-size: 4rem; color:#ff0000;"></i></div>
+                    <div class="card-info">
+                        <h3 style="color:white;">@tigml Analytics</h3>
+                        <div class="tech-stack"><span class="tech-tag" style="background:#ff0000; color:white;">Data</span><span class="tech-tag secondary">Excel</span></div>
+                        <p style="color:#ccc; font-size: 0.9rem;">Data-driven growth strategy for Mobile Legends content.</p>
+                        <div class="click-hint"><i class="fas fa-folder-open"></i> OPEN PROJECT FILE</div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up"
+                     onclick="openProjectPanel(
+                        'Project ROSA',
+                        'STATUS: PROTOTYPE // OFFLINE AI',
+                        'Cloud-based AI assistants (Siri, Alexa) compromise privacy and require constant internet connection.',
+                        'ROSA (Responsive Offline System Architect) runs entirely on my local RTX 3070 Ti. It uses quantized LLMs to provide voice assistance without a single packet leaving the local network.',
+                        ['Local LLM Inference', 'Voice-to-Text (Whisper)', 'System Control API'],
+                        ''
+                     )">
+                    <div class="card-status" style="color:#ff0055;">● R.O.S.A</div>
+                    <div class="card-image"><i class="fas fa-brain" style="font-size: 4rem; color:#ff0055;"></i></div>
+                    <div class="card-info">
+                        <h3 style="color:white;">Project ROSA</h3>
+                        <div class="tech-stack"><span class="tech-tag" style="background:#ff0055; color:white;">Python</span><span class="tech-tag secondary">PyTorch</span></div>
+                        <p style="color:#ccc; font-size: 0.9rem;">Offline AI Avatar running on consumer hardware.</p>
+                        <div class="click-hint"><i class="fas fa-folder-open"></i> OPEN PROJECT FILE</div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100"
+                     onclick="openProjectPanel(
+                        'Monster Hunter 2D',
+                        'STATUS: LEGACY // GAME ENGINE',
+                        'I wanted to understand game physics from scratch, avoiding pre-built engines like Unity for this project.',
+                        'I wrote a custom 2D engine in Java. It handles collision detection, sprite rendering, and a state-machine AI for complex boss patterns.',
+                        ['Custom Collision Physics', 'State-Machine AI', 'Asset Management System'],
+                        'https://github.com/roshan-panday'
+                     )">
+                    <div class="card-status" style="color:#ff5555;">● ENGINE</div>
+                    <div class="card-image"><i class="fas fa-gamepad" style="font-size: 4rem; color:#ff5555;"></i></div>
+                    <div class="card-info">
+                        <h3 style="color:white;">MH_2D Engine</h3>
+                        <div class="tech-stack"><span class="tech-tag" style="background:#ff5555; color:white;">Java</span><span class="tech-tag secondary">OOP</span></div>
+                        <p style="color:#ccc; font-size: 0.9rem;">Java-based Action RPG featuring custom boss logic.</p>
+                        <div class="click-hint"><i class="fas fa-folder-open"></i> OPEN PROJECT FILE</div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200"
+                     onclick="openProjectPanel(
+                        'Secure Vault',
+                        'STATUS: V2.4 // BANKING SYSTEM',
+                        'Banking systems require absolute memory safety and data persistence.',
+                        'This C++ application uses pointer-based memory management for speed and file encryption for security. It simulates a full banking backend.',
+                        ['Encrypted Transaction Logs', 'Memory Safety (Pointers)', 'User Authentication'],
+                        'https://github.com/roshan-panday'
+                     )">
+                    <div class="card-status" style="color:#44ff44;">● SECURE</div>
+                    <div class="card-image"><i class="fas fa-university" style="font-size: 4rem; color:#44ff44;"></i></div>
+                    <div class="card-info">
+                        <h3 style="color:white;">Secure_Vault</h3>
+                        <div class="tech-stack"><span class="tech-tag" style="background:#44ff44;">C++</span><span class="tech-tag secondary">Crypto</span></div>
+                        <p style="color:#ccc; font-size: 0.9rem;">Terminal-based transaction management system.</p>
+                        <div class="click-hint"><i class="fas fa-folder-open"></i> OPEN PROJECT FILE</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-include"></div>
+
+    <div id="projectPanelOverlay" class="project-panel-overlay">
+        <div class="project-panel">
+            <span class="close-panel" onclick="closeProjectPanel()">&times;</span>
+            
+            <div class="panel-header">
+                <h2 class="panel-title" id="pp-title">PROJECT NAME</h2>
+                <div class="panel-subtitle" id="pp-subtitle">STATUS: LOADING...</div>
+            </div>
+
+            <div class="panel-grid">
+                <div>
+                    <div class="panel-section-title">THE CHALLENGE</div>
+                    <p class="panel-text" id="pp-challenge">...</p>
+                    
+                    <div class="panel-section-title">THE SOLUTION</div>
+                    <p class="panel-text" id="pp-solution">...</p>
+                </div>
+                <div>
+                    <div class="panel-section-title">KEY FEATURES</div>
+                    <ul class="panel-features" id="pp-features">
+                        </ul>
+                </div>
+            </div>
+
+            <div class="panel-actions">
+                <a href="#" target="_blank" class="btn-neon" id="pp-link">VISIT LINK</a>
+                <button class="btn-neon" onclick="closeProjectPanel()" style="background:transparent; border-color:#666; color:#ccc;">CLOSE FILE</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/includes.js"></script>
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>

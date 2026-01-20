@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Roshan Panday</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        .branding-img {
+            object-fit: contain !important; /* Forces whole logo to show */
+            padding: 15px; /* Adds breathing room */
+            background: rgba(255, 255, 255, 0.05); /* Subtle background for contrast */
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="neural-canvas"></canvas>
+
+    <div id="header-include"></div>
+
+    <section>
+        <div class="container">
+            <div style="margin-top: 40px; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+                <h1 style="font-size: 2.5rem; color:white;">CREATIVE <span style="color:var(--accent);">SHOWCASE</span></h1>
+                <p style="color:#888; letter-spacing: 1px;">BRANDING & VISUAL ASSETS</p>
+                <p style="font-size: 0.8rem; color:var(--accent); margin-top:5px;">[ CLICK ANY IMAGE TO ZOOM ]</p>
+            </div>
+            
+            <h2 style="color:white; margin: 40px 0 20px; border-left: 3px solid var(--accent); padding-left: 15px; font-size: 1rem; letter-spacing: 2px;">
+                <i class="fas fa-pen-nib"></i> BRANDING_NODES
+            </h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal('assets/img/project-logos/logo1.png', '<h3>Typography Identity</h3><p>Custom font design for digital branding.</p>')" data-aos="zoom-in">
+                    <img src="assets/img/project-logos/logo1.png" class="branding-img" alt="Logo 1">
+                    <div class="overlay"><i class="fas fa-eye highlight"></i><h3>VIEW LOGO</h3></div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal('assets/img/project-logos/logo2.png', '<h3>Shield Identity</h3><p>Security-focused branding element.</p>')" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="assets/img/project-logos/logo2.png" class="branding-img" alt="Logo 2">
+                    <div class="overlay"><i class="fas fa-shield-alt highlight"></i><h3>VIEW LOGO</h3></div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal('assets/img/project-logos/logo3.jpg', '<h3>Mascot Design</h3><p>Character branding for gaming content.</p>')" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="assets/img/project-logos/logo3.jpg" class="branding-img" alt="Logo 3">
+                    <div class="overlay"><i class="fas fa-gamepad highlight"></i><h3>VIEW LOGO</h3></div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal('assets/img/project-logos/logo4.png', '<h3>Abstract Emblem</h3><p>Modern minimalist logo concept.</p>')" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="assets/img/project-logos/logo4.png" class="branding-img" alt="Logo 4">
+                    <div class="overlay"><i class="fas fa-pen-fancy highlight"></i><h3>VIEW LOGO</h3></div>
+                </div>
+            </div>
+
+            <h2 style="color:white; margin: 60px 0 20px; border-left: 3px solid var(--accent); padding-left: 15px; font-size: 1rem; letter-spacing: 2px;">
+                <i class="fab fa-youtube"></i> THUMBNAIL_ASSETS
+            </h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t1.jpg', '<h3>Asset_01</h3>')" data-aos="fade-up">
+                    <img src="assets/img/project-thumbnails/t1.jpg">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t2.jpg', '<h3>Asset_02</h3>')" data-aos="fade-up" data-aos-delay="50">
+                    <img src="assets/img/project-thumbnails/t2.jpg">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t3.jpg', '<h3>Asset_03</h3>')" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/img/project-thumbnails/t3.jpg">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t4.jpg', '<h3>Asset_04</h3>')" data-aos="fade-up" data-aos-delay="150">
+                    <img src="assets/img/project-thumbnails/t4.jpg">
+                </div>
+
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t5.jpg', '<h3>Asset_05</h3>')" data-aos="fade-up">
+                    <img src="assets/img/project-thumbnails/t5.jpg">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t6.png', '<h3>Asset_06</h3>')" data-aos="fade-up" data-aos-delay="50">
+                    <img src="assets/img/project-thumbnails/t6.png">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t7.jpg', '<h3>Asset_07</h3>')" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/img/project-thumbnails/t7.jpg">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t8.jpg', '<h3>Asset_08</h3>')" data-aos="fade-up" data-aos-delay="150">
+                    <img src="assets/img/project-thumbnails/t8.jpg">
+                </div>
+
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t9.png', '<h3>Asset_09</h3>')" data-aos="fade-up">
+                    <img src="assets/img/project-thumbnails/t9.png">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t10.jpg', '<h3>Asset_10</h3>')" data-aos="fade-up" data-aos-delay="50">
+                    <img src="assets/img/project-thumbnails/t10.jpg">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t11.jpg', '<h3>Asset_11</h3>')" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/img/project-thumbnails/t11.jpg">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t12.png', '<h3>Asset_12</h3>')" data-aos="fade-up" data-aos-delay="150">
+                    <img src="assets/img/project-thumbnails/t12.png">
+                </div>
+
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t13.jpg', '<h3>Asset_13</h3>')" data-aos="fade-up">
+                    <img src="assets/img/project-thumbnails/t13.jpg">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t14.jpg', '<h3>Asset_14</h3>')" data-aos="fade-up" data-aos-delay="50">
+                    <img src="assets/img/project-thumbnails/t14.jpg">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t15.jpg', '<h3>Asset_15</h3>')" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/img/project-thumbnails/t15.jpg">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t16.jpg', '<h3>Asset_16</h3>')" data-aos="fade-up" data-aos-delay="150">
+                    <img src="assets/img/project-thumbnails/t16.jpg">
+                </div>
+
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t17.jpg', '<h3>Asset_17</h3>')" data-aos="fade-up">
+                    <img src="assets/img/project-thumbnails/t17.jpg">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t18.jpg', '<h3>Asset_18</h3>')" data-aos="fade-up" data-aos-delay="50">
+                    <img src="assets/img/project-thumbnails/t18.jpg">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t19.png', '<h3>Asset_19</h3>')" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/img/project-thumbnails/t19.png">
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/img/project-thumbnails/t20.jpg', '<h3>Asset_20</h3>')" data-aos="fade-up" data-aos-delay="150">
+                    <img src="assets/img/project-thumbnails/t20.jpg">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-include"></div>
+
+    <div id="imageModal" class="modal" onclick="closeModal(event)">
+        <span class="close-modal" onclick="closeModal(event)">&times;</span>
+        
+        <div class="modal-body">
+            <img class="modal-content" id="img01" onclick="event.stopPropagation()">
+            
+            <div id="caption" onclick="event.stopPropagation()"></div>
+        </div>
+
+        <div class="zoom-controls" onclick="event.stopPropagation()">
+            <button class="zoom-btn" onclick="zoomOut()" title="Zoom Out"><i class="fas fa-minus"></i></button>
+            <button class="zoom-btn" onclick="resetZoom()" title="Reset Size"><i class="fas fa-compress"></i></button>
+            <button class="zoom-btn" onclick="zoomIn()" title="Zoom In"><i class="fas fa-plus"></i></button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/includes.js"></script>
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>

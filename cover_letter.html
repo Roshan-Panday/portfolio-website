@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roshan Panday - Cover Letter</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0f172a;       
+            --accent: #0ea5e9;        
+            --text-main: #334155;
+            --text-light: #64748b;
+            --bg-gray: #f8fafc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        body {
+            background: #d1d5db; 
+            font-family: 'Inter', sans-serif;
+            font-size: 11pt;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .letter-page {
+            background: white;
+            width: 210mm; 
+            min-height: 297mm; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            display: grid;
+            grid-template-columns: 32% 68%;
+        }
+
+        /* SIDEBAR (Matches CV) */
+        .sidebar {
+            background: var(--primary);
+            color: white;
+            padding: 40px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .profile-img {
+            width: 160px; height: 160px; /* Exact match to CV */
+            border-radius: 50%; border: 4px solid var(--accent);
+            object-fit: cover; 
+            object-position: top center; 
+            background: #111; margin: 0 auto 10px;
+        }
+        .side-info { font-size: 9.5pt; color: #cbd5e1; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .side-info i { color: var(--accent); width: 18px; text-align: center; font-size: 11pt; }
+        
+        /* Fixed Link Styling */
+        .side-info a { color: inherit; text-decoration: none; transition: color 0.3s; }
+        .side-info a:hover { color: var(--accent); }
+
+        /* MAIN CONTENT */
+        .content { padding: 50px 40px; position: relative; }
+        
+        .header-name {
+            font-family: 'Rajdhani', sans-serif; font-size: 32pt; font-weight: 700;
+            color: var(--primary); text-transform: uppercase; line-height: 1; margin-bottom: 5px;
+        }
+        .header-role { font-size: 12pt; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; }
+
+        .letter-body { line-height: 1.6; color: var(--text-main); text-align: justify; font-size: 10.5pt; }
+        .letter-body p { margin-bottom: 15px; }
+        .highlight { font-weight: 600; color: var(--primary); }
+
+        .signature { margin-top: 50px; }
+        .sign-img { font-family: 'Rajdhani', sans-serif; font-size: 20pt; color: var(--primary); font-weight: 700; margin-bottom: 5px; }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .letter-page { width: 100%; height: auto; box-shadow: none; }
+            .no-print { display: none !important; }
+            .sidebar { background-color: #0f172a !important; color: white !important; height: 100%; min-height: 297mm; }
+            @page { margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="no-print" onclick="window.print()" style="position:fixed; top:20px; right:20px; padding:12px 25px; background:#0f172a; color:white; border:none; font-weight:bold; cursor:pointer; border-radius:6px; z-index:100; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+        <i class="fas fa-print"></i> SAVE PDF
+    </button>
+
+    <div class="letter-page">
+        <aside class="sidebar">
+            <div style="text-align:center;">
+                <img src="assets/img/profile.jpg" class="profile-img" alt="Roshan Panday">
+            </div>
+            
+            <div style="margin-top:20px;">
+                <div class="side-info"><i class="fas fa-globe"></i> <a href="https://roshan-panday.github.io/portfolio-website/" target="_blank">Portfolio Website</a></div>
+                <div class="side-info"><i class="fas fa-phone"></i> +91 8700105930</div>
+                <div class="side-info"><i class="fas fa-envelope"></i> pandayroshan99@gmail.com</div>
+                <div class="side-info"><i class="fas fa-map-marker-alt"></i> New Delhi, India</div>
+                <div class="side-info"><i class="fab fa-linkedin"></i> linkedin.com/in/pandayroshan</div>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div class="header-name">Roshan Panday</div>
+            <div class="header-role">System Architect | MCA Graduate</div>
+
+            <div class="letter-body">
+                <p><strong>To the Hiring Manager,</strong></p>
+
+                <p>I am writing to express my strong interest in the Developer position at your organization. As a <span class="highlight">System Architect and MCA Graduate</span> with over 3 years of experience, I specialize in bridging the gap between heavy backend logic and creative frontend visuals.</p>
+
+                <p>My technical background is rooted in building autonomous digital ecosystems. Currently, I am engineering <strong>"ROZA"</strong>, an offline personal AI assistant capable of running on local consumer hardware (RTX 3070 Ti) without relying on cloud APIs. This project highlights my ability to optimize complex systems for local environments, a skill that translates directly to creating efficient, secure, and high-performance software solutions.</p>
+
+                <p>In addition to my AI work, I have successfully delivered full-stack web platforms, such as the <strong>Bhandari Adventure</strong> tourism site, where I built a custom CMS to handle bookings and packages. My experience extends to managing digital operations for organizations like the <strong>Labour Party of India</strong>, where I optimized database performance and secured digital records.</p>
+
+                <p>I bring a unique blend of "System Architecture" discipline and "Creative Content" strategy, honed through managing a technical gaming channel with a data-driven approach. I am eager to bring this versatility to your team.</p>
+
+                <p>Thank you for your time and consideration. I look forward to discussing how my skills can contribute to your upcoming projects.</p>
+
+                <div class="signature">
+                    <div class="sign-img">Roshan Panday</div>
+                    <div style="font-size:10pt; color:#64748b;">System Architect</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
