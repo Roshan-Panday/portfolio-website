@@ -4,7 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     
-    // 1. GENERATE SYSTEM HEADER (Restored Original Structure)
+    // 1. GENERATE SYSTEM HEADER
     const headerElement = document.getElementById("header-include");
     if (headerElement) {
         headerElement.innerHTML = `
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     }
 
-    // 2. GENERATE SYSTEM FOOTER (Restored Original Structure)
+    // 2. GENERATE SYSTEM FOOTER
     const footerElement = document.getElementById("footer-include");
     if (footerElement) {
         footerElement.innerHTML = `
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     }
 
-    // 3. INJECT CONTACT MODAL (Invisible until clicked)
+    // 3. INJECT CONTACT MODAL (FIXED: OPEN APPS DIRECTLY)
     const contactModalHTML = `
         <div id="contactModal" class="contact-modal-overlay">
             <div class="contact-box">
@@ -91,21 +91,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p style="color:#888; font-size:0.9rem; margin-bottom:30px;">SELECT COMMUNICATION CHANNEL</p>
 
                 <div class="contact-grid">
-                    <div class="contact-item" onclick="copyToClipboard('pandayroshan99@gmail.com', 'email-status')">
+                    
+                    <div class="contact-item" onclick="location.href='mailto:pandayroshan99@gmail.com'">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>EMAIL</h4>
                             <p>pandayroshan99@gmail.com</p>
-                            <span id="email-status" class="copy-status">CLICK TO COPY</span>
+                            <span class="copy-status" style="color:var(--accent);">TAP TO OPEN MAIL</span>
                         </div>
                     </div>
 
-                    <div class="contact-item" onclick="copyToClipboard('+918700105930', 'phone-status')">
+                    <div class="contact-item" onclick="location.href='tel:+918700105930'">
                         <i class="fas fa-phone-alt"></i>
                         <div>
                             <h4>PHONE</h4>
                             <p>+91 8700105930</p>
-                            <span id="phone-status" class="copy-status">CLICK TO COPY</span>
+                            <span class="copy-status" style="color:var(--accent);">TAP TO CALL</span>
                         </div>
                     </div>
 
@@ -145,14 +146,16 @@ document.addEventListener("DOMContentLoaded", function () {
    HELPER FUNCTIONS
    ========================================= */
 
+/* FIXED MENU LOGIC */
 function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
+    if (!menu) return; 
+    
     if (menu.style.display === 'flex') {
         menu.style.display = 'none';
         document.body.style.overflow = 'auto';
     } else {
         menu.style.display = 'flex';
-        // Force Flex styles via JS to ensure centering
         menu.style.flexDirection = 'column';
         menu.style.justifyContent = 'center';
         menu.style.alignItems = 'center';
@@ -168,16 +171,4 @@ function openContactModal() {
 function closeContactModal() {
     document.getElementById("contactModal").style.display = "none";
     document.body.style.overflow = "auto"; 
-}
-
-function copyToClipboard(text, statusId) {
-    navigator.clipboard.writeText(text).then(() => {
-        const status = document.getElementById(statusId);
-        status.innerText = "COPIED!";
-        status.style.color = "var(--accent)";
-        setTimeout(() => {
-            status.innerText = "CLICK TO COPY";
-            status.style.color = "#666";
-        }, 2000);
-    });
 }
