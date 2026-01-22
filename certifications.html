@@ -6,73 +6,322 @@
     <title>Certifications | Roshan Panday</title>
     
     <link rel="stylesheet" href="assets/css/style.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body { background-color: #000; overflow-x: hidden; }
+
+        /* --- 1. CERTIFICATE GRID --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        /* --- 2. THE CYBER DATA CARD --- */
+        .cert-card {
+            background: #050505;
+            border: 1px solid #222;
+            padding: 15px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+        }
+
+        .cert-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+        }
+
+        .cert-frame {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border: 1px solid #333;
+            position: relative;
+            background: #000;
+        }
+
+        .cert-img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+            opacity: 0.8;
+        }
+        .cert-card:hover .cert-img { opacity: 1; transform: scale(1.05); }
+
+        .cert-status {
+            position: absolute; top: 10px; right: 10px;
+            background: rgba(0,0,0,0.8);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.7rem; font-weight: 800;
+            padding: 2px 8px;
+            letter-spacing: 1px;
+            z-index: 5;
+        }
+
+        .cert-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 242, 255, 0.1);
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; transition: 0.3s;
+        }
+        .cert-card:hover .cert-overlay { opacity: 1; }
+        
+        .scan-icon { font-size: 2rem; color: white; text-shadow: 0 0 10px var(--accent); }
+
+        .cert-info { padding-top: 15px; }
+        .cert-title { color: white; font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; }
+        .cert-meta { color: #666; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* --- 3. HOLOGRAPHIC VIEWER (MODAL) --- */
+        .modal {
+            display: none; position: fixed; z-index: 99999;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            justify-content: center; align-items: center;
+            flex-direction: column;
+        }
+
+        .modal-hud {
+            position: relative;
+            width: 90%; max-height: 90%;
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.15);
+            background: #000;
+            padding: 10px;
+            display: flex; 
+            flex-direction: column; 
+        }
+
+        /* IMAGE WRAPPER */
+        .modal-img-wrapper {
+            width: 100%; 
+            height: 50vh; 
+            border: 1px solid #333;
+            background: #050505;
+            overflow: auto; /* Allows panning */
+            display: flex;  
+            position: relative;
+        }
+
+        .modal-content {
+            margin: auto; 
+            max-width: 100%; 
+            max-height: 100%;
+            object-fit: contain;
+            transition: width 0.3s ease, height 0.3s ease; 
+            display: block;
+        }
+
+        .modal-text-panel {
+            margin-top: 15px;
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-left: 3px solid var(--accent);
+            color: #ddd;
+            width: 100%;
+            flex-grow: 1;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .modal-title { font-size: 1.3rem; color: white; margin-bottom: 5px; }
+        .modal-desc { font-size: 0.9rem; line-height: 1.5; color: #aaa; }
+
+        /* --- NAVIGATION ARROWS (FIXED TO SCREEN) --- */
+        .nav-btn {
+            position: fixed; /* Fixed to screen edges */
+            top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.8);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer;
+            z-index: 100001; /* Max Z-Index */
+            font-size: 1.5rem;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(0,0,0,0.8);
+        }
+        .nav-btn:hover { background: var(--accent); color: black; box-shadow: 0 0 30px var(--accent); }
+        
+        /* Positions */
+        .prev-btn { left: 30px; }
+        .next-btn { right: 30px; }
+
+        /* --- CONTROLS --- */
+        .close-modal {
+            position: absolute; top: -45px; right: 0;
+            color: white; font-size: 2.5rem; cursor: pointer; transition: 0.2s;
+        }
+        .close-modal:hover { color: var(--accent); }
+
+        .zoom-controls {
+            margin-top: 10px;
+            display: flex; gap: 15px;
+            justify-content: flex-end;
+        }
+        .zoom-btn {
+            background: transparent; border: 1px solid #444; color: var(--accent);
+            padding: 5px 15px; border-radius: 4px;
+            cursor: pointer; transition: 0.2s; font-size: 0.9rem; font-weight: bold;
+        }
+        .zoom-btn:hover { border-color: var(--accent); background: rgba(0,242,255,0.1); color: white; }
+
+        /* --- DESKTOP SPLIT-SCREEN --- */
+        @media (min-width: 900px) {
+            .modal-hud {
+                flex-direction: row; 
+                width: 85%; max-width: 1200px;
+                height: 85vh; 
+                padding: 0;
+            }
+            
+            .modal-img-wrapper {
+                width: 70%; 
+                height: 100%;
+                border: none; border-right: 1px solid #333;
+            }
+
+            .modal-text-panel {
+                width: 30%; 
+                height: 100%;
+                margin: 0; border-left: none;
+                padding: 40px;
+            }
+            .modal-title { font-size: 2rem; }
+            .modal-desc { font-size: 1rem; }
+            
+            /* Move arrows slightly outward on big screens */
+            .prev-btn { left: 40px; }
+            .next-btn { right: 40px; }
+        }
+
+        @media (max-width: 900px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            /* Smaller arrows on mobile */
+            .prev-btn { left: 10px; width: 45px; height: 45px; font-size: 1.2rem; }
+            .next-btn { right: 10px; width: 45px; height: 45px; font-size: 1.2rem; }
+        }
+    </style>
 </head>
 <body>
 
     <canvas id="neural-canvas"></canvas>
-
     <div id="header-include"></div>
 
-    <section>
+    <section style="padding-top: 100px; padding-bottom: 60px;">
         <div class="container">
-            <div style="margin-top: 40px; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+            
+            <div style="border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 40px;">
                 <h1 style="font-size: 2.5rem; color:white;">VERIFIED <span style="color:var(--accent);">KEYS</span></h1>
-                <p style="color:#888; letter-spacing: 1px;">ACADEMIC & TECHNICAL CREDENTIALS</p>
-                <p style="font-size: 0.8rem; color:var(--accent); margin-top:5px;">[ CLICK ANY CERTIFICATE FOR DETAILS ]</p>
+                <p style="color:#666; letter-spacing: 2px; font-size: 0.9rem; margin-top: 5px;">ACADEMIC & TECHNICAL CREDENTIALS</p>
+                <p style="font-size:0.8rem; color:var(--accent); margin-top:10px;">[ CLICK TO INSPECT DOCUMENT ]</p>
             </div>
             
             <div class="gallery-grid">
                 
-                <div class="cert-item" data-aos="fade-up" 
-                     onclick="openModal('assets/img/certificates/degree-mca.png', '<h3 class=\'modal-title\'>Master of Computer Applications</h3><p class=\'modal-desc\'>Specialized in AI Architectures and System Design. Graduated with <strong>1st Division Honors</strong>. Covered Advanced Java, Database Management, and Neural Networks.</p>')">
-                    <img src="assets/img/certificates/degree-mca.png" alt="MCA Degree">
-                    <div class="overlay"><i class="fas fa-graduation-cap highlight"></i><h3>VIEW DETAILS</h3></div>
+                <div class="cert-card" data-aos="fade-up" onclick="openViewer(0)">
+                    <div class="cert-frame">
+                        <div class="cert-status">VERIFIED</div>
+                        <img src="assets/img/certificates/degree-mca.png" class="cert-img" alt="MCA">
+                        <div class="cert-overlay"><i class="fas fa-search-plus scan-icon"></i></div>
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-title">Masters Degree (MCA)</div>
+                        <div class="cert-meta">MAHARAJA AGRASEN UNIVERSITY</div>
+                    </div>
                 </div>
 
-                <div class="cert-item" data-aos="fade-up" data-aos-delay="100"
-                     onclick="openModal('assets/img/certificates/degree-bca.png', '<h3 class=\'modal-title\'>Bachelor of Computer Applications</h3><p class=\'modal-desc\'>Foundation in Software Development and Web Technologies. Focused on C++, Data Structures, and Core Networking principles.</p>')">
-                    <img src="assets/img/certificates/degree-bca.png" alt="BCA Degree">
-                    <div class="overlay"><i class="fas fa-user-graduate highlight"></i><h3>VIEW DETAILS</h3></div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="100" onclick="openViewer(1)">
+                    <div class="cert-frame">
+                        <div class="cert-status">VERIFIED</div>
+                        <img src="assets/img/certificates/degree-bca.png" class="cert-img" alt="BCA">
+                        <div class="cert-overlay"><i class="fas fa-search-plus scan-icon"></i></div>
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-title">Bachelors Degree (BCA)</div>
+                        <div class="cert-meta">MAHARAJA AGRASEN UNIVERSITY</div>
+                    </div>
                 </div>
 
-                <div class="cert-item" data-aos="fade-up" data-aos-delay="200"
-                     onclick="openModal('assets/img/certificates/cisco-cybersecurity.png', '<h3 class=\'modal-title\'>Cisco: Intro to Cybersecurity</h3><p class=\'modal-desc\'>Validated understanding of modern threat landscapes, encryption protocols, and network defense strategies. <strong>Skills:</strong> Firewalls, VPNs, Malware Analysis.</p>')">
-                    <img src="assets/img/certificates/cisco-cybersecurity.png" alt="Cybersecurity">
-                    <div class="overlay"><i class="fas fa-shield-alt highlight"></i><h3>VIEW DETAILS</h3></div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="200" onclick="openViewer(2)">
+                    <div class="cert-frame">
+                        <div class="cert-status">CISCO CERT</div>
+                        <img src="assets/img/certificates/cisco-cybersecurity.png" class="cert-img" alt="Cyber">
+                        <div class="cert-overlay"><i class="fas fa-search-plus scan-icon"></i></div>
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-title">Cybersecurity Intro</div>
+                        <div class="cert-meta">CISCO NETWORKING ACADEMY</div>
+                    </div>
                 </div>
 
-                <div class="cert-item" data-aos="fade-up" data-aos-delay="300"
-                     onclick="openModal('assets/img/certificates/cisco-threat-mgmt.png', '<h3 class=\'modal-title\'>Cisco: Cyber Threat Management</h3><p class=\'modal-desc\'>Advanced certification focusing on threat detection, governance, and risk compliance. Validates ability to secure enterprise-level endpoints.</p>')">
-                    <img src="assets/img/certificates/cisco-threat-mgmt.png" alt="Threat Mgmt">
-                    <div class="overlay"><i class="fas fa-bug highlight"></i><h3>VIEW DETAILS</h3></div>
+                <div class="cert-card" data-aos="fade-up" onclick="openViewer(3)">
+                    <div class="cert-frame">
+                        <div class="cert-status">CISCO CERT</div>
+                        <img src="assets/img/certificates/cisco-threat-mgmt.png" class="cert-img" alt="Threat">
+                        <div class="cert-overlay"><i class="fas fa-search-plus scan-icon"></i></div>
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-title">Threat Management</div>
+                        <div class="cert-meta">CISCO NETWORKING ACADEMY</div>
+                    </div>
                 </div>
 
-                <div class="cert-item" data-aos="fade-up"
-                     onclick="openModal('assets/img/certificates/cisco-networking.png', '<h3 class=\'modal-title\'>Cisco: Networking Basics</h3><p class=\'modal-desc\'>Core routing and switching validation. Demonstrated proficiency in IP addressing, OSI Model layers, and LAN/WAN configurations.</p>')">
-                    <img src="assets/img/certificates/cisco-networking.png" alt="Networking">
-                    <div class="overlay"><i class="fas fa-network-wired highlight"></i><h3>VIEW DETAILS</h3></div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="100" onclick="openViewer(4)">
+                    <div class="cert-frame">
+                        <div class="cert-status">CISCO CERT</div>
+                        <img src="assets/img/certificates/cisco-networking.png" class="cert-img" alt="Net">
+                        <div class="cert-overlay"><i class="fas fa-search-plus scan-icon"></i></div>
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-title">Networking Basics</div>
+                        <div class="cert-meta">CISCO NETWORKING ACADEMY</div>
+                    </div>
                 </div>
 
-                <div class="cert-item" data-aos="fade-up" data-aos-delay="100"
-                     onclick="openModal('assets/img/certificates/cisco-hardware.png', '<h3 class=\'modal-title\'>Computer Hardware Engineering</h3><p class=\'modal-desc\'>Technical validation in component assembly, troubleshooting, and system maintenance. Bridging software logic with physical hardware constraints.</p>')">
-                    <img src="assets/img/certificates/cisco-hardware.png" alt="Hardware">
-                    <div class="overlay"><i class="fas fa-microchip highlight"></i><h3>VIEW DETAILS</h3></div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="200" onclick="openViewer(5)">
+                    <div class="cert-frame">
+                        <div class="cert-status">TECHNICAL</div>
+                        <img src="assets/img/certificates/cisco-hardware.png" class="cert-img" alt="Hardware">
+                        <div class="cert-overlay"><i class="fas fa-search-plus scan-icon"></i></div>
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-title">Hardware Engineering</div>
+                        <div class="cert-meta">CISCO NETWORKING ACADEMY</div>
+                    </div>
                 </div>
 
-                <div class="cert-item" data-aos="fade-up" data-aos-delay="200"
-                     onclick="openModal('assets/img/certificates/cert-iitm.png', '<h3 class=\'modal-title\'>IITM Certification</h3><p class=\'modal-desc\'>Professional validation from Institute of Information Technology & Management. Focus on emerging tech standards and compliance.</p>')">
-                    <img src="assets/img/certificates/cert-iitm.png" alt="IITM">
-                    <div class="overlay"><i class="fas fa-university highlight"></i><h3>VIEW DETAILS</h3></div>
+                <div class="cert-card" data-aos="fade-up" onclick="openViewer(6)">
+                    <div class="cert-frame">
+                        <div class="cert-status">ACADEMIC</div>
+                        <img src="assets/img/certificates/cert-iitm.png" class="cert-img" alt="IITM">
+                        <div class="cert-overlay"><i class="fas fa-search-plus scan-icon"></i></div>
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-title">IITM Certification</div>
+                        <div class="cert-meta">INSTITUTE OF INFO TECH</div>
+                    </div>
                 </div>
 
-                <div class="cert-item" data-aos="fade-up" data-aos-delay="300"
-                     onclick="openModal('assets/img/certificates/cert-bharat-vikas.png', '<h3 class=\'modal-title\'>Bharat Vikas Parishad Award</h3><p class=\'modal-desc\'>Recognition of Merit for participation in the Science and Economics of Sanitization webinar. Demonstrated engagement with public health tech initiatives.</p>')">
-                    <img src="assets/img/certificates/cert-bharat-vikas.png" alt="Award">
-                    <div class="overlay"><i class="fas fa-award highlight"></i><h3>VIEW DETAILS</h3></div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="100" onclick="openViewer(7)">
+                    <div class="cert-frame">
+                        <div class="cert-status">AWARD</div>
+                        <img src="assets/img/certificates/cert-bharat-vikas.png" class="cert-img" alt="Award">
+                        <div class="cert-overlay"><i class="fas fa-search-plus scan-icon"></i></div>
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-title">Merit Award</div>
+                        <div class="cert-meta">BHARAT VIKAS PARISHAD</div>
+                    </div>
                 </div>
 
             </div>
@@ -81,25 +330,102 @@
 
     <div id="footer-include"></div>
 
-    <div id="imageModal" class="modal" onclick="closeModal(event)">
-        <span class="close-modal" onclick="closeModal(event)">&times;</span>
+    <div id="imageModal" class="modal" onclick="closeViewer()">
         
-        <div class="modal-body">
-            <img class="modal-content" id="img01" onclick="event.stopPropagation()">
+        <button class="nav-btn prev-btn" onclick="changeCert(-1, event)"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-btn next-btn" onclick="changeCert(1, event)"><i class="fas fa-chevron-right"></i></button>
+        
+        <div class="modal-hud" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeViewer()">&times;</span>
             
-            <div id="caption" onclick="event.stopPropagation()"></div>
-        </div>
-
-        <div class="zoom-controls" onclick="event.stopPropagation()">
-            <button class="zoom-btn" onclick="zoomOut()" title="Zoom Out"><i class="fas fa-minus"></i></button>
-            <button class="zoom-btn" onclick="resetZoom()" title="Reset Size"><i class="fas fa-compress"></i></button>
-            <button class="zoom-btn" onclick="zoomIn()" title="Zoom In"><i class="fas fa-plus"></i></button>
+            <div class="modal-img-wrapper" id="imgWrapper">
+                <img class="modal-content" id="img01">
+            </div>
+            
+            <div class="modal-text-panel">
+                <h3 class="modal-title" id="modalTitle">...</h3>
+                <p class="modal-desc" id="modalDesc">...</p>
+                
+                <div class="zoom-controls">
+                    <button class="zoom-btn" onclick="zoomImg(-0.2)">- ZOOM</button>
+                    <button class="zoom-btn" onclick="resetZoom()">RESET</button>
+                    <button class="zoom-btn" onclick="zoomImg(0.2)">+ ZOOM</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/includes.js"></script>
     <script src="assets/js/script.js"></script>
+
+    <script>
+        const certData = [
+            { src: 'assets/img/certificates/degree-mca.png', title: 'Master of Computer Applications', desc: 'Specialized in AI Architectures and System Design. Graduated with 1st Division Honors.' },
+            { src: 'assets/img/certificates/degree-bca.png', title: 'Bachelor of Computer Applications', desc: 'Foundation in Software Development and Web Technologies. Focused on C++, Data Structures, and Core Networking.' },
+            { src: 'assets/img/certificates/cisco-cybersecurity.png', title: 'Cisco: Intro to Cybersecurity', desc: 'Validated understanding of modern threat landscapes, encryption protocols, and network defense strategies.' },
+            { src: 'assets/img/certificates/cisco-threat-mgmt.png', title: 'Cisco: Cyber Threat Management', desc: 'Advanced certification focusing on threat detection, governance, and risk compliance for enterprise endpoints.' },
+            { src: 'assets/img/certificates/cisco-networking.png', title: 'Cisco: Networking Basics', desc: 'Core routing and switching validation. Proficiency in IP addressing and OSI Model layers.' },
+            { src: 'assets/img/certificates/cisco-hardware.png', title: 'Hardware Engineering', desc: 'Technical validation in component assembly, troubleshooting, and system maintenance.' },
+            { src: 'assets/img/certificates/cert-iitm.png', title: 'IITM Certification', desc: 'Professional validation from Institute of Information Technology & Management. Focus on emerging tech standards.' },
+            { src: 'assets/img/certificates/cert-bharat-vikas.png', title: 'Bharat Vikas Parishad Award', desc: 'Recognition of Merit for participation in the Science and Economics of Sanitization webinar.' }
+        ];
+
+        let currentIndex = 0;
+        let currentZoom = 1;
+        const imgEl = document.getElementById("img01");
+        const wrapper = document.getElementById("imgWrapper");
+
+        function openViewer(index) {
+            currentIndex = index;
+            loadCertData();
+            document.getElementById("imageModal").style.display = "flex";
+            resetZoom();
+        }
+
+        function closeViewer() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+
+        function changeCert(direction, event) {
+            event.stopPropagation();
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = certData.length - 1;
+            if (currentIndex >= certData.length) currentIndex = 0;
+            loadCertData();
+            resetZoom();
+        }
+
+        function loadCertData() {
+            const data = certData[currentIndex];
+            imgEl.src = data.src;
+            document.getElementById("modalTitle").innerText = data.title;
+            document.getElementById("modalDesc").innerText = data.desc;
+        }
+
+        function zoomImg(amount) {
+            currentZoom += amount;
+            if(currentZoom < 0.5) currentZoom = 0.5;
+            if(currentZoom > 3) currentZoom = 3;
+
+            if(currentZoom > 1) {
+                imgEl.style.width = (100 * currentZoom) + "%";
+                imgEl.style.maxHeight = "none"; 
+                imgEl.style.maxWidth = "none";
+            } else {
+                imgEl.style.width = "100%";
+                imgEl.style.maxHeight = "100%";
+            }
+        }
+
+        function resetZoom() {
+            currentZoom = 1;
+            imgEl.style.width = "100%";
+            imgEl.style.maxHeight = "100%";
+            wrapper.scrollTop = 0;
+            wrapper.scrollLeft = 0;
+        }
+    </script>
 
 </body>
 </html>

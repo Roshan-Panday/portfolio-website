@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Roshan Panday</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           1. CORE LAYOUT & VARIABLES
+           ========================================= */
+        :root {
+            --glass-black: #050505;
+            --card-height-desktop: calc(100vh - 240px); 
+            --card-width-mobile: 85vw;
+        }
+
+        body {
+            background-color: #000;
+            overflow-x: hidden;
+        }
+
+        .service-container {
+            padding-top: 100px; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative; /* Needed for absolute arrows */
+        }
+
+        /* =========================================
+           2. SECTOR TABS
+           ========================================= */
+        .sector-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px; 
+            flex-wrap: wrap;
+            z-index: 10;
+            position: relative;
+        }
+
+        .sector-btn {
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid #333;
+            color: #888;
+            padding: 10px 30px; 
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            letter-spacing: 2px;
+            clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%, 0 15px);
+            transition: all 0.3s ease;
+        }
+
+        .sector-btn:hover { border-color: var(--accent); color: white; transform: translateY(-2px); }
+        .sector-btn.active { background: var(--accent); color: black; border-color: var(--accent); box-shadow: 0 0 25px rgba(0, 242, 255, 0.3); }
+
+        .service-sector { display: none; animation: sectorFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .service-sector.active { display: block; }
+        @keyframes sectorFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* =========================================
+           3. SERVICE CARDS
+           ========================================= */
+        .service-card {
+            background: var(--glass-black);
+            border: 1px solid #222;
+            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+            padding: 20px; 
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: space-between;
+            height: var(--card-height-desktop);
+            min-height: 450px; 
+            max-height: 700px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Hover Effect */
+        .service-card:hover { transform: translateY(-5px); border-color: #555; }
+        
+        /* SELECTED STATE (Active Glow) */
+        .service-card.selected-card {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
+            transform: scale(1.02);
+        }
+
+        /* SCROLL AREA */
+        .feature-scroll-area {
+            width: 100%;
+            flex: 1; 
+            overflow-y: auto; 
+            margin: 10px 0;
+            padding: 0 5px;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+        }
+        .feature-scroll-area::-webkit-scrollbar { display: none; }
+
+        .feature-list { list-style: none; padding: 0; text-align: left; }
+        .feature-list li { padding: 10px 0; border-bottom: 1px solid #151515; color: #bbb; font-size: 0.9rem; display: flex; justify-content: space-between; }
+        .feature-list li i { color: var(--accent); margin-right: 10px; }
+        .feature-list li span { color: white; font-weight: 600; }
+
+        .card-icon { font-size: 2.5rem; margin: 10px 0; color: #555; transition: 0.3s; }
+        .service-card:hover .card-icon, .service-card.selected-card .card-icon { color: white; text-shadow: 0 0 20px var(--accent); }
+        
+        .price-tag { font-size: 2.8rem; color: white; font-weight: 800; line-height: 1; margin: 5px 0; }
+        .price-sub { font-size: 0.9rem; color: var(--accent); background: rgba(0,242,255,0.1); padding: 4px 10px; border-radius: 4px; font-weight: 700; }
+        .delivery-time { font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; color: #666; text-transform: uppercase; }
+
+        /* =========================================
+           4. MOBILE SWIPE DECK & GLOBAL ARROWS
+           ========================================= */
+        .mobile-nav-arrow { display: none; } /* Hidden on desktop */
+
+        @media (max-width: 900px) {
+            .service-container { padding-top: 80px; height: auto; display: block; }
+            
+            /* Container for Swipe */
+            .project-grid {
+                display: flex !important;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 20px;
+                padding: 10px 5%;
+                padding-bottom: 30px;
+                scroll-behavior: smooth; 
+            }
+            
+            .service-card { 
+                min-width: var(--card-width-mobile); 
+                scroll-snap-align: center; 
+                height: 70vh; 
+            }
+            .project-grid::-webkit-scrollbar { display: none; }
+            
+            .addon-grid { grid-template-columns: 1fr; }
+            .total-hud { flex-direction: column; align-items: flex-start; }
+            .total-hud > div { width: 100%; margin-bottom: 15px; }
+
+            /* MOBILE ARROWS (GLOBAL) */
+            .mobile-nav-arrow {
+                display: flex;
+                position: absolute;
+                top: 450px; /* Aligned with center of cards */
+                z-index: 50;
+                background: rgba(0,0,0,0.8);
+                border: 1px solid var(--accent);
+                color: var(--accent);
+                width: 45px; height: 45px;
+                border-radius: 50%;
+                justify-content: center; align-items: center;
+                cursor: pointer;
+                font-size: 1.2rem;
+                box-shadow: 0 0 15px rgba(0,0,0,0.8);
+                backdrop-filter: blur(5px);
+            }
+            .arrow-left { left: 10px; }
+            .arrow-right { right: 10px; }
+        }
+
+        /* =========================================
+           5. ADD-ON CALCULATOR
+           ========================================= */
+        .addon-panel {
+            background: #080808;
+            border: 1px solid #333;
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            max-width: 900px;
+            margin: 20px auto; 
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .addon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
+        .addon-item { display: flex; align-items: center; gap: 10px; padding: 10px; background: rgba(255,255,255,0.02); border: 1px solid #222; color: #aaa; cursor: pointer; transition: 0.2s; font-size: 0.9rem; }
+        .addon-item:hover { border-color: #555; background: rgba(255,255,255,0.05); color: white; }
+        .addon-item input { width: 16px; height: 16px; accent-color: var(--accent); }
+
+        .total-hud { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #222; padding-top: 15px; }
+
+        /* =========================================
+           6. INTELLIGENT BOT UI
+           ========================================= */
+        .system-bot { position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-family: 'Rajdhani', sans-serif; }
+        .bot-toggle { width: 60px; height: 60px; background: var(--accent); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; border: 2px solid white; box-shadow: 0 0 30px rgba(0,242,255,0.3); animation: pulseBot 2s infinite; }
+        .bot-toggle i { font-size: 1.8rem; color: black; }
+        .bot-window { display: none; position: absolute; bottom: 80px; right: 0; width: 320px; background: #050505; border: 1px solid var(--accent); border-radius: 12px; overflow: hidden; flex-direction: column; box-shadow: 0 20px 50px rgba(0,0,0,0.9); }
+        .bot-header { background: var(--accent); padding: 15px; font-weight: 800; display: flex; justify-content: space-between; color: black; }
+        .bot-body { padding: 15px; height: 350px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .msg { padding: 10px 15px; border-radius: 8px; font-size: 0.9rem; max-width: 85%; line-height: 1.4; }
+        .msg.bot { background: #1a1a1a; color: #ddd; align-self: flex-start; border-left: 3px solid var(--accent); }
+        .msg.user { background: var(--accent); color: black; align-self: flex-end; font-weight: 600; }
+        .bot-choice-btn { background: transparent; border: 1px solid #444; color: var(--accent); padding: 8px; margin-top: 5px; text-align: left; cursor: pointer; transition: 0.2s; font-size: 0.85rem; }
+        .bot-choice-btn:hover { background: var(--accent); color: black; }
+        @keyframes pulseBot { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+    
+    </style>
+</head>
+<body>
+
+    <canvas id="neural-canvas"></canvas>
+    <div id="header-include"></div>
+
+    <section class="service-container">
+        <div class="container">
+            
+            <div style="text-align: center; margin-bottom: 20px;" data-aos="fade-down">
+                <h1 style="font-size: 2.2rem; color:white; margin:0;">SYSTEM <span style="color:var(--accent);">SERVICES</span></h1>
+                <p style="color:#666; font-size: 0.8rem; letter-spacing: 3px; margin-top: 5px;">SELECT DEPLOYMENT SECTOR</p>
+            </div>
+
+            <div class="sector-tabs" data-aos="fade-up">
+                <button class="sector-btn active" onclick="switchSector('web')">WEB_ARCHITECT</button>
+                <button class="sector-btn" onclick="switchSector('identity')">LOGO_IDENTITY</button>
+                <button class="sector-btn" onclick="switchSector('visuals')">VISUAL_STUDIO</button>
+            </div>
+
+            <div class="mobile-nav-arrow arrow-left" onclick="scrollGrid('left')"><i class="fas fa-chevron-left"></i></div>
+            <div class="mobile-nav-arrow arrow-right" onclick="scrollGrid('right')"><i class="fas fa-chevron-right"></i></div>
+
+            <div id="sector-web" class="service-sector active">
+                <div class="project-grid" style="grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    
+                    <div class="service-card" id="card-initiate" onclick="selectWebPackage(40, 3500, 'INITIATE', 3, 'card-initiate')">
+                        <div style="width:100%;">
+                            <div class="delivery-time">3 DAYS DELIVERY</div>
+                            <i class="fas fa-rocket card-icon"></i>
+                            <h3 style="color:white; letter-spacing:2px; margin:0;">INITIATE</h3>
+                            <div class="price-tag">$40</div>
+                            <div class="price-sub">≈ ₹3,500 INR</div>
+                        </div>
+                        
+                        <div class="feature-scroll-area">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> <span>1 Page Landing</span></li>
+                                <li><i class="fas fa-check"></i> <span>Fully Responsive</span></li>
+                                <li><i class="fas fa-check"></i> <span>Basic SEO & Meta</span></li>
+                                <li><i class="fas fa-check"></i> <span>Contact Form</span></li>
+                                <li><i class="fas fa-check"></i> <span>Source Code</span></li>
+                                <li><i class="fas fa-check"></i> <span>2 Revisions</span></li>
+                                <li><i class="fas fa-check"></i> <span>1 Week Support</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div style="width:100%;">
+                            <p style="font-size:0.7rem; color:#555; margin-bottom:10px;">*Hosting Not Included</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card" id="card-business" onclick="selectWebPackage(80, 7000, 'BUSINESS', 7, 'card-business')">
+                        <div style="width:100%;">
+                            <div class="delivery-time" style="color:var(--accent);">7 DAYS DELIVERY</div>
+                            <i class="fas fa-building card-icon" style="color:var(--accent);"></i>
+                            <h3 style="color:white; letter-spacing:2px; margin:0;">BUSINESS</h3>
+                            <div class="price-tag">$80</div>
+                            <div class="price-sub">≈ ₹7,000 INR</div>
+                        </div>
+
+                        <div class="feature-scroll-area">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> <span>4 Pages Complete</span></li>
+                                <li><i class="fas fa-plus-circle" style="color:var(--accent);"></i> <span>Everything in Initiate</span></li>
+                                <li><i class="fas fa-check"></i> <span>Advanced SEO & Speed</span></li>
+                                <li><i class="fas fa-check"></i> <span>3 Premium Plugins</span></li>
+                                <li><i class="fas fa-check"></i> <span>5 Products Showcase</span></li>
+                                <li><i class="fas fa-check"></i> <span>5 Revisions</span></li>
+                                <li><i class="fas fa-check"></i> <span>1 Month Support</span></li>
+                            </ul>
+                        </div>
+                        <div style="width:100%;">
+                             <p style="font-size:0.7rem; color:#555; margin-bottom:10px;">*Hosting Not Included</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card" id="card-max" onclick="selectWebPackage(150, 12500, 'MAX SYSTEM', 15, 'card-max')">
+                        <div style="width:100%;">
+                            <div class="delivery-time" style="color:#ff0055;">15 DAYS DELIVERY</div>
+                            <i class="fas fa-gem card-icon" style="color:#ff0055;"></i>
+                            <h3 style="color:white; letter-spacing:2px; margin:0;">MAX SYSTEM</h3>
+                            <div class="price-tag">$150</div>
+                            <div class="price-sub">≈ ₹12,500 INR</div>
+                        </div>
+
+                        <div class="feature-scroll-area">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> <span>7-10 Pages Custom</span></li>
+                                <li><i class="fas fa-plus-circle" style="color:#ff0055;"></i> <span>Everything in Business</span></li>
+                                <li><i class="fas fa-check"></i> <span>Full E-Commerce (Pay)</span></li>
+                                <li><i class="fas fa-check"></i> <span>Admin Dashboard</span></li>
+                                <li><i class="fas fa-check"></i> <span>AI Chatbot Integration</span></li>
+                                <li><i class="fas fa-check"></i> <span>Enterprise SEO</span></li>
+                                <li><i class="fas fa-check"></i> <span>Unlimited Revisions</span></li>
+                            </ul>
+                        </div>
+                        <div style="width:100%;">
+                            <p style="font-size:0.7rem; color:#555; margin-bottom:10px;">*Hosting Not Included</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="addon-panel">
+                    <h4 style="color:white; margin:0 0 10px 0; border-bottom:1px solid #333; padding-bottom:5px; font-size:1rem;">
+                        CONFIG: <span id="pkg-name" style="color:var(--accent);">SELECT A PACKAGE</span>
+                    </h4>
+                    
+                    <div class="addon-grid">
+                        <label class="addon-item"><input type="checkbox" id="opt-fast" onchange="calculateTotal()"> <span>Express (+$15 / ₹1,200)</span></label>
+                        <label class="addon-item"><input type="checkbox" id="opt-page" onchange="calculateTotal()"> <span>Extra Page (+$10 / ₹800)</span></label>
+                        <label class="addon-item"><input type="checkbox" id="opt-payment" onchange="calculateTotal()"> <span>Gateway (+$20 / ₹1,600)</span></label>
+                        <label class="addon-item"><input type="checkbox" id="opt-content" onchange="calculateTotal()"> <span>Content (+$30 / ₹2,500)</span></label>
+                    </div>
+
+                    <div class="total-hud">
+                        <div>
+                            <div style="font-size:0.7rem; color:#666;">ESTIMATED TIME</div>
+                            <div id="final-days" style="font-size:1.2rem; color:white; font-weight:bold;">-- Days</div>
+                        </div>
+                        <div>
+                            <div style="font-size:0.7rem; color:#666;">TOTAL BUDGET</div>
+                            <div style="display:flex; align-items:baseline; gap:10px;">
+                                <div id="final-price" style="font-size:1.8rem; color:var(--accent); font-weight:800; line-height:1;">$0</div>
+                                <div id="final-price-inr" style="font-size:0.9rem; color:#888;">₹0 INR</div>
+                            </div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div style="font-size:0.7rem; color:#ffaa00; font-weight:bold; margin-bottom:5px;">TOKEN (25%): <span id="token-price">$0</span></div>
+                            <button class="btn-neon" onclick="deploySystem('whatsapp')" style="padding:8px 25px; font-size:0.9rem;"><i class="fab fa-whatsapp"></i> DEPLOY NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sector-identity" class="service-sector">
+                <div class="project-grid" style="grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    
+                    <div class="service-card">
+                        <div style="width:100%;">
+                            <div class="delivery-time">2 DAYS</div>
+                            <i class="fas fa-font card-icon"></i>
+                            <h3 class="card-title">TYPO_LITE</h3>
+                            <div class="price-tag">$10</div>
+                            <div class="price-sub">≈ ₹800 INR</div>
+                        </div>
+                        <div class="feature-scroll-area">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> <span>Wordmark Logo</span></li>
+                                <li><i class="fas fa-check"></i> <span>High Res PNG/JPG</span></li>
+                                <li><i class="fas fa-check"></i> <span>2 Revisions</span></li>
+                            </ul>
+                        </div>
+                        <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Typo Logo', 10)">NEGOTIATE RATE</button>
+                    </div>
+
+                    <div class="service-card">
+                        <div style="width:100%;">
+                            <div class="delivery-time" style="color:var(--accent);">4 DAYS</div>
+                            <i class="fas fa-vector-square card-icon" style="color:var(--accent);"></i>
+                            <h3 class="card-title">VECTOR_STD</h3>
+                            <div class="price-tag">$20</div>
+                            <div class="price-sub">≈ ₹1,500 INR</div>
+                        </div>
+                        <div class="feature-scroll-area">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> <span>Icon + Text</span></li>
+                                <li><i class="fas fa-check"></i> <span>Source File (SVG)</span></li>
+                                <li><i class="fas fa-check"></i> <span>Print Ready</span></li>
+                            </ul>
+                        </div>
+                        <button class="btn-neon" style="margin-top:auto; background:var(--accent); color:black;" onclick="negotiate('Vector Logo', 20)">NEGOTIATE RATE</button>
+                    </div>
+
+                    <div class="service-card">
+                        <div style="width:100%;">
+                            <div class="delivery-time" style="color:#ff0055;">7 DAYS</div>
+                            <i class="fas fa-crown card-icon" style="color:#ff0055;"></i>
+                            <h3 class="card-title">BRAND_MAX</h3>
+                            <div class="price-tag">$45</div>
+                            <div class="price-sub">≈ ₹3,800 INR</div>
+                        </div>
+                        <div class="feature-scroll-area">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> <span>Full Identity Kit</span></li>
+                                <li><i class="fas fa-check"></i> <span>Color Palette & Fonts</span></li>
+                                <li><i class="fas fa-check"></i> <span>Source Files Included</span></li>
+                            </ul>
+                        </div>
+                        <button class="btn-neon" style="margin-top:auto; border-color:#ff0055; color:#ff0055;" onclick="negotiate('Full Branding', 45)">DISCUSS PROJECT</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sector-visuals" class="service-sector">
+                <div class="project-grid" style="grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div class="service-card">
+                        <div style="width:100%;">
+                            <div class="delivery-time">1 DAY</div>
+                            <i class="fab fa-youtube card-icon" style="color:red;"></i>
+                            <h3 class="card-title">THUMBNAIL</h3>
+                            <div class="price-tag">$5</div>
+                            <div class="price-sub">≈ ₹450 INR</div>
+                        </div>
+                        <div class="feature-scroll-area">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> <span>High CTR Design</span></li>
+                                <li><i class="fas fa-check"></i> <span>Source File Included</span></li>
+                            </ul>
+                        </div>
+                        <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Thumbnail', 5)">NEGOTIATE RATE</button>
+                    </div>
+
+                     <div class="service-card">
+                        <div style="width:100%;">
+                            <div class="delivery-time">3 DAYS</div>
+                            <i class="fas fa-tv card-icon" style="color:var(--accent);"></i>
+                            <h3 class="card-title">CHANNEL KIT</h3>
+                            <div class="price-tag">$25</div>
+                            <div class="price-sub">≈ ₹2,000 INR</div>
+                        </div>
+                        <div class="feature-scroll-area">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> <span>YouTube Banner</span></li>
+                                <li><i class="fas fa-check"></i> <span>Profile Logo</span></li>
+                            </ul>
+                        </div>
+                        <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Channel Kit', 25)">NEGOTIATE RATE</button>
+                    </div>
+
+                     <div class="service-card">
+                        <div style="width:100%;">
+                            <div class="delivery-time">4 DAYS</div>
+                            <i class="fas fa-magic card-icon" style="color:#ff0055;"></i>
+                            <h3 class="card-title">IMAGE OPS</h3>
+                            <div class="price-tag">$40</div>
+                            <div class="price-sub">≈ ₹3,200 INR</div>
+                        </div>
+                        <div class="feature-scroll-area">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> <span>Bulk Photo Editing</span></li>
+                                <li><i class="fas fa-check"></i> <span>Retouching</span></li>
+                            </ul>
+                        </div>
+                        <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Photo Editing', 40)">GET QUOTE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kb-section" style="margin-top:50px; padding-top:20px; border-top:1px solid #222;">
+                <h2 style="color:white; text-align:center; margin-bottom:30px; font-size:1.5rem;">TRANSPARENCY PROTOCOLS (FAQ)</h2>
+                
+                <details style="background:#080808; margin-bottom:15px; border:1px solid #222; overflow:hidden;">
+                    <summary style="padding:15px; font-weight:700; color:white; cursor:pointer; display:flex; justify-content:space-between;">Q: How does the "Token Payment" work?</summary>
+                    <p style="padding:20px; color:#bbb; border-top:1px solid #222;">To secure your slot, you pay a **25% Advance Token**. The remaining 75% is paid only after I show you the final deployed project on a live server.</p>
+                </details>
+                
+                <details style="background:#080808; margin-bottom:15px; border:1px solid #222; overflow:hidden;">
+                    <summary style="padding:15px; font-weight:700; color:white; cursor:pointer; display:flex; justify-content:space-between;">Q: What if I don't like the design?</summary>
+                    <p style="padding:20px; color:#bbb; border-top:1px solid #222;">That is why we have "Revision Rounds." I will modify the design until it matches your vision. If we cannot agree, the Token is non-refundable, but you won't pay the rest.</p>
+                </details>
+
+                <details style="background:#080808; margin-bottom:15px; border:1px solid #222; overflow:hidden;">
+                    <summary style="padding:15px; font-weight:700; color:white; cursor:pointer; display:flex; justify-content:space-between;">Q: For Logos, do I get the copyright?</summary>
+                    <p style="padding:20px; color:#bbb; border-top:1px solid #222;">Absolutely. Once the final payment is cleared, you own 100% of the Intellectual Property (IP) and source files.</p>
+                </details>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="footer-include"></div>
+
+    <div class="system-bot">
+        <div class="bot-window" id="botWindow">
+            <div class="bot-header">
+                <span>CONSULTANT_AI</span>
+                <span onclick="toggleBot()" style="cursor:pointer; font-size:1.5rem;">&times;</span>
+            </div>
+            <div class="bot-body" id="botBody">
+                <div class="msg bot">System Online. I am your deployment consultant. What is your primary objective today?</div>
+                <div class="bot-options" id="botStartOpts">
+                    <button class="bot-choice-btn" onclick="botFlow('web')">Build a Website</button>
+                    <button class="bot-choice-btn" onclick="botFlow('logo')">Design a Logo</button>
+                    <button class="bot-choice-btn" onclick="botFlow('visuals')">YouTube / Graphics</button>
+                </div>
+            </div>
+        </div>
+        <div class="bot-toggle" onclick="toggleBot()"><i class="fas fa-robot"></i></div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/includes.js"></script>
+    <script src="assets/js/script.js"></script>
+
+    <script>
+        // --- SECTOR TABS ---
+        function switchSector(sector) {
+            document.querySelectorAll('.service-sector').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.sector-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById('sector-' + sector).classList.add('active');
+            
+            const map = { 'web':0, 'identity':1, 'visuals':2 };
+            document.querySelectorAll('.sector-btn')[map[sector]].classList.add('active');
+        }
+
+        // --- MOBILE SWIPE LOGIC (WITH LOOP) ---
+        function scrollGrid(direction) {
+            const activeSector = document.querySelector('.service-sector.active');
+            const grid = activeSector.querySelector('.project-grid');
+            if(!grid) return;
+
+            const cardWidth = window.innerWidth * 0.85 + 20; // Card width + gap
+            const currentScroll = grid.scrollLeft;
+            const maxScroll = grid.scrollWidth - grid.clientWidth;
+
+            if (direction === 'right') {
+                if (currentScroll + 10 >= maxScroll) {
+                    // LOOP: Go back to start
+                    grid.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                }
+            } else {
+                if (currentScroll <= 10) {
+                    // LOOP: Go to end
+                    grid.scrollTo({ left: maxScroll, behavior: 'smooth' });
+                } else {
+                    grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                }
+            }
+        }
+
+        // --- CALCULATOR LOGIC (UPDATED WITH EXACT INR VALUES) ---
+        let basePrice = 0, baseInr = 0, baseDays = 0, pkgName = "";
+
+        // Now accepts specific INR value per package to match the card exactly
+        function selectWebPackage(price, inr, name, days, cardId) {
+            basePrice = price; 
+            baseInr = inr;
+            baseDays = days; 
+            pkgName = name;
+
+            // Highlight Logic (Remove highlight from all, add to clicked)
+            document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected-card'));
+            document.getElementById(cardId).classList.add('selected-card');
+
+            document.getElementById('pkg-name').innerText = name + " ($" + price + ")";
+            document.querySelector('.addon-panel').scrollIntoView({behavior: "smooth"});
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            if(basePrice === 0) return; 
+            let p = basePrice;
+            let i = baseInr; // Start with the Base INR (e.g. 3500)
+            let d = baseDays;
+
+            // Add-ons: Fixed rate addition
+            if(document.getElementById('opt-fast').checked) { 
+                p += 15; i += 1200;
+                if(baseDays === 3) d = 2; else if(baseDays === 7) d = 5; else if(baseDays === 15) d = 10;
+            }
+            if(document.getElementById('opt-page').checked) { p += 10; i += 800; d += 1; }
+            if(document.getElementById('opt-payment').checked) { p += 20; i += 1600; }
+            if(document.getElementById('opt-content').checked) { p += 30; i += 2500; d += 2; }
+
+            // Token Calculations
+            let tokenUSD = Math.ceil(p * 0.25);
+            let tokenINR = Math.ceil(i * 0.25);
+
+            // Render
+            document.getElementById('final-price').innerText = "$" + p;
+            document.getElementById('final-price-inr').innerText = "≈ ₹" + i.toLocaleString() + " INR";
+            document.getElementById('final-days').innerText = d + " Days";
+            document.getElementById('token-price').innerText = "$" + tokenUSD + " / ₹" + tokenINR.toLocaleString();
+        }
+
+        function deploySystem(method) {
+            if(basePrice === 0) { alert("Please click a Package Card first."); return; }
+            const total = document.getElementById('final-price').innerText;
+            const totalInr = document.getElementById('final-price-inr').innerText;
+            const token = document.getElementById('token-price').innerText;
+            
+            const msg = `Hello Roshan, I want to deploy the ${pkgName}. Config Total: ${total} (${totalInr}). Ready to pay Token: ${token}.`;
+            
+            if(method === 'whatsapp') {
+                window.open(`https://wa.me/918700105930?text=${encodeURIComponent(msg)}`, '_blank');
+            }
+        }
+
+        function negotiate(service, baseline) {
+            const msg = `Hello Roshan, I am interested in the ${service} (Starts ~$${baseline}). Let's discuss a custom rate.`;
+            window.open(`https://wa.me/918700105930?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // --- BOT LOGIC ---
+        function toggleBot() {
+            const win = document.getElementById('botWindow');
+            win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function botFlow(choice) {
+            const body = document.getElementById('botBody');
+            document.getElementById('botStartOpts').style.display = 'none';
+            
+            let uTxt = choice === 'web' ? "Build a Website" : (choice === 'logo' ? "Design a Logo" : "Graphics/YT");
+            body.innerHTML += `<div class="msg user">${uTxt}</div>`;
+
+            setTimeout(() => {
+                let botMsg = "";
+                let buttons = "";
+
+                if(choice === 'web') {
+                    botMsg = "Understood. Project scale?";
+                    buttons = `
+                        <button class="bot-choice-btn" onclick="botRecommend('initiate')">Personal</button>
+                        <button class="bot-choice-btn" onclick="botRecommend('business')">Small Business</button>
+                        <button class="bot-choice-btn" onclick="botRecommend('max')">E-Commerce</button>
+                    `;
+                } else if(choice === 'logo') {
+                    botMsg = "Identity Protocol. Type?";
+                    buttons = `
+                        <button class="bot-choice-btn" onclick="botRecommend('logo_basic')">Basic Logo (₹800)</button>
+                        <button class="bot-choice-btn" onclick="botRecommend('logo_pro')">Full Branding</button>
+                    `;
+                } else {
+                    botMsg = "Visuals. Requirement?";
+                    buttons = `
+                        <button class="bot-choice-btn" onclick="botRecommend('thumb')">Thumbnails</button>
+                        <button class="bot-choice-btn" onclick="botRecommend('edit')">Photo Editing</button>
+                    `;
+                }
+
+                body.innerHTML += `<div class="msg bot">${botMsg}</div>`;
+                body.innerHTML += `<div class="bot-options" style="display:flex; flex-direction:column;">${buttons}</div>`;
+                body.scrollTop = body.scrollHeight;
+            }, 600);
+        }
+
+        function botRecommend(type) {
+            const body = document.getElementById('botBody');
+            const options = document.querySelectorAll('.bot-options');
+            if(options.length > 0) options[options.length-1].style.display = 'none';
+
+            let recText = "", action = "";
+            if(type === 'initiate') { recText = "**INITIATE ($40)** is best for portfolios."; action="switchSector('web')"; }
+            if(type === 'business') { recText = "**BUSINESS ($80)** is best for companies."; action="switchSector('web')"; }
+            if(type === 'max') { recText = "**MAX SYSTEM ($150)** includes payments."; action="switchSector('web')"; }
+            if(type.includes('logo')) { recText = "Logos start at just ₹800."; action="switchSector('identity')"; }
+            if(type === 'thumb') { recText = "Thumbnails start at ₹450."; action="switchSector('visuals')"; }
+            if(type === 'edit') { recText = "Bulk editing available."; action="switchSector('visuals')"; }
+
+            body.innerHTML += `<div class="msg bot">${recText}</div>`;
+            body.innerHTML += `<div class="bot-options"><button class="bot-choice-btn" style="background:var(--accent); color:black;" onclick="${action}; toggleBot()">Show Package</button></div>`;
+            body.scrollTop = body.scrollHeight;
+        }
+// AUTO-OPEN TAB FROM HOME PAGE
+window.onload = function() {
+    let savedSector = localStorage.getItem('activeSector');
+    if(savedSector) {
+        switchSector(savedSector);
+        localStorage.removeItem('activeSector'); // Clear it so it doesn't get stuck
+    }
+}
+    </script>
+</body>
+</html>

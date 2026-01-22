@@ -4,7 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     
-    // 1. GENERATE SYSTEM HEADER
+    // 1. GENERATE SYSTEM HEADER (Updated with SERVICES link)
     const headerElement = document.getElementById("header-include");
     if (headerElement) {
         headerElement.innerHTML = `
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <ul class="nav-links">
                         <li><a href="index.html">HOME</a></li>
                         <li><a href="about.html">ABOUT</a></li>
-                        <li><a href="projects.html">WORK</a></li>
+                        <li><a href="services.html">SERVICES</a></li> <li><a href="projects.html">WORK</a></li>
                         <li><a href="certifications.html">CERTIFICATES</a></li>
                         <li><a href="gallery.html">GALLERY</a></li>
                     </ul>
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="mobile-links-container">
                     <a href="index.html">HOME</a>
                     <a href="about.html">ABOUT</a>
-                    <a href="projects.html">WORK</a>
+                    <a href="services.html">SERVICES</a> <a href="projects.html">WORK</a>
                     <a href="certifications.html">CERTIFICATES</a>
                     <a href="gallery.html">GALLERY</a>
                     <a href="#" onclick="openContactModal(); toggleMenu()">CONTACT</a>
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     }
 
-    // 3. INJECT CONTACT MODAL (FIXED: OPEN APPS DIRECTLY)
+    // 3. INJECT CONTACT MODAL
     const contactModalHTML = `
         <div id="contactModal" class="contact-modal-overlay">
             <div class="contact-box">
@@ -91,22 +91,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p style="color:#888; font-size:0.9rem; margin-bottom:30px;">SELECT COMMUNICATION CHANNEL</p>
 
                 <div class="contact-grid">
-                    
-                    <div class="contact-item" onclick="location.href='mailto:pandayroshan99@gmail.com'">
+                    <div class="contact-item" onclick="copyToClipboard('pandayroshan99@gmail.com', 'email-status')">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>EMAIL</h4>
                             <p>pandayroshan99@gmail.com</p>
-                            <span class="copy-status" style="color:var(--accent);">TAP TO OPEN MAIL</span>
+                            <span id="email-status" class="copy-status">CLICK TO COPY</span>
                         </div>
                     </div>
 
-                    <div class="contact-item" onclick="location.href='tel:+918700105930'">
+                    <div class="contact-item" onclick="copyToClipboard('+918700105930', 'phone-status')">
                         <i class="fas fa-phone-alt"></i>
                         <div>
                             <h4>PHONE</h4>
                             <p>+91 8700105930</p>
-                            <span class="copy-status" style="color:var(--accent);">TAP TO CALL</span>
+                            <span id="phone-status" class="copy-status">CLICK TO COPY</span>
                         </div>
                     </div>
 
@@ -146,11 +145,8 @@ document.addEventListener("DOMContentLoaded", function () {
    HELPER FUNCTIONS
    ========================================= */
 
-/* FIXED MENU LOGIC */
 function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
-    if (!menu) return; 
-    
     if (menu.style.display === 'flex') {
         menu.style.display = 'none';
         document.body.style.overflow = 'auto';
@@ -171,4 +167,16 @@ function openContactModal() {
 function closeContactModal() {
     document.getElementById("contactModal").style.display = "none";
     document.body.style.overflow = "auto"; 
+}
+
+function copyToClipboard(text, statusId) {
+    navigator.clipboard.writeText(text).then(() => {
+        const status = document.getElementById(statusId);
+        status.innerText = "COPIED!";
+        status.style.color = "var(--accent)";
+        setTimeout(() => {
+            status.innerText = "CLICK TO COPY";
+            status.style.color = "#666";
+        }, 2000);
+    });
 }
