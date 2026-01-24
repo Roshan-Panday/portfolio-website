@@ -30,13 +30,14 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            padding-bottom: 100px; /* Added padding so Bot doesn't cover content */
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            position: relative; /* Needed for absolute arrows */
+            position: relative;
         }
 
         /* =========================================
@@ -94,17 +95,14 @@
             cursor: pointer;
         }
 
-        /* Hover Effect */
         .service-card:hover { transform: translateY(-5px); border-color: #555; }
         
-        /* SELECTED STATE (Active Glow) */
         .service-card.selected-card {
             border-color: var(--accent);
             box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
             transform: scale(1.02);
         }
 
-        /* SCROLL AREA */
         .feature-scroll-area {
             width: 100%;
             flex: 1; 
@@ -131,14 +129,34 @@
         .delivery-time { font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; color: #666; text-transform: uppercase; }
 
         /* =========================================
-           4. MOBILE SWIPE DECK & GLOBAL ARROWS
+           4. ADD-ON CALCULATOR & HUD
            ========================================= */
-        .mobile-nav-arrow { display: none; } /* Hidden on desktop */
+        .addon-panel {
+            background: #080808;
+            border: 1px solid #333;
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            max-width: 900px;
+            margin: 20px auto; 
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .addon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
+        .addon-item { display: flex; align-items: center; gap: 10px; padding: 10px; background: rgba(255,255,255,0.02); border: 1px solid #222; color: #aaa; cursor: pointer; transition: 0.2s; font-size: 0.9rem; }
+        .addon-item:hover { border-color: #555; background: rgba(255,255,255,0.05); color: white; }
+        .addon-item input { width: 16px; height: 16px; accent-color: var(--accent); }
+
+        .total-hud { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #222; padding-top: 15px; }
+
+        /* =========================================
+           5. MOBILE FIXES (SWIPE & BUTTONS)
+           ========================================= */
+        .mobile-nav-arrow { display: none; }
 
         @media (max-width: 900px) {
             .service-container { padding-top: 80px; height: auto; display: block; }
             
-            /* Container for Swipe */
+            /* SWIPE DECK */
             .project-grid {
                 display: flex !important;
                 overflow-x: auto;
@@ -157,14 +175,35 @@
             .project-grid::-webkit-scrollbar { display: none; }
             
             .addon-grid { grid-template-columns: 1fr; }
-            .total-hud { flex-direction: column; align-items: flex-start; }
-            .total-hud > div { width: 100%; margin-bottom: 15px; }
+            
+            /* --- FIXED HUD LAYOUT FOR MOBILE --- */
+            .total-hud { 
+                flex-direction: column; 
+                align-items: stretch; /* Stretch to full width */
+                gap: 15px;
+            }
+            
+            /* Force the div containing the button to be visible */
+            .total-hud > div { 
+                width: 100%; 
+                margin-bottom: 0; 
+                text-align: center !important; /* Force Center */
+            }
 
-            /* MOBILE ARROWS (GLOBAL) */
+            /* The Button Itself */
+            .total-hud button {
+                width: 100%; /* Full Width Button */
+                padding: 15px !important;
+                margin-top: 10px;
+                font-size: 1.1rem !important;
+                display: block;
+            }
+
+            /* ARROWS */
             .mobile-nav-arrow {
                 display: flex;
                 position: absolute;
-                top: 450px; /* Aligned with center of cards */
+                top: 450px;
                 z-index: 50;
                 background: rgba(0,0,0,0.8);
                 border: 1px solid var(--accent);
@@ -180,26 +219,6 @@
             .arrow-left { left: 10px; }
             .arrow-right { right: 10px; }
         }
-
-        /* =========================================
-           5. ADD-ON CALCULATOR
-           ========================================= */
-        .addon-panel {
-            background: #080808;
-            border: 1px solid #333;
-            border-left: 4px solid var(--accent);
-            padding: 20px;
-            max-width: 900px;
-            margin: 20px auto; 
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .addon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
-        .addon-item { display: flex; align-items: center; gap: 10px; padding: 10px; background: rgba(255,255,255,0.02); border: 1px solid #222; color: #aaa; cursor: pointer; transition: 0.2s; font-size: 0.9rem; }
-        .addon-item:hover { border-color: #555; background: rgba(255,255,255,0.05); color: white; }
-        .addon-item input { width: 16px; height: 16px; accent-color: var(--accent); }
-
-        .total-hud { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #222; padding-top: 15px; }
 
         /* =========================================
            6. INTELLIGENT BOT UI
@@ -345,7 +364,8 @@
                                 <div id="final-price-inr" style="font-size:0.9rem; color:#888;">₹0 INR</div>
                             </div>
                         </div>
-                        <div style="text-align:right;">
+                        
+                        <div style="text-align:right;" id="deploy-container">
                             <div style="font-size:0.7rem; color:#ffaa00; font-weight:bold; margin-bottom:5px;">TOKEN (25%): <span id="token-price">$0</span></div>
                             <button class="btn-neon" onclick="deploySystem('whatsapp')" style="padding:8px 25px; font-size:0.9rem;"><i class="fab fa-whatsapp"></i> DEPLOY NOW</button>
                         </div>
@@ -524,26 +544,24 @@
             document.querySelectorAll('.sector-btn')[map[sector]].classList.add('active');
         }
 
-        // --- MOBILE SWIPE LOGIC (WITH LOOP) ---
+        // --- MOBILE SWIPE LOGIC ---
         function scrollGrid(direction) {
             const activeSector = document.querySelector('.service-sector.active');
             const grid = activeSector.querySelector('.project-grid');
             if(!grid) return;
 
-            const cardWidth = window.innerWidth * 0.85 + 20; // Card width + gap
+            const cardWidth = window.innerWidth * 0.85 + 20; 
             const currentScroll = grid.scrollLeft;
             const maxScroll = grid.scrollWidth - grid.clientWidth;
 
             if (direction === 'right') {
                 if (currentScroll + 10 >= maxScroll) {
-                    // LOOP: Go back to start
                     grid.scrollTo({ left: 0, behavior: 'smooth' });
                 } else {
                     grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
                 }
             } else {
                 if (currentScroll <= 10) {
-                    // LOOP: Go to end
                     grid.scrollTo({ left: maxScroll, behavior: 'smooth' });
                 } else {
                     grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
@@ -551,17 +569,15 @@
             }
         }
 
-        // --- CALCULATOR LOGIC (UPDATED WITH EXACT INR VALUES) ---
+        // --- CALCULATOR LOGIC ---
         let basePrice = 0, baseInr = 0, baseDays = 0, pkgName = "";
 
-        // Now accepts specific INR value per package to match the card exactly
         function selectWebPackage(price, inr, name, days, cardId) {
             basePrice = price; 
             baseInr = inr;
             baseDays = days; 
             pkgName = name;
 
-            // Highlight Logic (Remove highlight from all, add to clicked)
             document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected-card'));
             document.getElementById(cardId).classList.add('selected-card');
 
@@ -573,10 +589,9 @@
         function calculateTotal() {
             if(basePrice === 0) return; 
             let p = basePrice;
-            let i = baseInr; // Start with the Base INR (e.g. 3500)
+            let i = baseInr; 
             let d = baseDays;
 
-            // Add-ons: Fixed rate addition
             if(document.getElementById('opt-fast').checked) { 
                 p += 15; i += 1200;
                 if(baseDays === 3) d = 2; else if(baseDays === 7) d = 5; else if(baseDays === 15) d = 10;
@@ -585,11 +600,9 @@
             if(document.getElementById('opt-payment').checked) { p += 20; i += 1600; }
             if(document.getElementById('opt-content').checked) { p += 30; i += 2500; d += 2; }
 
-            // Token Calculations
             let tokenUSD = Math.ceil(p * 0.25);
             let tokenINR = Math.ceil(i * 0.25);
 
-            // Render
             document.getElementById('final-price').innerText = "$" + p;
             document.getElementById('final-price-inr').innerText = "≈ ₹" + i.toLocaleString() + " INR";
             document.getElementById('final-days').innerText = d + " Days";
@@ -675,14 +688,14 @@
             body.innerHTML += `<div class="bot-options"><button class="bot-choice-btn" style="background:var(--accent); color:black;" onclick="${action}; toggleBot()">Show Package</button></div>`;
             body.scrollTop = body.scrollHeight;
         }
-// AUTO-OPEN TAB FROM HOME PAGE
-window.onload = function() {
-    let savedSector = localStorage.getItem('activeSector');
-    if(savedSector) {
-        switchSector(savedSector);
-        localStorage.removeItem('activeSector'); // Clear it so it doesn't get stuck
-    }
-}
+
+        window.onload = function() {
+            let savedSector = localStorage.getItem('activeSector');
+            if(savedSector) {
+                switchSector(savedSector);
+                localStorage.removeItem('activeSector'); 
+            }
+        }
     </script>
 </body>
 </html>
