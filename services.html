@@ -266,7 +266,7 @@
                     <div class="project-grid">
                         <div class="service-card" id="card-initiate" onclick="selectWebPackage(40, 3500, 'STARTER SITE', 3, 'card-initiate')">
                             <div style="width:100%;">
-                                <div class="delivery-time">3 DAYS DELIVERY</div>
+                                <div class="delivery-time">3 DAYS</div>
                                 <i class="fas fa-paper-plane card-icon"></i>
                                 <h3 class="card-title">STARTER SITE</h3>
                                 <div class="price-tag">$40</div>
@@ -287,7 +287,7 @@
 
                         <div class="service-card" id="card-business" onclick="selectWebPackage(80, 7000, 'BUSINESS PRO', 7, 'card-business')">
                             <div style="width:100%;">
-                                <div class="delivery-time" style="color:var(--accent);">7 DAYS DELIVERY</div>
+                                <div class="delivery-time" style="color:var(--accent);">7 DAYS</div>
                                 <i class="fas fa-briefcase card-icon" style="color:var(--accent);"></i>
                                 <h3 class="card-title">BUSINESS PRO</h3>
                                 <div class="price-tag">$80</div>
@@ -308,7 +308,7 @@
 
                         <div class="service-card" id="card-max" onclick="selectWebPackage(150, 12500, 'E-COMMERCE STORE', 15, 'card-max')">
                             <div style="width:100%;">
-                                <div class="delivery-time" style="color:#ff0055;">15 DAYS DELIVERY</div>
+                                <div class="delivery-time" style="color:#ff0055;">15 DAYS</div>
                                 <i class="fas fa-shopping-cart card-icon" style="color:#ff0055;"></i>
                                 <h3 class="card-title">E-COMMERCE</h3>
                                 <div class="price-tag">$150</div>
@@ -683,33 +683,34 @@
                 let text = el.nextElementSibling.innerText.split('(')[0].trim();
                 addons.push(text);
             });
-            let addonStr = addons.length > 0 ? addons.join("\n- ") : "Standard";
+            // New Clean List Format
+            let addonStr = addons.length > 0 ? addons.map(a => "• " + a).join("\n") : "Standard";
+            
             const total = document.getElementById('final-price').innerText;
-            const days = document.getElementById('final-days').innerText;
+            const totalInr = document.getElementById('final-price-inr').innerText;
+            const delivery = document.getElementById('final-days').innerText;
 
-            // Clean Receipt Format
-            let msg = `👋 HELLO ROSHAN!
-I am ${name}.
+            let msg = `👋 *HELLO ROSHAN!*
+I am ${name}. I want to start a project.
 
-🚀 PROJECT REQUEST
-------------------
+🚀 *PROJECT DETAILS*
 📦 Plan: ${pkgName}
-💰 Budget: ${total}
-⏳ Delivery: ${days}
+💰 Budget: ${total} (${totalInr})
+⏳ Delivery: ${delivery}
 
-➕ UPGRADES:
+➕ *SELECTED UPGRADES:*
 ${addonStr}
 
-Ready to pay 25% Token. Let's start!`;
+_I am ready to pay the 25% Token. Let's discuss!_`;
 
             if(method === 'whatsapp') window.open(`https://wa.me/918700105930?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
         function negotiate(svc, base) {
-            window.open(`https://wa.me/918700105930?text=Hi, interested in ${svc} (Starts $${base}).`, '_blank');
+            window.open(`https://wa.me/918700105930?text=Hi, interested in ${svc} (Starts $${base}). Discuss rate?`, '_blank');
         }
 
-        // --- CONSULTANT BOT LOGIC ---
+        // --- BOT LOGIC ---
         function toggleBot() {
             const w = document.getElementById('botWindow');
             w.style.display = (w.style.display === 'flex') ? 'none' : 'flex';
@@ -727,51 +728,49 @@ Ready to pay 25% Token. Let's start!`;
             addMsg(uTxt, 'user');
 
             setTimeout(() => {
-                // CONSULTATION MODE: ASK QUESTION BEFORE RECOMMENDING
-                let question = "";
+                let botMsg = "";
                 let buttons = "";
 
                 if(choice === 'web') {
-                    question = "Understood. Do you have a design ready or need one from scratch?";
+                    botMsg = "Understood. Is this a new project or a redesign?";
                     buttons = `
-                        <button class="bot-choice-btn" onclick="botStep2('web', 'scratch')">Need Design from Scratch</button>
-                        <button class="bot-choice-btn" onclick="botStep2('web', 'ready')">Have Design, need Code</button>
+                        <button class="bot-choice-btn" onclick="botStep2('web', 'new')">New Project</button>
+                        <button class="bot-choice-btn" onclick="botStep2('web', 'redesign')">Redesign Existing</button>
                     `;
                 } else if(choice === 'logo') {
-                    question = "Got it. Is this for a new brand or a redesign?";
+                    botMsg = "Identity Protocol. Do you have a sketch?";
                     buttons = `
-                        <button class="bot-choice-btn" onclick="botStep2('logo', 'new')">New Brand</button>
-                        <button class="bot-choice-btn" onclick="botStep2('logo', 'redesign')">Redesign Existing</button>
+                        <button class="bot-choice-btn" onclick="botStep2('logo', 'sketch')">Yes, Digitise It</button>
+                        <button class="bot-choice-btn" onclick="botStep2('logo', 'fresh')">No, Need Concepts</button>
                     `;
                 } else {
-                    question = "Visuals. Do you need high-click thumbnails or photo editing?";
+                    botMsg = "Visuals. Select requirement:";
                     buttons = `
                         <button class="bot-choice-btn" onclick="botStep2('visuals', 'thumb')">YouTube Thumbnails</button>
                         <button class="bot-choice-btn" onclick="botStep2('visuals', 'edit')">Photo Editing</button>
                     `;
                 }
-                
-                addMsg(question, 'bot');
+
+                document.getElementById('botBody').innerHTML += `<div class="msg bot">${botMsg}</div>`;
                 document.getElementById('botBody').innerHTML += `<div class="bot-options" style="display:flex; flex-direction:column;">${buttons}</div>`;
                 document.getElementById('botBody').scrollTop = document.getElementById('botBody').scrollHeight;
-            }, 800);
+            }, 600);
         }
 
-        function botStep2(category, answer) {
-            // Remove previous buttons
+        function botStep2(cat, ans) {
             const options = document.querySelectorAll('.bot-options');
             if(options.length > 0) options[options.length-1].style.display = 'none';
             
-            addMsg(answer === 'scratch' ? "From Scratch" : (answer === 'new' ? "New Brand" : answer), 'user');
-
+            addMsg(ans, 'user');
+            
             setTimeout(() => {
                 let recText = "";
                 let action = "";
 
-                if(category === 'web') {
-                    recText = "For custom designs, I recommend the **BUSINESS PRO ($80)** plan as it includes 5 pages.";
+                if(cat === 'web') {
+                    recText = "For new projects, **STARTER SITE** is great. For scaling, use **BUSINESS PRO**.";
                     action = "switchSector('web'); document.getElementById('card-business').scrollIntoView({behavior:'smooth'});";
-                } else if(category === 'logo') {
+                } else if(cat === 'logo') {
                     recText = "For branding, **BRAND_MAX ($45)** gives you the complete kit.";
                     action = "switchSector('identity')";
                 } else {
@@ -782,7 +781,6 @@ Ready to pay 25% Token. Let's start!`;
                 addMsg(recText, 'bot');
                 setTimeout(() => { eval(action); }, 500);
 
-                // LOOP BUTTON
                 setTimeout(() => {
                     document.getElementById('botBody').innerHTML += `
                         <div class="bot-options">
@@ -791,7 +789,6 @@ Ready to pay 25% Token. Let's start!`;
                         </div>`;
                     document.getElementById('botBody').scrollTop = document.getElementById('botBody').scrollHeight;
                 }, 1000);
-
             }, 800);
         }
 
