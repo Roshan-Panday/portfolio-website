@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEM ERROR // 404</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* CRASH SCREEN STYLES */
+        :root {
+            --accent: #00ffcc;
+            --bg-dark: #050505;
+            --text-light: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* The Big 404 Text */
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-shadow: 0 0 20px var(--accent), 2px 2px 0px rgba(255,0,0,0.7), -2px -2px 0px rgba(0,0,255,0.7);
+            margin: 0;
+            animation: glitch 1s infinite alternate;
+        }
+
+        .error-msg {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .terminal-log {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+
+        /* The Button */
+        .btn-return {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 15px 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+        }
+
+        .btn-return:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 30px var(--accent);
+        }
+
+        /* Glitch Animation */
+        @keyframes glitch {
+            0% { text-shadow: 0 0 20px var(--accent), 2px 2px 0px red, -2px -2px 0px blue; transform: translate(0, 0); }
+            20% { text-shadow: 0 0 20px var(--accent), -2px 2px 0px red, 2px -2px 0px blue; transform: translate(-2px, 2px); }
+            40% { text-shadow: 0 0 20px var(--accent), 2px -2px 0px red, -2px 2px 0px blue; transform: translate(2px, -2px); }
+            60% { text-shadow: 0 0 20px var(--accent), -2px -2px 0px red, 2px 2px 0px blue; transform: translate(-2px, -2px); }
+            80% { text-shadow: 0 0 20px var(--accent), 2px 2px 0px red, -2px -2px 0px blue; transform: translate(2px, 2px); }
+            100% { text-shadow: 0 0 20px var(--accent), -2px 2px 0px red, 2px -2px 0px blue; transform: translate(0, 0); }
+        }
+
+        /* Scanline Overlay (Optional TV Effect) */
+        .scanline {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scanline"></div>
+
+    <h1 class="error-code">404</h1>
+    
+    <div class="error-msg">
+        <i class="fas fa-exclamation-triangle"></i> FATAL_ERROR: NODE_UNREACHABLE
+    </div>
+
+    <div class="terminal-log">
+        > SEARCHING DATABASE... [FAILED]<br>
+        > PINGING SERVER... [TIMEOUT]<br>
+        > THE URL YOU REQUESTED DOES NOT EXIST IN THIS SECTOR.<br>
+        > PROTOCOL: RETURN TO HOME BASE IMMEDIATELY.
+    </div>
+
+    <a href="index.html" class="btn-return">
+        <i class="fas fa-undo"></i> REBOOT SYSTEM
+    </a>
+
+</body>
+</html>
