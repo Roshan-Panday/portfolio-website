@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <ul class="nav-links">
                         <li><a href="index.html">HOME</a></li>
                         <li><a href="about.html">ABOUT</a></li>
+			<li><a href="team.html">TEAM</a></li>
                         <li><a href="services.html">SERVICES</a></li> <li><a href="projects.html">WORK</a></li>
                         <li><a href="certifications.html">CERTIFICATES</a></li>
                         <li><a href="gallery.html">GALLERY</a></li>
