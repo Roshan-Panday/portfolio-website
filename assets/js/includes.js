@@ -1,7 +1,6 @@
 /* =========================================
    SYSTEM INCLUDES (HEADER, FOOTER & CONTACT)
    ========================================= */
-
 document.addEventListener("DOMContentLoaded", function () {
     
     // 1. GENERATE SYSTEM HEADER (Updated with SERVICES link)
@@ -181,3 +180,4 @@ function copyToClipboard(text, statusId) {
         }, 2000);
     });
 }
+
