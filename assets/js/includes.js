@@ -3,7 +3,7 @@
    ========================================= */
 document.addEventListener("DOMContentLoaded", function () {
     
-    // 1. GENERATE SYSTEM HEADER (Updated with SERVICES link)
+    // 1. GENERATE SYSTEM HEADER (Updated with TEAM link for Mobile)
     const headerElement = document.getElementById("header-include");
     if (headerElement) {
         headerElement.innerHTML = `
@@ -14,8 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <ul class="nav-links">
                         <li><a href="index.html">HOME</a></li>
                         <li><a href="about.html">ABOUT</a></li>
-			<li><a href="team.html">TEAM</a></li>
-                        <li><a href="services.html">SERVICES</a></li> <li><a href="projects.html">WORK</a></li>
+                        <li><a href="team.html">TEAM</a></li>
+                        <li><a href="services.html">SERVICES</a></li> 
+                        <li><a href="projects.html">WORK</a></li>
                         <li><a href="certifications.html">CERTIFICATES</a></li>
                         <li><a href="gallery.html">GALLERY</a></li>
                     </ul>
@@ -35,7 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="mobile-links-container">
                     <a href="index.html">HOME</a>
                     <a href="about.html">ABOUT</a>
-                    <a href="services.html">SERVICES</a> <a href="projects.html">WORK</a>
+                    <a href="team.html">TEAM</a>  <a href="services.html">SERVICES</a> 
+                    <a href="projects.html">WORK</a>
                     <a href="certifications.html">CERTIFICATES</a>
                     <a href="gallery.html">GALLERY</a>
                     <a href="#" onclick="openContactModal(); toggleMenu()">CONTACT</a>
@@ -180,4 +182,3 @@ function copyToClipboard(text, statusId) {
         }, 2000);
     });
 }
-
