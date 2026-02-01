@@ -11,93 +11,218 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        body { background-color: #000; overflow-x: hidden; }
+        body { background-color: #050505; overflow-x: hidden; }
 
-        /* --- 1. IDENTITY GRID (Cards) --- */
-        .identity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 40px; }
+        /* --- 1. THE CARDS (Unchanged - PC View Fixed) --- */
+        .identity-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
+            margin-top: 40px; 
+            padding-bottom: 20px;
+        }
         
         .identity-card { 
-            background: #050505; 
-            border: 1px solid #333; 
-            padding: 30px; 
-            transition: 0.3s; 
+            background: rgba(20, 20, 20, 0.6); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            padding: 35px 30px; 
             position: relative; 
-            /* Cyber Cut */
-            clip-path: polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);
-        }
-        
-        .identity-card:hover { 
-            border-color: var(--accent); 
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
-        }
-        
-        .card-icon-header { font-size: 3rem; color: #444; margin-bottom: 20px; transition: 0.3s; }
-        .identity-card:hover .card-icon-header { color: var(--accent); text-shadow: 0 0 15px var(--accent); }
-        
-        .identity-card h3 { color: white; letter-spacing: 2px; font-size: 1.2rem; margin-bottom: 10px; }
-        .identity-card p { color: #888; font-size: 0.95rem; line-height: 1.6; }
-        .highlight-text { color: white; font-weight: bold; }
-
-        /* --- 2. HARDWARE DIAGNOSTIC PANEL (HUD) --- */
-        .hardware-section { margin-top: 80px; display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
-        
-        .hardware-hud {
-            flex: 1;
-            min-width: 300px;
-            background: rgba(10,10,10,0.8);
-            border: 1px solid var(--accent);
-            padding: 25px;
-            position: relative;
-            /* HUD Tech Look */
-            background-image: linear-gradient(0deg, transparent 24%, rgba(0, 242, 255, .05) 25%, rgba(0, 242, 255, .05) 26%, transparent 27%, transparent 74%, rgba(0, 242, 255, .05) 75%, rgba(0, 242, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 242, 255, .05) 25%, rgba(0, 242, 255, .05) 26%, transparent 27%, transparent 74%, rgba(0, 242, 255, .05) 75%, rgba(0, 242, 255, .05) 76%, transparent 77%, transparent);
-            background-size: 30px 30px;
+            overflow: hidden;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        .hud-header {
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .hud-status { font-size: 0.7rem; background: var(--accent); color: black; padding: 2px 5px; font-weight: bold; }
+        .identity-card.visible { opacity: 1; transform: translateY(0); }
 
-        .spec-row { 
-            display: flex; justify-content: space-between; 
-            padding: 10px 0; border-bottom: 1px solid #333; 
-            color: #aaa; font-family: 'Courier New', monospace; font-size: 0.9rem;
-        }
-        .spec-row span:last-child { color: var(--accent); text-shadow: 0 0 5px rgba(0,242,255,0.5); }
+        .card-icon-header { font-size: 3.5rem; color: #333; margin-bottom: 25px; transition: 0.4s ease; }
+        .identity-card h3 { color: white; letter-spacing: 2px; font-size: 1.4rem; margin-bottom: 15px; text-transform: uppercase; }
+        .identity-card p { color: #aaa; font-size: 1rem; line-height: 1.7; }
+        .highlight-text { color: var(--accent); font-weight: bold; }
 
-        /* --- 3. TERMINAL TIMELINE (Execution Log) --- */
-        .history-log { margin-top: 100px; border-top: 1px solid #222; padding-top: 50px; }
-        
-        .log-entry { display: flex; gap: 30px; margin-bottom: 40px; position: relative; opacity: 0.8; transition: 0.3s; }
-        .log-entry:hover { opacity: 1; transform: translateX(10px); }
-        
-        .log-date { 
-            min-width: 140px; 
-            font-family: 'Courier New', monospace; 
-            color: var(--accent); 
-            text-align: right; 
-            padding-top: 5px; 
-            font-weight: bold;
-            border-right: 2px solid #333;
-            padding-right: 20px;
+        /* Desktop Hover */
+        @media (min-width: 901px) {
+            .identity-card:hover { 
+                border-color: var(--accent); 
+                transform: translateY(-10px) !important; 
+                box-shadow: 0 15px 40px rgba(0, 242, 255, 0.15);
+                background: linear-gradient(145deg, rgba(20,20,20,0.95), rgba(10,10,10,0.98));
+            }
+            .identity-card:hover .card-icon-header { 
+                color: var(--accent); 
+                transform: scale(1.1) rotate(5deg); 
+                text-shadow: 0 0 20px var(--accent); 
+            }
         }
-        
-        .log-content { flex: 1; }
-        .log-role { font-size: 1.2rem; color: white; margin-bottom: 5px; letter-spacing: 1px; }
-        .log-org { font-size: 0.9rem; color: #666; margin-bottom: 10px; text-transform: uppercase; font-weight: 700; }
-        .log-desc { color: #999; font-size: 0.9rem; line-height: 1.5; }
 
-        /* --- 4. RESPONSIVE --- */
+        /* Mobile Swipe Deck */
         @media (max-width: 900px) {
-            .identity-grid { grid-template-columns: 1fr; }
-            .hardware-section { flex-direction: column; }
-            .log-entry { flex-direction: column; gap: 10px; }
-            .log-date { text-align: left; border-right: none; border-bottom: 1px solid #333; padding-bottom: 5px; width: 100%; }
+            .identity-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 20px;
+                padding: 40px 20px;
+                margin-left: -20px; margin-right: -20px;
+            }
+            .identity-grid::-webkit-scrollbar { display: none; }
+            .identity-card {
+                min-width: 80vw;
+                scroll-snap-align: center;
+                opacity: 0.5;
+                transform: scale(0.9);
+                border: 1px solid #333;
+            }
+            .identity-card.mobile-focus {
+                opacity: 1;
+                transform: scale(1.05);
+                border-color: var(--accent);
+                box-shadow: 0 0 25px rgba(0, 242, 255, 0.2);
+                background: #0f0f0f;
+            }
+            .identity-card.mobile-focus .card-icon-header {
+                color: var(--accent);
+                text-shadow: 0 0 15px var(--accent);
+            }
         }
+
+        /* --- 2. HARDWARE HUD --- */
+        .hardware-section { margin-top: 100px; display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
+        .hardware-hud {
+            flex: 1; min-width: 320px; background: #000; border: 1px solid #333; padding: 30px; position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .hardware-hud::after {
+            content: ''; position: absolute; top: -1px; right: -1px; width: 30px; height: 30px;
+            border-top: 3px solid var(--accent); border-right: 3px solid var(--accent);
+        }
+        .hud-header { border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
+        .hud-status { font-size: 0.75rem; background: rgba(0, 242, 255, 0.1); color: var(--accent); padding: 4px 8px; border: 1px solid var(--accent); border-radius: 4px; }
+        .spec-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #1a1a1a; color: #888; font-family: 'Courier New', monospace; font-size: 0.95rem; }
+        .spec-row span:last-child { color: white; }
+
+        /* --- 3. THE EXECUTION LOG (UPGRADED) --- */
+        .history-log { margin-top: 100px; position: relative; padding-left: 0; }
+        
+        /* The Neon Laser Beam Line */
+        .history-log::before {
+            content: ''; 
+            position: absolute; 
+            left: 149px; /* Aligned with date */
+            top: 10px; bottom: 0; 
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent) 0%, transparent 100%);
+            box-shadow: 0 0 10px var(--accent);
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .log-entry { 
+            display: flex; 
+            gap: 50px; 
+            margin-bottom: 60px; 
+            position: relative; 
+            opacity: 0; 
+            transform: translateX(-20px);
+            transition: all 0.5s ease-out;
+        }
+
+        .log-entry.active { opacity: 1; transform: translateX(0); }
+
+        /* The Glowing Node */
+        .log-entry::before {
+            content: ''; 
+            position: absolute; 
+            left: 142px; /* Centered on the line */
+            top: 6px; 
+            width: 16px; height: 16px; 
+            background: #000; 
+            border: 2px solid #555; 
+            border-radius: 50%; 
+            z-index: 2;
+            transition: 0.4s;
+        }
+
+        /* Active/Hover Node State */
+        .log-entry.highlight::before,
+        .log-entry:hover::before {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent);
+            transform: scale(1.3);
+        }
+
+        .log-date { 
+            min-width: 120px; 
+            font-family: 'Courier New', monospace; 
+            color: #666; 
+            font-weight: 700; 
+            padding-top: 2px; 
+            text-align: right;
+            transition: 0.3s;
+        }
+
+        .log-entry.highlight .log-date,
+        .log-entry:hover .log-date {
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent);
+        }
+        
+        .log-content { 
+            flex: 1; 
+            background: rgba(10,10,10,0.5); 
+            padding: 25px; 
+            border-radius: 4px; 
+            border-left: 1px solid #333; 
+            transition: 0.3s; 
+        }
+        
+        /* Content Glow on Active */
+        .log-entry.highlight .log-content,
+        .log-entry:hover .log-content { 
+            border-left-color: var(--accent); 
+            background: rgba(20,20,20,0.8); 
+            transform: translateX(5px);
+            box-shadow: -5px 0 20px -5px rgba(0, 242, 255, 0.1);
+        }
+        
+        .log-role { font-size: 1.3rem; color: white; margin-bottom: 5px; font-weight: 600; }
+        .log-org { font-size: 0.85rem; color: #666; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
+        .log-desc { color: #aaa; line-height: 1.6; }
+
+        /* --- MOBILE TIMELINE (Vertical Stream) --- */
+        @media (max-width: 900px) {
+            .hardware-section { flex-direction: column; }
+            
+            .history-log::before { left: 19px; } /* Move line to left edge */
+            .log-entry { flex-direction: column; gap: 15px; margin-bottom: 50px; padding-left: 50px; }
+            .log-entry::before { left: 12px; top: 0; } /* Move node to line */
+            
+            .log-date { text-align: left; font-size: 0.9rem; margin-bottom: -10px; }
+            
+            /* Mobile Default State (Dimmed) */
+            .log-content { opacity: 0.5; transform: scale(0.98); border: 1px solid #222; border-left: none; }
+            
+            /* Mobile Active State (Triggered by Scroll) */
+            .log-entry.highlight .log-content {
+                opacity: 1;
+                transform: scale(1);
+                border-color: var(--accent);
+                box-shadow: 0 5px 20px rgba(0, 242, 255, 0.15);
+                background: #0f0f0f;
+            }
+        }
+        
+        .swipe-hint {
+            display: none;
+            text-align: center; color: #555; font-size: 0.8rem; margin-top: -20px; margin-bottom: 10px;
+            animation: blink 2s infinite;
+        }
+        @media (max-width: 900px) { .swipe-hint { display: block; } }
+        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
     </style>
 </head>
 <body>
@@ -105,114 +230,114 @@
     <canvas id="neural-canvas"></canvas>
     <div id="header-include"></div>
 
-    <section style="padding-top: 100px; padding-bottom: 50px;">
+    <section style="padding-top: 120px; padding-bottom: 80px;">
         <div class="container">
             
-            <div style="border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 40px;">
-                <h1 style="font-size: 2.5rem; color:white; margin:0;">SYSTEM <span style="color:var(--accent);">PROFILE</span></h1>
-                <p style="color:#666; letter-spacing: 3px; font-size: 0.9rem; margin-top: 5px;">IDENTITY // HARDWARE // LOGS</p>
+            <div style="text-align: center; margin-bottom: 40px;" data-aos="fade-down">
+                <h1 style="font-size: 3rem; color:white; margin:0; text-transform: uppercase;">System <span style="color:var(--accent);">Identity</span></h1>
+                <p style="color:#666; letter-spacing: 4px; font-size: 0.9rem; margin-top: 10px;">// INITIALIZING PROFILE MODULES...</p>
             </div>
 
-            <div class="identity-grid">
-                
-                <div class="identity-card" data-aos="fade-up">
-                    <i class="fas fa-user-astronaut card-icon-header"></i>
-                    <h3>THE ORIGIN</h3>
+            <div class="identity-grid" id="card-deck">
+                <div class="identity-card">
+                    <i class="fas fa-code-branch card-icon-header"></i>
+                    <h3>The Origin</h3>
                     <p>
-                        <span class="highlight-text">MCA Graduate & Full-Stack Dev.</span><br>
-                        I bridge the gap between heavy backend logic (C++, Java) and modern web systems. My journey started with game engine logic and evolved into System Architecture.
+                        <span class="highlight-text">MCA & Full-Stack Core.</span><br>
+                        My foundation lies in heavy backend logic and scalable architecture. I bridge the gap between raw code efficiency (C++, Java) and modern web interactivity.
                     </p>
                 </div>
-
-                <div class="identity-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-eye card-icon-header"></i>
-                    <h3>THE VISION</h3>
+                <div class="identity-card">
+                    <i class="fas fa-brain card-icon-header"></i>
+                    <h3>The Vision</h3>
                     <p>
                         <span class="highlight-text">Offline Intelligence.</span><br>
-                        I am building the future of privacy-first AI. My flagship initiative, <em>Project ROSA</em>, focuses on running Context-Aware Agents locally on consumer hardware.
+                        I am architecting the future of privacy-first AI. My flagship, <em>Project ROSA</em>, brings Context-Aware Neural Agents to local consumer hardware.
                     </p>
                 </div>
-
-                <div class="identity-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-chess-knight card-icon-header"></i>
-                    <h3>THE STRATEGY</h3>
+                <div class="identity-card">
+                    <i class="fas fa-chart-line card-icon-header"></i>
+                    <h3>The Strategy</h3>
                     <p>
-                        <span class="highlight-text">Competitive Analytics.</span><br>
-                        As a former <span style="color:var(--accent);">Global Rank (Tigreal)</span> player, I learned macro-strategy under pressure. I apply that same analytical rigor to code optimization.
+                        <span class="highlight-text">High-Stakes Optimization.</span><br>
+                        Applying competitive gaming macro-strategy (Global Rank Tigreal) to system design—predicting load, optimizing resources, and executing under pressure.
                     </p>
                 </div>
-
             </div>
+            
+            <div class="swipe-hint"><i class="fas fa-chevron-left"></i> SWIPE TO FOCUS <i class="fas fa-chevron-right"></i></div>
 
             <div class="hardware-section">
                 <div style="flex:1;" data-aos="fade-right">
-                    <h2 style="color:white; margin-bottom: 15px; font-size: 2rem;"> <i class="fas fa-microchip" style="color:var(--accent);"></i> DEPLOYMENT RIG</h2>
-                    <p style="color:#888; line-height:1.6; font-size: 1rem;">
-                        I don't just write code; I build the machines that run it. My local environment is tuned for offline LLM inference, 3D rendering, and heavy compilation tasks.
+                    <h2 style="color:white; margin-bottom: 20px; font-size: 2.2rem; line-height: 1.2;">
+                        POWERING THE <br><span style="color:var(--accent);">INFRASTRUCTURE</span>
+                    </h2>
+                    <p style="color:#999; line-height:1.7; font-size: 1.1rem; margin-bottom: 20px;">
+                        Code is only as good as the machine it runs on. My local development rig is custom-tuned for heavy LLM inference, 3D rendering, and rapid compilation.
                     </p>
+                    <a href="projects.html" class="btn-neon" style="font-size: 0.9rem; padding: 10px 25px;">VIEW PROJECTS</a>
                 </div>
                 
                 <div class="hardware-hud" data-aos="fade-left">
                     <div class="hud-header">
-                        <span style="color:white; font-weight:bold;">SYS_DIAGNOSTICS</span>
+                        <span style="color:white; letter-spacing: 2px;">SYS_DIAGNOSTICS</span>
                         <span class="hud-status">ONLINE</span>
                     </div>
                     <div class="spec-row"><span>GPU NODE</span> <span>NVIDIA RTX 3070 Ti (8GB)</span></div>
-                    <div class="spec-row"><span>MEMORY</span> <span>16GB DDR4 HIGH-FREQ</span></div>
-                    <div class="spec-row"><span>PROCESSOR</span> <span>INTEL CORE ARCHITECTURE</span></div>
-                    <div class="spec-row"><span>OS KERNEL</span> <span>WIN 11 / LINUX (WSL2)</span></div>
-                    <div class="spec-row"><span>PRIMARY TASK</span> <span>OFFLINE AI / RENDERING</span></div>
+                    <div class="spec-row"><span>VRAM ALLOCATION</span> <span>DEDICATED AI INFERENCE</span></div>
+                    <div class="spec-row"><span>PROCESSOR</span> <span>INTEL CORE i7 (High-Perf)</span></div>
+                    <div class="spec-row"><span>ENVIRONMENT</span> <span>WIN 11 / WSL2 (Ubuntu)</span></div>
+                    <div class="spec-row"><span>PRIMARY TASK</span> <span>OFFLINE NEURAL NETWORKS</span></div>
                 </div>
             </div>
 
-            <div class="history-log">
-                <h2 style="color:white; margin-bottom: 40px; text-align: left;"> <i class="fas fa-terminal" style="color:var(--accent);"></i> EXECUTION_LOG</h2>
+            <div style="margin-top: 120px;">
+                <h2 style="color:white; margin-bottom: 50px; border-bottom: 1px solid #333; padding-bottom: 20px;" data-aos="fade-in"> 
+                    <i class="fas fa-history" style="color:var(--accent); margin-right: 10px;"></i> EXECUTION_LOG 
+                </h2>
 
-                <div class="log-entry" data-aos="fade-up">
-                    <div class="log-date">JAN 2024 -> NOW</div>
-                    <div class="log-content">
-                        <div class="log-role">Full-Stack Developer & AI Researcher</div>
-                        <div class="log-org">Freelance / Research</div>
-                        <p class="log-desc">Designing Project ROSA (Offline AI). Building custom PHP-based CMS platforms focused on SEO and performance metrics.</p>
+                <div class="history-log" id="timeline-stream">
+                    <div class="log-entry">
+                        <div class="log-date">JAN 2024 -> NOW</div>
+                        <div class="log-content">
+                            <div class="log-role">Full-Stack Developer & AI Researcher</div>
+                            <div class="log-org">Freelance / Independent Research</div>
+                            <p class="log-desc">Spearheading <strong>Project ROSA</strong> (Offline AI Avatar). Developing custom PHP-based CMS architectures optimized for high-speed SEO.</p>
+                        </div>
+                    </div>
+                    <div class="log-entry">
+                        <div class="log-date">2023 [COMPLETED]</div>
+                        <div class="log-content">
+                            <div class="log-role">Master of Computer Applications (MCA)</div>
+                            <div class="log-org">Maharaja Agrasen Himalayan Garhwal University</div>
+                            <p class="log-desc">Specialized in Advanced Database Architecture, Cloud Systems, and AI Integration. Graduated with distinction.</p>
+                        </div>
+                    </div>
+                    <div class="log-entry">
+                        <div class="log-date">MAR 23 - APR 23</div>
+                        <div class="log-content">
+                            <div class="log-role">Technical Support Assistant</div>
+                            <div class="log-org">MSB E-Trade Securities Ltd.</div>
+                            <p class="log-desc">Managed mission-critical trading software support. Troubleshot backend connectivity and user access protocols.</p>
+                        </div>
+                    </div>
+                    <div class="log-entry">
+                        <div class="log-date">AUG 21 - DEC 22</div>
+                        <div class="log-content">
+                            <div class="log-role">Website & Office Coordinator</div>
+                            <div class="log-org">Labour Party of India</div>
+                            <p class="log-desc">Digitized operational records and optimized website data flow. Managed SQL databases for member tracking.</p>
+                        </div>
+                    </div>
+                    <div class="log-entry">
+                        <div class="log-date">2021 [COMPLETED]</div>
+                        <div class="log-content">
+                            <div class="log-role">Bachelor of Computer Applications (BCA)</div>
+                            <div class="log-org">Maharaja Agrasen Himalayan Garhwal University</div>
+                            <p class="log-desc">Built core foundation in Algorithms, Data Structures, and Object-Oriented Programming (C++).</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="log-entry" data-aos="fade-up">
-                    <div class="log-date">2023 [COMPLETED]</div>
-                    <div class="log-content">
-                        <div class="log-role">Master of Computer Applications (MCA)</div>
-                        <div class="log-org">Maharaja Agrasen Himalayan Garhwal University</div>
-                        <p class="log-desc">Specialized in Backend Systems, Database Architecture, and AI Solutions.</p>
-                    </div>
-                </div>
-
-                <div class="log-entry" data-aos="fade-up">
-                    <div class="log-date">MAR 23 - APR 23</div>
-                    <div class="log-content">
-                        <div class="log-role">Technical Support Assistant</div>
-                        <div class="log-org">MSB E-Trade Securities Ltd.</div>
-                        <p class="log-desc">Provided technical support for live trading software, troubleshooting user access and backend connectivity.</p>
-                    </div>
-                </div>
-
-                <div class="log-entry" data-aos="fade-up">
-                    <div class="log-date">AUG 21 - DEC 22</div>
-                    <div class="log-content">
-                        <div class="log-role">Website & Office Coordinator</div>
-                        <div class="log-org">Labour Party of India</div>
-                        <p class="log-desc">Managed digital records and website operations. Optimized backend data flow using SQL.</p>
-                    </div>
-                </div>
-
-                <div class="log-entry" data-aos="fade-up">
-                    <div class="log-date">2021 [COMPLETED]</div>
-                    <div class="log-content">
-                        <div class="log-role">Bachelor of Computer Applications (BCA)</div>
-                        <div class="log-org">Maharaja Agrasen Himalayan Garhwal University</div>
-                        <p class="log-desc">Core foundation in Web Technologies, Algorithms, and C++ Programming.</p>
-                    </div>
-                </div>
-
             </div>
 
         </div>
@@ -223,6 +348,66 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/includes.js"></script>
     <script src="assets/js/script.js"></script>
+    
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.identity-card');
+            const container = document.getElementById('card-deck');
+            const logEntries = document.querySelectorAll('.log-entry');
+
+            // --- 1. DESKTOP CARD LOGIC (Chain Reaction) ---
+            if (window.innerWidth > 900) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            cards.forEach((card, index) => {
+                                setTimeout(() => { card.classList.add('visible'); }, index * 200);
+                            });
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+                observer.observe(container);
+            }
+
+            // --- 2. MOBILE CARD LOGIC (Scroll Focus) ---
+            if (window.innerWidth <= 900) {
+                cards.forEach(card => card.classList.add('visible')); // Force visible
+                
+                container.addEventListener('scroll', () => {
+                    const centerPoint = container.scrollLeft + (container.offsetWidth / 2);
+                    cards.forEach(card => {
+                        const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+                        const distance = Math.abs(centerPoint - cardCenter);
+                        if (distance < 150) {
+                            card.classList.add('mobile-focus');
+                        } else {
+                            card.classList.remove('mobile-focus');
+                        }
+                    });
+                });
+                setTimeout(() => { container.dispatchEvent(new Event('scroll')); }, 100);
+            }
+
+            // --- 3. TIMELINE SCROLL STREAM (Works on All Devices) ---
+            // This detects which log entry is "Active" in the viewport
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active'); // Slide in
+                        entry.target.classList.add('highlight'); // Glow ON
+                    } else {
+                        // Optional: Remove highlight when scrolling away for "Focus" effect
+                        entry.target.classList.remove('highlight'); 
+                    }
+                });
+            }, { threshold: 0.5, rootMargin: "-10% 0px -10% 0px" }); // Trigger when item is in middle 80% of screen
+
+            logEntries.forEach(el => timelineObserver.observe(el));
+        });
+    </script>
 
 </body>
 </html>
