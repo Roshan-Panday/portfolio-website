@@ -6,150 +6,185 @@
     <title>Roshan Panday | System Architect</title>
     
     <link rel="stylesheet" href="assets/css/style.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Rajdhani:wght@500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        /* --- 1. HERO LAYOUT FIX (DESKTOP) --- */
+        :root {
+            --bg-deep: #020202;
+            --accent: #00f2ff;
+            --border: rgba(0, 242, 255, 0.3);
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* --- 1. COMPACT HERO (MATCHES OTHER PAGES) --- */
         .hero-section {
-            min-height: 90vh; 
-            padding-top: 100px; /* Space for fixed header */
-            padding-bottom: 50px;
-            display: flex;
-            align-items: center;
-            position: relative;
-            background: #000;
+            padding-top: 130px; /* Standard spacing for fixed header */
+            padding-bottom: 60px;
+            display: flex; align-items: center; justify-content: center;
         }
 
         .hero-layout {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            gap: 50px; /* Space between Text and Image */
+            display: flex; align-items: center; justify-content: space-between;
+            width: 100%; max-width: 1200px; margin: 0 auto; gap: 40px;
         }
 
-        .hero-content {
-            flex: 1; /* Takes 50% width */
-            text-align: left;
-            z-index: 2;
+        .hero-content { flex: 1; z-index: 5; }
+
+        .system-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 12px; border: 1px solid var(--border); border-radius: 4px;
+            background: rgba(0, 242, 255, 0.05);
+            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent);
+            margin-bottom: 20px;
+        }
+        .live-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); animation: blink 1s infinite; }
+
+        h1 {
+            font-size: 3.5rem; line-height: 1; margin-bottom: 10px; color: white; 
+            font-family: 'Rajdhani', sans-serif; font-weight: 800; text-transform: uppercase;
         }
 
-        .hero-visual {
-            flex: 1; /* Takes 50% width */
-            display: flex;
-            justify-content: center;
-            position: relative;
-            z-index: 2;
+        .role-wrapper {
+            font-size: 1.4rem; color: #888; font-family: 'Rajdhani', sans-serif; 
+            font-weight: 600; margin-bottom: 20px;
+        }
+        .role-typewrite { color: var(--accent); border-bottom: 2px solid var(--accent); }
+        .cursor { display: inline-block; width: 2px; background-color: var(--accent); animation: blink 1s infinite; }
+
+        .hero-desc {
+            color: #ccc; max-width: 500px; margin-bottom: 30px; line-height: 1.6; font-size: 1rem;
+            border-left: 2px solid var(--accent); padding-left: 15px;
+            background: linear-gradient(90deg, rgba(0,242,255,0.05), transparent);
         }
 
-        /* --- 2. PROFILE IMAGE (COLOR RESTORED) --- */
-        .profile-wrapper {
-            position: relative;
-            width: 380px; 
-            height: 380px;
-            display: flex; align-items: center; justify-content: center;
-        }
-        
-        .profile-glow {
-            position: absolute;
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
-            animation: radar-spin 10s linear infinite;
-            z-index: 1; 
-        }
-        
-        .profile-img {
-            width: 92%; height: 92%;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #111;
-            position: relative; 
-            z-index: 10; 
-            background: #111;
-            /* REMOVED GRAYSCALE FILTER */
-        }
-
-        /* --- 3. DECRYPT TEXT --- */
-        .decrypt-text {
-            font-family: 'Rajdhani', sans-serif;
-            color: var(--accent);
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* --- 4. NEXUS GRID (SERVICES) --- */
-        .nexus-section { padding: 80px 0; background: #050505; }
-        
-        .nexus-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 Columns on Desktop */
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .nexus-card {
-            background: rgba(20,20,20,0.6);
-            border: 1px solid #333;
-            padding: 35px;
-            position: relative;
+        /* --- THE NEW "ABOUT PAGE" INTERACTION CARD --- */
+        .identity-link-card {
+            display: inline-flex; align-items: center; gap: 20px;
+            padding: 15px 25px;
+            background: #0a0a0a;
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            text-decoration: none;
             transition: 0.3s;
-            cursor: pointer;
-            overflow: hidden;
-            clip-path: polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);
-        }
-
-        .nexus-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-10px);
-            background: #000;
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
-        }
-
-        .nexus-icon { font-size: 3rem; margin-bottom: 20px; color: var(--accent); }
-        .nexus-card h3 { color: white; font-size: 1.4rem; margin-bottom: 10px; letter-spacing: 1px; }
-        .nexus-card p { color: #888; font-size: 0.9rem; line-height: 1.5; }
-
-        /* --- 5. MOBILE FIXES --- */
-        @media (max-width: 900px) {
-            .hero-section { padding-top: 80px; min-height: auto; }
-            .hero-layout { 
-                flex-direction: column-reverse; /* Text Bottom, Image Top */
-                text-align: center; 
-                gap: 30px;
-            }
-            .hero-content { width: 100%; }
-            .hero-visual { width: 100%; margin-bottom: 20px; }
-            
-            .profile-wrapper { width: 280px; height: 280px; }
-            
-            h1 { font-size: 3rem !important; }
-            .hero-btns { justify-content: center; }
-            .hero-socials { justify-content: center; }
-            .stat-hud { justify-content: center; width: 100% !important; flex-wrap: wrap; }
-            
-            .nexus-grid { grid-template-columns: 1fr; } /* Stack cards on mobile */
-        }
-
-        @keyframes radar-spin { 100% { transform: rotate(360deg); } }
-        
-        .tech-marquee-container {
-            width: 100%;
-            background: #080808;
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #222;
-            padding: 25px 0;
-            overflow: hidden;
-            white-space: nowrap;
             position: relative;
-            z-index: 5;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
         }
+
+        .identity-link-card:hover {
+            transform: translateX(10px);
+            background: rgba(0, 242, 255, 0.1);
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.2);
+        }
+
+        .id-icon {
+            font-size: 2rem; color: white;
+            background: var(--accent); width: 50px; height: 50px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 8px; color: black;
+        }
+
+        .id-text h3 { color: white; font-family: 'Rajdhani'; font-size: 1.2rem; margin: 0; }
+        .id-text p { color: var(--accent); font-size: 0.8rem; margin: 0; font-family: 'JetBrains Mono'; }
+
+        /* --- HERO VISUAL --- */
+        .hero-visual { flex: 1; display: flex; justify-content: center; }
+        .profile-card {
+            width: 320px; height: 320px;
+            background: #050505; border-radius: 20px; position: relative;
+            display: flex; align-items: center; justify-content: center; z-index: 2;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.15); border: 1px solid var(--accent);
+        }
+        .profile-card::before {
+            content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+            border-radius: 22px; background: linear-gradient(45deg, var(--accent), #000, var(--accent));
+            z-index: -1; background-size: 400%; animation: glowing-border 20s linear infinite;
+        }
+        .profile-img {
+            width: 100%; height: 100%; object-fit: cover; border-radius: 20px;
+            filter: contrast(1.1); position: relative; z-index: 2; border: 4px solid rgba(0,0,0,0.5);
+        }
+
+        /* --- 2. MODULE CARDS --- */
+        .module-section { padding: 50px 0; border-top: 1px solid #111; }
+        .section-header {
+            display: flex; justify-content: space-between; align-items: end;
+            margin-bottom: 30px; padding: 0 20px; max-width: 1200px; margin-left: auto; margin-right: auto;
+        }
+        .module-title { font-size: 2rem; color: white; font-family: 'Rajdhani'; font-weight: 700; margin: 0; }
+        .module-sub { color: #666; font-size: 0.9rem; margin-top: 5px; font-family: 'JetBrains Mono'; letter-spacing: 1px; }
+
+        .scrolling-wrapper {
+            display: flex; gap: 20px; overflow-x: auto; padding: 10px 20px 40px;
+            scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .scrolling-wrapper::-webkit-scrollbar { height: 4px; }
+        .scrolling-wrapper::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+        .module-card {
+            min-width: 350px; height: 240px;
+            background: #0f0f0f; border-radius: 12px;
+            border: 1px solid #333; position: relative;
+            scroll-snap-align: start; overflow: hidden;
+            transition: 0.3s; text-decoration: none; flex-shrink: 0;
+        }
+        .module-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.15); }
+
+        /* --- PRO TECH FALLBACKS (Blueprints) --- */
+        .blueprint-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #080808;
+            background-image: radial-gradient(#222 1px, transparent 1px);
+            background-size: 20px 20px;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0.5; transition: 0.5s;
+        }
+        .module-card:hover .blueprint-bg { opacity: 0.8; background-size: 22px 22px; }
+        
+        .blueprint-icon { font-size: 4rem; color: #333; transition: 0.3s; }
+        .module-card:hover .blueprint-icon { color: var(--accent); text-shadow: 0 0 20px var(--accent); transform: scale(1.1); }
+
+        /* REAL IMAGES */
+        .card-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.6; transition: 0.5s; z-index: 1;
+        }
+        .module-card:hover .card-bg { opacity: 0.3; transform: scale(1.05); }
+
+        .card-content {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px;
+            background: linear-gradient(to top, #000 20%, transparent); z-index: 2;
+        }
+        .card-tag {
+            font-size: 0.7rem; color: #000; background: var(--accent); font-weight: bold;
+            padding: 3px 8px; border-radius: 2px; display: inline-block; margin-bottom: 8px;
+        }
+        .card-title { color: white; font-size: 1.3rem; font-family: 'Rajdhani'; font-weight: 700; margin: 0; }
+        .card-desc { color: #aaa; font-size: 0.85rem; margin-top: 4px; }
+
+        @media (max-width: 900px) {
+            .hero-section { padding-top: 100px; text-align: center; }
+            .hero-layout { flex-direction: column-reverse; gap: 40px; }
+            .hero-content { align-items: center; display: flex; flex-direction: column; }
+            .profile-card { width: 280px; height: 280px; }
+            h1 { font-size: 3rem; }
+            .module-card { min-width: 85vw; height: 240px; }
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes glowing-border { 0% { background-position: 0 0; } 50% { background-position: 400% 0; } 100% { background-position: 0 0; } }
     </style>
 </head>
 <body>
@@ -157,50 +192,30 @@
     <canvas id="neural-canvas"></canvas>
     <div id="header-include"></div>
 
-    <section id="home" class="hero-section">
+    <section class="hero-section">
         <div class="container hero-layout">
             
             <div class="hero-content" data-aos="fade-right">
+                <div class="system-badge"><div class="live-dot"></div> SYSTEM ONLINE // V3.0</div>
+                <h1>ROSHAN PANDAY</h1>
+                <div class="role-wrapper">> <span class="role-typewrite"></span><span class="cursor">|</span></div>
                 
-                <div style="margin-bottom: 20px; display: inline-flex; align-items: center; gap: 10px; border: 1px solid #333; padding: 5px 15px; border-radius: 20px; background: rgba(255,255,255,0.02);">
-                    <span style="width: 8px; height: 8px; background: #0f0; border-radius: 50%; box-shadow: 0 0 5px #0f0;"></span>
-                    <span style="color: #888; font-size: 0.8rem; letter-spacing: 2px; font-weight: 700;">SYSTEM ONLINE</span>
-                </div>
-                
-                <h1 style="font-size: 4.5rem; line-height: 1.1; margin-bottom: 15px; color:white; font-weight: 800; letter-spacing: -1px;">
-                    ROSHAN PANDAY
-                </h1>
-                
-                <h2 style="font-size: 1.6rem; color:#888; font-family:'Rajdhani', sans-serif; margin-bottom: 30px;">
-                    ROLE: <span class="decrypt-text" id="decrypt-target">INITIALIZING...</span>
-                </h2>
-                
-                <p style="color: #bbb; max-width: 550px; margin-bottom: 35px; line-height: 1.7; font-size: 1.1rem;">
-                    MCA Graduate & System Architect. I bridge the gap between <strong>Heavy Backend Logic</strong> and <strong>Creative Visuals</strong>, building robust offline AI networks and digital ecosystems.
+                <p class="hero-desc">
+                    Bridging the gap between <strong>Heavy Backend Logic</strong> and <strong>Creative Visuals</strong>. I build robust offline AI networks and scalable digital ecosystems.
                 </p>
 
-                <div class="hero-socials" style="display: flex; gap: 25px; margin-bottom: 35px;">
-                    <a href="https://github.com/roshan-panday" target="_blank" style="color:#666; font-size:1.8rem; transition:0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='#666'"><i class="fab fa-github"></i></a>
-                    <a href="https://www.youtube.com/@tigml" target="_blank" style="color:#666; font-size:1.8rem; transition:0.2s;" onmouseover="this.style.color='#FF0000'" onmouseout="this.style.color='#666'"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.linkedin.com/in/pandayroshan" target="_blank" style="color:#666; font-size:1.8rem; transition:0.2s;" onmouseover="this.style.color='#0077b5'" onmouseout="this.style.color='#666'"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                
-                <div class="hero-btns" style="display:flex; gap:15px;">
-                    <a href="projects.html" class="btn-neon">VIEW PROJECTS</a>
-                    <a href="assets/pdf/Roshan_Panday_CV.pdf" download class="btn-neon" style="background:transparent; color:#ccc; border-color:#444;">DOWNLOAD CV</a>
-                </div>
-
-                <div class="stat-hud" style="display: flex; gap: 40px; margin-top: 50px; border-top: 1px solid #222; padding-top: 20px; width: fit-content;">
-                    <div><h3 style="color:white; font-size: 1.8rem; margin:0;">3+</h3><p style="color:#555; font-size:0.8rem; font-weight:bold;">YEARS EXP</p></div>
-                    <div><h3 style="color:white; font-size: 1.8rem; margin:0;">15+</h3><p style="color:#555; font-size:0.8rem; font-weight:bold;">DEPLOYMENTS</p></div>
-                    <div><h3 style="color:white; font-size: 1.8rem; margin:0;">MCA</h3><p style="color:#555; font-size:0.8rem; font-weight:bold;">CREDENTIAL</p></div>
-                </div>
-
+                <a href="about.html" class="identity-link-card">
+                    <div class="id-icon"><i class="fas fa-user-astronaut"></i></div>
+                    <div class="id-text">
+                        <h3>SYSTEM IDENTITY</h3>
+                        <p>VIEW FULL PROFILE & LOGS</p>
+                    </div>
+                    <i class="fas fa-arrow-right" style="color:white; margin-left:10px;"></i>
+                </a>
             </div>
 
-            <div class="hero-visual" data-aos="fade-left">
-                <div class="profile-wrapper">
-                    <div class="profile-glow"></div>
+            <div class="hero-visual" data-aos="zoom-in">
+                <div class="profile-card">
                     <img src="assets/img/profile.jpg" class="profile-img" alt="Roshan">
                 </div>
             </div>
@@ -208,110 +223,81 @@
         </div>
     </section>
 
-    <div class="tech-marquee-container">
-        <div class="tech-track" style="display: inline-block; animation: scroll-left 40s linear infinite;">
-            <i class="fab fa-python" style="margin:0 40px; color:#444; font-size:2.5rem;"></i>
-            <i class="fab fa-js" style="margin:0 40px; color:#444; font-size:2.5rem;"></i>
-            <i class="fab fa-react" style="margin:0 40px; color:#444; font-size:2.5rem;"></i>
-            <i class="fab fa-php" style="margin:0 40px; color:#444; font-size:2.5rem;"></i>
-            <i class="fas fa-database" style="margin:0 40px; color:#444; font-size:2.5rem;"></i>
-            <i class="fab fa-docker" style="margin:0 40px; color:#444; font-size:2.5rem;"></i>
-            <i class="fab fa-aws" style="margin:0 40px; color:#444; font-size:2.5rem;"></i>
-            <i class="fab fa-python" style="margin:0 40px; color:#444; font-size:2.5rem;"></i>
-            <i class="fab fa-js" style="margin:0 40px; color:#444; font-size:2.5rem;"></i>
-            <i class="fab fa-react" style="margin:0 40px; color:#444; font-size:2.5rem;"></i>
-            <i class="fab fa-php" style="margin:0 40px; color:#444; font-size:2.5rem;"></i>
+    <section class="module-section">
+        <div class="section-header">
+            <div><h2 class="module-title">PROJECT <span style="color:var(--accent);">ARCHIVE</span></h2><p class="module-sub">RECENT DEPLOYMENTS & SYSTEMS</p></div>
+            <a href="projects.html" style="color:#444; font-size:0.8rem; text-decoration:none;">VIEW ALL <i class="fas fa-arrow-right"></i></a>
         </div>
-    </div>
-
-    <section class="nexus-section">
-        <div class="container">
-            <div style="display:flex; justify-content:space-between; align-items:end; margin-bottom: 20px;">
-                <div>
-                    <h2 style="font-size: 2.2rem; color:white; margin:0;">SERVICE <span style="color:var(--accent);">NEXUS</span></h2>
-                    <p style="color:#666; margin-top:5px;">ACCESS DEPLOYMENT PROTOCOLS</p>
-                </div>
-                <a href="services.html" style="color:var(--accent); text-decoration:none; font-weight:bold; font-size:0.9rem;">VIEW ALL <i class="fas fa-arrow-right"></i></a>
-            </div>
+        <div class="scrolling-wrapper">
             
-            <div class="nexus-grid" data-aos="fade-up">
-                
-                <div class="nexus-card" onclick="goToService('web')">
-                    <i class="fas fa-code nexus-icon"></i>
-                    <h3>WEB_ARCHITECT</h3>
-                    <p>Full Stack development, landing pages, and business systems.</p>
-                    <div style="margin-top:20px; font-size:0.8rem; color:#555; font-weight:bold; text-transform:uppercase;">Status: Online</div>
-                </div>
+            <a href="projects.html" class="module-card">
+                <div class="blueprint-bg"><i class="fas fa-network-wired blueprint-icon"></i></div>
+                <div class="card-content"><span class="card-tag">ENTERPRISE</span><h3 class="card-title">Sidhanta Agency</h3><p class="card-desc">Full-stack business portfolio architecture.</p></div>
+            </a>
+            
+            <a href="projects.html" class="module-card">
+                <div class="blueprint-bg"><i class="fas fa-microchip blueprint-icon"></i></div>
+                <div class="card-content"><span class="card-tag">AI RESEARCH</span><h3 class="card-title">Project ROSA</h3><p class="card-desc">Offline Neural Agents on local hardware.</p></div>
+            </a>
 
-                <div class="nexus-card" onclick="goToService('identity')">
-                    <i class="fas fa-fingerprint nexus-icon" style="color:#ff0055;"></i>
-                    <h3>IDENTITY_CORE</h3>
-                    <p>Logo design, brand guidelines, and vector assets.</p>
-                    <div style="margin-top:20px; font-size:0.8rem; color:#555; font-weight:bold; text-transform:uppercase;">Status: Online</div>
-                </div>
+             <a href="projects.html" class="module-card">
+                <div class="blueprint-bg"><i class="fas fa-database blueprint-icon"></i></div>
+                <div class="card-content"><span class="card-tag">SYSTEMS</span><h3 class="card-title">Edu_Manager v1</h3><p class="card-desc">School management system in VB.NET.</p></div>
+            </a>
+        </div>
+    </section>
 
-                <div class="nexus-card" onclick="goToService('visuals')">
-                    <i class="fas fa-eye nexus-icon" style="color:#00ff88;"></i>
-                    <h3>VISUAL_STUDIO</h3>
-                    <p>YouTube thumbnails, channel art, and photo manipulation.</p>
-                    <div style="margin-top:20px; font-size:0.8rem; color:#555; font-weight:bold; text-transform:uppercase;">Status: Online</div>
-                </div>
+    <section class="module-section">
+        <div class="section-header">
+            <div><h2 class="module-title">VISUAL <span style="color:var(--accent);">DESIGN</span></h2><p class="module-sub">LOGOS, THUMBNAILS & BRANDING</p></div>
+            <a href="gallery.html" style="color:#444; font-size:0.8rem; text-decoration:none;">VIEW GALLERY <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="scrolling-wrapper">
+            <a href="gallery.html" class="module-card">
+                <img src="assets/img/project-thumbnails/t10.jpg" class="card-bg">
+                <div class="card-content"><span class="card-tag">YOUTUBE</span><h3 class="card-title">THUMBNAILS</h3><p class="card-desc">High-CTR designs for tech channels.</p></div>
+            </a>
+            <a href="gallery.html" class="module-card">
+                <img src="assets/img/project-logos/logo1.png" class="card-bg" style="object-fit:contain; padding:30px;">
+                <div class="card-content"><span class="card-tag">IDENTITY</span><h3 class="card-title">BRANDING</h3><p class="card-desc">Vector-based visual systems.</p></div>
+            </a>
+        </div>
+    </section>
 
-            </div>
+    <section class="module-section" style="border-bottom: none;">
+        <div class="section-header">
+            <div><h2 class="module-title">VERIFIED <span style="color:var(--accent);">CREDENTIALS</span></h2><p class="module-sub">ACADEMIC & PROFESSIONAL CERTS</p></div>
+            <a href="certifications.html" style="color:#444; font-size:0.8rem; text-decoration:none;">VIEW ALL <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="scrolling-wrapper">
+            <a href="certifications.html" class="module-card" style="min-width: 400px;">
+                <img src="assets/img/certificates/degree-mca.png" class="card-bg">
+                <div class="card-content"><span class="card-tag">DEGREE</span><h3 class="card-title">MCA GRADUATE</h3><p class="card-desc">Master of Computer Applications.</p></div>
+            </a>
+            <a href="certifications.html" class="module-card" style="min-width: 400px;">
+                <img src="assets/img/certificates/degree-bca.png" class="card-bg">
+                <div class="card-content"><span class="card-tag">DEGREE</span><h3 class="card-title">BCA GRADUATE</h3><p class="card-desc">Bachelor of Computer Applications.</p></div>
+            </a>
         </div>
     </section>
 
     <div id="footer-include"></div>
-    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/includes.js"></script>
     <script src="assets/js/script.js"></script>
-
     <script>
-        // --- 1. DEEP LINKING LOGIC ---
-        function goToService(sector) {
-            localStorage.setItem('activeSector', sector);
-            window.location.href = 'services.html';
+        AOS.init({ duration: 800, once: true });
+        const typeText = document.querySelector('.role-typewrite');
+        const roles = ["SYSTEM_ARCHITECT", "FULL_STACK_DEV", "UI/UX_DESIGNER", "AI_ENGINEER"];
+        let roleIndex = 0, charIndex = 0, isDeleting = false;
+        function typeEffect() {
+            const current = roles[roleIndex];
+            typeText.textContent = current.substring(0, isDeleting ? charIndex-- : charIndex++);
+            if (!isDeleting && charIndex === current.length) setTimeout(() => isDeleting = true, 2000);
+            else if (isDeleting && charIndex === 0) { isDeleting = false; roleIndex = (roleIndex + 1) % roles.length; }
+            setTimeout(typeEffect, isDeleting ? 50 : 100);
         }
-
-        // --- 2. DECRYPT ANIMATION LOGIC ---
-        const roles = ["SYSTEM ARCHITECT", "FULL STACK DEV", "AI ENGINEER", "MCA GRADUATE"];
-        const el = document.getElementById("decrypt-target");
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
-        let roleIndex = 0;
-
-        function runDecrypt() {
-            let targetText = roles[roleIndex];
-            let iterations = 0;
-            
-            const interval = setInterval(() => {
-                el.innerText = targetText.split("")
-                    .map((letter, index) => {
-                        if(index < iterations) return targetText[index];
-                        return chars[Math.floor(Math.random() * chars.length)];
-                    })
-                    .join("");
-                
-                if(iterations >= targetText.length) { 
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        roleIndex = (roleIndex + 1) % roles.length;
-                        runDecrypt();
-                    }, 3000); 
-                }
-                
-                iterations += 1/3;
-            }, 30);
-        }
-
-        window.onload = () => {
-            runDecrypt();
-        }
+        document.addEventListener('DOMContentLoaded', typeEffect);
     </script>
-    
-    <style>
-        @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    </style>
-
 </body>
 </html>
