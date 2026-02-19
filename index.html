@@ -30,13 +30,15 @@
         /* --- 1. COMPACT HERO --- */
         .hero-section {
             padding-top: 130px; 
-            /* Removed padding-bottom to let marquee sit at the bottom */
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding-bottom: 60px; /* Safe padding restored */
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+            z-index: 5;
         }
 
         .hero-layout {
             display: flex; align-items: center; justify-content: space-between;
-            width: 100%; max-width: 1200px; margin: 0 auto 60px; gap: 40px;
+            width: 100%; max-width: 1200px; margin: 0 auto; gap: 40px;
             padding: 0 20px;
         }
 
@@ -114,12 +116,14 @@
             filter: contrast(1.1); position: relative; z-index: 2; border: 4px solid rgba(0,0,0,0.5);
         }
 
-        /* --- TECH MARQUEE (REPOSITIONED) --- */
+        /* --- TECH MARQUEE (Safely positioned outside hero flex) --- */
         .tech-marquee-container {
             width: 100%; background: var(--accent); padding: 10px 0; overflow: hidden;
             border-top: 2px solid #fff; border-bottom: 2px solid #fff;
             box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
-            margin-top: 0; /* Changed from bottom margin to top 0 */
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 10;
         }
         .tech-marquee {
             display: flex; white-space: nowrap; font-family: 'JetBrains Mono';
@@ -223,28 +227,46 @@
         @keyframes pulse-opacity { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
         @media (max-width: 900px) {
-            .hero-section { padding-top: 100px; text-align: center; }
+            .hero-section { padding-top: 100px; padding-bottom: 40px; text-align: center; }
             .hero-layout { flex-direction: column-reverse; gap: 40px; }
             .hero-content { align-items: center; display: flex; flex-direction: column; }
             .profile-card { width: 280px; height: 280px; }
             h1 { font-size: 3rem; }
+            
             .scroll-controls { display: none; }
             .info-grid { grid-template-columns: 1fr; }
             
             .swipe-hint { display: block; }
             
-            .scrolling-wrapper { padding: 10px 5vw 40px; }
+            /* FIXED MOBILE SWIPE LOGIC */
+            .scrolling-wrapper { 
+                display: flex !important; 
+                overflow-x: auto; 
+                scroll-snap-type: x mandatory;
+                padding: 20px 5vw 40px; 
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch; 
+            }
+            .scrolling-wrapper::-webkit-scrollbar { display: none; }
+            
             .module-card {
-                min-width: 80vw; max-width: 80vw;
-                opacity: 0.6; transform: scale(0.92);
+                min-width: 80vw; max-width: 80vw; 
+                margin-right: 15px; 
+                scroll-snap-align: center;
+                flex-shrink: 0;
+                opacity: 0.6; 
+                transform: scale(0.92); 
+                filter: grayscale(40%);
                 transition: all 0.4s ease-out;
             }
+            .module-card:last-child { margin-right: 0; }
             
-            /* Mobile Focus Emulates Hover */
+            /* Mobile Focus Emulates Hover Effect */
             .module-card.mobile-focus {
                 opacity: 1; transform: scale(1.02);
                 border-color: var(--accent);
                 box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2);
+                filter: grayscale(0%);
                 z-index: 10;
             }
             .module-card.mobile-focus .blueprint-bg { opacity: 0; transform: scale(1.2); }
@@ -291,33 +313,33 @@
             </div>
 
         </div>
-
-        <div class="tech-marquee-container" data-aos="fade-up">
-            <div class="tech-marquee">
-                <span><i class="fab fa-html5"></i> HTML5</span>
-                <span><i class="fab fa-css3-alt"></i> CSS3</span>
-                <span><i class="fab fa-js"></i> JAVASCRIPT</span>
-                <span><i class="fab fa-php"></i> PHP</span>
-                <span><i class="fas fa-database"></i> MYSQL</span>
-                <span><i class="fab fa-python"></i> PYTHON</span>
-                <span><i class="fas fa-microchip"></i> C++</span>
-                <span><i class="fab fa-java"></i> JAVA</span>
-                <span><i class="fas fa-brain"></i> PYTORCH</span>
-                <span><i class="fas fa-project-diagram"></i> ALGORITHMS</span>
-                
-                <span><i class="fab fa-html5"></i> HTML5</span>
-                <span><i class="fab fa-css3-alt"></i> CSS3</span>
-                <span><i class="fab fa-js"></i> JAVASCRIPT</span>
-                <span><i class="fab fa-php"></i> PHP</span>
-                <span><i class="fas fa-database"></i> MYSQL</span>
-                <span><i class="fab fa-python"></i> PYTHON</span>
-                <span><i class="fas fa-microchip"></i> C++</span>
-                <span><i class="fab fa-java"></i> JAVA</span>
-                <span><i class="fas fa-brain"></i> PYTORCH</span>
-                <span><i class="fas fa-project-diagram"></i> ALGORITHMS</span>
-            </div>
-        </div>
     </section>
+
+    <div class="tech-marquee-container" data-aos="fade-up">
+        <div class="tech-marquee">
+            <span><i class="fab fa-html5"></i> HTML5</span>
+            <span><i class="fab fa-css3-alt"></i> CSS3</span>
+            <span><i class="fab fa-js"></i> JAVASCRIPT</span>
+            <span><i class="fab fa-php"></i> PHP</span>
+            <span><i class="fas fa-database"></i> MYSQL</span>
+            <span><i class="fab fa-python"></i> PYTHON</span>
+            <span><i class="fas fa-microchip"></i> C++</span>
+            <span><i class="fab fa-java"></i> JAVA</span>
+            <span><i class="fas fa-brain"></i> PYTORCH</span>
+            <span><i class="fas fa-project-diagram"></i> ALGORITHMS</span>
+            
+            <span><i class="fab fa-html5"></i> HTML5</span>
+            <span><i class="fab fa-css3-alt"></i> CSS3</span>
+            <span><i class="fab fa-js"></i> JAVASCRIPT</span>
+            <span><i class="fab fa-php"></i> PHP</span>
+            <span><i class="fas fa-database"></i> MYSQL</span>
+            <span><i class="fab fa-python"></i> PYTHON</span>
+            <span><i class="fas fa-microchip"></i> C++</span>
+            <span><i class="fab fa-java"></i> JAVA</span>
+            <span><i class="fas fa-brain"></i> PYTORCH</span>
+            <span><i class="fas fa-project-diagram"></i> ALGORITHMS</span>
+        </div>
+    </div>
 
     <section class="module-section">
         <div class="section-header">
@@ -505,7 +527,7 @@
             const track = document.getElementById(trackId);
             if(!track) return;
 
-            // Get width of a single card to scroll by that amount
+            // Get width of a single card to scroll by that amount safely
             const firstCard = track.querySelector('.module-card');
             const scrollAmount = firstCard ? firstCard.offsetWidth + 20 : 400; 
             
@@ -537,7 +559,7 @@
                             entry.target.classList.remove('mobile-focus');
                         }
                     });
-                }, { root: null, rootMargin: "0px -10% 0px -10%", threshold: 0.7 }); 
+                }, { root: null, rootMargin: "0px -10% 0px -10%", threshold: 0.6 }); 
 
                 document.querySelectorAll('.module-card').forEach(card => observer.observe(card));
             }
