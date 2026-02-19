@@ -27,9 +27,9 @@
             background-size: 50px 50px;
         }
 
-        /* --- 1. COMPACT HERO (MATCHES OTHER PAGES) --- */
+        /* --- 1. COMPACT HERO --- */
         .hero-section {
-            padding-top: 130px; /* Standard spacing for fixed header */
+            padding-top: 130px; 
             padding-bottom: 60px;
             display: flex; align-items: center; justify-content: center;
         }
@@ -68,7 +68,7 @@
             background: linear-gradient(90deg, rgba(0,242,255,0.05), transparent);
         }
 
-        /* --- THE NEW "ABOUT PAGE" INTERACTION CARD --- */
+        /* --- IDENTITY CARD --- */
         .identity-link-card {
             display: inline-flex; align-items: center; gap: 20px;
             padding: 15px 25px;
@@ -98,8 +98,8 @@
         .id-text h3 { color: white; font-family: 'Rajdhani'; font-size: 1.2rem; margin: 0; }
         .id-text p { color: var(--accent); font-size: 0.8rem; margin: 0; font-family: 'JetBrains Mono'; }
 
-        /* --- HERO VISUAL --- */
-        .hero-visual { flex: 1; display: flex; justify-content: center; }
+        /* --- HERO VISUAL (Added Floating Animation) --- */
+        .hero-visual { flex: 1; display: flex; justify-content: center; animation: float 6s ease-in-out infinite; }
         .profile-card {
             width: 320px; height: 320px;
             background: #050505; border-radius: 20px; position: relative;
@@ -116,19 +116,28 @@
             filter: contrast(1.1); position: relative; z-index: 2; border: 4px solid rgba(0,0,0,0.5);
         }
 
-        /* --- 2. MODULE CARDS --- */
-        .module-section { padding: 50px 0; border-top: 1px solid #111; }
+        /* --- 2. MODULE CARDS & INTERACTIVE SCROLLER --- */
+        .module-section { padding: 50px 0; border-top: 1px solid #111; position: relative; }
         .section-header {
             display: flex; justify-content: space-between; align-items: end;
-            margin-bottom: 30px; padding: 0 20px; max-width: 1200px; margin-left: auto; margin-right: auto;
+            margin-bottom: 20px; padding: 0 20px; max-width: 1200px; margin-left: auto; margin-right: auto;
         }
         .module-title { font-size: 2rem; color: white; font-family: 'Rajdhani'; font-weight: 700; margin: 0; }
         .module-sub { color: #666; font-size: 0.9rem; margin-top: 5px; font-family: 'JetBrains Mono'; letter-spacing: 1px; }
 
+        /* Scroll Controls */
+        .scroll-controls { display: flex; gap: 10px; }
+        .scroll-btn {
+            background: #111; border: 1px solid #333; color: var(--accent);
+            width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; transition: 0.3s;
+        }
+        .scroll-btn:hover { background: var(--accent); color: black; box-shadow: 0 0 15px var(--accent); transform: scale(1.1); }
+
         .scrolling-wrapper {
             display: flex; gap: 20px; overflow-x: auto; padding: 10px 20px 40px;
             scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-            max-width: 1200px; margin: 0 auto;
+            max-width: 1200px; margin: 0 auto; scroll-behavior: smooth;
         }
         .scrolling-wrapper::-webkit-scrollbar { height: 4px; }
         .scrolling-wrapper::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
@@ -138,41 +147,41 @@
             background: #0f0f0f; border-radius: 12px;
             border: 1px solid #333; position: relative;
             scroll-snap-align: start; overflow: hidden;
-            transition: 0.3s; text-decoration: none; flex-shrink: 0;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-decoration: none; flex-shrink: 0;
+            display: flex; flex-direction: column; justify-content: flex-end;
         }
-        .module-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.15); }
+        .module-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 15px 35px rgba(0, 242, 255, 0.2); }
 
-        /* --- PRO TECH FALLBACKS (Blueprints) --- */
+        /* Holographic BG Effects */
         .blueprint-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #080808;
-            background-image: radial-gradient(#222 1px, transparent 1px);
-            background-size: 20px 20px;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0.5; transition: 0.5s;
+            background-color: #080808; background-image: radial-gradient(#222 1px, transparent 1px);
+            background-size: 20px 20px; display: flex; align-items: center; justify-content: center;
+            opacity: 1; transition: 0.5s; z-index: 0;
         }
-        .module-card:hover .blueprint-bg { opacity: 0.8; background-size: 22px 22px; }
+        .blueprint-icon { font-size: 5rem; color: #1a1a1a; transition: 0.5s; }
         
-        .blueprint-icon { font-size: 4rem; color: #333; transition: 0.3s; }
-        .module-card:hover .blueprint-icon { color: var(--accent); text-shadow: 0 0 20px var(--accent); transform: scale(1.1); }
-
-        /* REAL IMAGES */
         .card-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; opacity: 0.6; transition: 0.5s; z-index: 1;
+            object-fit: cover; opacity: 0; filter: grayscale(100%); transition: 0.5s; z-index: 1;
         }
-        .module-card:hover .card-bg { opacity: 0.3; transform: scale(1.05); }
+        
+        .module-card:hover .blueprint-bg { opacity: 0; transform: scale(1.2); }
+        .module-card:hover .card-bg { opacity: 0.5; filter: grayscale(0%); transform: scale(1.05); }
 
         .card-content {
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px;
-            background: linear-gradient(to top, #000 20%, transparent); z-index: 2;
+            position: relative; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.95) 40%, transparent);
+            z-index: 2; transition: 0.3s; transform: translateY(10px);
         }
+        .module-card:hover .card-content { transform: translateY(0); }
+
         .card-tag {
-            font-size: 0.7rem; color: #000; background: var(--accent); font-weight: bold;
+            font-size: 0.7rem; color: #000; background: var(--accent); font-weight: bold; font-family: 'JetBrains Mono';
             padding: 3px 8px; border-radius: 2px; display: inline-block; margin-bottom: 8px;
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
         }
-        .card-title { color: white; font-size: 1.3rem; font-family: 'Rajdhani'; font-weight: 700; margin: 0; }
-        .card-desc { color: #aaa; font-size: 0.85rem; margin-top: 4px; }
+        .card-title { color: white; font-size: 1.4rem; font-family: 'Rajdhani'; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 10px; }
+        .card-desc { color: #aaa; font-size: 0.85rem; margin-top: 6px; line-height: 1.4; }
 
         @media (max-width: 900px) {
             .hero-section { padding-top: 100px; text-align: center; }
@@ -180,11 +189,13 @@
             .hero-content { align-items: center; display: flex; flex-direction: column; }
             .profile-card { width: 280px; height: 280px; }
             h1 { font-size: 3rem; }
-            .module-card { min-width: 85vw; height: 240px; }
+            .module-card { min-width: 85vw; }
+            .scroll-controls { display: none; } /* Hide buttons on mobile, rely on swipe */
         }
 
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         @keyframes glowing-border { 0% { background-position: 0 0; } 50% { background-position: 400% 0; } 100% { background-position: 0 0; } }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
     </style>
 </head>
 <body>
@@ -225,71 +236,149 @@
 
     <section class="module-section">
         <div class="section-header">
-            <div><h2 class="module-title">PROJECT <span style="color:var(--accent);">ARCHIVE</span></h2><p class="module-sub">RECENT DEPLOYMENTS & SYSTEMS</p></div>
-            <a href="projects.html" style="color:#444; font-size:0.8rem; text-decoration:none;">VIEW ALL <i class="fas fa-arrow-right"></i></a>
+            <div>
+                <h2 class="module-title">PROJECT <span style="color:var(--accent);">ARCHIVE</span></h2>
+                <p class="module-sub">RECENT DEPLOYMENTS & SYSTEMS</p>
+            </div>
+            <div class="scroll-controls">
+                <button class="scroll-btn" onclick="scrollTrack('project-track', -400)"><i class="fas fa-chevron-left"></i></button>
+                <button class="scroll-btn" onclick="scrollTrack('project-track', 400)"><i class="fas fa-chevron-right"></i></button>
+            </div>
         </div>
-        <div class="scrolling-wrapper">
+        
+        <div class="scrolling-wrapper" id="project-track">
             
             <a href="projects.html" class="module-card">
-                <div class="blueprint-bg"><i class="fas fa-network-wired blueprint-icon"></i></div>
-                <div class="card-content"><span class="card-tag">ENTERPRISE</span><h3 class="card-title">Sidhanta Agency</h3><p class="card-desc">Full-stack business portfolio architecture.</p></div>
-            </a>
-            
-            <a href="projects.html" class="module-card">
-                <div class="blueprint-bg"><i class="fas fa-microchip blueprint-icon"></i></div>
-                <div class="card-content"><span class="card-tag">AI RESEARCH</span><h3 class="card-title">Project ROSA</h3><p class="card-desc">Offline Neural Agents on local hardware.</p></div>
+                <div class="blueprint-bg"><i class="fas fa-campground blueprint-icon"></i></div>
+                <img src="assets/images/projects/blueheaven.jpg" onerror="this.src='https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&q=80&w=600'" class="card-bg">
+                <div class="card-content">
+                    <span class="card-tag">PRODUCTION</span>
+                    <h3 class="card-title">Blue Heaven Camp <div class="live-dot"></div></h3>
+                    <p class="card-desc">High-performance static site & dynamic media gallery for a luxury resort.</p>
+                </div>
             </a>
 
-             <a href="projects.html" class="module-card">
-                <div class="blueprint-bg"><i class="fas fa-database blueprint-icon"></i></div>
-                <div class="card-content"><span class="card-tag">SYSTEMS</span><h3 class="card-title">Edu_Manager v1</h3><p class="card-desc">School management system in VB.NET.</p></div>
+            <a href="projects.html" class="module-card">
+                <div class="blueprint-bg"><i class="fas fa-brain blueprint-icon"></i></div>
+                <img src="assets/images/projects/rosa.jpg" onerror="this.src='https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=600'" class="card-bg">
+                <div class="card-content">
+                    <span class="card-tag" style="background: #ff0055; color: white;">AI RESEARCH</span>
+                    <h3 class="card-title">Project ROSA</h3>
+                    <p class="card-desc">Offline Neural Agents running purely on local consumer hardware.</p>
+                </div>
             </a>
+
+            <a href="projects.html" class="module-card">
+                <div class="blueprint-bg"><i class="fas fa-code-branch blueprint-icon"></i></div>
+                <img src="assets/images/projects/academia.jpg" onerror="this.src='https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=600'" class="card-bg">
+                <div class="card-content">
+                    <span class="card-tag" style="background: #b829ff; color: white;">ARCHIVE</span>
+                    <h3 class="card-title">Academia</h3>
+                    <p class="card-desc">Centralized repository for data structures, algorithms, and CS concepts.</p>
+                </div>
+            </a>
+
+            <a href="projects.html" class="module-card">
+                <div class="blueprint-bg"><i class="fas fa-mountain blueprint-icon"></i></div>
+                <img src="assets/images/projects/bhandari.jpg" onerror="this.src='https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&q=80&w=600'" class="card-bg">
+                <div class="card-content">
+                    <span class="card-tag">ENTERPRISE</span>
+                    <h3 class="card-title">Bhandari Adventure <div class="live-dot"></div></h3>
+                    <p class="card-desc">Full-stack business CMS capable of real-time tourism bookings.</p>
+                </div>
+            </a>
+
         </div>
     </section>
 
     <section class="module-section">
         <div class="section-header">
-            <div><h2 class="module-title">VISUAL <span style="color:var(--accent);">DESIGN</span></h2><p class="module-sub">LOGOS, THUMBNAILS & BRANDING</p></div>
-            <a href="gallery.html" style="color:#444; font-size:0.8rem; text-decoration:none;">VIEW GALLERY <i class="fas fa-arrow-right"></i></a>
+            <div>
+                <h2 class="module-title">VISUAL <span style="color:var(--accent);">DESIGN</span></h2>
+                <p class="module-sub">LOGOS, THUMBNAILS & BRANDING</p>
+            </div>
+            <div class="scroll-controls">
+                <button class="scroll-btn" onclick="scrollTrack('visual-track', -400)"><i class="fas fa-chevron-left"></i></button>
+                <button class="scroll-btn" onclick="scrollTrack('visual-track', 400)"><i class="fas fa-chevron-right"></i></button>
+            </div>
         </div>
-        <div class="scrolling-wrapper">
+        <div class="scrolling-wrapper" id="visual-track">
             <a href="gallery.html" class="module-card">
-                <img src="assets/img/project-thumbnails/t10.jpg" class="card-bg">
-                <div class="card-content"><span class="card-tag">YOUTUBE</span><h3 class="card-title">THUMBNAILS</h3><p class="card-desc">High-CTR designs for tech channels.</p></div>
+                <div class="blueprint-bg"><i class="fab fa-youtube blueprint-icon"></i></div>
+                <img src="assets/img/project-thumbnails/t10.jpg" class="card-bg" style="opacity: 0.8; filter: none;">
+                <div class="card-content">
+                    <span class="card-tag" style="background:#ff0000; color:white;">YOUTUBE</span>
+                    <h3 class="card-title">THUMBNAILS</h3>
+                    <p class="card-desc">High-CTR designs optimized for the gaming & tech algorithm.</p>
+                </div>
             </a>
             <a href="gallery.html" class="module-card">
-                <img src="assets/img/project-logos/logo1.png" class="card-bg" style="object-fit:contain; padding:30px;">
-                <div class="card-content"><span class="card-tag">IDENTITY</span><h3 class="card-title">BRANDING</h3><p class="card-desc">Vector-based visual systems.</p></div>
+                <div class="blueprint-bg"><i class="fas fa-bezier-curve blueprint-icon"></i></div>
+                <img src="assets/img/project-logos/logo1.png" class="card-bg" style="object-fit:contain; padding:30px; opacity: 1; filter:none;">
+                <div class="card-content">
+                    <span class="card-tag" style="background:#fff; color:black;">IDENTITY</span>
+                    <h3 class="card-title">BRANDING</h3>
+                    <p class="card-desc">Vector-based visual systems and corporate identity.</p>
+                </div>
             </a>
         </div>
     </section>
 
     <section class="module-section" style="border-bottom: none;">
         <div class="section-header">
-            <div><h2 class="module-title">VERIFIED <span style="color:var(--accent);">CREDENTIALS</span></h2><p class="module-sub">ACADEMIC & PROFESSIONAL CERTS</p></div>
-            <a href="certifications.html" style="color:#444; font-size:0.8rem; text-decoration:none;">VIEW ALL <i class="fas fa-arrow-right"></i></a>
+            <div>
+                <h2 class="module-title">VERIFIED <span style="color:var(--accent);">CREDENTIALS</span></h2>
+                <p class="module-sub">ACADEMIC & PROFESSIONAL CERTS</p>
+            </div>
+            <div class="scroll-controls">
+                <button class="scroll-btn" onclick="scrollTrack('cert-track', -400)"><i class="fas fa-chevron-left"></i></button>
+                <button class="scroll-btn" onclick="scrollTrack('cert-track', 400)"><i class="fas fa-chevron-right"></i></button>
+            </div>
         </div>
-        <div class="scrolling-wrapper">
+        <div class="scrolling-wrapper" id="cert-track">
             <a href="certifications.html" class="module-card" style="min-width: 400px;">
-                <img src="assets/img/certificates/degree-mca.png" class="card-bg">
-                <div class="card-content"><span class="card-tag">DEGREE</span><h3 class="card-title">MCA GRADUATE</h3><p class="card-desc">Master of Computer Applications.</p></div>
+                <div class="blueprint-bg"><i class="fas fa-graduation-cap blueprint-icon"></i></div>
+                <img src="assets/img/certificates/degree-mca.png" class="card-bg" style="opacity: 0.9; filter: none;">
+                <div class="card-content">
+                    <span class="card-tag">DEGREE</span>
+                    <h3 class="card-title">MCA GRADUATE</h3>
+                    <p class="card-desc">Master of Computer Applications.</p>
+                </div>
             </a>
             <a href="certifications.html" class="module-card" style="min-width: 400px;">
-                <img src="assets/img/certificates/degree-bca.png" class="card-bg">
-                <div class="card-content"><span class="card-tag">DEGREE</span><h3 class="card-title">BCA GRADUATE</h3><p class="card-desc">Bachelor of Computer Applications.</p></div>
+                <div class="blueprint-bg"><i class="fas fa-university blueprint-icon"></i></div>
+                <img src="assets/img/certificates/degree-bca.png" class="card-bg" style="opacity: 0.9; filter: none;">
+                <div class="card-content">
+                    <span class="card-tag">DEGREE</span>
+                    <h3 class="card-title">BCA GRADUATE</h3>
+                    <p class="card-desc">Bachelor of Computer Applications.</p>
+                </div>
             </a>
         </div>
     </section>
 
     <div id="footer-include"></div>
+    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/includes.js"></script>
     <script src="assets/js/script.js"></script>
+    
     <script>
         AOS.init({ duration: 800, once: true });
+        
+        // Horizontal Scroll Logic for Module Tracks
+        function scrollTrack(trackId, scrollOffset) {
+            const track = document.getElementById(trackId);
+            if(track) {
+                track.scrollBy({ left: scrollOffset, behavior: 'smooth' });
+            }
+        }
+
+        // Typewriter Effect Logic
         const typeText = document.querySelector('.role-typewrite');
-        const roles = ["SYSTEM_ARCHITECT", "FULL_STACK_DEV", "UI/UX_DESIGNER", "AI_ENGINEER"];
+        const roles = ["SYSTEM_ARCHITECT", "WEB_DEVELOPER", "UI/UX_DESIGNER", "AI_ENGINEER"];
         let roleIndex = 0, charIndex = 0, isDeleting = false;
+        
         function typeEffect() {
             const current = roles[roleIndex];
             typeText.textContent = current.substring(0, isDeleting ? charIndex-- : charIndex++);
@@ -297,6 +386,7 @@
             else if (isDeleting && charIndex === 0) { isDeleting = false; roleIndex = (roleIndex + 1) % roles.length; }
             setTimeout(typeEffect, isDeleting ? 50 : 100);
         }
+        
         document.addEventListener('DOMContentLoaded', typeEffect);
     </script>
 </body>
