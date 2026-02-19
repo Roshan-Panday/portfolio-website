@@ -30,13 +30,14 @@
         /* --- 1. COMPACT HERO --- */
         .hero-section {
             padding-top: 130px; 
-            padding-bottom: 60px;
-            display: flex; align-items: center; justify-content: center;
+            /* Removed padding-bottom to let marquee sit at the bottom */
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
 
         .hero-layout {
             display: flex; align-items: center; justify-content: space-between;
-            width: 100%; max-width: 1200px; margin: 0 auto; gap: 40px;
+            width: 100%; max-width: 1200px; margin: 0 auto 60px; gap: 40px;
+            padding: 0 20px;
         }
 
         .hero-content { flex: 1; z-index: 5; }
@@ -113,11 +114,12 @@
             filter: contrast(1.1); position: relative; z-index: 2; border: 4px solid rgba(0,0,0,0.5);
         }
 
-        /* --- TECH MARQUEE --- */
+        /* --- TECH MARQUEE (REPOSITIONED) --- */
         .tech-marquee-container {
             width: 100%; background: var(--accent); padding: 10px 0; overflow: hidden;
             border-top: 2px solid #fff; border-bottom: 2px solid #fff;
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); margin-bottom: 40px;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+            margin-top: 0; /* Changed from bottom margin to top 0 */
         }
         .tech-marquee {
             display: flex; white-space: nowrap; font-family: 'JetBrains Mono';
@@ -289,33 +291,33 @@
             </div>
 
         </div>
-    </section>
 
-    <div class="tech-marquee-container" data-aos="fade-up">
-        <div class="tech-marquee">
-            <span><i class="fab fa-html5"></i> HTML5</span>
-            <span><i class="fab fa-css3-alt"></i> CSS3</span>
-            <span><i class="fab fa-js"></i> JAVASCRIPT</span>
-            <span><i class="fab fa-php"></i> PHP</span>
-            <span><i class="fas fa-database"></i> MYSQL</span>
-            <span><i class="fab fa-python"></i> PYTHON</span>
-            <span><i class="fas fa-microchip"></i> C++</span>
-            <span><i class="fab fa-java"></i> JAVA</span>
-            <span><i class="fas fa-brain"></i> PYTORCH</span>
-            <span><i class="fas fa-project-diagram"></i> ALGORITHMS</span>
-            
-            <span><i class="fab fa-html5"></i> HTML5</span>
-            <span><i class="fab fa-css3-alt"></i> CSS3</span>
-            <span><i class="fab fa-js"></i> JAVASCRIPT</span>
-            <span><i class="fab fa-php"></i> PHP</span>
-            <span><i class="fas fa-database"></i> MYSQL</span>
-            <span><i class="fab fa-python"></i> PYTHON</span>
-            <span><i class="fas fa-microchip"></i> C++</span>
-            <span><i class="fab fa-java"></i> JAVA</span>
-            <span><i class="fas fa-brain"></i> PYTORCH</span>
-            <span><i class="fas fa-project-diagram"></i> ALGORITHMS</span>
+        <div class="tech-marquee-container" data-aos="fade-up">
+            <div class="tech-marquee">
+                <span><i class="fab fa-html5"></i> HTML5</span>
+                <span><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span><i class="fab fa-js"></i> JAVASCRIPT</span>
+                <span><i class="fab fa-php"></i> PHP</span>
+                <span><i class="fas fa-database"></i> MYSQL</span>
+                <span><i class="fab fa-python"></i> PYTHON</span>
+                <span><i class="fas fa-microchip"></i> C++</span>
+                <span><i class="fab fa-java"></i> JAVA</span>
+                <span><i class="fas fa-brain"></i> PYTORCH</span>
+                <span><i class="fas fa-project-diagram"></i> ALGORITHMS</span>
+                
+                <span><i class="fab fa-html5"></i> HTML5</span>
+                <span><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span><i class="fab fa-js"></i> JAVASCRIPT</span>
+                <span><i class="fab fa-php"></i> PHP</span>
+                <span><i class="fas fa-database"></i> MYSQL</span>
+                <span><i class="fab fa-python"></i> PYTHON</span>
+                <span><i class="fas fa-microchip"></i> C++</span>
+                <span><i class="fab fa-java"></i> JAVA</span>
+                <span><i class="fas fa-brain"></i> PYTORCH</span>
+                <span><i class="fas fa-project-diagram"></i> ALGORITHMS</span>
+            </div>
         </div>
-    </div>
+    </section>
 
     <section class="module-section">
         <div class="section-header">
