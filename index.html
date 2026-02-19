@@ -81,24 +81,21 @@
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
         }
-
         .identity-link-card:hover {
             transform: translateX(10px);
             background: rgba(0, 242, 255, 0.1);
             box-shadow: 0 0 40px rgba(0, 242, 255, 0.2);
         }
-
         .id-icon {
             font-size: 2rem; color: white;
             background: var(--accent); width: 50px; height: 50px;
             display: flex; align-items: center; justify-content: center;
             border-radius: 8px; color: black;
         }
-
         .id-text h3 { color: white; font-family: 'Rajdhani'; font-size: 1.2rem; margin: 0; }
         .id-text p { color: var(--accent); font-size: 0.8rem; margin: 0; font-family: 'JetBrains Mono'; }
 
-        /* --- HERO VISUAL (Added Floating Animation) --- */
+        /* --- HERO VISUAL --- */
         .hero-visual { flex: 1; display: flex; justify-content: center; animation: float 6s ease-in-out infinite; }
         .profile-card {
             width: 320px; height: 320px;
@@ -116,6 +113,19 @@
             filter: contrast(1.1); position: relative; z-index: 2; border: 4px solid rgba(0,0,0,0.5);
         }
 
+        /* --- NEW: TECH MARQUEE --- */
+        .tech-marquee-container {
+            width: 100%; background: var(--accent); padding: 10px 0; overflow: hidden;
+            border-top: 2px solid #fff; border-bottom: 2px solid #fff;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); margin-bottom: 40px;
+        }
+        .tech-marquee {
+            display: flex; white-space: nowrap; font-family: 'JetBrains Mono';
+            font-weight: 800; font-size: 1.1rem; color: #000; animation: marquee 25s linear infinite;
+        }
+        .tech-marquee span { margin-right: 50px; display: inline-flex; align-items: center; gap: 10px; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
         /* --- 2. MODULE CARDS & INTERACTIVE SCROLLER --- */
         .module-section { padding: 50px 0; border-top: 1px solid #111; position: relative; }
         .section-header {
@@ -125,7 +135,6 @@
         .module-title { font-size: 2rem; color: white; font-family: 'Rajdhani'; font-weight: 700; margin: 0; }
         .module-sub { color: #666; font-size: 0.9rem; margin-top: 5px; font-family: 'JetBrains Mono'; letter-spacing: 1px; }
 
-        /* Scroll Controls */
         .scroll-controls { display: flex; gap: 10px; }
         .scroll-btn {
             background: #111; border: 1px solid #333; color: var(--accent);
@@ -143,16 +152,13 @@
         .scrolling-wrapper::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
 
         .module-card {
-            min-width: 350px; height: 240px;
-            background: #0f0f0f; border-radius: 12px;
-            border: 1px solid #333; position: relative;
-            scroll-snap-align: start; overflow: hidden;
+            min-width: 350px; height: 240px; background: #0f0f0f; border-radius: 12px;
+            border: 1px solid #333; position: relative; scroll-snap-align: start; overflow: hidden;
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-decoration: none; flex-shrink: 0;
             display: flex; flex-direction: column; justify-content: flex-end;
         }
         .module-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 15px 35px rgba(0, 242, 255, 0.2); }
 
-        /* Holographic BG Effects */
         .blueprint-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-color: #080808; background-image: radial-gradient(#222 1px, transparent 1px);
@@ -183,6 +189,33 @@
         .card-title { color: white; font-size: 1.4rem; font-family: 'Rajdhani'; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 10px; }
         .card-desc { color: #aaa; font-size: 0.85rem; margin-top: 6px; line-height: 1.4; }
 
+        /* --- NEW: AGENCY & SPECS BANNERS --- */
+        .info-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 30px; 
+            max-width: 1200px; margin: 0 auto 50px; padding: 0 20px;
+        }
+        .info-banner {
+            background: #0a0a0a; border: 1px solid #333; padding: 30px;
+            border-radius: 12px; display: flex; flex-direction: column; justify-content: center;
+            position: relative; overflow: hidden; transition: 0.3s;
+        }
+        .info-banner:hover { border-color: var(--accent); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1); }
+        .info-banner h3 { color: white; font-family: 'Rajdhani'; font-size: 1.8rem; margin: 0 0 10px 0; }
+        .info-banner p { color: #888; font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px 0; }
+        
+        .terminal-text { font-family: 'JetBrains Mono'; font-size: 0.85rem; color: var(--accent); line-height: 1.8; }
+        .terminal-text span { color: #fff; }
+
+        /* --- CTA --- */
+        .cta-section { text-align: center; padding: 60px 20px 80px; }
+        .btn-neon-large {
+            display: inline-block; padding: 15px 40px; font-size: 1.2rem;
+            color: black; background: var(--accent); font-family: 'Rajdhani'; font-weight: 700;
+            text-decoration: none; border-radius: 4px; box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+            transition: 0.3s;
+        }
+        .btn-neon-large:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 242, 255, 0.6); }
+
         @media (max-width: 900px) {
             .hero-section { padding-top: 100px; text-align: center; }
             .hero-layout { flex-direction: column-reverse; gap: 40px; }
@@ -190,7 +223,8 @@
             .profile-card { width: 280px; height: 280px; }
             h1 { font-size: 3rem; }
             .module-card { min-width: 85vw; }
-            .scroll-controls { display: none; } /* Hide buttons on mobile, rely on swipe */
+            .scroll-controls { display: none; }
+            .info-grid { grid-template-columns: 1fr; }
         }
 
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
@@ -212,7 +246,7 @@
                 <div class="role-wrapper">> <span class="role-typewrite"></span><span class="cursor">|</span></div>
                 
                 <p class="hero-desc">
-                    Bridging the gap between <strong>Heavy Backend Logic</strong> and <strong>Creative Visuals</strong>. I build robust offline AI networks and scalable digital ecosystems.
+                    Bridging the gap between <strong>Heavy Backend Logic</strong> and <strong>Creative Visuals</strong>. I build robust offline AI networks, scalable digital ecosystems, and high-conversion commercial interfaces.
                 </p>
 
                 <a href="about.html" class="identity-link-card">
@@ -227,12 +261,38 @@
 
             <div class="hero-visual" data-aos="zoom-in">
                 <div class="profile-card">
-                    <img src="assets/img/profile.jpg" class="profile-img" alt="Roshan">
+                    <img src="assets/img/profile.jpg" class="profile-img" alt="Roshan Panday">
                 </div>
             </div>
 
         </div>
     </section>
+
+    <div class="tech-marquee-container" data-aos="fade-up">
+        <div class="tech-marquee">
+            <span><i class="fab fa-html5"></i> HTML5</span>
+            <span><i class="fab fa-css3-alt"></i> CSS3</span>
+            <span><i class="fab fa-js"></i> JAVASCRIPT</span>
+            <span><i class="fab fa-php"></i> PHP</span>
+            <span><i class="fas fa-database"></i> MYSQL</span>
+            <span><i class="fab fa-python"></i> PYTHON</span>
+            <span><i class="fas fa-microchip"></i> C++</span>
+            <span><i class="fab fa-java"></i> JAVA</span>
+            <span><i class="fas fa-brain"></i> PYTORCH</span>
+            <span><i class="fas fa-project-diagram"></i> ALGORITHMS</span>
+            
+            <span><i class="fab fa-html5"></i> HTML5</span>
+            <span><i class="fab fa-css3-alt"></i> CSS3</span>
+            <span><i class="fab fa-js"></i> JAVASCRIPT</span>
+            <span><i class="fab fa-php"></i> PHP</span>
+            <span><i class="fas fa-database"></i> MYSQL</span>
+            <span><i class="fab fa-python"></i> PYTHON</span>
+            <span><i class="fas fa-microchip"></i> C++</span>
+            <span><i class="fab fa-java"></i> JAVA</span>
+            <span><i class="fas fa-brain"></i> PYTORCH</span>
+            <span><i class="fas fa-project-diagram"></i> ALGORITHMS</span>
+        </div>
+    </div>
 
     <section class="module-section">
         <div class="section-header">
@@ -287,6 +347,40 @@
                     <p class="card-desc">Full-stack business CMS capable of real-time tourism bookings.</p>
                 </div>
             </a>
+
+        </div>
+        <div style="text-align: center; margin-top: 10px;">
+            <a href="projects.html" style="color:var(--accent); text-decoration: none; font-family: 'JetBrains Mono'; font-size: 0.9rem;">> INITIATE FULL PROJECT ARCHIVE <</a>
+        </div>
+    </section>
+
+    <section style="padding: 40px 0;">
+        <div class="info-grid">
+            
+            <div class="info-banner" data-aos="fade-right">
+                <i class="fas fa-handshake" style="position: absolute; right: -20px; bottom: -20px; font-size: 10rem; color: #111; z-index: 0;"></i>
+                <div style="position: relative; z-index: 1;">
+                    <span class="card-tag" style="background:#ff9900; color:black; margin-bottom: 15px;">JOINT OPERATIONS</span>
+                    <h3>Digital Agency Partnership</h3>
+                    <p>Co-founding a comprehensive web development and digital advertising agency alongside business partner <strong>Sidhant Roul</strong> to deliver high-conversion digital storefronts.</p>
+                    <a href="team.html" style="color: var(--accent); text-decoration: none; font-weight: bold; font-family: 'JetBrains Mono';">> MEET THE TEAM</a>
+                </div>
+            </div>
+
+            <div class="info-banner" data-aos="fade-left">
+                <i class="fas fa-microchip" style="position: absolute; right: -10px; bottom: -10px; font-size: 10rem; color: #111; z-index: 0;"></i>
+                <div style="position: relative; z-index: 1;">
+                    <span class="card-tag" style="background:#44ff44; color:black; margin-bottom: 15px;">HARDWARE SPECS</span>
+                    <h3>Current Dev Loadout</h3>
+                    <div class="terminal-text">
+                        > RIG: <span>Acer Nitro 5 AN515</span><br>
+                        > GPU: <span>NVIDIA RTX 3070 Ti (8GB VRAM)</span><br>
+                        > RAM: <span>16GB DDR4</span><br>
+                        > MOBILE_TESTING: <span>POCO X6 Pro</span><br>
+                        > PERIPHERALS: <span>Redgear Pro Series Wireless</span>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </section>
@@ -355,6 +449,14 @@
                 </div>
             </a>
         </div>
+    </section>
+
+    <section class="cta-section" data-aos="fade-up">
+        <h2 style="font-size: 2.5rem; color:white; font-family:'Rajdhani'; margin-bottom: 20px;">READY TO DEPLOY?</h2>
+        <p style="color:#aaa; font-size: 1.1rem; margin-bottom: 40px; line-height: 1.6; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Need a robust backend architecture or a high-converting digital storefront? Let's build something exceptional together.
+        </p>
+        <a href="contact.html" class="btn-neon-large"><i class="fas fa-bolt" style="margin-right: 10px;"></i> INITIATE CONNECTION</a>
     </section>
 
     <div id="footer-include"></div>
