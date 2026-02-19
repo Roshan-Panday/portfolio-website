@@ -3,184 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work | Roshan Panday</title>
+    <title>Project Archive | Roshan Panday</title>
     
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Rajdhani:wght@500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         body { background-color: #000; overflow-x: hidden; }
 
-        /* --- 1. PROJECT GRID --- */
+        /* --- PAGE HEADER & INTRO --- */
+        .archive-hero {
+            padding: 150px 20px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid #222;
+        }
+        .archive-title {
+            font-size: 4rem; color: white; font-family: 'Rajdhani'; font-weight: 800;
+            text-transform: uppercase; margin-bottom: 10px; line-height: 1;
+        }
+        .archive-subtitle {
+            color: var(--accent); font-family: 'JetBrains Mono'; letter-spacing: 2px;
+            font-size: 1rem; margin-bottom: 30px; display: flex; align-items: center; gap: 10px;
+        }
+        .archive-desc {
+            color: #aaa; font-size: 1.1rem; line-height: 1.8; max-width: 800px;
+            border-left: 3px solid var(--accent); padding-left: 20px;
+            background: linear-gradient(90deg, rgba(0, 242, 255, 0.05), transparent);
+            margin-bottom: 40px;
+        }
+
+        /* --- SYSTEM METRICS (NEW) --- */
+        .metrics-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; margin-bottom: 50px;
+        }
+        .metric-box {
+            background: #0a0a0a; border: 1px solid #222; padding: 20px;
+            border-radius: 8px; transition: 0.3s;
+        }
+        .metric-box:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .metric-val { font-size: 2.5rem; color: white; font-family: 'Rajdhani'; font-weight: 700; margin-bottom: 5px; }
+        .metric-label { color: var(--accent); font-size: 0.8rem; font-family: 'JetBrains Mono'; letter-spacing: 1px; }
+
+        /* --- PROJECT GRID --- */
         .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px; margin-top: 40px; padding-bottom: 80px;
         }
 
-        /* --- 2. THE CYBER CARD WITH VISUALS --- */
+        /* --- CARDS --- */
         .project-card {
-            background: #050505;
-            border: 1px solid #222;
-            padding: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-            /* The "Chip" Cut */
+            background: #050505; border: 1px solid #222; padding: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; cursor: pointer; overflow: hidden;
             clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
-            min-height: 420px;
-            display: flex;
-            flex-direction: column;
+            display: flex; flex-direction: column; min-height: 420px;
         }
+        .project-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 15px 40px rgba(0, 242, 255, 0.15); }
 
-        .project-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 40px rgba(0, 242, 255, 0.15);
-        }
-
-        .card-header {
-            display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;
-        }
+        .card-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px; }
         .card-status { font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; color: #666; text-transform: uppercase; }
         
-        /* --- NEW THUMBNAIL STYLES --- */
         .card-visual {
-            width: 100%;
-            height: 180px;
-            border: 1px solid #222;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            position: relative;
-            background: #111;
+            width: 100%; height: 180px; border: 1px solid #222; border-radius: 4px;
+            margin-bottom: 20px; overflow: hidden; position: relative; background: #111;
         }
-        
-        .card-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.5s ease;
-            filter: grayscale(80%) contrast(120%) brightness(0.7);
-        }
-
-        /* The Cyberpunk Overlay inside the image */
+        .card-visual img { width: 100%; height: 100%; object-fit: cover; transition: all 0.5s ease; filter: grayscale(80%) brightness(0.7); }
         .card-visual::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.8) 100%);
-            transition: 0.5s;
-            pointer-events: none;
+            transition: 0.5s; pointer-events: none;
         }
+        .project-card:hover .card-visual img { transform: scale(1.1); filter: grayscale(0%) brightness(1); }
+        .project-card:hover .card-visual { border-color: var(--accent); }
 
-        /* Hover Effects for Image */
-        .project-card:hover .card-visual img {
-            transform: scale(1.1);
-            filter: grayscale(0%) contrast(110%) brightness(1);
-        }
-        .project-card:hover .card-visual {
-            border-color: var(--accent);
-            box-shadow: inset 0 0 20px rgba(0, 242, 255, 0.2);
-        }
-
-        /* Floating Icon over the image */
         .visual-icon {
-            position: absolute;
-            top: 10px; right: 10px;
-            background: rgba(0,0,0,0.7);
-            padding: 8px;
-            border-radius: 4px;
-            color: #555;
-            font-size: 1.2rem;
-            z-index: 2;
-            transition: 0.3s;
-            border: 1px solid #333;
+            position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7);
+            padding: 8px; border-radius: 4px; color: #555; font-size: 1.2rem; z-index: 2;
+            transition: 0.3s; border: 1px solid #333;
         }
         .project-card:hover .visual-icon { color: var(--accent); border-color: var(--accent); }
 
-        /* --- TEXT DATA --- */
-        .card-title { color: white; font-size: 1.4rem; margin-bottom: 10px; letter-spacing: 1px; font-weight: 700; }
+        .card-title { color: white; font-size: 1.4rem; margin-bottom: 10px; font-family: 'Rajdhani'; font-weight: 700; display: flex; align-items: center; gap: 10px;}
         .card-tech-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px; }
-        
-        .tech-badge { 
-            font-size: 0.75rem; 
-            padding: 3px 8px; 
-            border: 1px solid #333; 
-            color: #888; 
-            font-weight: 600; 
-            background: rgba(255,255,255,0.05);
-        }
-
+        .tech-badge { font-size: 0.75rem; padding: 3px 8px; border: 1px solid #333; color: #888; font-weight: 600; background: rgba(255,255,255,0.05); }
         .card-desc { color: #888; font-size: 0.9rem; line-height: 1.5; flex-grow: 1; margin-bottom: 20px;}
-
         .card-footer { 
-            margin-top: auto; 
-            padding-top: 15px; 
-            border-top: 1px solid #222; 
-            color: var(--accent); 
-            font-size: 0.8rem; 
-            font-weight: 700; 
+            margin-top: auto; padding-top: 15px; border-top: 1px solid #222; 
+            color: var(--accent); font-size: 0.8rem; font-weight: 700; 
             display: flex; justify-content: space-between; align-items: center;
         }
 
-        /* --- 3. HOLOGRAPHIC MODAL (POPUP) --- */
+        /* --- WORKFLOW PROCESS (NEW) --- */
+        .workflow-section { background: #050505; padding: 80px 20px; border-top: 1px solid #222; }
+        .workflow-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px; max-width: 1200px; margin: 40px auto 0;
+        }
+        .step-card { border-left: 2px solid #333; padding-left: 20px; position: relative; }
+        .step-card::before {
+            content: ''; position: absolute; left: -6px; top: 0;
+            width: 10px; height: 10px; background: var(--accent); border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+        .step-num { font-family: 'JetBrains Mono'; color: var(--accent); font-size: 0.9rem; margin-bottom: 10px; }
+        .step-title { color: white; font-size: 1.5rem; font-family: 'Rajdhani'; margin-bottom: 10px; }
+        .step-desc { color: #888; font-size: 0.95rem; line-height: 1.6; }
+
+        /* --- CTA SECTION --- */
+        .cta-section { text-align: center; padding: 80px 20px; max-width: 800px; margin: 0 auto; }
+        .btn-neon-large {
+            display: inline-block; padding: 15px 40px; font-size: 1.2rem;
+            color: black; background: var(--accent); font-family: 'Rajdhani'; font-weight: 700;
+            text-decoration: none; border-radius: 4px; box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+            transition: 0.3s;
+        }
+        .btn-neon-large:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 242, 255, 0.6); }
+
+        /* --- HOLOGRAPHIC MODAL --- */
         .project-panel-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(5px);
-            z-index: 99999; 
-            display: none; 
-            justify-content: center; align-items: center;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
+            z-index: 99999; display: none; justify-content: center; align-items: center;
             opacity: 0; transition: 0.3s;
         }
         .project-panel-overlay.active { opacity: 1; display: flex; }
-
         .project-panel {
-            width: 90%; max-width: 800px;
-            background: #0a0a0a;
-            border: 1px solid var(--accent);
-            padding: 40px;
-            position: relative;
-            box-shadow: 0 0 50px rgba(0, 242, 255, 0.15);
+            width: 90%; max-width: 800px; background: #0a0a0a; border: 1px solid var(--accent);
+            padding: 40px; position: relative; box-shadow: 0 0 50px rgba(0, 242, 255, 0.15);
             clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);
-            animation: slideUp 0.4s ease;
-            max-height: 90vh;
-            overflow-y: auto;
+            animation: slideUp 0.4s ease; max-height: 90vh; overflow-y: auto;
         }
-
         @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
         .close-panel { 
-            position: absolute; top: 15px; right: 20px; 
-            color: #666; font-size: 2.5rem; cursor: pointer; transition: 0.2s; 
-            z-index: 100; line-height: 1;
+            position: absolute; top: 15px; right: 20px; color: #666; font-size: 2.5rem; 
+            cursor: pointer; transition: 0.2s; z-index: 100; line-height: 1;
         }
         .close-panel:hover { color: white; transform: rotate(90deg); }
-
         .panel-header { border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 25px; }
         .panel-title { color: white; font-size: 2rem; margin: 0; }
         .panel-subtitle { color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; margin-top: 5px; font-weight: 700; }
-
         .panel-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
-        
         .panel-section-label { color: #555; font-weight: 800; font-size: 0.8rem; margin-bottom: 10px; letter-spacing: 1px; }
         .panel-text { color: #ccc; line-height: 1.6; margin-bottom: 20px; font-size: 0.95rem; }
-        
         .feature-list { list-style: none; padding: 0; }
         .feature-list li { padding: 8px 0; border-bottom: 1px solid #222; color: #aaa; font-size: 0.9rem; display: flex; align-items: center; }
         .feature-list li::before { content: '>'; color: var(--accent); margin-right: 10px; font-weight: 800; }
-
         .panel-actions { margin-top: 30px; display: flex; gap: 15px; }
 
-        @media (max-width: 900px) {
-            .panel-grid { grid-template-columns: 1fr; gap: 20px; }
-            .project-panel { padding: 25px; width: 95%; }
-        }
+        .live-dot { width: 8px; height: 8px; background: #00f2ff; border-radius: 50%; box-shadow: 0 0 10px #00f2ff; display: inline-block; animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        @media (max-width: 900px) { .panel-grid { grid-template-columns: 1fr; gap: 20px; } .project-panel { padding: 25px; width: 95%; } }
     </style>
 </head>
 <body>
@@ -188,171 +165,218 @@
     <canvas id="neural-canvas"></canvas>
     <div id="header-include"></div>
 
-    <section style="padding-top: 100px; padding-bottom: 60px;">
-        <div class="container">
-            
-            <div style="border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 40px;">
-                <h1 style="font-size: 2.5rem; color:white;">DEPLOYMENT <span style="color:var(--accent);">LOG</span></h1>
-                <p style="color:#666; letter-spacing: 2px; font-size: 0.9rem; margin-top: 5px;">ACTIVE NODES & ARCHITECTURES</p>
-                <p style="font-size:0.8rem; color:var(--accent); margin-top:10px;">[ INITIATE CONNECTION SEQUENCE ]</p>
+    <header class="archive-hero">
+        <div class="archive-subtitle"><i class="fas fa-terminal"></i> root/systems/deployments/</div>
+        <h1 class="archive-title" data-aos="fade-up">System <span style="color:var(--accent);">Archive</span></h1>
+        <p class="archive-desc" data-aos="fade-up" data-aos-delay="100">
+            Welcome to the central repository of my active and legacy deployments. This index contains a curated selection of systems I have architected, ranging from high-conversion commercial enterprise web applications to experimental offline AI engines. My approach ensures that heavy backend logic is perfectly balanced with pixel-perfect visual execution.
+        </p>
+
+        <div class="metrics-grid" data-aos="fade-up" data-aos-delay="200">
+            <div class="metric-box">
+                <div class="metric-val">> 15+</div>
+                <div class="metric-label">SYSTEMS DEPLOYED</div>
             </div>
-            
-            <div class="project-grid">
-                
-                <div class="project-card" data-aos="fade-up" onclick="openProjectPanel(0)">
-                    <div class="card-header">
-                        <span class="card-status">LIVE SYSTEM</span>
-                        <i class="fas fa-signal" style="color:var(--accent);"></i>
-                    </div>
-                    <div class="card-visual">
-                        <i class="fas fa-mountain visual-icon"></i>
-                        <img src="assets/images/projects/bhandari.jpg" onerror="this.src='https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&q=80&w=600'" alt="Bhandari Adventure">
-                    </div>
-                    <h3 class="card-title">Bhandari Adventure</h3>
-                    <div class="card-tech-row">
-                        <span class="tech-badge">PHP</span><span class="tech-badge">MySQL</span><span class="tech-badge">JS</span>
-                    </div>
-                    <p class="card-desc">High-performance custom CMS built for adventure tourism handling real-time bookings.</p>
-                    <div class="card-footer">
-                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100" onclick="openProjectPanel(1)">
-                    <div class="card-header">
-                        <span class="card-status" style="color:#3DDC84;">TOOLKIT</span>
-                        <i class="fas fa-terminal" style="color:#3DDC84;"></i>
-                    </div>
-                    <div class="card-visual" style="border-color: rgba(61, 220, 132, 0.3);">
-                        <i class="fab fa-android visual-icon"></i>
-                        <img src="assets/images/projects/streamer.jpg" onerror="this.src='https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&q=80&w=600'" alt="Android Streamer">
-                    </div>
-                    <h3 class="card-title">Android Streamer</h3>
-                    <div class="card-tech-row">
-                        <span class="tech-badge">C++</span><span class="tech-badge">ADB</span><span class="tech-badge">FFmpeg</span>
-                    </div>
-                    <p class="card-desc">Low-latency screen mirroring tool for developers utilizing raw ADB frame buffers.</p>
-                    <div class="card-footer" style="color:#3DDC84;">
-                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200" onclick="openProjectPanel(2)">
-                    <div class="card-header">
-                        <span class="card-status" style="color:#ff0000;">ANALYTICS</span>
-                        <i class="fas fa-satellite-dish" style="color:#ff0000;"></i>
-                    </div>
-                    <div class="card-visual" style="border-color: rgba(255, 0, 0, 0.3);">
-                        <i class="fab fa-youtube visual-icon"></i>
-                        <img src="assets/images/projects/tigml.jpg" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600'" alt="Tigml Analytics">
-                    </div>
-                    <h3 class="card-title">@tigml Data</h3>
-                    <div class="card-tech-row">
-                        <span class="tech-badge">Data Science</span><span class="tech-badge">Excel</span>
-                    </div>
-                    <p class="card-desc">Data-driven growth strategy for gaming content, analyzing meta-trends for virality.</p>
-                    <div class="card-footer" style="color:#ff0000;">
-                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="fade-up" onclick="openProjectPanel(3)">
-                    <div class="card-header">
-                        <span class="card-status" style="color:#ff0055;">PROTOTYPE</span>
-                        <i class="fas fa-network-wired" style="color:#ff0055;"></i>
-                    </div>
-                    <div class="card-visual" style="border-color: rgba(255, 0, 85, 0.3);">
-                        <i class="fas fa-brain visual-icon"></i>
-                        <img src="assets/images/projects/rosa.jpg" onerror="this.src='https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=600'" alt="Project ROSA">
-                    </div>
-                    <h3 class="card-title">Project ROSA</h3>
-                    <div class="card-tech-row">
-                        <span class="tech-badge">Python</span><span class="tech-badge">PyTorch</span><span class="tech-badge">LLM</span>
-                    </div>
-                    <p class="card-desc">Offline AI Avatar running on consumer hardware (RTX 3070 Ti) for privacy-first assistance.</p>
-                    <div class="card-footer" style="color:#ff0055;">
-                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100" onclick="openProjectPanel(4)">
-                    <div class="card-header">
-                        <span class="card-status" style="color:#ff5555;">ENGINE</span>
-                        <i class="fas fa-microchip" style="color:#ff5555;"></i>
-                    </div>
-                    <div class="card-visual" style="border-color: rgba(255, 85, 85, 0.3);">
-                        <i class="fas fa-gamepad visual-icon"></i>
-                        <img src="assets/images/projects/mh2d.jpg" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=600'" alt="MH2D Engine">
-                    </div>
-                    <h3 class="card-title">MH_2D Engine</h3>
-                    <div class="card-tech-row">
-                        <span class="tech-badge">Java</span><span class="tech-badge">OOP</span><span class="tech-badge">Physics</span>
-                    </div>
-                    <p class="card-desc">Custom Java-based Action RPG engine featuring state-machine AI logic.</p>
-                    <div class="card-footer" style="color:#ff5555;">
-                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200" onclick="openProjectPanel(5)">
-                    <div class="card-header">
-                        <span class="card-status" style="color:#44ff44;">SECURE</span>
-                        <i class="fas fa-shield-alt" style="color:#44ff44;"></i>
-                    </div>
-                    <div class="card-visual" style="border-color: rgba(68, 255, 68, 0.3);">
-                        <i class="fas fa-lock visual-icon"></i>
-                        <img src="assets/images/projects/vault.jpg" onerror="this.src='https://images.unsplash.com/photo-1614064641913-6b110b656ea1?auto=format&fit=crop&q=80&w=600'" alt="Secure Vault">
-                    </div>
-                    <h3 class="card-title">Secure_Vault</h3>
-                    <div class="card-tech-row">
-                        <span class="tech-badge">C++</span><span class="tech-badge">Crypto</span><span class="tech-badge">File I/O</span>
-                    </div>
-                    <p class="card-desc">Terminal-based transaction management system with encrypted logging.</p>
-                    <div class="card-footer" style="color:#44ff44;">
-                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="fade-up" data-aos-delay="0" onclick="openProjectPanel(6)">
-                    <div class="card-header">
-                        <span class="card-status" style="color:#00e5ff;">PRODUCTION</span>
-                        <i class="fas fa-globe-asia" style="color:#00e5ff;"></i>
-                    </div>
-                    <div class="card-visual" style="border-color: rgba(0, 229, 255, 0.3);">
-                        <i class="fas fa-campground visual-icon"></i>
-                        <img src="assets/images/projects/blueheaven.jpg" onerror="this.src='https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&q=80&w=600'" alt="Blue Heaven Camp">
-                    </div>
-                    <h3 class="card-title">Blue Heaven</h3>
-                    <div class="card-tech-row">
-                        <span class="tech-badge">HTML/CSS</span><span class="tech-badge">JS</span><span class="tech-badge">Fetch API</span>
-                    </div>
-                    <p class="card-desc">Responsive, high-performance static website built for a luxury riverside camping resort.</p>
-                    <div class="card-footer" style="color:#00e5ff;">
-                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100" onclick="openProjectPanel(7)">
-                    <div class="card-header">
-                        <span class="card-status" style="color:#b829ff;">ARCHIVE</span>
-                        <i class="fas fa-database" style="color:#b829ff;"></i>
-                    </div>
-                    <div class="card-visual" style="border-color: rgba(184, 41, 255, 0.3);">
-                        <i class="fas fa-code-branch visual-icon"></i>
-                        <img src="assets/images/projects/academia.jpg" onerror="this.src='https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=600'" alt="Academia">
-                    </div>
-                    <h3 class="card-title">Academia</h3>
-                    <div class="card-tech-row">
-                        <span class="tech-badge">Algorithms</span><span class="tech-badge">Data Structures</span><span class="tech-badge">C++</span>
-                    </div>
-                    <p class="card-desc">A comprehensive repository of academic coursework, algorithm implementations, and core CS concepts.</p>
-                    <div class="card-footer" style="color:#b829ff;">
-                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
-                    </div>
-                </div>
-
+            <div class="metric-box">
+                <div class="metric-val">100%</div>
+                <div class="metric-label">CLIENT SATISFACTION</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-val">Full</div>
+                <div class="metric-label">STACK CAPABILITY</div>
             </div>
         </div>
+    </header>
+
+    <section class="container">
+        <div class="project-grid">
+            
+            <div class="project-card" data-aos="fade-up" onclick="openProjectPanel(0)">
+                <div class="card-header">
+                    <span class="card-status" style="color:#00e5ff;">PRODUCTION</span>
+                    <i class="fas fa-globe-asia" style="color:#00e5ff;"></i>
+                </div>
+                <div class="card-visual" style="border-color: rgba(0, 229, 255, 0.3);">
+                    <i class="fas fa-campground visual-icon"></i>
+                    <img src="assets/images/projects/blueheaven.jpg" onerror="this.src='https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&q=80&w=600'" alt="Blue Heaven Camp">
+                </div>
+                <h3 class="card-title">Blue Heaven Camp <div class="live-dot"></div></h3>
+                <div class="card-tech-row">
+                    <span class="tech-badge">HTML/CSS</span><span class="tech-badge">JS</span><span class="tech-badge">Fetch API</span>
+                </div>
+                <p class="card-desc">Responsive, high-performance static website built for a luxury riverside camping resort featuring dynamic components.</p>
+                <div class="card-footer" style="color:#00e5ff;">
+                    <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
+                </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100" onclick="openProjectPanel(1)">
+                <div class="card-header">
+                    <span class="card-status" style="color:var(--accent);">LIVE SYSTEM</span>
+                    <i class="fas fa-signal" style="color:var(--accent);"></i>
+                </div>
+                <div class="card-visual">
+                    <i class="fas fa-mountain visual-icon"></i>
+                    <img src="assets/images/projects/bhandari.jpg" onerror="this.src='https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&q=80&w=600'" alt="Bhandari Adventure">
+                </div>
+                <h3 class="card-title">Bhandari Adventure <div class="live-dot"></div></h3>
+                <div class="card-tech-row">
+                    <span class="tech-badge">PHP</span><span class="tech-badge">MySQL</span><span class="tech-badge">JS</span>
+                </div>
+                <p class="card-desc">High-performance custom CMS built for adventure tourism capable of handling peak-season real-time bookings.</p>
+                <div class="card-footer">
+                    <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
+                </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200" onclick="openProjectPanel(2)">
+                <div class="card-header">
+                    <span class="card-status" style="color:#ff0055;">PROTOTYPE</span>
+                    <i class="fas fa-network-wired" style="color:#ff0055;"></i>
+                </div>
+                <div class="card-visual" style="border-color: rgba(255, 0, 85, 0.3);">
+                    <i class="fas fa-brain visual-icon"></i>
+                    <img src="assets/images/projects/rosa.jpg" onerror="this.src='https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=600'" alt="Project ROSA">
+                </div>
+                <h3 class="card-title">Project ROSA</h3>
+                <div class="card-tech-row">
+                    <span class="tech-badge">Python</span><span class="tech-badge">PyTorch</span><span class="tech-badge">LLM</span>
+                </div>
+                <p class="card-desc">Offline AI Avatar running on consumer hardware (RTX 3070 Ti) for privacy-first, zero-latency voice assistance.</p>
+                <div class="card-footer" style="color:#ff0055;">
+                    <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
+                </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" onclick="openProjectPanel(3)">
+                <div class="card-header">
+                    <span class="card-status" style="color:#ff0000;">ANALYTICS</span>
+                    <i class="fas fa-satellite-dish" style="color:#ff0000;"></i>
+                </div>
+                <div class="card-visual" style="border-color: rgba(255, 0, 0, 0.3);">
+                    <i class="fab fa-youtube visual-icon"></i>
+                    <img src="assets/images/projects/tigml.jpg" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600'" alt="Tigml Analytics">
+                </div>
+                <h3 class="card-title">@tigml Data</h3>
+                <div class="card-tech-row">
+                    <span class="tech-badge">Data Science</span><span class="tech-badge">Excel</span>
+                </div>
+                <p class="card-desc">Data-driven growth strategy for gaming content, analyzing meta-trends to predict virality before it happens.</p>
+                <div class="card-footer" style="color:#ff0000;">
+                    <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
+                </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100" onclick="openProjectPanel(4)">
+                <div class="card-header">
+                    <span class="card-status" style="color:#44ff44;">SECURE</span>
+                    <i class="fas fa-shield-alt" style="color:#44ff44;"></i>
+                </div>
+                <div class="card-visual" style="border-color: rgba(68, 255, 68, 0.3);">
+                    <i class="fas fa-lock visual-icon"></i>
+                    <img src="assets/images/projects/vault.jpg" onerror="this.src='https://images.unsplash.com/photo-1614064641913-6b110b656ea1?auto=format&fit=crop&q=80&w=600'" alt="Secure Vault">
+                </div>
+                <h3 class="card-title">Secure_Vault</h3>
+                <div class="card-tech-row">
+                    <span class="tech-badge">C++</span><span class="tech-badge">Crypto</span><span class="tech-badge">File I/O</span>
+                </div>
+                <p class="card-desc">Terminal-based transaction management system featuring pointer-based memory safety and encrypted logging.</p>
+                <div class="card-footer" style="color:#44ff44;">
+                    <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
+                </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200" onclick="openProjectPanel(5)">
+                <div class="card-header">
+                    <span class="card-status" style="color:#ff5555;">ENGINE</span>
+                    <i class="fas fa-microchip" style="color:#ff5555;"></i>
+                </div>
+                <div class="card-visual" style="border-color: rgba(255, 85, 85, 0.3);">
+                    <i class="fas fa-gamepad visual-icon"></i>
+                    <img src="assets/images/projects/mh2d.jpg" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=600'" alt="MH2D Engine">
+                </div>
+                <h3 class="card-title">MH_2D Engine</h3>
+                <div class="card-tech-row">
+                    <span class="tech-badge">Java</span><span class="tech-badge">OOP</span><span class="tech-badge">Physics</span>
+                </div>
+                <p class="card-desc">Custom Java-based Action RPG engine built from scratch, featuring advanced state-machine AI logic for bosses.</p>
+                <div class="card-footer" style="color:#ff5555;">
+                    <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
+                </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" onclick="openProjectPanel(6)">
+                <div class="card-header">
+                    <span class="card-status" style="color:#3DDC84;">TOOLKIT</span>
+                    <i class="fas fa-terminal" style="color:#3DDC84;"></i>
+                </div>
+                <div class="card-visual" style="border-color: rgba(61, 220, 132, 0.3);">
+                    <i class="fab fa-android visual-icon"></i>
+                    <img src="assets/images/projects/streamer.jpg" onerror="this.src='https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&q=80&w=600'" alt="Android Streamer">
+                </div>
+                <h3 class="card-title">Android Streamer</h3>
+                <div class="card-tech-row">
+                    <span class="tech-badge">C++</span><span class="tech-badge">ADB</span><span class="tech-badge">FFmpeg</span>
+                </div>
+                <p class="card-desc">Low-latency screen mirroring tool for developers utilizing raw ADB frame buffers to achieve sub-50ms delay.</p>
+                <div class="card-footer" style="color:#3DDC84;">
+                    <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
+                </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100" onclick="openProjectPanel(7)">
+                <div class="card-header">
+                    <span class="card-status" style="color:#b829ff;">ARCHIVE</span>
+                    <i class="fas fa-database" style="color:#b829ff;"></i>
+                </div>
+                <div class="card-visual" style="border-color: rgba(184, 41, 255, 0.3);">
+                    <i class="fas fa-code-branch visual-icon"></i>
+                    <img src="assets/images/projects/academia.jpg" onerror="this.src='https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=600'" alt="Academia">
+                </div>
+                <h3 class="card-title">Academia</h3>
+                <div class="card-tech-row">
+                    <span class="tech-badge">Algorithms</span><span class="tech-badge">Data Structures</span><span class="tech-badge">C++</span>
+                </div>
+                <p class="card-desc">A comprehensive repository of academic coursework, algorithm implementations, and core CS concepts.</p>
+                <div class="card-footer" style="color:#b829ff;">
+                    <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="workflow-section">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; color:white; font-family:'Rajdhani'; text-align: center; margin-bottom: 10px;">ARCHITECTURE <span style="color:var(--accent);">LIFECYCLE</span></h2>
+            <p style="text-align: center; color:#888; font-family:'JetBrains Mono';">HOW I TRANSFORM IDEAS INTO DEPLOYED SYSTEMS</p>
+            
+            <div class="workflow-grid">
+                <div class="step-card" data-aos="fade-right">
+                    <div class="step-num">PHASE 01</div>
+                    <h3 class="step-title">Logic & Structure</h3>
+                    <p class="step-desc">Before writing a line of visual code, I architect the backend. This means designing robust SQL databases, efficient API routes, and ensuring algorithms scale without latency.</p>
+                </div>
+                <div class="step-card" data-aos="fade-right" data-aos-delay="100">
+                    <div class="step-num">PHASE 02</div>
+                    <h3 class="step-title">Interface Design</h3>
+                    <p class="step-desc">Bridging the gap between the machine and the user. I create pixel-perfect, mobile-first UIs using modern CSS frameworks, ensuring a frictionless user experience.</p>
+                </div>
+                <div class="step-card" data-aos="fade-right" data-aos-delay="200">
+                    <div class="step-num">PHASE 03</div>
+                    <h3 class="step-title">Deployment & Optimization</h3>
+                    <p class="step-desc">Pushing to live servers. I compress assets, optimize load times via Fetch APIs, ensure absolute mobile responsiveness, and setup tracking analytics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" data-aos="fade-up">
+        <h2 style="font-size: 2.5rem; color:white; font-family:'Rajdhani'; margin-bottom: 20px;">REQUIRE A SYSTEM DEPLOYMENT?</h2>
+        <p style="color:#aaa; font-size: 1.1rem; margin-bottom: 40px; line-height: 1.6;">
+            Whether you need a high-conversion web presence for your business or a complex backend architecture, I am available for freelance contracts and agency partnerships.
+        </p>
+        <a href="contact.html" class="btn-neon-large"><i class="fas fa-bolt" style="margin-right: 10px;"></i> INITIATE CONNECTION</a>
     </section>
 
     <div id="footer-include"></div>
@@ -393,9 +417,19 @@
     <script src="assets/js/script.js"></script>
 
     <script>
-        // DATA STORE FOR PROJECTS
+        AOS.init({ duration: 800, once: true });
+
+        // CAREFULLY RE-INDEXED TO MATCH THE NEW HTML ORDER
         const projectData = [
-            {
+            { // 0: Blue Heaven
+                title: "Blue Heaven Camp",
+                subtitle: "STATUS: LIVE // RESORT WEBSITE",
+                challenge: "The client needed a premium, fast-loading digital storefront to showcase luxury tents and adventure packages, with a direct pipeline for user inquiries via WhatsApp.",
+                solution: "Built a highly optimized, mobile-first static site. Implemented a dynamic component loader (Vanilla JS Fetch API) for modular architecture, custom lightbox galleries, and embedded direct-to-chat integrations.",
+                features: ["Dynamic Include Architecture", "Custom Lightbox Media Gallery", "Mobile-First UI/UX Design", "WhatsApp Direct Integration"],
+                link: "https://roshan-panday.github.io/Blue-Heaven/"
+            },
+            { // 1: Bhandari
                 title: "Bhandari Adventure",
                 subtitle: "STATUS: LIVE // COMMERCIAL CMS",
                 challenge: "The client needed a robust booking system capable of handling peak-season traffic without latency, while maintaining high SEO rankings for tourism keywords.",
@@ -403,15 +437,15 @@
                 features: ["Real-time Reservation Dashboard", "Automated Email Confirmations", "SEO-Optimized URL Structure", "Admin Panel for Bookings"],
                 link: "https://bhandariadventure.com/"
             },
-            {
-                title: "Android Streamer",
-                subtitle: "STATUS: V1.0 // DEVELOPER TOOL",
-                challenge: "Standard screen mirroring tools have high latency (200ms+), making them unusable for real-time debugging or high-FPS gaming.",
-                solution: "I bypassed standard casting protocols by tapping directly into the Android Debug Bridge (ADB). The raw frame buffer is decoded via FFmpeg, achieving sub-50ms latency.",
-                features: ["Zero-Lag Frame Buffer Access", "USB & Wireless ADB Support", "Low-Resource Client (C++)", "Keymapping Support"],
-                link: "https://github.com/roshan-panday"
+            { // 2: ROSA
+                title: "Project ROSA",
+                subtitle: "STATUS: PROTOTYPE // OFFLINE AI",
+                challenge: "Cloud-based AI assistants (Siri, Alexa) compromise privacy and require constant internet connection.",
+                solution: "ROSA (Responsive Offline System Architect) runs entirely on my local RTX 3070 Ti. It uses quantized LLMs to provide voice assistance without a single packet leaving the local network.",
+                features: ["Local LLM Inference (Llama 2)", "Voice-to-Text (Whisper)", "System Control API", "Zero-Latency Response"],
+                link: "" 
             },
-            {
+            { // 3: TIGML
                 title: "@tigml Analytics",
                 subtitle: "STATUS: ACTIVE // CONTENT STRATEGY",
                 challenge: "The MOBA gaming market is saturated. Growing a channel requires predicting meta-shifts before they happen.",
@@ -419,23 +453,7 @@
                 features: ["Meta-Data Trend Analysis", "Algorithmic Content Timing", "Mechanics Breakdown Guides", "Win-Rate Heatmaps"],
                 link: "https://www.youtube.com/@tigml"
             },
-            {
-                title: "Project ROSA",
-                subtitle: "STATUS: PROTOTYPE // OFFLINE AI",
-                challenge: "Cloud-based AI assistants (Siri, Alexa) compromise privacy and require constant internet connection.",
-                solution: "ROSA (Responsive Offline System Architect) runs entirely on my local RTX 3070 Ti. It uses quantized LLMs to provide voice assistance without a single packet leaving the local network.",
-                features: ["Local LLM Inference (Llama 2)", "Voice-to-Text (Whisper)", "System Control API", "Zero-Latency Response"],
-                link: "" // Empty string hides button
-            },
-            {
-                title: "Monster Hunter 2D",
-                subtitle: "STATUS: LEGACY // GAME ENGINE",
-                challenge: "I wanted to understand game physics from scratch, avoiding pre-built engines like Unity for this project.",
-                solution: "I wrote a custom 2D engine in Java. It handles collision detection, sprite rendering, and a state-machine AI for complex boss patterns.",
-                features: ["Custom Collision Physics", "State-Machine AI", "Asset Management System", "Particle Effects"],
-                link: "https://github.com/roshan-panday"
-            },
-            {
+            { // 4: Secure Vault
                 title: "Secure Vault",
                 subtitle: "STATUS: V2.4 // BANKING SYSTEM",
                 challenge: "Banking systems require absolute memory safety and data persistence to prevent fraud or corruption.",
@@ -443,15 +461,23 @@
                 features: ["Encrypted Transaction Logs", "Memory Safety (Pointers)", "User Authentication", "Admin Oversight"],
                 link: "https://github.com/roshan-panday"
             },
-            {
-                title: "Blue Heaven Camp",
-                subtitle: "STATUS: LIVE // RESORT WEBSITE",
-                challenge: "The client needed a premium, fast-loading digital storefront to showcase luxury tents and adventure packages, with a direct pipeline for user inquiries via WhatsApp.",
-                solution: "Built a highly optimized, mobile-first static site. Implemented a dynamic component loader (Vanilla JS Fetch API) for modular architecture, custom lightbox galleries, and embedded direct-to-chat integrations.",
-                features: ["Dynamic Include Architecture", "Custom Lightbox Media Gallery", "Mobile-First UI/UX Design", "WhatsApp Direct Integration"],
-                link: "https://github.com/Roshan-Panday/Blue-Heaven"
+            { // 5: MH2D
+                title: "Monster Hunter 2D",
+                subtitle: "STATUS: LEGACY // GAME ENGINE",
+                challenge: "I wanted to understand game physics from scratch, avoiding pre-built engines like Unity for this project.",
+                solution: "I wrote a custom 2D engine in Java. It handles collision detection, sprite rendering, and a state-machine AI for complex boss patterns.",
+                features: ["Custom Collision Physics", "State-Machine AI", "Asset Management System", "Particle Effects"],
+                link: "https://github.com/roshan-panday"
             },
-            {
+            { // 6: Streamer
+                title: "Android Streamer",
+                subtitle: "STATUS: V1.0 // DEVELOPER TOOL",
+                challenge: "Standard screen mirroring tools have high latency (200ms+), making them unusable for real-time debugging or high-FPS gaming.",
+                solution: "I bypassed standard casting protocols by tapping directly into the Android Debug Bridge (ADB). The raw frame buffer is decoded via FFmpeg, achieving sub-50ms latency.",
+                features: ["Zero-Lag Frame Buffer Access", "USB & Wireless ADB Support", "Low-Resource Client (C++)", "Keymapping Support"],
+                link: "https://github.com/roshan-panday"
+            },
+            { // 7: Academia
                 title: "Academia Repository",
                 subtitle: "STATUS: ARCHIVE // ACADEMIC & CS LOGS",
                 challenge: "Organizing and documenting various academic projects, algorithms, and technical assignments generated throughout the computer science curriculum into a single resource.",
@@ -484,7 +510,7 @@
             const linkBtn = document.getElementById('pp-link');
             if (data.link && data.link !== "") {
                 linkBtn.href = data.link;
-                linkBtn.style.display = 'flex';
+                linkBtn.style.display = 'inline-block';
             } else {
                 linkBtn.style.display = 'none';
             }
