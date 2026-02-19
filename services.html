@@ -6,7 +6,6 @@
     <title>Services | Roshan Panday</title>
     
     <link rel="stylesheet" href="assets/css/style.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Rajdhani:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -28,21 +27,45 @@
             overflow-x: hidden;
             font-family: 'Inter', sans-serif;
             background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
         }
 
-        .service-container { padding-top: 130px; min-height: 100vh; padding-bottom: 100px; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; }
+        .service-container { 
+            padding-top: 130px; 
+            min-height: 100vh; 
+            padding-bottom: 100px; 
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            position: relative; 
+        }
 
         /* --- PAGE HEADER --- */
         .archive-subtitle {
-            color: var(--accent); font-family: 'JetBrains Mono'; letter-spacing: 2px;
-            font-size: 1rem; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 10px;
+            color: var(--accent); 
+            font-family: 'JetBrains Mono'; 
+            letter-spacing: 2px;
+            font-size: 1rem; 
+            margin-bottom: 10px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px;
         }
+
         .page-desc {
-            color: #aaa; font-size: 1.05rem; line-height: 1.8; max-width: 700px; margin: 20px auto 40px;
-            border-left: 2px solid var(--accent); border-right: 2px solid var(--accent); padding: 0 20px;
+            color: #aaa; 
+            font-size: 1.05rem; 
+            line-height: 1.8; 
+            max-width: 700px; 
+            margin: 20px auto 40px;
+            border-left: 2px solid var(--accent); 
+            border-right: 2px solid var(--accent); 
+            padding: 0 20px;
             background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.05), transparent);
             text-align: center;
         }
@@ -50,228 +73,813 @@
         /* =========================================
            2. SECTOR TABS
            ========================================= */
-        .sector-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; z-index: 10; }
-        .sector-btn {
-            background: rgba(20, 20, 20, 0.8); border: 1px solid #333; color: #888;
-            padding: 12px 35px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.1rem;
-            cursor: pointer; letter-spacing: 1px;
-            clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%, 0 15px); transition: all 0.3s ease;
+        .sector-tabs { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-bottom: 30px; 
+            flex-wrap: wrap; 
+            z-index: 10; 
         }
-        .sector-btn:hover { border-color: var(--accent); color: white; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0, 242, 255, 0.2); }
-        .sector-btn.active { background: var(--accent); color: black; border-color: var(--accent); box-shadow: 0 0 25px rgba(0, 242, 255, 0.4); transform: scale(1.05); }
 
-        .service-sector { display: none; animation: fadeIn 0.6s ease; }
-        .service-sector.active { display: block; }
-        @keyframes fadeIn { from { opacity:0; transform:translateY(20px); filter: blur(5px); } to { opacity:1; transform:translateY(0); filter: blur(0); } }
+        .sector-btn {
+            background: rgba(20, 20, 20, 0.8); 
+            border: 1px solid #333; 
+            color: #888;
+            padding: 12px 35px; 
+            font-family: 'Rajdhani', sans-serif; 
+            font-weight: 700; 
+            font-size: 1.1rem;
+            cursor: pointer; 
+            letter-spacing: 1px;
+            clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%, 0 15px); 
+            transition: all 0.3s ease;
+        }
+
+        .sector-btn:hover { 
+            border-color: var(--accent); 
+            color: white; 
+            transform: translateY(-2px); 
+            box-shadow: 0 5px 15px rgba(0, 242, 255, 0.2); 
+        }
+
+        .sector-btn.active { 
+            background: var(--accent); 
+            color: black; 
+            border-color: var(--accent); 
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.4); 
+            transform: scale(1.05); 
+        }
+
+        .service-sector { 
+            display: none; 
+            animation: fadeIn 0.6s ease; 
+        }
+
+        .service-sector.active { 
+            display: block; 
+        }
+
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(20px); filter: blur(5px); } 
+            to { opacity: 1; transform: translateY(0); filter: blur(0); } 
+        }
 
         /* =========================================
            3. SERVICE CARDS & DISCOUNT PRICING
            ========================================= */
-        .slider-wrapper { position: relative; width: 100%; }
+        .slider-wrapper { 
+            position: relative; 
+            width: 100%; 
+        }
 
         .project-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: stretch; 
-            overflow-x: auto; padding-bottom: 20px; scroll-snap-type: x mandatory;
-            padding: 10px 5px 30px; /* Space for hover shadows */
+            display: grid; 
+            gap: 20px; 
+            align-items: stretch; 
+            overflow-x: auto; 
+            padding-bottom: 20px; 
+            scroll-snap-type: x mandatory;
+            padding: 10px 5px 30px; 
         }
-        .project-grid::-webkit-scrollbar { height: 6px; }
-        .project-grid::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        .project-grid:hover::-webkit-scrollbar-thumb { background: var(--accent); }
+
+        .grid-4 { 
+            grid-template-columns: repeat(4, 1fr); 
+        }
+
+        .grid-3 { 
+            grid-template-columns: repeat(3, 1fr); 
+            max-width: 1000px; 
+            margin: 0 auto; 
+        }
+
+        .project-grid::-webkit-scrollbar { 
+            height: 6px; 
+        }
+
+        .project-grid::-webkit-scrollbar-thumb { 
+            background: #333; 
+            border-radius: 4px; 
+        }
+
+        .project-grid:hover::-webkit-scrollbar-thumb { 
+            background: var(--accent); 
+        }
 
         .service-card {
-            background: var(--glass-black); border: 1px solid #222; min-width: 270px;
-            padding: 25px 20px; display: flex; flex-direction: column; align-items: center; text-align: center;
-            justify-content: space-between; height: auto; min-height: 520px; 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; position: relative;
+            background: var(--glass-black); 
+            border: 1px solid #222; 
+            min-width: 270px;
+            padding: 25px 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center;
+            justify-content: space-between; 
+            height: auto; 
+            min-height: 480px; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            cursor: pointer; 
+            position: relative;
             clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
             scroll-snap-align: center;
         }
 
         /* Hover & Focus Logic */
-        .service-card:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0, 242, 255, 0.15); z-index: 5; }
-        .service-card.selected-card {
-            border-color: var(--accent); box-shadow: 0 0 40px rgba(0, 242, 255, 0.3);
-            background: linear-gradient(180deg, rgba(0, 242, 255, 0.08) 0%, #080808 100%);
-            z-index: 10; transform: scale(1.03) translateY(-10px);
+        .service-card:hover { 
+            border-color: var(--accent); 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 40px rgba(0, 242, 255, 0.15); 
+            z-index: 5; 
         }
 
-        .card-icon { font-size: 2.5rem; margin: 10px 0; color: #333; transition: 0.4s; }
-        .service-card:hover .card-icon, .service-card.selected-card .card-icon { color: white; text-shadow: 0 0 20px var(--accent); transform: scale(1.1); }
+        .service-card.selected-card {
+            border-color: var(--accent); 
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.3);
+            background: linear-gradient(180deg, rgba(0, 242, 255, 0.08) 0%, #080808 100%);
+            z-index: 10; 
+            transform: scale(1.03) translateY(-10px);
+        }
+
+        .card-icon { 
+            font-size: 2.5rem; 
+            margin: 10px 0; 
+            color: #333; 
+            transition: 0.4s; 
+        }
+
+        .service-card:hover .card-icon, 
+        .service-card.selected-card .card-icon { 
+            color: white; 
+            text-shadow: 0 0 20px var(--accent); 
+            transform: scale(1.1); 
+        }
         
-        .card-title { font-family: 'Rajdhani', sans-serif; font-weight: 800; font-size: 1.5rem; color: white; margin: 5px 0; letter-spacing: 1px; text-transform: uppercase; }
+        .card-title { 
+            font-family: 'Rajdhani', sans-serif; 
+            font-weight: 800; 
+            font-size: 1.5rem; 
+            color: white; 
+            margin: 5px 0; 
+            letter-spacing: 1px; 
+            text-transform: uppercase; 
+        }
         
         /* Pricing UI */
-        .price-container { margin: 10px 0; width: 100%; }
-        .price-tag { font-family: 'Rajdhani', sans-serif; font-size: 2.8rem; font-weight: 800; color: white; line-height: 1; margin-bottom: 5px; }
-        .price-sub { font-family: 'JetBrains Mono'; font-size: 1rem; color: #888; font-weight: 600; }
-        
-        .price-strike-row { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; background: rgba(255,255,255,0.03); padding: 5px; border-radius: 4px; border: 1px dashed #333; }
-        .mrp { font-size: 1rem; color: #666; text-decoration: line-through; font-family: 'Inter'; font-weight: 600; }
-        .discount { font-size: 0.85rem; color: var(--success); font-weight: 800; background: rgba(61, 220, 132, 0.15); padding: 3px 8px; border-radius: 4px; font-family: 'JetBrains Mono'; }
+        .price-container { 
+            margin: 10px 0; 
+            width: 100%; 
+        }
 
-        .delivery-time { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.75rem; letter-spacing: 2px; color: #666; text-transform: uppercase; margin-bottom: 5px; border: 1px solid #333; padding: 4px 10px; border-radius: 12px; }
+        .price-tag { 
+            font-family: 'Rajdhani', sans-serif; 
+            font-size: 2.8rem; 
+            font-weight: 800; 
+            color: white; 
+            line-height: 1; 
+            margin-bottom: 5px; 
+        }
+
+        .price-sub { 
+            font-family: 'JetBrains Mono'; 
+            font-size: 1rem; 
+            color: #888; 
+            font-weight: 600; 
+        }
+        
+        .price-strike-row { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 8px; 
+            margin-top: 10px; 
+            background: rgba(255,255,255,0.03); 
+            padding: 5px; 
+            border-radius: 4px; 
+            border: 1px dashed #333; 
+        }
+
+        .mrp { 
+            font-size: 1rem; 
+            color: #666; 
+            text-decoration: line-through; 
+            font-family: 'Inter'; 
+            font-weight: 600; 
+        }
+
+        .discount { 
+            font-size: 0.85rem; 
+            color: var(--success); 
+            font-weight: 800; 
+            background: rgba(61, 220, 132, 0.15); 
+            padding: 3px 8px; 
+            border-radius: 4px; 
+            font-family: 'JetBrains Mono'; 
+        }
+
+        .delivery-time { 
+            font-family: 'JetBrains Mono', monospace; 
+            font-weight: 700; 
+            font-size: 0.75rem; 
+            letter-spacing: 2px; 
+            color: #666; 
+            text-transform: uppercase; 
+            margin-bottom: 5px; 
+            border: 1px solid #333; 
+            padding: 4px 10px; 
+            border-radius: 12px; 
+        }
 
         .feature-scroll-area { 
-            width: 100%; margin: 15px 0; padding: 10px 0; 
-            border-top: 1px dashed #333; border-bottom: 1px dashed #333; 
-            flex-grow: 1; display: flex; flex-direction: column; justify-content: center;
+            width: 100%; 
+            margin: 15px 0; 
+            padding: 10px 0; 
+            border-top: 1px dashed #333; 
+            border-bottom: 1px dashed #333; 
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
         }
-        .feature-list { list-style: none; padding: 0; margin: 0; }
-        .feature-list li { padding: 8px 0; border-bottom: 1px solid #111; font-size: 0.9rem; display: flex; justify-content: space-between; color: #888; }
-        .feature-list li span { color: #eee; font-weight: 500; }
-        .feature-list li i { color: var(--accent); }
+
+        .feature-list { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+        }
+
+        .feature-list li { 
+            padding: 8px 0; 
+            border-bottom: 1px solid #111; 
+            font-size: 0.9rem; 
+            display: flex; 
+            justify-content: space-between; 
+            color: #888; 
+        }
+
+        .feature-list li span { 
+            color: #eee; 
+            font-weight: 500; 
+        }
+
+        .feature-list li i { 
+            color: var(--accent); 
+        }
 
         /* God Tier Animations */
-        .god-tier-card { border-color: var(--god-tier); box-shadow: 0 0 20px rgba(255,0,85,0.1); animation: god-pulse 3s infinite alternate; }
-        @keyframes god-pulse { 0% { box-shadow: 0 0 15px rgba(255,0,85,0.1); border-color: #ff0055; } 100% { box-shadow: 0 0 30px rgba(255,0,85,0.4); border-color: #ff3377; } }
+        .god-tier-card { 
+            border-color: var(--god-tier); 
+            box-shadow: 0 0 20px rgba(255,0,85,0.1); 
+            animation: god-pulse 3s infinite alternate; 
+        }
+
+        @keyframes god-pulse { 
+            0% { box-shadow: 0 0 15px rgba(255,0,85,0.1); border-color: #ff0055; } 
+            100% { box-shadow: 0 0 30px rgba(255,0,85,0.4); border-color: #ff3377; } 
+        }
 
         /* =========================================
            4. MOBILE "3D SWIPE" OPTIMIZATIONS
            ========================================= */
-        .mobile-nav-arrow { display: none; }
-        .swipe-hint { display: none; text-align: center; color: var(--accent); font-family: 'JetBrains Mono'; font-size: 0.8rem; margin-bottom: 15px; animation: pulse-opacity 2s infinite; }
-        @keyframes pulse-opacity { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        .mobile-nav-arrow { 
+            display: none; 
+        }
+
+        .swipe-hint { 
+            display: none; 
+            text-align: center; 
+            color: var(--accent); 
+            font-family: 'JetBrains Mono'; 
+            font-size: 0.8rem; 
+            margin-bottom: 15px; 
+            animation: pulse-opacity 2s infinite; 
+        }
+
+        @keyframes pulse-opacity { 
+            0%, 100% { opacity: 0.5; } 
+            50% { opacity: 1; } 
+        }
 
         @media (max-width: 900px) {
-            .swipe-hint { display: block; }
+            .swipe-hint { 
+                display: block; 
+            }
+
             .project-grid {
                 display: flex !important;
-                padding: 20px 5vw 40px; /* Forces centering */
+                padding: 20px 5vw 40px; 
             }
+
             .service-card {
-                min-width: 80vw; max-width: 80vw;
+                min-width: 80vw; 
+                max-width: 80vw;
                 margin-right: 15px;
-                opacity: 0.6; transform: scale(0.92); /* Shrink inactive cards */
+                opacity: 0.6; 
+                transform: scale(0.92); 
                 filter: grayscale(50%);
+                transition: all 0.4s ease-out;
             }
-            /* JS Intersection Observer will apply this class */
+
+            /* Intersection Observer applies this class */
             .service-card.mobile-focus {
-                opacity: 1; transform: scale(1.02);
+                opacity: 1; 
+                transform: scale(1.02);
                 border-color: var(--accent);
                 box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2);
                 filter: grayscale(0%);
                 z-index: 10;
             }
-            .god-tier-card.mobile-focus { border-color: var(--god-tier); box-shadow: 0 10px 40px rgba(255, 0, 85, 0.4); }
+
+            .god-tier-card.mobile-focus { 
+                border-color: var(--god-tier); 
+                box-shadow: 0 10px 40px rgba(255, 0, 85, 0.4); 
+            }
+
+            .mobile-nav-arrow {
+                display: flex; 
+                position: absolute; 
+                top: 40%; 
+                transform: translateY(-50%); 
+                z-index: 50;
+                background: rgba(0,0,0,0.8); 
+                border: 1px solid var(--accent); 
+                color: var(--accent);
+                width: 40px; 
+                height: 40px; 
+                border-radius: 50%;
+                justify-content: center; 
+                align-items: center; 
+                cursor: pointer;
+            }
+
+            .arrow-left { left: 5px; } 
+            .arrow-right { right: 5px; }
         }
 
         /* =========================================
-           5. TERMINAL CALCULATOR (UPGRADED)
+           5. TERMINAL CALCULATOR
            ========================================= */
         .addon-panel {
-            background: #050505; border: 1px solid #333; border-left: 4px solid var(--accent);
-            padding: 30px; max-width: 1000px; margin: 20px auto 40px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; overflow: hidden;
+            background: #050505; 
+            border: 1px solid #333; 
+            border-left: 4px solid var(--accent);
+            padding: 30px; 
+            max-width: 1000px; 
+            margin: 20px auto 40px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+            position: relative; 
+            overflow: hidden;
             border-radius: 0 8px 8px 0;
         }
+
         .addon-panel::before {
-            content: 'sys.config // params'; position: absolute; top: 5px; right: 10px;
-            font-family: 'JetBrains Mono'; font-size: 0.6rem; color: #444;
+            content: 'sys.config // params'; 
+            position: absolute; 
+            top: 5px; 
+            right: 10px;
+            font-family: 'JetBrains Mono'; 
+            font-size: 0.6rem; 
+            color: #444;
         }
         
-        .addon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 25px; }
+        .addon-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 12px; 
+            margin-bottom: 25px; 
+        }
         
         .addon-item { 
-            display: flex; align-items: center; justify-content: space-between; padding: 12px 15px; background: #0a0a0a; 
-            border: 1px solid #222; color: #888; cursor: pointer; border-radius: 4px; font-size: 0.9rem; transition: 0.3s; font-family: 'JetBrains Mono';
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 12px 15px; 
+            background: #0a0a0a; 
+            border: 1px solid #222; 
+            color: #888; 
+            cursor: pointer; 
+            border-radius: 4px; 
+            font-size: 0.9rem; 
+            transition: 0.3s; 
+            font-family: 'JetBrains Mono';
         }
-        .addon-item:hover { border-color: #555; background: #111; color: white; transform: translateX(5px); }
-        .addon-item.active-addon { border-color: var(--accent); background: rgba(0, 242, 255, 0.05); color: white; box-shadow: inset 2px 0 0 var(--accent); }
-        .addon-item input[type="checkbox"] { accent-color: var(--accent); width: 16px; height: 16px; margin-right: 10px;}
+
+        .addon-item:hover { 
+            border-color: #555; 
+            background: #111; 
+            color: white; 
+            transform: translateX(5px); 
+        }
+
+        .addon-item.active-addon { 
+            border-color: var(--accent); 
+            background: rgba(0, 242, 255, 0.05); 
+            color: white; 
+            box-shadow: inset 2px 0 0 var(--accent); 
+        }
+
+        .addon-item input[type="checkbox"] { 
+            accent-color: var(--accent); 
+            width: 16px; 
+            height: 16px; 
+            margin-right: 10px;
+        }
         
         /* Custom Page Counter */
-        .counter-ctrl { display: flex; align-items: center; background: #000; border: 1px solid #444; border-radius: 4px; overflow: hidden;}
-        .counter-ctrl button { background: #111; border: none; color: var(--accent); padding: 6px 15px; cursor: pointer; font-weight: bold; transition: 0.2s; font-size: 1.1rem;}
-        .counter-ctrl button:hover { background: var(--accent); color: black; }
-        .counter-ctrl input { width: 50px; text-align: center; background: transparent; border: none; color: white; font-family: 'JetBrains Mono'; font-weight: bold; font-size: 1rem; outline: none; pointer-events: none;}
+        .counter-ctrl { 
+            display: flex; 
+            align-items: center; 
+            background: #000; 
+            border: 1px solid #444; 
+            border-radius: 4px; 
+            overflow: hidden; 
+            z-index: 20;
+        }
 
-        .calc-stats { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px dashed #333; padding-top: 20px; margin-bottom: 20px; background: #0a0a0a; padding: 20px; border-radius: 6px;}
+        .counter-ctrl button { 
+            background: #111; 
+            border: none; 
+            color: var(--accent); 
+            padding: 6px 15px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 1.1rem; 
+            transition: 0.2s;
+        }
+
+        .counter-ctrl button:hover { 
+            background: var(--accent); 
+            color: black; 
+        }
+
+        .counter-ctrl input { 
+            width: 50px; 
+            text-align: center; 
+            background: transparent; 
+            border: none; 
+            color: white; 
+            font-family: 'JetBrains Mono'; 
+            font-weight: bold; 
+            font-size: 1rem; 
+            outline: none; 
+            pointer-events: none;
+        }
+
+        .calc-stats { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+            border-top: 1px dashed #333; 
+            padding-top: 20px; 
+            margin-bottom: 20px; 
+            background: #0a0a0a; 
+            padding: 20px; 
+            border-radius: 6px;
+        }
         
-        .action-container { display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; }
-        .name-input { width: 100%; padding: 15px; background: #000; border: 1px solid #444; color: white; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 1rem; }
-        .name-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 10px rgba(0,242,255,0.2); }
+        .action-container { 
+            display: grid; 
+            grid-template-columns: 2fr 1fr; 
+            gap: 15px; 
+            align-items: center; 
+        }
+
+        .name-input { 
+            width: 100%; 
+            padding: 15px; 
+            background: #000; 
+            border: 1px solid #444; 
+            color: white; 
+            border-radius: 4px; 
+            font-family: 'JetBrains Mono'; 
+            font-size: 1rem; 
+        }
+
+        .name-input:focus { 
+            outline: none; 
+            border-color: var(--accent); 
+            box-shadow: 0 0 10px rgba(0,242,255,0.2); 
+        }
 
         .btn-neon {
-            background: transparent; border: 1px solid var(--accent); color: var(--accent);
-            font-family: 'Rajdhani'; font-weight: 800; cursor: pointer; transition: 0.3s;
-            text-transform: uppercase; letter-spacing: 2px; padding: 15px; width: 100%; font-size: 1.1rem;
-            display: flex; justify-content: center; align-items: center; gap: 10px; border-radius: 4px;
+            background: transparent; 
+            border: 1px solid var(--accent); 
+            color: var(--accent);
+            font-family: 'Rajdhani'; 
+            font-weight: 800; 
+            cursor: pointer; 
+            transition: 0.3s;
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            padding: 15px; 
+            width: 100%; 
+            font-size: 1.1rem;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 10px; 
+            border-radius: 4px;
         }
-        .btn-neon:hover { background: var(--accent); color: black; box-shadow: 0 0 30px var(--accent); transform: scale(1.02); }
+
+        .btn-neon:hover { 
+            background: var(--accent); 
+            color: black; 
+            box-shadow: 0 0 30px var(--accent); 
+            transform: scale(1.02); 
+        }
 
         @media (max-width: 900px) {
-            .calc-stats { flex-direction: column; gap: 15px; text-align: left; align-items: flex-start; }
-            .calc-stats div { width: 100%; border-bottom: 1px dashed #222; padding-bottom: 15px; }
-            .calc-stats div:last-child { border-bottom: none; padding-bottom: 0; }
-            .action-container { grid-template-columns: 1fr; gap: 10px; }
-            .btn-neon { background: var(--accent); color: black; box-shadow: 0 0 15px rgba(0, 242, 255, 0.4); }
+            .calc-stats { 
+                flex-direction: column; 
+                gap: 15px; 
+                text-align: left; 
+                align-items: flex-start; 
+            }
+            .calc-stats div { 
+                width: 100%; 
+                border-bottom: 1px dashed #222; 
+                padding-bottom: 15px; 
+            }
+            .calc-stats div:last-child { 
+                border-bottom: none; 
+                padding-bottom: 0; 
+            }
+            .action-container { 
+                grid-template-columns: 1fr; 
+                gap: 10px; 
+            }
+            .btn-neon { 
+                background: var(--accent); 
+                color: black; 
+                box-shadow: 0 0 15px rgba(0, 242, 255, 0.4); 
+            }
         }
 
         /* =========================================
-           6. FAQ GRID
+           6. FAQ GRID & KNOWLEDGE BASE
            ========================================= */
-        .kb-section { display: none; margin-top: 50px; border-top: 1px solid #222; padding-top: 40px; }
-        .kb-section.active-faq { display: block; animation: fadeIn 0.8s; }
-        
-        .faq-warning { background: #0a0a0a; border: 1px solid #ff0055; margin-bottom: 30px; border-radius: 4px; box-shadow: 0 0 20px rgba(255, 0, 85, 0.1); }
-        .faq-warning summary { padding: 15px 20px; font-family: 'Rajdhani'; font-weight: 800; color: #ff0055; cursor: pointer; letter-spacing: 1px; font-size: 1.1rem; }
-        .faq-warning p { padding: 15px 20px; color: #ddd; border-top: 1px dashed #333; line-height: 1.6; font-size: 0.95rem; margin: 0; }
+        .kb-section { 
+            display: none; 
+            margin-top: 50px; 
+            border-top: 1px solid #222; 
+            padding-top: 40px; 
+        }
 
-        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
-        .faq-item { background: #0a0a0a; border: 1px solid #222; border-radius: 6px; margin-bottom: 0; transition: 0.3s; }
-        .faq-item:hover { border-color: #444; }
-        .faq-item summary { padding: 15px; font-family: 'Rajdhani'; font-weight: 700; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; outline: none; transition: 0.3s; }
-        .faq-item summary:hover { color: var(--accent); }
-        .faq-item summary:after { content: '+'; color: var(--accent); font-weight: bold; font-size: 1.2rem; }
-        .faq-item[open] summary:after { content: '-'; }
-        .faq-item p { padding: 15px; border-top: 1px solid #222; margin: 0; color: #aaa; font-size: 0.95rem; line-height: 1.6; background: #050505; }
+        .kb-section.active-faq { 
+            display: block; 
+            animation: fadeIn 0.8s; 
+        }
         
-        @media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr; } }
+        .faq-warning { 
+            background: #0a0a0a; 
+            border: 1px solid #ff0055; 
+            margin-bottom: 30px; 
+            border-radius: 4px; 
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.1); 
+        }
+
+        .faq-warning summary { 
+            padding: 15px 20px; 
+            font-family: 'Rajdhani'; 
+            font-weight: 800; 
+            color: #ff0055; 
+            cursor: pointer; 
+            letter-spacing: 1px; 
+            font-size: 1.1rem; 
+        }
+
+        .faq-warning p { 
+            padding: 15px 20px; 
+            color: #ddd; 
+            border-top: 1px dashed #333; 
+            line-height: 1.6; 
+            font-size: 0.95rem; 
+            margin: 0; 
+        }
+
+        .faq-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+            align-items: start; 
+        }
+
+        .faq-item { 
+            background: #0a0a0a; 
+            border: 1px solid #222; 
+            border-radius: 6px; 
+            margin-bottom: 0; 
+            transition: 0.3s; 
+        }
+
+        .faq-item:hover { 
+            border-color: #444; 
+        }
+
+        .faq-item summary { 
+            padding: 15px; 
+            font-family: 'Rajdhani'; 
+            font-weight: 700; 
+            font-size: 1.1rem; 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: space-between; 
+            outline: none; 
+            transition: 0.3s; 
+            color: #ddd;
+        }
+
+        .faq-item summary:hover { 
+            color: var(--accent); 
+        }
+
+        .faq-item summary:after { 
+            content: '+'; 
+            color: var(--accent); 
+            font-weight: bold; 
+            font-size: 1.2rem; 
+        }
+
+        .faq-item[open] summary:after { 
+            content: '-'; 
+        }
+
+        .faq-item p { 
+            padding: 15px; 
+            border-top: 1px solid #222; 
+            margin: 0; 
+            color: #aaa; 
+            font-size: 0.95rem; 
+            line-height: 1.6; 
+            background: #050505; 
+        }
+        
+        @media (max-width: 900px) { 
+            .faq-grid { 
+                grid-template-columns: 1fr; 
+            } 
+        }
 
         /* =========================================
            7. ADVANCED SYSTEM BOT UI
            ========================================= */
-        .system-bot { position: fixed; bottom: 30px; right: 25px; z-index: 9999; font-family: 'Inter', sans-serif; }
-        .bot-toggle { 
-            width: 65px; height: 65px; background: var(--accent); border-radius: 50%; 
-            display: flex; justify-content: center; align-items: center; cursor: pointer; 
-            border: 3px solid #000; box-shadow: 0 0 25px var(--accent); 
-            animation: pulse-glow 2s infinite; transition: 0.3s;
+        .system-bot { 
+            position: fixed; 
+            bottom: 30px; 
+            right: 25px; 
+            z-index: 9999; 
+            font-family: 'Inter', sans-serif; 
         }
-        .bot-toggle:hover { transform: scale(1.1); }
-        .bot-toggle i { font-size: 1.8rem; color: black; }
+
+        .bot-toggle { 
+            width: 65px; 
+            height: 65px; 
+            background: var(--accent); 
+            border-radius: 50%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            cursor: pointer; 
+            border: 3px solid #000; 
+            box-shadow: 0 0 25px var(--accent); 
+            animation: pulse-glow 2s infinite; 
+            transition: 0.3s;
+        }
+
+        .bot-toggle:hover { 
+            transform: scale(1.1); 
+        }
+
+        .bot-toggle i { 
+            font-size: 1.8rem; 
+            color: black; 
+        }
         
         .bot-window { 
-            display: none; position: absolute; bottom: 80px; right: 0; width: 350px; 
-            background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px);
-            border: 1px solid var(--accent); border-radius: 12px; overflow: hidden; 
-            flex-direction: column; box-shadow: 0 20px 50px rgba(0,0,0,0.9); transform-origin: bottom right;
+            display: none; 
+            position: absolute; 
+            bottom: 80px; 
+            right: 0; 
+            width: 350px; 
+            background: rgba(10, 10, 10, 0.95); 
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--accent); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            flex-direction: column; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9); 
+            transform-origin: bottom right;
             animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .bot-header { background: var(--accent); padding: 15px; font-family: 'JetBrains Mono'; font-weight: 800; font-size: 0.9rem; color: black; display: flex; justify-content: space-between; }
-        .bot-body { padding: 20px; height: 420px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        .bot-body::-webkit-scrollbar { width: 4px; }
-        .bot-body::-webkit-scrollbar-thumb { background: #444; }
+
+        .bot-header { 
+            background: var(--accent); 
+            padding: 15px; 
+            font-family: 'JetBrains Mono'; 
+            font-weight: 800; 
+            font-size: 0.9rem; 
+            color: black; 
+            display: flex; 
+            justify-content: space-between; 
+        }
+
+        .bot-body { 
+            padding: 20px; 
+            height: 420px; 
+            overflow-y: auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px; 
+        }
+
+        .bot-body::-webkit-scrollbar { 
+            width: 4px; 
+        }
+
+        .bot-body::-webkit-scrollbar-thumb { 
+            background: #444; 
+        }
         
-        .msg { padding: 12px 16px; border-radius: 8px; font-size: 0.9rem; max-width: 85%; line-height: 1.5; position: relative; }
-        .msg.bot { background: #1a1a1a; color: #eee; border-left: 3px solid var(--accent); align-self: flex-start; border-bottom-left-radius: 0; }
-        .msg.user { background: var(--accent); color: black; align-self: flex-end; font-weight: 600; border-bottom-right-radius: 0; }
+        .msg { 
+            padding: 12px 16px; 
+            border-radius: 8px; 
+            font-size: 0.9rem; 
+            max-width: 85%; 
+            line-height: 1.5; 
+            position: relative; 
+        }
+
+        .msg.bot { 
+            background: #1a1a1a; 
+            color: #eee; 
+            border-left: 3px solid var(--accent); 
+            align-self: flex-start; 
+            border-bottom-left-radius: 0; 
+        }
+
+        .msg.user { 
+            background: var(--accent); 
+            color: black; 
+            align-self: flex-end; 
+            font-weight: 600; 
+            border-bottom-right-radius: 0; 
+        }
         
         .bot-choice-btn { 
-            background: rgba(0, 242, 255, 0.05); border: 1px solid var(--accent); color: var(--accent); 
-            padding: 10px; margin-top: 5px; text-align: left; cursor: pointer; border-radius: 4px; width: 100%; 
-            transition: 0.2s; font-family: 'Rajdhani'; font-weight: 600; font-size: 1rem; letter-spacing: 1px;
+            background: rgba(0, 242, 255, 0.05); 
+            border: 1px solid var(--accent); 
+            color: var(--accent); 
+            padding: 10px; 
+            margin-top: 5px; 
+            text-align: left; 
+            cursor: pointer; 
+            border-radius: 4px; 
+            width: 100%; 
+            transition: 0.2s; 
+            font-family: 'Rajdhani'; 
+            font-weight: 600; 
+            font-size: 1rem; 
+            letter-spacing: 1px;
         }
-        .bot-choice-btn:hover { background: var(--accent); color: black; box-shadow: 0 0 10px var(--accent); }
+
+        .bot-choice-btn:hover { 
+            background: var(--accent); 
+            color: black; 
+            box-shadow: 0 0 10px var(--accent); 
+        }
         
-        .typing-indicator { display: flex; gap: 5px; padding: 12px 16px; align-items: center; width: fit-content; }
-        .typing-indicator span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: type-bounce 1.4s infinite ease-in-out both; }
+        .typing-indicator { 
+            display: flex; 
+            gap: 5px; 
+            padding: 12px 16px; 
+            align-items: center; 
+            width: fit-content; 
+        }
+
+        .typing-indicator span { 
+            width: 6px; 
+            height: 6px; 
+            background: var(--accent); 
+            border-radius: 50%; 
+            animation: type-bounce 1.4s infinite ease-in-out both; 
+        }
+
         .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
         .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
         
-        @keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 242, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0); } }
-        @keyframes popUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        @keyframes type-bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+        @keyframes pulse-glow { 
+            0% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0.7); } 
+            70% { box-shadow: 0 0 0 15px rgba(0, 242, 255, 0); } 
+            100% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0); } 
+        }
+        @keyframes popUp { 
+            from { transform: scale(0.8); opacity: 0; } 
+            to { transform: scale(1); opacity: 1; } 
+        }
+        @keyframes type-bounce { 
+            0%, 80%, 100% { transform: scale(0); } 
+            40% { transform: scale(1); } 
+        }
     </style>
 </head>
 <body>
@@ -287,7 +895,7 @@
                 <h1 style="color:white; margin:0; font-size: 3.5rem; font-family:'Rajdhani'; font-weight:800; text-transform: uppercase;">DEPLOYMENT <span style="color:var(--accent);">PROTOCOLS</span></h1>
             </div>
             <p class="page-desc" data-aos="fade-up">
-                High-conversion enterprise architecture and pixel-perfect visual rendering. Select your upgrade path below to initialize the configuration matrix. All prices updated to reflect current USD/INR market rates.
+                High-conversion enterprise architecture and pixel-perfect visual rendering. Select your upgrade path below. Prices dynamically track USD/INR market rates.
             </p>
 
             <div class="sector-tabs" data-aos="fade-up" data-aos-delay="100">
@@ -296,11 +904,14 @@
                 <button class="sector-btn" onclick="switchSector('visuals')">VISUAL_STUDIO</button>
             </div>
 
-            <div class="swipe-hint"><i class="fas fa-arrows-alt-h"></i> SWIPE TO EXPLORE MATRICES <i class="fas fa-arrows-alt-h"></i></div>
+            <div class="swipe-hint"><i class="fas fa-arrows-alt-h"></i> SWIPE CARDS TO EXPLORE <i class="fas fa-arrows-alt-h"></i></div>
 
             <div id="sector-web" class="service-sector active">
                 <div class="slider-wrapper">
-                    <div class="project-grid scroll-container">
+                    <div class="mobile-nav-arrow arrow-left" onclick="scrollGrid('left')"><i class="fas fa-chevron-left"></i></div>
+                    <div class="mobile-nav-arrow arrow-right" onclick="scrollGrid('right')"><i class="fas fa-chevron-right"></i></div>
+
+                    <div class="project-grid grid-4 scroll-container">
                         
                         <div class="service-card" id="card-starter" onclick="selectWebPackage(55, 4500, 'STARTER SITE', 3, 'card-starter')">
                             <div style="width:100%;">
@@ -308,10 +919,10 @@
                                 <i class="fas fa-paper-plane card-icon"></i>
                                 <h3 class="card-title">STARTER SITE</h3>
                                 <div class="price-container">
-                                    <div class="price-tag">$55</div>
-                                    <div class="price-sub">≈ ₹4,500 INR</div>
+                                    <div class="price-tag">₹4,500</div>
+                                    <div class="price-sub">≈ $55 USD</div>
                                     <div class="price-strike-row">
-                                        <span class="mrp">$75 (₹6K)</span>
+                                        <span class="mrp">₹6,000 ($75)</span>
                                         <span class="discount">25% OFF</span>
                                     </div>
                                 </div>
@@ -325,7 +936,7 @@
                                     <li><i class="fas fa-check"></i> <span>Basic SEO Setup</span></li>
                                 </ul>
                             </div>
-                            <div style="width:100%;"><p style="font-family:'JetBrains Mono'; font-size:0.7rem; color:#666;">> Ideal for Portfolios</p></div>
+                            <button class="btn-neon" style="margin-top:auto;" onclick="selectWebPackage(55, 4500, 'STARTER SITE', 3, 'card-starter')">CONFIGURE</button>
                         </div>
 
                         <div class="service-card" id="card-business" onclick="selectWebPackage(110, 9000, 'BUSINESS PRO', 7, 'card-business')">
@@ -334,10 +945,10 @@
                                 <i class="fas fa-briefcase card-icon" style="color:var(--accent);"></i>
                                 <h3 class="card-title">BUSINESS PRO</h3>
                                 <div class="price-container">
-                                    <div class="price-tag">$110</div>
-                                    <div class="price-sub">≈ ₹9,000 INR</div>
+                                    <div class="price-tag">₹9,000</div>
+                                    <div class="price-sub">≈ $110 USD</div>
                                     <div class="price-strike-row">
-                                        <span class="mrp">$145 (₹12K)</span>
+                                        <span class="mrp">₹12,000 ($145)</span>
                                         <span class="discount">25% OFF</span>
                                     </div>
                                 </div>
@@ -345,25 +956,25 @@
                             <div class="feature-scroll-area">
                                 <ul class="feature-list">
                                     <li><i class="fas fa-check"></i> <span>5 Pages Complete</span></li>
-                                    <li><i class="fas fa-plus-circle" style="color:var(--accent);"></i> <span>Everything in Starter</span></li>
+                                    <li><i class="fas fa-plus-circle" style="color:var(--accent);"></i> <span>All Starter Features</span></li>
                                     <li><i class="fas fa-check"></i> <span>Speed Optimization</span></li>
                                     <li><i class="fas fa-check"></i> <span>Google Map Setup</span></li>
                                     <li><i class="fas fa-check"></i> <span>Social Media Integrations</span></li>
                                 </ul>
                             </div>
-                            <div style="width:100%;"><p style="font-family:'JetBrains Mono'; font-size:0.7rem; color:#666;">> Ideal for Agencies & Shops</p></div>
+                            <button class="btn-neon" style="margin-top:auto;" onclick="selectWebPackage(110, 9000, 'BUSINESS PRO', 7, 'card-business')">CONFIGURE</button>
                         </div>
 
-                        <div class="service-card" id="card-ecom" onclick="selectWebPackage(180, 15000, 'E-COMMERCE STORE', 15, 'card-ecom')">
+                        <div class="service-card" id="card-ecom" onclick="selectWebPackage(180, 15000, 'E-COMMERCE', 15, 'card-ecom')">
                             <div style="width:100%;">
                                 <div class="delivery-time" style="color:#ff9900; border-color:#ff9900;">15 DAYS</div>
                                 <i class="fas fa-shopping-cart card-icon" style="color:#ff9900;"></i>
                                 <h3 class="card-title">E-COMMERCE</h3>
                                 <div class="price-container">
-                                    <div class="price-tag">$180</div>
-                                    <div class="price-sub" style="color:#ff9900; background:rgba(255,153,0,0.1);">≈ ₹15,000 INR</div>
+                                    <div class="price-tag">₹15,000</div>
+                                    <div class="price-sub" style="color:#ff9900;">≈ $180 USD</div>
                                     <div class="price-strike-row">
-                                        <span class="mrp">$240 (₹20K)</span>
+                                        <span class="mrp">₹20,000 ($240)</span>
                                         <span class="discount">25% OFF</span>
                                     </div>
                                 </div>
@@ -371,13 +982,13 @@
                             <div class="feature-scroll-area">
                                 <ul class="feature-list">
                                     <li><i class="fas fa-check"></i> <span>Online Store Setup</span></li>
-                                    <li><i class="fas fa-plus-circle" style="color:#ff9900;"></i> <span>Everything in Business</span></li>
+                                    <li><i class="fas fa-plus-circle" style="color:#ff9900;"></i> <span>All Business Features</span></li>
                                     <li><i class="fas fa-check"></i> <span>Payment Gateway</span></li>
                                     <li><i class="fas fa-check"></i> <span>Product Uploads</span></li>
                                     <li><i class="fas fa-check"></i> <span>Admin Dashboard</span></li>
                                 </ul>
                             </div>
-                            <div style="width:100%;"><p style="font-family:'JetBrains Mono'; font-size:0.7rem; color:#666;">> Ideal for Selling Online</p></div>
+                            <button class="btn-neon" style="margin-top:auto;" onclick="selectWebPackage(180, 15000, 'E-COMMERCE', 15, 'card-ecom')">CONFIGURE</button>
                         </div>
 
                         <div class="service-card god-tier-card" id="card-combo" onclick="selectWebPackage(215, 18000, 'ULTIMATE COMBO', 20, 'card-combo')">
@@ -386,24 +997,24 @@
                                 <i class="fas fa-rocket card-icon" style="color:#ff0055;"></i>
                                 <h3 class="card-title">ULTIMATE COMBO</h3>
                                 <div class="price-container">
-                                    <div class="price-tag" style="color:#ff0055;">$215</div>
-                                    <div class="price-sub" style="color:#ff0055; background:rgba(255,0,85,0.1);">≈ ₹18,000 INR</div>
+                                    <div class="price-tag" style="color:#ff0055;">₹18,000</div>
+                                    <div class="price-sub" style="color:#ff0055;">≈ $215 USD</div>
                                     <div class="price-strike-row" style="border-color: rgba(255,0,85,0.3);">
-                                        <span class="mrp">$300 (₹25K)</span>
+                                        <span class="mrp">₹25,000 ($300)</span>
                                         <span class="discount" style="background:var(--god-tier); color:white;">28% OFF</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="feature-scroll-area" style="border-color: rgba(255,0,85,0.3);">
                                 <ul class="feature-list">
-                                    <li><i class="fas fa-bolt" style="color:#ff0055;"></i> <span>Full Business Website</span></li>
-                                    <li><i class="fas fa-bolt" style="color:#ff0055;"></i> <span>Free Domain (1 Yr)</span></li>
-                                    <li><i class="fas fa-bolt" style="color:#ff0055;"></i> <span>Free Hosting (1 Yr)</span></li>
-                                    <li><i class="fas fa-bolt" style="color:#ff0055;"></i> <span>Pro Logo Design</span></li>
-                                    <li><i class="fas fa-bolt" style="color:#ff0055;"></i> <span>Website Content Written</span></li>
+                                    <li><i class="fas fa-bolt" style="color:#ff0055;"></i> <span style="color:#fff;">Full Business Website</span></li>
+                                    <li><i class="fas fa-bolt" style="color:#ff0055;"></i> <span style="color:#fff;">Free Domain (1 Yr)</span></li>
+                                    <li><i class="fas fa-bolt" style="color:#ff0055;"></i> <span style="color:#fff;">Free Hosting (1 Yr)</span></li>
+                                    <li><i class="fas fa-bolt" style="color:#ff0055;"></i> <span style="color:#fff;">Pro Logo Design</span></li>
+                                    <li><i class="fas fa-bolt" style="color:#ff0055;"></i> <span style="color:#fff;">Website Content Written</span></li>
                                 </ul>
                             </div>
-                            <div style="width:100%;"><p style="font-family:'JetBrains Mono'; font-size:0.75rem; color:#ff0055; font-weight:bold;">> THE COMPLETE STARTUP KIT <</p></div>
+                            <button class="btn-neon" style="margin-top:auto; border-color:#ff0055; color:#ff0055;" onclick="selectWebPackage(215, 18000, 'ULTIMATE COMBO', 20, 'card-combo')">DEPLOY COMBO</button>
                         </div>
 
                     </div>
@@ -416,38 +1027,38 @@
                     </h4>
                     
                     <div class="addon-grid">
-                        <div class="addon-item" style="cursor: default; grid-column: 1 / -1; max-width: 400px;">
+                        <div class="addon-item" style="cursor: default; grid-column: 1 / -1; max-width: 450px;">
                             <div style="display:flex; align-items:center; gap:10px;">
                                 <i class="fas fa-file-alt" style="color:var(--accent);"></i>
-                                <span>Add Extra Pages ($10 / ₹800 ea)</span>
+                                <span>Add Extra Pages (₹800 / $10 ea)</span>
                             </div>
                             <div class="counter-ctrl">
-                                <button onclick="changePages(-1)">-</button>
+                                <button type="button" onclick="event.stopPropagation(); changePages(-1)">-</button>
                                 <input type="number" id="opt-page-count" value="0" readonly>
-                                <button onclick="changePages(1)">+</button>
+                                <button type="button" onclick="event.stopPropagation(); changePages(1)">+</button>
                             </div>
                         </div>
                         
                         <label class="addon-item" onclick="toggleAddon(this)">
-                            <div><input type="checkbox" id="opt-video"> <span>Video Banner (+$24 / ₹2K)</span></div>
+                            <div><input type="checkbox" id="opt-video"> <span>Video Banner (+₹2,000 / $24)</span></div>
                         </label>
                         <label class="addon-item" onclick="toggleAddon(this)">
-                            <div><input type="checkbox" id="opt-payment"> <span>Payment Gateway (+$18 / ₹1.5K)</span></div>
+                            <div><input type="checkbox" id="opt-payment"> <span>Payment Gateway (+₹1,500 / $18)</span></div>
                         </label>
                         <label class="addon-item" onclick="toggleAddon(this)">
-                            <div><input type="checkbox" id="opt-seo"> <span>Advanced SEO (+$36 / ₹3K)</span></div>
+                            <div><input type="checkbox" id="opt-seo"> <span>Advanced SEO (+₹3,000 / $36)</span></div>
                         </label>
                         <label class="addon-item" onclick="toggleAddon(this)">
-                            <div><input type="checkbox" id="opt-content"> <span>Content Writing (+$30 / ₹2.5K)</span></div>
+                            <div><input type="checkbox" id="opt-content"> <span>Content Writing (+₹2,500 / $30)</span></div>
                         </label>
                         <label class="addon-item" onclick="toggleAddon(this)">
-                            <div><input type="checkbox" id="opt-lang"> <span>Multi-Language (+$30 / ₹2.5K)</span></div>
+                            <div><input type="checkbox" id="opt-lang"> <span>Multi-Language (+₹2,500 / $30)</span></div>
                         </label>
                         <label class="addon-item" onclick="toggleAddon(this)">
-                            <div><input type="checkbox" id="opt-admin"> <span>Self-Edit CMS (+$24 / ₹2K)</span></div>
+                            <div><input type="checkbox" id="opt-admin"> <span>Self-Edit CMS (+₹2,000 / $24)</span></div>
                         </label>
                         <label class="addon-item" onclick="toggleAddon(this)">
-                            <div><input type="checkbox" id="opt-maint"> <span>1-Yr Maintenance (+$42 / ₹3.5K)</span></div>
+                            <div><input type="checkbox" id="opt-maint"> <span>1-Yr Maintenance (+₹3,500 / $42)</span></div>
                         </label>
                     </div>
 
@@ -457,10 +1068,10 @@
                             <div id="final-days" style="font-size:1.8rem; color:white; font-family:'Rajdhani'; font-weight:700;">--</div>
                         </div>
                         <div style="text-align: right;">
-                            <div style="font-family:'JetBrains Mono'; font-size:0.75rem; color:#666;">TOTAL_BUDGET_CALCULATION</div>
+                            <div style="font-family:'JetBrains Mono'; font-size:0.75rem; color:#666;">TOTAL_BUDGET</div>
                             <div style="display:flex; align-items:baseline; justify-content: flex-end; gap:10px;">
-                                <div id="final-price" style="font-size:3rem; color:var(--accent); font-family:'Rajdhani'; font-weight:800; line-height:1;">$0</div>
-                                <div id="final-price-inr" style="font-size:1.2rem; color:#888; font-family:'JetBrains Mono'; font-weight:bold;">≈ ₹0</div>
+                                <div id="final-price" style="font-size:3rem; color:var(--accent); font-family:'Rajdhani'; font-weight:800; line-height:1;">₹0</div>
+                                <div id="final-price-usd" style="font-size:1.2rem; color:#888; font-family:'JetBrains Mono'; font-weight:bold;">≈ $0</div>
                             </div>
                         </div>
                     </div>
@@ -472,23 +1083,26 @@
                         </button>
                     </div>
                     <div style="font-family:'JetBrains Mono'; font-size:0.8rem; color:#ffaa00; font-weight:bold; margin-top:15px; text-align:right;">
-                        [ REQUIRED START TOKEN (25%): <span id="token-price">$0 / ₹0</span> ]
+                        [ REQUIRED START TOKEN (25%): <span id="token-price">₹0 / $0</span> ]
                     </div>
                 </div>
             </div>
 
             <div id="sector-identity" class="service-sector">
                 <div class="slider-wrapper">
-                    <div class="project-grid scroll-container">
+                    <div class="mobile-nav-arrow arrow-left" onclick="scrollGrid('left')"><i class="fas fa-chevron-left"></i></div>
+                    <div class="mobile-nav-arrow arrow-right" onclick="scrollGrid('right')"><i class="fas fa-chevron-right"></i></div>
+                    
+                    <div class="project-grid grid-3 scroll-container">
                         <div class="service-card">
                             <div style="width:100%;">
                                 <div class="delivery-time">2 DAYS</div>
                                 <i class="fas fa-font card-icon"></i>
                                 <h3 class="card-title">TYPO_LITE</h3>
                                 <div class="price-container">
-                                    <div class="price-tag">$10</div>
-                                    <div class="price-sub">≈ ₹800 INR</div>
-                                    <div class="price-strike-row"><span class="mrp">$18 (₹1.5K)</span><span class="discount">46% OFF</span></div>
+                                    <div class="price-tag">₹800</div>
+                                    <div class="price-sub">≈ $10 USD</div>
+                                    <div class="price-strike-row"><span class="mrp">₹1,500 ($18)</span><span class="discount">46% OFF</span></div>
                                 </div>
                             </div>
                             <div class="feature-scroll-area">
@@ -498,37 +1112,39 @@
                                     <li><i class="fas fa-check"></i> <span>2 Revisions</span></li>
                                 </ul>
                             </div>
-                            <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Typo Logo', '10')">SECURE DEAL</button>
+                            <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Typo Logo', '800')">SECURE DEAL</button>
                         </div>
+
                         <div class="service-card">
                             <div style="width:100%;">
                                 <div class="delivery-time">4 DAYS</div>
                                 <i class="fas fa-vector-square card-icon"></i>
                                 <h3 class="card-title">VECTOR_STD</h3>
                                 <div class="price-container">
-                                    <div class="price-tag">$18</div>
-                                    <div class="price-sub">≈ ₹1,500 INR</div>
-                                    <div class="price-strike-row"><span class="mrp">$30 (₹2.5K)</span><span class="discount">40% OFF</span></div>
+                                    <div class="price-tag">₹2,000</div>
+                                    <div class="price-sub">≈ $24 USD</div>
+                                    <div class="price-strike-row"><span class="mrp">₹3,000 ($36)</span><span class="discount">33% OFF</span></div>
                                 </div>
                             </div>
                             <div class="feature-scroll-area">
                                 <ul class="feature-list">
                                     <li><i class="fas fa-check"></i> <span>Icon + Text Concept</span></li>
                                     <li><i class="fas fa-check"></i> <span>Source File (SVG)</span></li>
-                                    <li><i class="fas fa-check"></i> <span>Print Ready Formats</span></li>
+                                    <li><i class="fas fa-check"></i> <span>Print Ready</span></li>
                                 </ul>
                             </div>
-                            <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Vector Logo', '18')">SECURE DEAL</button>
+                            <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Vector Logo', '2,000')">SECURE DEAL</button>
                         </div>
+
                         <div class="service-card">
                             <div style="width:100%;">
                                 <div class="delivery-time" style="color:var(--accent); border-color:var(--accent);">7 DAYS</div>
                                 <i class="fas fa-crown card-icon" style="color:var(--accent);"></i>
                                 <h3 class="card-title">BRAND_MAX</h3>
                                 <div class="price-container">
-                                    <div class="price-tag">$55</div>
-                                    <div class="price-sub">≈ ₹4,500 INR</div>
-                                    <div class="price-strike-row"><span class="mrp">$85 (₹7K)</span><span class="discount">35% OFF</span></div>
+                                    <div class="price-tag">₹5,000</div>
+                                    <div class="price-sub">≈ $60 USD</div>
+                                    <div class="price-strike-row"><span class="mrp">₹7,000 ($85)</span><span class="discount">28% OFF</span></div>
                                 </div>
                             </div>
                             <div class="feature-scroll-area">
@@ -538,7 +1154,7 @@
                                     <li><i class="fas fa-check"></i> <span>All Source Files</span></li>
                                 </ul>
                             </div>
-                            <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Full Branding', '55')">SECURE DEAL</button>
+                            <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Full Branding', '5,000')">SECURE DEAL</button>
                         </div>
                     </div>
                 </div>
@@ -547,36 +1163,40 @@
             <div id="sector-visuals" class="service-sector">
                 <p style="text-align: center; color: #888; font-family: 'JetBrains Mono'; font-size: 0.85rem; margin-bottom: 20px;">> ALL GRAPHICS RENDERED LOCALLY ON RTX 3070 TI HARDWARE <</p>
                 <div class="slider-wrapper">
-                    <div class="project-grid scroll-container">
+                    <div class="mobile-nav-arrow arrow-left" onclick="scrollGrid('left')"><i class="fas fa-chevron-left"></i></div>
+                    <div class="mobile-nav-arrow arrow-right" onclick="scrollGrid('right')"><i class="fas fa-chevron-right"></i></div>
+                    
+                    <div class="project-grid grid-3 scroll-container">
                         <div class="service-card">
                             <div style="width:100%;">
                                 <div class="delivery-time" style="color:#ff0000; border-color:#ff0000;">1 DAY</div>
                                 <i class="fab fa-youtube card-icon" style="color:#ff0000;"></i>
                                 <h3 class="card-title">THUMBNAIL</h3>
                                 <div class="price-container">
-                                    <div class="price-tag">$5</div>
-                                    <div class="price-sub" style="color:#ff0000; background:rgba(255,0,0,0.1);">≈ ₹450 INR</div>
-                                    <div class="price-strike-row"><span class="mrp">$10 (₹800)</span><span class="discount">50% OFF</span></div>
+                                    <div class="price-tag">₹500</div>
+                                    <div class="price-sub" style="color:#ff0000;">≈ $6 USD</div>
+                                    <div class="price-strike-row"><span class="mrp">₹800 ($10)</span><span class="discount">37% OFF</span></div>
                                 </div>
                             </div>
                             <div class="feature-scroll-area">
                                 <ul class="feature-list">
                                     <li><i class="fas fa-check"></i> <span>High CTR Design</span></li>
                                     <li><i class="fas fa-check"></i> <span>Gaming / Tech Style</span></li>
-                                    <li><i class="fas fa-check"></i> <span>Source File Included</span></li>
+                                    <li><i class="fas fa-exclamation-triangle" style="color:#ffaa00;"></i> <span style="color:#ffaa00;">High-Res PNG (No PSD)</span></li>
                                 </ul>
                             </div>
-                            <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Thumbnail', '5')">SECURE DEAL</button>
+                            <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Thumbnail', '500')">SECURE DEAL</button>
                         </div>
+
                         <div class="service-card">
                             <div style="width:100%;">
                                 <div class="delivery-time">3 DAYS</div>
                                 <i class="fas fa-tv card-icon"></i>
                                 <h3 class="card-title">CHANNEL KIT</h3>
                                 <div class="price-container">
-                                    <div class="price-tag">$25</div>
-                                    <div class="price-sub">≈ ₹2,000 INR</div>
-                                    <div class="price-strike-row"><span class="mrp">$42 (₹3.5K)</span><span class="discount">42% OFF</span></div>
+                                    <div class="price-tag">₹2,500</div>
+                                    <div class="price-sub">≈ $30 USD</div>
+                                    <div class="price-strike-row"><span class="mrp">₹3,500 ($42)</span><span class="discount">28% OFF</span></div>
                                 </div>
                             </div>
                             <div class="feature-scroll-area">
@@ -586,27 +1206,28 @@
                                     <li><i class="fas fa-check"></i> <span>Social Layouts</span></li>
                                 </ul>
                             </div>
-                            <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Channel Kit', '25')">SECURE DEAL</button>
+                            <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Channel Kit', '2,500')">SECURE DEAL</button>
                         </div>
+
                         <div class="service-card">
                             <div style="width:100%;">
                                 <div class="delivery-time">4 DAYS</div>
                                 <i class="fas fa-magic card-icon"></i>
-                                <h3 class="card-title">IMAGE OPS</h3>
+                                <h3 class="card-title">BULK OPS</h3>
                                 <div class="price-container">
-                                    <div class="price-tag">$36</div>
-                                    <div class="price-sub">≈ ₹3,000 INR</div>
-                                    <div class="price-strike-row"><span class="mrp">$60 (₹5K)</span><span class="discount">40% OFF</span></div>
+                                    <div class="price-tag">₹5,000</div>
+                                    <div class="price-sub">≈ $60 USD</div>
+                                    <div class="price-strike-row"><span class="mrp">₹7,000 ($85)</span><span class="discount">28% OFF</span></div>
                                 </div>
                             </div>
                             <div class="feature-scroll-area">
                                 <ul class="feature-list">
-                                    <li><i class="fas fa-check"></i> <span>Bulk Photo Editing</span></li>
-                                    <li><i class="fas fa-check"></i> <span>Retouching & Grading</span></li>
-                                    <li><i class="fas fa-check"></i> <span>Complex Composition</span></li>
+                                    <li><i class="fas fa-check"></i> <span>15 Thumbnails Max</span></li>
+                                    <li><i class="fas fa-check"></i> <span>Bulk Retouching</span></li>
+                                    <li><i class="fas fa-exclamation-triangle" style="color:#ffaa00;"></i> <span style="color:#ffaa00;">High-Res PNG (No PSD)</span></li>
                                 </ul>
                             </div>
-                            <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('Photo Editing', '36')">GET QUOTE</button>
+                            <button class="btn-neon" style="margin-top:auto;" onclick="negotiate('15 Thumbnails Bulk', '5,000')">GET QUOTE</button>
                         </div>
                     </div>
                 </div>
@@ -615,7 +1236,7 @@
             <div id="faq-web" class="kb-section active-faq">
                 <details class="faq-warning" open>
                     <summary><i class="fas fa-exclamation-triangle"></i> IMPORTANT: Hosting & Domain Policy</summary>
-                    <p>Unless you select the <strong>Ultimate Combo</strong>, we DO NOT provide Hosting or Domain names directly. You must purchase these assets separately so you retain 100% control over them. We will guide you to the best providers.</p>
+                    <p>Unless you select the <strong>Ultimate Combo</strong>, we DO NOT provide Hosting or Domain names directly. You must purchase these assets separately so you retain 100% control over them. We will guide you to the best providers (e.g., Hostinger, GoDaddy).</p>
                 </details>
                 <div class="faq-grid">
                     <div>
@@ -632,7 +1253,10 @@
             </div>
 
             <div id="faq-identity" class="kb-section">
-                <h2 style="color:white; text-align:center; margin-bottom:30px; font-family:'Rajdhani'; font-size: 2.5rem;">IDENTITY PROTOCOLS</h2>
+                <details class="faq-warning" open>
+                    <summary><i class="fas fa-shield-alt"></i> NO AI GENERATORS USED</summary>
+                    <p>All logos are created via sketch and vector digitization to ensure your identity can be legally trademarked. We do not use Midjourney or generic AI.</p>
+                </details>
                 <div class="faq-grid">
                     <div>
                         <details class="faq-item"><summary>Q: Who owns Copyright?</summary><p>You do. Once the final payment is cleared, full Intellectual Property (IP) rights are transferred to you.</p></details>
@@ -640,20 +1264,23 @@
                     </div>
                     <div>
                         <details class="faq-item"><summary>Q: Revisions?</summary><p>Yes. Each package comes with specific revision rounds to tweak the design until it matches your vision.</p></details>
-                        <details class="faq-item"><summary>Q: AI Generated?</summary><p>No. We do not use generic AI generators for logos. This ensures your logo can be legally trademarked.</p></details>
+                        <details class="faq-item"><summary>Q: Can you update my old logo?</summary><p>Yes, we can modernize existing logos. Select the Vector plan and provide your old file.</p></details>
                     </div>
                 </div>
             </div>
 
             <div id="faq-visuals" class="kb-section">
-                <h2 style="color:white; text-align:center; margin-bottom:30px; font-family:'Rajdhani'; font-size: 2.5rem;">VISUAL PROTOCOLS</h2>
+                <details class="faq-warning" open>
+                    <summary><i class="fas fa-file-image"></i> FILE DELIVERY FORMATS</summary>
+                    <p>For Thumbnail and Bulk rendering, we deliver the final product in **High-Res PNG** format only. Source PSD files are not included in these packages to protect proprietary visual styling techniques.</p>
+                </details>
                 <div class="faq-grid">
                     <div>
                         <details class="faq-item"><summary>Q: High CTR?</summary><p>Leveraging internal data from the @tigml gaming channel, we design based on "Click Psychology" (high contrast, curiosity gaps) to maximize your views.</p></details>
-                        <details class="faq-item"><summary>Q: Source Files?</summary><p>Yes, source files (PSD) are included so you can change the text later if needed.</p></details>
+                        <details class="faq-item"><summary>Q: Source Files?</summary><p>Source files are ONLY included in the Channel Kit. Thumbnails and Bulk Ops are delivered as flattened PNGs.</p></details>
                     </div>
                     <div>
-                        <details class="faq-item"><summary>Q: Bulk Discount?</summary><p>Yes. For bulk monthly retainers (YouTubers/Agencies), we offer special rates. Contact us.</p></details>
+                        <details class="faq-item"><summary>Q: Bulk Limit?</summary><p>The Bulk Ops package is strictly capped at a maximum of 15 thumbnails per batch to ensure high-quality rendering standards.</p></details>
                         <details class="faq-item"><summary>Q: Urgent Delivery?</summary><p>We have an override fee for 24h delivery. Contact via WhatsApp for availability.</p></details>
                     </div>
                 </div>
@@ -675,8 +1302,8 @@
                 <div class="bot-options" id="botStartOpts">
                     <button class="bot-choice-btn" onclick="botFlow('web')">Web Architecture / CMS</button>
                     <button class="bot-choice-btn" onclick="botFlow('combo')" style="border-color:var(--god-tier); color:white; background: rgba(255,0,85,0.2);">Ultimate Combo Deals 🔥</button>
-                    <button class="bot-choice-btn" onclick="botFlow('visuals')">Visuals / @tigml Thumbnails</button>
-                    <button class="bot-choice-btn" onclick="botFlow('custom')">Custom Request / Other</button>
+                    <button class="bot-choice-btn" onclick="botFlow('visuals')">Visuals / Bulk Thumbnails</button>
+                    <button class="bot-choice-btn" onclick="botFlow('custom')">Custom Request / Negotiate</button>
                 </div>
             </div>
         </div>
@@ -706,10 +1333,33 @@
             }
         }
 
-        /* --- MOBILE "3D SWIPE" INTERSECTION OBSERVER --- */
+        /* --- MOBILE "3D SWIPE" & LOOPING ARROWS --- */
+        function scrollGrid(direction) {
+            const activeSector = document.querySelector('.service-sector.active');
+            const grid = activeSector.querySelector('.scroll-container');
+            if(!grid) return;
+
+            const cardWidth = window.innerWidth * 0.85 + 20; 
+            
+            if (direction === 'right') {
+                // If near the end, loop back to start smoothly
+                if (grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 20) {
+                    grid.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                }
+            } else {
+                // If near the start, jump to end smoothly
+                if (grid.scrollLeft <= 10) {
+                    grid.scrollTo({ left: grid.scrollWidth, behavior: 'smooth' });
+                } else {
+                    grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                }
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             if (window.innerWidth <= 900) {
-                // Adjusts scaling and opacity based on scroll position
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if(entry.isIntersecting) {
@@ -718,24 +1368,28 @@
                             entry.target.classList.remove('mobile-focus');
                         }
                     });
-                }, { root: null, rootMargin: "0px -10% 0px -10%", threshold: 0.8 }); // 0.8 means 80% of card must be visible to trigger
+                }, { root: null, rootMargin: "0px -10% 0px -10%", threshold: 0.7 }); 
 
                 document.querySelectorAll('.service-card').forEach(card => observer.observe(card));
             }
         });
 
-        /* --- TERMINAL CALCULATOR LOGIC (Dual Currency) --- */
+        /* --- TERMINAL CALCULATOR LOGIC (Dual Currency INR Priority) --- */
         let basePriceUSD = 0, basePriceINR = 0, baseDays = 0, pkgName = "";
         let pageCount = 0;
 
         function selectWebPackage(usd, inr, name, days, cardId) {
-            basePriceUSD = usd; basePriceINR = inr; baseDays = days; pkgName = name;
+            basePriceUSD = usd; 
+            basePriceINR = inr; 
+            baseDays = days; 
+            pkgName = name;
             
             document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected-card'));
             document.getElementById(cardId).classList.add('selected-card');
             
             document.getElementById('pkg-name').innerText = name;
             
+            // Scroll to calculator on mobile
             if(window.innerWidth <= 900) {
                 setTimeout(() => { document.querySelector('.addon-panel').scrollIntoView({behavior: "smooth", block: "start"}); }, 300);
             }
@@ -748,9 +1402,9 @@
             calculateTotal();
         }
 
-        // Custom Page Counter Logic
+        // Custom Page Counter
         function changePages(val) {
-            if(basePriceUSD === 0) { alert("Please select a Web Package card first."); return; }
+            if(basePriceINR === 0) { alert("Please select a Web Package card first."); return; }
             pageCount += val;
             if(pageCount < 0) pageCount = 0;
             document.getElementById('opt-page-count').value = pageCount;
@@ -758,7 +1412,7 @@
         }
 
         function toggleAddon(label) {
-            if(basePriceUSD === 0) { alert("Please select a Web Package card first."); return; }
+            if(basePriceINR === 0) { alert("Please select a Web Package card first."); return; }
             const checkbox = label.querySelector('input');
             setTimeout(() => {
                 if(checkbox.checked) label.classList.add('active-addon');
@@ -768,15 +1422,15 @@
         }
 
         function calculateTotal() {
-            if(basePriceUSD === 0) return;
+            if(basePriceINR === 0) return;
             let pUSD = basePriceUSD; let pINR = basePriceINR; let d = baseDays;
 
-            // Add Custom Pages ($10 / ₹800)
-            pUSD += (pageCount * 10);
+            // Extra Pages ($10 / ₹800)
+            pUSD += (pageCount * 10); 
             pINR += (pageCount * 800);
             if(pageCount > 0) d += Math.ceil(pageCount / 2);
 
-            // Add Checkboxes (Hardcoded conversions for accuracy)
+            // Checkboxes
             if(document.getElementById('opt-video') && document.getElementById('opt-video').checked) { pUSD += 24; pINR += 2000; d += 1; }
             if(document.getElementById('opt-payment') && document.getElementById('opt-payment').checked) { pUSD += 18; pINR += 1500; d += 1; }
             if(document.getElementById('opt-seo') && document.getElementById('opt-seo').checked) { pUSD += 36; pINR += 3000; d += 2; }
@@ -785,24 +1439,25 @@
             if(document.getElementById('opt-admin') && document.getElementById('opt-admin').checked) { pUSD += 24; pINR += 2000; d += 1; }
             if(document.getElementById('opt-maint') && document.getElementById('opt-maint').checked) { pUSD += 42; pINR += 3500; }
 
-            document.getElementById('final-price').innerText = "$"+pUSD.toLocaleString();
-            document.getElementById('final-price-inr').innerText = "≈ ₹"+pINR.toLocaleString();
+            // Display
+            document.getElementById('final-price').innerText = "₹"+pINR.toLocaleString();
+            document.getElementById('final-price-usd').innerText = "≈ $"+pUSD.toLocaleString();
             
-            // Calculate ETA Date
+            // ETA
             const today = new Date();
             const deliveryDate = new Date();
             deliveryDate.setDate(today.getDate() + d);
             const formattedDate = deliveryDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
             document.getElementById('final-days').innerText = `${formattedDate} (${d} Days)`;
             
-            // 25% Token
+            // Token
             let tokenUSD = Math.ceil(pUSD * 0.25);
             let tokenINR = Math.ceil(pINR * 0.25);
-            document.getElementById('token-price').innerText = "$" + tokenUSD + " / ₹" + tokenINR.toLocaleString();
+            document.getElementById('token-price').innerText = "₹" + tokenINR.toLocaleString() + " / $" + tokenUSD;
         }
 
         function deploySystem(method) {
-            if(basePriceUSD === 0) { alert("ERROR: Select a Configuration Matrix (Card) first."); return; }
+            if(basePriceINR === 0) { alert("ERROR: Select a Configuration Matrix (Card) first."); return; }
             const name = document.getElementById('client-name').value;
             if(!name) { alert("ERROR: Input Client Target Name."); return; }
 
@@ -814,8 +1469,8 @@
             });
             let addonStr = addons.length > 0 ? addons.map(a => "• " + a).join("\n") : "Standard Default Layout";
             
-            const totalUSD = document.getElementById('final-price').innerText;
-            const totalINR = document.getElementById('final-price-inr').innerText;
+            const totalINR = document.getElementById('final-price').innerText;
+            const totalUSD = document.getElementById('final-price-usd').innerText;
             const delivery = document.getElementById('final-days').innerText;
 
             let msg = `👋 *SYSTEM DEPLOYMENT INITIATED*
@@ -823,7 +1478,7 @@ Client: ${name}
 
 🚀 *ARCHITECTURE SPECS*
 📦 Matrix: ${pkgName}
-💰 Budget: ${totalUSD} (${totalINR})
+💰 Budget: ${totalINR} (${totalUSD})
 ⏳ Target ETA: ${delivery}
 
 ➕ *INSTALLED MODULES:*
@@ -834,7 +1489,9 @@ _I am ready to transfer the 25% Node Token. Awaiting confirmation._`;
             if(method === 'whatsapp') window.open(`https://wa.me/918700105930?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        function negotiate(svc, base) { window.open(`https://wa.me/918700105930?text=Hi, interested in deploying ${svc} (Starts $${base}). Discuss parameters?`, '_blank'); }
+        function negotiate(svc, base) { 
+            window.open(`https://wa.me/918700105930?text=Hi, interested in deploying ${svc} (Starts ₹${base}). Can we discuss the parameters?`, '_blank'); 
+        }
 
         /* --- ADVANCED AI CHATBOT LOGIC --- */
         function toggleBot() {
@@ -853,13 +1510,13 @@ _I am ready to transfer the 25% Node Token. Awaiting confirmation._`;
 
         function showTyping() {
             const b = document.getElementById('botBody');
-            b.innerHTML += `<div id="typingInd" class="msg bot typing-indicator"><span></span><span></span><span></span></div>`;
+            b.innerHTML += `<div id="typingInd" class="typing-indicator"><span></span><span></span><span></span></div>`;
             b.scrollTop = b.scrollHeight;
         }
 
         function botFlow(choice) {
             document.getElementById('botStartOpts').style.display='none';
-            let uTxt = choice === 'web' ? "Web Architecture" : (choice === 'combo' ? "Ultimate Combo" : (choice === 'custom' ? "Custom Request" : "Visuals"));
+            let uTxt = choice === 'web' ? "Web Architecture" : (choice === 'combo' ? "Ultimate Combo" : (choice === 'custom' ? "Custom Request / Negotiate" : "Visuals / Thumbnails"));
             addMsg(uTxt, 'user');
             showTyping();
 
@@ -875,13 +1532,13 @@ _I am ready to transfer the 25% Node Token. Awaiting confirmation._`;
                     buttons = `<button class="bot-choice-btn" onclick="botStep2('combo', 'Yes, load it')">Yes, let's build it.</button>
                                <button class="bot-choice-btn" onclick="botStep2('custom', 'Need customization')">Can I swap a feature?</button>`;
                 } else if(choice === 'custom') {
-                    botMsg = "Custom parameters detected. Do you require a full-stack App, API integration, or something entirely unique?";
+                    botMsg = "Custom parameters detected. Do you require a full-stack App, API integration, or do you want to negotiate bulk pricing?";
                     buttons = `<button class="bot-choice-btn" onclick="botStep2('custom', 'Custom App/API')">Custom App / API</button>
-                               <button class="bot-choice-btn" onclick="botStep2('custom', 'Other')">Other Request</button>`;
+                               <button class="bot-choice-btn" onclick="botStep2('custom', 'Negotiate')">Negotiate Rates</button>`;
                 } else {
-                    botMsg = "Initializing rendering protocols. Utilizing RTX 3070 Ti localized hardware and @tigml analytics. Target requirement?";
+                    botMsg = "Initializing rendering protocols. Utilizing local RTX 3070 Ti hardware. Max batch size is 15 thumbnails (PNG format only). Target requirement?";
                     buttons = `<button class="bot-choice-btn" onclick="botStep2('visuals', 'YouTube Thumbnails')">YouTube CTR Thumbnails</button>
-                               <button class="bot-choice-btn" onclick="botStep2('visuals', 'Photo Editing')">Batch Photo Ops</button>`;
+                               <button class="bot-choice-btn" onclick="botStep2('visuals', 'Bulk Ops')">Bulk Retouching</button>`;
                 }
 
                 addMsg(botMsg, 'bot');
@@ -901,16 +1558,16 @@ _I am ready to transfer the 25% Node Token. Awaiting confirmation._`;
                 let recText = ""; let action = "";
 
                 if(cat === 'web') {
-                    recText = "Routing to optimal matrix: For standard sites, **STARTER** is recommended. For high traffic, initialize **BUSINESS PRO**.";
-                    action = "switchSector('web'); document.getElementById('card-business').scrollIntoView({behavior:'smooth'});";
+                    recText = "Routing to optimal matrix: Select your package from the Web Sector to configure any extra pages or add-ons via the terminal.";
+                    action = "switchSector('web'); document.getElementById('card-starter').scrollIntoView({behavior:'smooth'});";
                 } else if(cat === 'combo') {
-                    recText = "Loading the Ultimate Combo. Select it from the Web Sector to configure any extra add-ons via the terminal.";
+                    recText = "Loading the Ultimate Combo. Select it from the Web Sector to finalize your deployment.";
                     action = "switchSector('web'); document.getElementById('card-combo').scrollIntoView({behavior:'smooth'}); setTimeout(()=>document.getElementById('card-combo').click(), 800);";
                 } else if (cat === 'custom') {
-                    recText = "For highly custom requests, I must patch you directly to Roshan. Opening secure channel...";
+                    recText = "For highly custom requests or negotiations, I must patch you directly to Roshan. Opening secure channel...";
                     action = "window.open('https://wa.me/918700105930?text=Hi Roshan, I have a custom system request.', '_blank');";
                 } else {
-                    recText = "Acknowledged. Opening Visual Studio parameters. High-performance rendering standing by.";
+                    recText = "Acknowledged. Opening Visual Studio parameters. Remember, PSD source files are not included in standard thumbnail packages.";
                     action = "switchSector('visuals')";
                 }
 
@@ -936,8 +1593,8 @@ _I am ready to transfer the 25% Node Token. Awaiting confirmation._`;
                 <div class="bot-options" id="botStartOpts" style="display:block;">
                     <button class="bot-choice-btn" onclick="botFlow('web')">Web Architecture / CMS</button>
                     <button class="bot-choice-btn" onclick="botFlow('combo')" style="border-color:var(--god-tier); color:white; background: rgba(255,0,85,0.2);">Ultimate Combo Deals 🔥</button>
-                    <button class="bot-choice-btn" onclick="botFlow('visuals')">Visuals / @tigml Thumbnails</button>
-                    <button class="bot-choice-btn" onclick="botFlow('custom')">Custom Request / Other</button>
+                    <button class="bot-choice-btn" onclick="botFlow('visuals')">Visuals / Bulk Thumbnails</button>
+                    <button class="bot-choice-btn" onclick="botFlow('custom')">Custom Request / Negotiate</button>
                 </div>`;
         }
 
