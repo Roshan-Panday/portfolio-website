@@ -16,32 +16,31 @@
         /* --- 1. PROJECT GRID --- */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
             margin-top: 40px;
         }
 
-        /* --- 2. THE CYBER CARD --- */
+        /* --- 2. THE CYBER CARD WITH VISUALS --- */
         .project-card {
             background: #050505;
             border: 1px solid #222;
-            padding: 25px;
+            padding: 20px;
             transition: all 0.3s ease;
             position: relative;
             cursor: pointer;
             overflow: hidden;
             /* The "Chip" Cut */
             clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
-            min-height: 380px;
+            min-height: 420px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
         .project-card:hover {
             transform: translateY(-8px);
             border-color: var(--accent);
-            box-shadow: 0 10px 40px rgba(0, 242, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 242, 255, 0.15);
         }
 
         .card-header {
@@ -49,10 +48,63 @@
         }
         .card-status { font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; color: #666; text-transform: uppercase; }
         
-        .card-icon-large { font-size: 3.5rem; color: #333; transition: 0.3s; margin: 20px 0; align-self: center; }
-        .project-card:hover .card-icon-large { color: white; text-shadow: 0 0 15px var(--accent); }
+        /* --- NEW THUMBNAIL STYLES --- */
+        .card-visual {
+            width: 100%;
+            height: 180px;
+            border: 1px solid #222;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+            background: #111;
+        }
+        
+        .card-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            filter: grayscale(80%) contrast(120%) brightness(0.7);
+        }
 
-        .card-title { color: white; font-size: 1.4rem; margin-bottom: 5px; letter-spacing: 1px; }
+        /* The Cyberpunk Overlay inside the image */
+        .card-visual::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.8) 100%);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        /* Hover Effects for Image */
+        .project-card:hover .card-visual img {
+            transform: scale(1.1);
+            filter: grayscale(0%) contrast(110%) brightness(1);
+        }
+        .project-card:hover .card-visual {
+            border-color: var(--accent);
+            box-shadow: inset 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+
+        /* Floating Icon over the image */
+        .visual-icon {
+            position: absolute;
+            top: 10px; right: 10px;
+            background: rgba(0,0,0,0.7);
+            padding: 8px;
+            border-radius: 4px;
+            color: #555;
+            font-size: 1.2rem;
+            z-index: 2;
+            transition: 0.3s;
+            border: 1px solid #333;
+        }
+        .project-card:hover .visual-icon { color: var(--accent); border-color: var(--accent); }
+
+        /* --- TEXT DATA --- */
+        .card-title { color: white; font-size: 1.4rem; margin-bottom: 10px; letter-spacing: 1px; font-weight: 700; }
         .card-tech-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px; }
         
         .tech-badge { 
@@ -64,10 +116,10 @@
             background: rgba(255,255,255,0.05);
         }
 
-        .card-desc { color: #888; font-size: 0.9rem; line-height: 1.5; flex-grow: 1; }
+        .card-desc { color: #888; font-size: 0.9rem; line-height: 1.5; flex-grow: 1; margin-bottom: 20px;}
 
         .card-footer { 
-            margin-top: 20px; 
+            margin-top: auto; 
             padding-top: 15px; 
             border-top: 1px solid #222; 
             color: var(--accent); 
@@ -79,9 +131,9 @@
         /* --- 3. HOLOGRAPHIC MODAL (POPUP) --- */
         .project-panel-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); /* Darker background to hide page */
+            background: rgba(0,0,0,0.85);
             backdrop-filter: blur(5px);
-            z-index: 99999; /* Max Z-Index to stay on top */
+            z-index: 99999; 
             display: none; 
             justify-content: center; align-items: center;
             opacity: 0; transition: 0.3s;
@@ -95,7 +147,6 @@
             padding: 40px;
             position: relative;
             box-shadow: 0 0 50px rgba(0, 242, 255, 0.15);
-            /* Corner Cuts */
             clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);
             animation: slideUp 0.4s ease;
             max-height: 90vh;
@@ -107,8 +158,7 @@
         .close-panel { 
             position: absolute; top: 15px; right: 20px; 
             color: #666; font-size: 2.5rem; cursor: pointer; transition: 0.2s; 
-            z-index: 100;
-            line-height: 1;
+            z-index: 100; line-height: 1;
         }
         .close-panel:hover { color: white; transform: rotate(90deg); }
 
@@ -127,9 +177,7 @@
 
         .panel-actions { margin-top: 30px; display: flex; gap: 15px; }
 
-        /* --- 4. RESPONSIVE --- */
         @media (max-width: 900px) {
-            .project-grid { grid-template-columns: 1fr; }
             .panel-grid { grid-template-columns: 1fr; gap: 20px; }
             .project-panel { padding: 25px; width: 95%; }
         }
@@ -146,7 +194,7 @@
             <div style="border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 40px;">
                 <h1 style="font-size: 2.5rem; color:white;">DEPLOYMENT <span style="color:var(--accent);">LOG</span></h1>
                 <p style="color:#666; letter-spacing: 2px; font-size: 0.9rem; margin-top: 5px;">ACTIVE NODES & ARCHITECTURES</p>
-                <p style="font-size:0.8rem; color:var(--accent); margin-top:10px;">[ CLICK CARDS TO VIEW DETAILS ]</p>
+                <p style="font-size:0.8rem; color:var(--accent); margin-top:10px;">[ INITIATE CONNECTION SEQUENCE ]</p>
             </div>
             
             <div class="project-grid">
@@ -156,106 +204,150 @@
                         <span class="card-status">LIVE SYSTEM</span>
                         <i class="fas fa-signal" style="color:var(--accent);"></i>
                     </div>
-                    <i class="fas fa-mountain card-icon-large"></i>
-                    <div>
-                        <h3 class="card-title">Bhandari Adventure</h3>
-                        <div class="card-tech-row">
-                            <span class="tech-badge">PHP</span><span class="tech-badge">MySQL</span><span class="tech-badge">JS</span>
-                        </div>
-                        <p class="card-desc">High-performance custom CMS built for adventure tourism handling real-time bookings.</p>
+                    <div class="card-visual">
+                        <i class="fas fa-mountain visual-icon"></i>
+                        <img src="assets/images/projects/bhandari.jpg" onerror="this.src='https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&q=80&w=600'" alt="Bhandari Adventure">
                     </div>
+                    <h3 class="card-title">Bhandari Adventure</h3>
+                    <div class="card-tech-row">
+                        <span class="tech-badge">PHP</span><span class="tech-badge">MySQL</span><span class="tech-badge">JS</span>
+                    </div>
+                    <p class="card-desc">High-performance custom CMS built for adventure tourism handling real-time bookings.</p>
                     <div class="card-footer">
-                        <span>ACCESS FILE</span> <i class="fas fa-folder-open"></i>
+                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
                     </div>
                 </div>
 
                 <div class="project-card" data-aos="fade-up" data-aos-delay="100" onclick="openProjectPanel(1)">
                     <div class="card-header">
                         <span class="card-status" style="color:#3DDC84;">TOOLKIT</span>
-                        <i class="fab fa-android" style="color:#3DDC84;"></i>
+                        <i class="fas fa-terminal" style="color:#3DDC84;"></i>
                     </div>
-                    <i class="fas fa-mobile-alt card-icon-large"></i>
-                    <div>
-                        <h3 class="card-title">Android Streamer</h3>
-                        <div class="card-tech-row">
-                            <span class="tech-badge">C++</span><span class="tech-badge">ADB</span><span class="tech-badge">FFmpeg</span>
-                        </div>
-                        <p class="card-desc">Low-latency screen mirroring tool for developers utilizing raw ADB frame buffers.</p>
+                    <div class="card-visual" style="border-color: rgba(61, 220, 132, 0.3);">
+                        <i class="fab fa-android visual-icon"></i>
+                        <img src="assets/images/projects/streamer.jpg" onerror="this.src='https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&q=80&w=600'" alt="Android Streamer">
                     </div>
+                    <h3 class="card-title">Android Streamer</h3>
+                    <div class="card-tech-row">
+                        <span class="tech-badge">C++</span><span class="tech-badge">ADB</span><span class="tech-badge">FFmpeg</span>
+                    </div>
+                    <p class="card-desc">Low-latency screen mirroring tool for developers utilizing raw ADB frame buffers.</p>
                     <div class="card-footer" style="color:#3DDC84;">
-                        <span>ACCESS FILE</span> <i class="fas fa-folder-open"></i>
+                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
                     </div>
                 </div>
 
                 <div class="project-card" data-aos="fade-up" data-aos-delay="200" onclick="openProjectPanel(2)">
                     <div class="card-header">
                         <span class="card-status" style="color:#ff0000;">ANALYTICS</span>
-                        <i class="fab fa-youtube" style="color:#ff0000;"></i>
+                        <i class="fas fa-satellite-dish" style="color:#ff0000;"></i>
                     </div>
-                    <i class="fas fa-chart-line card-icon-large"></i>
-                    <div>
-                        <h3 class="card-title">@tigml Data</h3>
-                        <div class="card-tech-row">
-                            <span class="tech-badge">Data Science</span><span class="tech-badge">Excel</span>
-                        </div>
-                        <p class="card-desc">Data-driven growth strategy for gaming content, analyzing meta-trends for virality.</p>
+                    <div class="card-visual" style="border-color: rgba(255, 0, 0, 0.3);">
+                        <i class="fab fa-youtube visual-icon"></i>
+                        <img src="assets/images/projects/tigml.jpg" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600'" alt="Tigml Analytics">
                     </div>
+                    <h3 class="card-title">@tigml Data</h3>
+                    <div class="card-tech-row">
+                        <span class="tech-badge">Data Science</span><span class="tech-badge">Excel</span>
+                    </div>
+                    <p class="card-desc">Data-driven growth strategy for gaming content, analyzing meta-trends for virality.</p>
                     <div class="card-footer" style="color:#ff0000;">
-                        <span>ACCESS FILE</span> <i class="fas fa-folder-open"></i>
+                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
                     </div>
                 </div>
 
                 <div class="project-card" data-aos="fade-up" onclick="openProjectPanel(3)">
                     <div class="card-header">
                         <span class="card-status" style="color:#ff0055;">PROTOTYPE</span>
-                        <i class="fas fa-robot" style="color:#ff0055;"></i>
+                        <i class="fas fa-network-wired" style="color:#ff0055;"></i>
                     </div>
-                    <i class="fas fa-brain card-icon-large"></i>
-                    <div>
-                        <h3 class="card-title">Project ROSA</h3>
-                        <div class="card-tech-row">
-                            <span class="tech-badge">Python</span><span class="tech-badge">PyTorch</span><span class="tech-badge">LLM</span>
-                        </div>
-                        <p class="card-desc">Offline AI Avatar running on consumer hardware (RTX 3070 Ti) for privacy-first assistance.</p>
+                    <div class="card-visual" style="border-color: rgba(255, 0, 85, 0.3);">
+                        <i class="fas fa-brain visual-icon"></i>
+                        <img src="assets/images/projects/rosa.jpg" onerror="this.src='https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=600'" alt="Project ROSA">
                     </div>
+                    <h3 class="card-title">Project ROSA</h3>
+                    <div class="card-tech-row">
+                        <span class="tech-badge">Python</span><span class="tech-badge">PyTorch</span><span class="tech-badge">LLM</span>
+                    </div>
+                    <p class="card-desc">Offline AI Avatar running on consumer hardware (RTX 3070 Ti) for privacy-first assistance.</p>
                     <div class="card-footer" style="color:#ff0055;">
-                        <span>ACCESS FILE</span> <i class="fas fa-folder-open"></i>
+                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
                     </div>
                 </div>
 
                 <div class="project-card" data-aos="fade-up" data-aos-delay="100" onclick="openProjectPanel(4)">
                     <div class="card-header">
                         <span class="card-status" style="color:#ff5555;">ENGINE</span>
-                        <i class="fas fa-gamepad" style="color:#ff5555;"></i>
+                        <i class="fas fa-microchip" style="color:#ff5555;"></i>
                     </div>
-                    <i class="fas fa-dragon card-icon-large"></i>
-                    <div>
-                        <h3 class="card-title">MH_2D Engine</h3>
-                        <div class="card-tech-row">
-                            <span class="tech-badge">Java</span><span class="tech-badge">OOP</span><span class="tech-badge">Physics</span>
-                        </div>
-                        <p class="card-desc">Custom Java-based Action RPG engine featuring state-machine AI logic.</p>
+                    <div class="card-visual" style="border-color: rgba(255, 85, 85, 0.3);">
+                        <i class="fas fa-gamepad visual-icon"></i>
+                        <img src="assets/images/projects/mh2d.jpg" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=600'" alt="MH2D Engine">
                     </div>
+                    <h3 class="card-title">MH_2D Engine</h3>
+                    <div class="card-tech-row">
+                        <span class="tech-badge">Java</span><span class="tech-badge">OOP</span><span class="tech-badge">Physics</span>
+                    </div>
+                    <p class="card-desc">Custom Java-based Action RPG engine featuring state-machine AI logic.</p>
                     <div class="card-footer" style="color:#ff5555;">
-                        <span>ACCESS FILE</span> <i class="fas fa-folder-open"></i>
+                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
                     </div>
                 </div>
 
                 <div class="project-card" data-aos="fade-up" data-aos-delay="200" onclick="openProjectPanel(5)">
                     <div class="card-header">
                         <span class="card-status" style="color:#44ff44;">SECURE</span>
-                        <i class="fas fa-lock" style="color:#44ff44;"></i>
+                        <i class="fas fa-shield-alt" style="color:#44ff44;"></i>
                     </div>
-                    <i class="fas fa-university card-icon-large"></i>
-                    <div>
-                        <h3 class="card-title">Secure_Vault</h3>
-                        <div class="card-tech-row">
-                            <span class="tech-badge">C++</span><span class="tech-badge">Crypto</span><span class="tech-badge">File I/O</span>
-                        </div>
-                        <p class="card-desc">Terminal-based transaction management system with encrypted logging.</p>
+                    <div class="card-visual" style="border-color: rgba(68, 255, 68, 0.3);">
+                        <i class="fas fa-lock visual-icon"></i>
+                        <img src="assets/images/projects/vault.jpg" onerror="this.src='https://images.unsplash.com/photo-1614064641913-6b110b656ea1?auto=format&fit=crop&q=80&w=600'" alt="Secure Vault">
                     </div>
+                    <h3 class="card-title">Secure_Vault</h3>
+                    <div class="card-tech-row">
+                        <span class="tech-badge">C++</span><span class="tech-badge">Crypto</span><span class="tech-badge">File I/O</span>
+                    </div>
+                    <p class="card-desc">Terminal-based transaction management system with encrypted logging.</p>
                     <div class="card-footer" style="color:#44ff44;">
-                        <span>ACCESS FILE</span> <i class="fas fa-folder-open"></i>
+                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="0" onclick="openProjectPanel(6)">
+                    <div class="card-header">
+                        <span class="card-status" style="color:#00e5ff;">PRODUCTION</span>
+                        <i class="fas fa-globe-asia" style="color:#00e5ff;"></i>
+                    </div>
+                    <div class="card-visual" style="border-color: rgba(0, 229, 255, 0.3);">
+                        <i class="fas fa-campground visual-icon"></i>
+                        <img src="assets/images/projects/blueheaven.jpg" onerror="this.src='https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&q=80&w=600'" alt="Blue Heaven Camp">
+                    </div>
+                    <h3 class="card-title">Blue Heaven</h3>
+                    <div class="card-tech-row">
+                        <span class="tech-badge">HTML/CSS</span><span class="tech-badge">JS</span><span class="tech-badge">Fetch API</span>
+                    </div>
+                    <p class="card-desc">Responsive, high-performance static website built for a luxury riverside camping resort.</p>
+                    <div class="card-footer" style="color:#00e5ff;">
+                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100" onclick="openProjectPanel(7)">
+                    <div class="card-header">
+                        <span class="card-status" style="color:#b829ff;">ARCHIVE</span>
+                        <i class="fas fa-database" style="color:#b829ff;"></i>
+                    </div>
+                    <div class="card-visual" style="border-color: rgba(184, 41, 255, 0.3);">
+                        <i class="fas fa-code-branch visual-icon"></i>
+                        <img src="assets/images/projects/academia.jpg" onerror="this.src='https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=600'" alt="Academia">
+                    </div>
+                    <h3 class="card-title">Academia</h3>
+                    <div class="card-tech-row">
+                        <span class="tech-badge">Algorithms</span><span class="tech-badge">Data Structures</span><span class="tech-badge">C++</span>
+                    </div>
+                    <p class="card-desc">A comprehensive repository of academic coursework, algorithm implementations, and core CS concepts.</p>
+                    <div class="card-footer" style="color:#b829ff;">
+                        <span>DECRYPT FILE</span> <i class="fas fa-folder-open"></i>
                     </div>
                 </div>
 
@@ -290,8 +382,8 @@
             </div>
 
             <div class="panel-actions">
-                <a href="#" target="_blank" class="btn-neon" id="pp-link">VISIT LINK</a>
-                <button class="btn-neon" onclick="closeProjectPanel()" style="background:transparent; border-color:#666; color:#ccc;">CLOSE FILE</button>
+                <a href="#" target="_blank" class="btn-neon" id="pp-link">ESTABLISH UPLINK</a>
+                <button class="btn-neon" onclick="closeProjectPanel()" style="background:transparent; border-color:#666; color:#ccc;">TERMINATE</button>
             </div>
         </div>
     </div>
@@ -350,6 +442,22 @@
                 solution: "This C++ application uses pointer-based memory management for speed and file encryption for security. It simulates a full banking backend.",
                 features: ["Encrypted Transaction Logs", "Memory Safety (Pointers)", "User Authentication", "Admin Oversight"],
                 link: "https://github.com/roshan-panday"
+            },
+            {
+                title: "Blue Heaven Camp",
+                subtitle: "STATUS: LIVE // RESORT WEBSITE",
+                challenge: "The client needed a premium, fast-loading digital storefront to showcase luxury tents and adventure packages, with a direct pipeline for user inquiries via WhatsApp.",
+                solution: "Built a highly optimized, mobile-first static site. Implemented a dynamic component loader (Vanilla JS Fetch API) for modular architecture, custom lightbox galleries, and embedded direct-to-chat integrations.",
+                features: ["Dynamic Include Architecture", "Custom Lightbox Media Gallery", "Mobile-First UI/UX Design", "WhatsApp Direct Integration"],
+                link: "https://github.com/Roshan-Panday/Blue-Heaven"
+            },
+            {
+                title: "Academia Repository",
+                subtitle: "STATUS: ARCHIVE // ACADEMIC & CS LOGS",
+                challenge: "Organizing and documenting various academic projects, algorithms, and technical assignments generated throughout the computer science curriculum into a single resource.",
+                solution: "Created a structured, centralized repository serving as a personal knowledge base. It includes implementations of core data structures, sorting algorithms, and standard academic software projects.",
+                features: ["Algorithm Implementations", "Core Data Structures", "Academic Coursework Logs", "Clean Code Documentation"],
+                link: "https://github.com/Roshan-Panday/Academia"
             }
         ];
 
@@ -377,7 +485,6 @@
             if (data.link && data.link !== "") {
                 linkBtn.href = data.link;
                 linkBtn.style.display = 'flex';
-                linkBtn.innerText = "VISIT PROJECT";
             } else {
                 linkBtn.style.display = 'none';
             }
