@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VORTEX ESPORTS — Pro Gaming Clan & Cyber Community</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Orbitron', 'sans-serif'],
+            mono: ['Rajdhani', 'sans-serif'],
+          },
+          colors: {
+            void: '#030712',
+            neon: '#22c55e',
+            magenta: '#ec4899',
+            purple: '#8b5cf6',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #030712; color: #f3f4f6; font-family: 'Rajdhani', sans-serif; }
+    .hud-border { border: 1px solid rgba(34, 197, 94, 0.4); box-shadow: 0 0 15px rgba(34, 197, 94, 0.15); }
+    .neon-text { text-shadow: 0 0 10px rgba(34, 197, 94, 0.6); }
+    .magenta-text { text-shadow: 0 0 10px rgba(236, 72, 153, 0.6); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Top Cyber Navigation -->
+  <header class="border-b border-neon/30 bg-void/90 backdrop-blur-md sticky top-0 z-40 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-neon/20 border border-neon flex items-center justify-center text-neon">
+        <i data-lucide="crosshair" class="w-6 h-6 animate-spin" style="animation-duration: 10s;"></i>
+      </div>
+      <div>
+        <span class="font-display font-extrabold text-2xl text-white tracking-widest neon-text">VORTEX</span>
+        <span class="text-[10px] uppercase font-mono tracking-widest text-neon block font-bold">PRO ESPORTS ORG</span>
+      </div>
+    </div>
+
+    <!-- Live Stream Badge -->
+    <div class="hidden md:flex items-center gap-3 font-mono text-xs">
+      <span class="px-3 py-1 rounded-full bg-red-500/20 border border-red-500 text-red-400 font-bold flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> TWITCH LIVE: 14.2K WATCHING
+      </span>
+    </div>
+
+    <button onclick="openApplyModal()" class="px-5 py-2.5 rounded-xl bg-neon text-void font-display font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors shadow-lg shadow-neon/20">
+      Join Roster
+    </button>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="py-20 px-6 max-w-7xl mx-auto w-full text-center space-y-6">
+    <span class="inline-block px-4 py-1 rounded-full bg-purple/20 border border-purple text-purple text-xs font-mono font-bold uppercase tracking-widest">
+      ⚡ WORLD RANK #1 ESPORTS CLAN
+    </span>
+
+    <h1 class="font-display font-extrabold text-4xl sm:text-7xl uppercase text-white leading-tight tracking-wider">
+      DOMINATE THE <br/>
+      <span class="text-neon neon-text">CYBER ARENA.</span>
+    </h1>
+    <p class="text-gray-400 text-base sm:text-lg max-w-xl mx-auto font-medium leading-relaxed">
+      Pro competitive rosters competing in Valorant Masters, Apex ALGS, and CS2 Major Championships.
+    </p>
+
+    <!-- Match Countdown Widget -->
+    <div class="bg-void/80 p-6 rounded-3xl hud-border max-w-2xl mx-auto space-y-3 font-mono">
+      <span class="text-xs text-magenta font-bold uppercase tracking-widest flex items-center justify-center gap-2">
+        <i data-lucide="swords" class="w-4 h-4 text-magenta"></i> UPCOMING MAJOR GRAND FINALS MATCH
+      </span>
+      <div class="flex items-center justify-center gap-6 text-xl sm:text-3xl font-display font-extrabold text-white">
+        <span>VORTEX</span>
+        <span class="text-neon font-mono text-sm">VS</span>
+        <span>TEAM LIQUID</span>
+      </div>
+      <div class="flex justify-center gap-4 text-xs font-bold text-gray-400 pt-2 border-t border-white/10">
+        <span>COUNTDOWN: <span id="match-timer" class="text-neon font-display font-bold">04 : 12 : 35</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Squad Roster & Game Selector -->
+  <section class="py-16 px-6 max-w-7xl mx-auto w-full space-y-8">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 border-b border-white/10 pb-4">
+      <div>
+        <span class="text-xs font-mono text-neon font-bold uppercase">PRO ROSTERS</span>
+        <h2 class="font-display font-extrabold text-3xl text-white uppercase">ACTIVE SQUAD LINEUP</h2>
+      </div>
+
+      <!-- Game Tabs -->
+      <div class="flex flex-wrap gap-2">
+        <button onclick="showRoster('val')" id="rtab-val" class="roster-tab px-4 py-2 rounded-xl bg-neon text-void font-display font-bold text-xs uppercase">VALORANT</button>
+        <button onclick="showRoster('apex')" id="rtab-apex" class="roster-tab px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:border-neon font-display font-bold text-xs uppercase">APEX LEGENDS</button>
+        <button onclick="showRoster('cs2')" id="rtab-cs2" class="roster-tab px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:border-neon font-display font-bold text-xs uppercase">CS2 PRO</button>
+      </div>
+    </div>
+
+    <!-- Cards Container -->
+    <div id="roster-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Player 1 -->
+      <div class="bg-white/5 p-6 rounded-2xl hud-border space-y-4 hover:border-neon transition-all">
+        <div class="flex justify-between items-start">
+          <span class="px-2.5 py-1 rounded bg-neon/20 text-neon font-mono text-xs font-bold">IGL / CAPTAIN</span>
+          <span class="font-display font-extrabold text-lg text-white">1.94 K/D</span>
+        </div>
+        <div>
+          <h3 class="font-display font-extrabold text-2xl text-neon">VRTX_KAIRO</h3>
+          <p class="text-xs font-mono text-gray-400">Peak Rank: Radiant #4 Global</p>
+        </div>
+        <div class="pt-2 border-t border-white/10 flex justify-between text-xs font-mono text-gray-400">
+          <span>Main: Jett / Duelist</span>
+          <span class="text-emerald-400">Win Rate: 74%</span>
+        </div>
+      </div>
+
+      <!-- Player 2 -->
+      <div class="bg-white/5 p-6 rounded-2xl hud-border space-y-4 hover:border-neon transition-all">
+        <div class="flex justify-between items-start">
+          <span class="px-2.5 py-1 rounded bg-purple/20 text-purple font-mono text-xs font-bold">ENTRY SNIPER</span>
+          <span class="font-display font-extrabold text-lg text-white">1.82 K/D</span>
+        </div>
+        <div>
+          <h3 class="font-display font-extrabold text-2xl text-purple">VRTX_PHANTOM</h3>
+          <p class="text-xs font-mono text-gray-400">Peak Rank: Radiant #12 Global</p>
+        </div>
+        <div class="pt-2 border-t border-white/10 flex justify-between text-xs font-mono text-gray-400">
+          <span>Main: Chamber / Operator</span>
+          <span class="text-emerald-400">Win Rate: 71%</span>
+        </div>
+      </div>
+
+      <!-- Player 3 -->
+      <div class="bg-white/5 p-6 rounded-2xl hud-border space-y-4 hover:border-neon transition-all">
+        <div class="flex justify-between items-start">
+          <span class="px-2.5 py-1 rounded bg-magenta/20 text-magenta font-mono text-xs font-bold">SUPPORT / ANCHOR</span>
+          <span class="font-display font-extrabold text-lg text-white">1.65 K/D</span>
+        </div>
+        <div>
+          <h3 class="font-display font-extrabold text-2xl text-magenta">VRTX_CYBER</h3>
+          <p class="text-xs font-mono text-gray-400">Peak Rank: Radiant #28 Global</p>
+        </div>
+        <div class="pt-2 border-t border-white/10 flex justify-between text-xs font-mono text-gray-400">
+          <span>Main: Omen / Smoke</span>
+          <span class="text-emerald-400">Win Rate: 69%</span>
+        </div>
+      </div>
+
+      <!-- Player 4 -->
+      <div class="bg-white/5 p-6 rounded-2xl hud-border space-y-4 hover:border-neon transition-all">
+        <div class="flex justify-between items-start">
+          <span class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-400 font-mono text-xs font-bold">INITIATOR</span>
+          <span class="font-display font-extrabold text-lg text-white">1.71 K/D</span>
+        </div>
+        <div>
+          <h3 class="font-display font-extrabold text-2xl text-cyan-400">VRTX_NEXUS</h3>
+          <p class="text-xs font-mono text-gray-400">Peak Rank: Radiant #19 Global</p>
+        </div>
+        <div class="pt-2 border-t border-white/10 flex justify-between text-xs font-mono text-gray-400">
+          <span>Main: Sova / Recon</span>
+          <span class="text-emerald-400">Win Rate: 72%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tournament Bracket & Interactive Fan Poll -->
+  <section class="py-16 px-6 max-w-5xl mx-auto w-full space-y-8">
+    <div class="text-center space-y-2 font-mono">
+      <span class="text-xs uppercase text-neon font-bold">COMMUNITY POLL</span>
+      <h2 class="font-display font-extrabold text-3xl text-white uppercase">PREDICT MATCH WINNER</h2>
+    </div>
+
+    <div class="bg-white/5 p-8 rounded-3xl hud-border grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+      <div class="space-y-4">
+        <h3 class="font-display text-xl text-white font-bold">VORTEX vs TEAM LIQUID</h3>
+        <p class="text-xs font-mono text-gray-400">Vote for your winner prediction to earn +500 Cyber Community XP!</p>
+        
+        <div class="space-y-3 font-mono text-xs">
+          <button onclick="voteTeam('vortex')" class="w-full p-3 rounded-xl bg-neon/20 border border-neon text-neon font-bold flex justify-between items-center hover:bg-neon hover:text-void transition-colors">
+            <span>VOTE VORTEX</span>
+            <span id="vote-vortex-count">1,842 Votes (78%)</span>
+          </button>
+
+          <button onclick="voteTeam('liquid')" class="w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white font-bold flex justify-between items-center hover:border-white transition-colors">
+            <span>VOTE TEAM LIQUID</span>
+            <span id="vote-liquid-count">520 Votes (22%)</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-void p-6 rounded-2xl border border-white/10 space-y-3 font-mono text-xs">
+        <span class="text-magenta font-bold uppercase">Tournament Prize Pool</span>
+        <div class="font-display text-4xl text-neon font-extrabold">$250,000 USD</div>
+        <p class="text-gray-400 text-[11px]">Grand Finals • Best of 5 Map Series • Map 1 Bind, Map 2 Ascent, Map 3 Lotus.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join Application Modal -->
+  <div id="apply-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-void border border-neon rounded-3xl max-w-md w-full p-8 text-center space-y-6 shadow-2xl">
+      <div>
+        <span class="text-xs uppercase font-mono tracking-widest text-neon">RECRUITMENT APPLICATION</span>
+        <h3 class="font-display text-2xl font-bold text-white uppercase mt-1">Join Vortex Clan</h3>
+      </div>
+
+      <form onsubmit="submitApp(event)" class="space-y-4 text-left font-mono text-xs">
+        <div>
+          <label class="text-gray-400 block mb-1">GamerTag / Handle</label>
+          <input type="text" required placeholder="ShadowNinja#1337" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-neon">
+        </div>
+        <div>
+          <label class="text-gray-400 block mb-1">Primary Game</label>
+          <select class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-2.5 text-white focus:outline-none">
+            <option>Valorant</option>
+            <option>Apex Legends</option>
+            <option>CS2</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-neon text-void font-display font-bold text-xs uppercase tracking-wider">
+          Transmit Application
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-white/10 text-center text-xs text-gray-500 font-mono max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-center gap-4">
+    <span>© 2026 VORTEX ESPORTS ORG.</span>
+    <span class="text-neon font-display">NEVER SURRENDER /// PLAY TO WIN</span>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    let vortexVotes = 1842;
+    let liquidVotes = 520;
+
+    function showRoster(game) {
+      document.querySelectorAll('.roster-tab').forEach(t => {
+        t.className = 'roster-tab px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:border-neon font-display font-bold text-xs uppercase';
+      });
+      document.getElementById('rtab-' + game).className = 'roster-tab px-4 py-2 rounded-xl bg-neon text-void font-display font-bold text-xs uppercase';
+    }
+
+    function voteTeam(team) {
+      if(team === 'vortex') vortexVotes++;
+      else liquidVotes++;
+
+      const total = vortexVotes + liquidVotes;
+      const vPct = Math.round((vortexVotes / total) * 100);
+      const lPct = 100 - vPct;
+
+      document.getElementById('vote-vortex-count').textContent = vortexVotes.toLocaleString() + ` Votes (${vPct}%)`;
+      document.getElementById('vote-liquid-count').textContent = liquidVotes.toLocaleString() + ` Votes (${lPct}%)`;
+      alert(`Vote logged for ${team.toUpperCase()}! You earned +500 Community XP.`);
+    }
+
+    function openApplyModal() {
+      const modal = document.getElementById('apply-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function submitApp(e) {
+      e.preventDefault();
+      alert('Application transmitted to VORTEX head coach! Discord invite sent.');
+      document.getElementById('apply-modal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

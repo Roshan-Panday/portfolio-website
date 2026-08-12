@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ROAST & ORIGIN — Artisanal Single-Origin Coffee & Brew Bar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            espresso: '#1b1410',
+            roast: '#3c2a21',
+            caramel: '#c68b59',
+            cream: '#f4ebe1',
+            mocha: '#2a1e17',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #1b1410; color: #f4ebe1; font-family: 'Outfit', sans-serif; }
+    .caramel-gradient { background: linear-gradient(135deg, #c68b59 0%, #f4ebe1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Header Navigation -->
+  <header class="border-b border-cream/10 bg-espresso/90 backdrop-blur-md sticky top-0 z-40 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full bg-caramel/20 border border-caramel flex items-center justify-center text-caramel">
+        <i data-lucide="coffee" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <span class="font-serif text-2xl font-bold tracking-wide text-cream">ROAST <span class="text-caramel font-light">&amp;</span> ORIGIN</span>
+        <span class="text-[10px] uppercase tracking-widest text-caramel/70 block">Artisanal Specialty Micro-Roastery</span>
+      </div>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest text-cream/70 font-medium">
+      <a href="#origins" class="hover:text-caramel transition-colors">Bean Origins</a>
+      <a href="#brew-guide" class="hover:text-caramel transition-colors">Ratio Calculator</a>
+      <a href="#store" class="hover:text-caramel transition-colors">Reserve Beans</a>
+    </nav>
+
+    <button onclick="toggleCartDrawer(true)" class="relative p-2.5 rounded-full bg-mocha border border-cream/20 text-cream hover:border-caramel transition-all">
+      <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+      <span id="cart-badge" class="absolute -top-1 -right-1 bg-caramel text-espresso font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center">0</span>
+    </button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-20 px-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7 space-y-6">
+      <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-caramel/10 border border-caramel/30 text-caramel text-xs uppercase tracking-widest font-semibold">
+        <i data-lucide="flame" class="w-3.5 h-3.5"></i> Small-Batch Roasted Daily
+      </span>
+      <h1 class="font-serif text-5xl sm:text-7xl font-bold leading-tight">
+        Savor the True <br/>
+        <span class="italic font-normal caramel-gradient">Essence of Single-Origin.</span>
+      </h1>
+      <p class="text-cream/70 text-base sm:text-lg max-w-xl font-light leading-relaxed">
+        Direct-trade volcanic soil harvests, meticulously roasted in small batches to preserve floral high-notes, dark cacao depths, and silky body.
+      </p>
+
+      <div class="flex flex-wrap gap-4 pt-2">
+        <button onclick="document.getElementById('store').scrollIntoView({behavior:'smooth'})" class="px-6 py-3.5 rounded-xl bg-caramel hover:bg-cream text-espresso font-bold text-xs uppercase tracking-widest transition-all shadow-lg">
+          Explore Micro-Lots
+        </button>
+        <button onclick="document.getElementById('brew-guide').scrollIntoView({behavior:'smooth'})" class="px-6 py-3.5 rounded-xl bg-mocha border border-cream/20 text-cream hover:border-caramel font-semibold text-xs uppercase tracking-widest transition-all">
+          Brew Ratio Guide
+        </button>
+      </div>
+    </div>
+
+    <!-- Hero Feature Box -->
+    <div class="lg:col-span-5 bg-mocha p-8 rounded-3xl border border-caramel/30 shadow-2xl space-y-6">
+      <div class="flex justify-between items-start">
+        <div>
+          <span class="text-[10px] uppercase font-mono tracking-widest text-caramel">Featured Micro-Lot</span>
+          <h3 class="font-serif text-3xl font-bold text-cream">Ethiopia Yirgacheffe</h3>
+        </div>
+        <span class="px-3 py-1 bg-caramel/20 text-caramel rounded-full text-xs font-mono font-bold">Grade 1</span>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 text-xs font-mono border-y border-cream/10 py-4">
+        <div>
+          <span class="text-cream/50 block">Altitude</span>
+          <span class="text-cream font-bold">2,100m ASL</span>
+        </div>
+        <div>
+          <span class="text-cream/50 block">Process</span>
+          <span class="text-cream font-bold">Washed / Sun-Dried</span>
+        </div>
+        <div>
+          <span class="text-cream/50 block">Roast Level</span>
+          <span class="text-caramel font-bold">Light-Medium (2/5)</span>
+        </div>
+        <div>
+          <span class="text-cream/50 block">Flavor Profile</span>
+          <span class="text-cream font-bold">Jasmine, Bergamot, Honey</span>
+        </div>
+      </div>
+
+      <button onclick="addToBag('Ethiopia Yirgacheffe (250g)', 24)" class="w-full py-3.5 rounded-xl bg-caramel text-espresso font-bold text-xs uppercase tracking-widest hover:bg-cream transition-colors flex items-center justify-center gap-2">
+        <i data-lucide="plus" class="w-4 h-4"></i> Add Fresh Roast to Bag — $24
+      </button>
+    </div>
+  </section>
+
+  <!-- Interactive Origin Selector -->
+  <section id="origins" class="py-16 px-6 bg-mocha/60 border-y border-cream/10">
+    <div class="max-w-7xl mx-auto space-y-8">
+      <div class="text-center space-y-2">
+        <span class="text-xs uppercase tracking-widest text-caramel font-semibold">Global Coffee Belt</span>
+        <h2 class="font-serif text-4xl font-bold text-cream">Interactive Bean Origin Explorer</h2>
+      </div>
+
+      <!-- Origin Tabs -->
+      <div class="flex flex-wrap justify-center gap-3">
+        <button onclick="showOrigin('ethiopia')" id="tab-ethiopia" class="origin-tab px-5 py-2.5 rounded-xl border border-caramel bg-caramel text-espresso font-bold text-xs uppercase tracking-wider">Ethiopia Yirgacheffe</button>
+        <button onclick="showOrigin('colombia')" id="tab-colombia" class="origin-tab px-5 py-2.5 rounded-xl border border-cream/20 bg-espresso text-cream/70 hover:border-caramel font-bold text-xs uppercase tracking-wider">Colombia Huila</button>
+        <button onclick="showOrigin('sumatra')" id="tab-sumatra" class="origin-tab px-5 py-2.5 rounded-xl border border-cream/20 bg-espresso text-cream/70 hover:border-caramel font-bold text-xs uppercase tracking-wider">Sumatra Mandheling</button>
+        <button onclick="showOrigin('costarica')" id="tab-costarica" class="origin-tab px-5 py-2.5 rounded-xl border border-cream/20 bg-espresso text-cream/70 hover:border-caramel font-bold text-xs uppercase tracking-wider">Costa Rica Tarrazú</button>
+      </div>
+
+      <!-- Origin Detail Panel -->
+      <div id="origin-panel" class="bg-espresso p-8 rounded-3xl border border-caramel/40 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7 space-y-4">
+          <span id="origin-region" class="text-xs font-mono uppercase tracking-widest text-caramel font-bold">East Africa • High Altitude</span>
+          <h3 id="origin-title" class="font-serif text-3xl font-bold text-cream">Ethiopia Yirgacheffe</h3>
+          <p id="origin-desc" class="text-cream/70 text-sm font-light leading-relaxed">
+            Renowned as the birthplace of coffee. Grown in lush highlands, offering delicate tea-like body, vibrant citrus acidity, and intoxicating floral aromas of jasmine and lemongrass.
+          </p>
+
+          <div class="flex flex-wrap gap-2 pt-2" id="origin-tags">
+            <span class="px-3 py-1 rounded-full bg-caramel/10 border border-caramel/30 text-caramel text-xs font-mono">Jasmine</span>
+            <span class="px-3 py-1 rounded-full bg-caramel/10 border border-caramel/30 text-caramel text-xs font-mono">Bergamot</span>
+            <span class="px-3 py-1 rounded-full bg-caramel/10 border border-caramel/30 text-caramel text-xs font-mono">Meyer Lemon</span>
+          </div>
+        </div>
+
+        <div class="md:col-span-5 bg-mocha p-6 rounded-2xl border border-cream/10 space-y-4 font-mono text-xs">
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-cream/60">Roast Intensity</span>
+              <span id="roast-val" class="text-caramel font-bold">Light (2/5)</span>
+            </div>
+            <div class="w-full bg-espresso h-2 rounded-full overflow-hidden border border-cream/10">
+              <div id="roast-bar" class="bg-caramel h-full w-[40%] transition-all duration-500"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-cream/60">Acidity Level</span>
+              <span id="acid-val" class="text-cream font-bold">Bright &amp; Crisp (4/5)</span>
+            </div>
+            <div class="w-full bg-espresso h-2 rounded-full overflow-hidden border border-cream/10">
+              <div id="acid-bar" class="bg-amber-500 h-full w-[80%] transition-all duration-500"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-cream/60">Body / Mouthfeel</span>
+              <span id="body-val" class="text-cream font-bold">Silky Tea-like (2/5)</span>
+            </div>
+            <div class="w-full bg-espresso h-2 rounded-full overflow-hidden border border-cream/10">
+              <div id="body-bar" class="bg-amber-700 h-full w-[40%] transition-all duration-500"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Brew Ratio Calculator Widget -->
+  <section id="brew-guide" class="py-16 px-6 max-w-5xl mx-auto w-full space-y-8">
+    <div class="text-center space-y-2">
+      <span class="text-xs uppercase tracking-widest text-caramel font-semibold">Barista Precision</span>
+      <h2 class="font-serif text-4xl font-bold text-cream">Water-to-Coffee Ratio Calculator</h2>
+      <p class="text-cream/60 text-sm max-w-md mx-auto">Calculate exact coffee dose and hot water pour volume for flawless extraction.</p>
+    </div>
+
+    <div class="bg-mocha p-8 rounded-3xl border border-caramel/30 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+      <div class="md:col-span-6 space-y-6">
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-caramel font-semibold mb-2">Brewing Method</label>
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="setBrewMethod('chemex', 16)" id="bm-chemex" class="bm-btn py-2.5 px-3 rounded-xl border border-caramel bg-caramel text-espresso font-bold text-xs uppercase">Chemex (1:16)</button>
+            <button onclick="setBrewMethod('french', 15)" id="bm-french" class="bm-btn py-2.5 px-3 rounded-xl border border-cream/20 bg-espresso text-cream/70 font-bold text-xs uppercase">French Press (1:15)</button>
+            <button onclick="setBrewMethod('espresso', 2)" id="bm-espresso" class="bm-btn py-2.5 px-3 rounded-xl border border-cream/20 bg-espresso text-cream/70 font-bold text-xs uppercase">Espresso (1:2)</button>
+            <button onclick="setBrewMethod('aeropress', 12)" id="bm-aeropress" class="bm-btn py-2.5 px-3 rounded-xl border border-cream/20 bg-espresso text-cream/70 font-bold text-xs uppercase">Aeropress (1:12)</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between items-center mb-2 text-xs">
+            <span class="uppercase tracking-widest text-caramel font-semibold">Coffee Beans Dose</span>
+            <span id="dose-val" class="font-mono text-cream font-bold text-sm">30 grams</span>
+          </div>
+          <input type="range" id="coffee-dose" min="10" max="60" value="30" oninput="calculateBrew()" class="w-full accent-caramel bg-espresso h-2 rounded-lg cursor-pointer">
+        </div>
+      </div>
+
+      <div class="md:col-span-6 bg-espresso p-6 rounded-2xl border border-cream/10 text-center space-y-6">
+        <div>
+          <span class="text-xs uppercase font-mono tracking-widest text-cream/60">Calculated Water Volume</span>
+          <div id="water-output" class="font-serif text-5xl text-caramel font-bold mt-1">480 ml</div>
+          <span class="text-xs text-cream/50 mt-1 block">Ideal Water Temp: 92°C - 94°C</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 text-xs font-mono border-t border-cream/10 pt-4">
+          <div>
+            <span class="text-cream/50 block">Grind Size</span>
+            <span id="grind-output" class="text-cream font-bold">Medium-Coarse</span>
+          </div>
+          <div>
+            <span class="text-cream/50 block">Target Brew Time</span>
+            <span id="time-output" class="text-cream font-bold">3:30 - 4:00 mins</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Storefront Grid -->
+  <section id="store" class="py-16 px-6 max-w-7xl mx-auto w-full space-y-8">
+    <div class="flex justify-between items-end border-b border-cream/10 pb-6">
+      <div>
+        <span class="text-xs uppercase tracking-widest text-caramel font-semibold">Fresh Roast Catalog</span>
+        <h2 class="font-serif text-3xl font-bold text-cream">Reserve Whole Bean Bags</h2>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Product 1 -->
+      <div class="bg-mocha p-6 rounded-2xl border border-cream/10 space-y-4 hover:border-caramel transition-all">
+        <div class="flex justify-between items-start">
+          <span class="text-[10px] uppercase font-mono tracking-widest px-2.5 py-1 bg-caramel/20 text-caramel rounded-full">Africa</span>
+          <span class="font-serif text-2xl font-bold text-caramel">$24</span>
+        </div>
+        <div>
+          <h3 class="font-serif text-xl font-bold text-cream">Ethiopia Yirgacheffe</h3>
+          <p class="text-xs text-cream/60 mt-1">Light Roast • Jasmine &amp; Bergamot Notes</p>
+        </div>
+        <div class="pt-2 flex gap-2">
+          <select id="grind-p1" class="w-full bg-espresso border border-cream/20 text-xs text-cream rounded-lg px-2 py-2">
+            <option>Whole Bean</option>
+            <option>Espresso Grind</option>
+            <option>Filter Drip Grind</option>
+          </select>
+          <button onclick="addToBag('Ethiopia Yirgacheffe (' + document.getElementById('grind-p1').value + ')', 24)" class="px-4 py-2 bg-caramel hover:bg-cream text-espresso rounded-lg font-bold text-xs uppercase shrink-0">
+            Add
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="bg-mocha p-6 rounded-2xl border border-cream/10 space-y-4 hover:border-caramel transition-all">
+        <div class="flex justify-between items-start">
+          <span class="text-[10px] uppercase font-mono tracking-widest px-2.5 py-1 bg-caramel/20 text-caramel rounded-full">South America</span>
+          <span class="font-serif text-2xl font-bold text-caramel">$22</span>
+        </div>
+        <div>
+          <h3 class="font-serif text-xl font-bold text-cream">Colombia Huila Select</h3>
+          <p class="text-xs text-cream/60 mt-1">Medium Roast • Dark Chocolate &amp; Red Apple</p>
+        </div>
+        <div class="pt-2 flex gap-2">
+          <select id="grind-p2" class="w-full bg-espresso border border-cream/20 text-xs text-cream rounded-lg px-2 py-2">
+            <option>Whole Bean</option>
+            <option>Espresso Grind</option>
+            <option>Filter Drip Grind</option>
+          </select>
+          <button onclick="addToBag('Colombia Huila Select (' + document.getElementById('grind-p2').value + ')', 22)" class="px-4 py-2 bg-caramel hover:bg-cream text-espresso rounded-lg font-bold text-xs uppercase shrink-0">
+            Add
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="bg-mocha p-6 rounded-2xl border border-cream/10 space-y-4 hover:border-caramel transition-all">
+        <div class="flex justify-between items-start">
+          <span class="text-[10px] uppercase font-mono tracking-widest px-2.5 py-1 bg-caramel/20 text-caramel rounded-full">Indonesia</span>
+          <span class="font-serif text-2xl font-bold text-caramel">$26</span>
+        </div>
+        <div>
+          <h3 class="font-serif text-xl font-bold text-cream">Sumatra Mandheling Reserve</h3>
+          <p class="text-xs text-cream/60 mt-1">Dark Roast • Earthy Spice &amp; Molasses</p>
+        </div>
+        <div class="pt-2 flex gap-2">
+          <select id="grind-p3" class="w-full bg-espresso border border-cream/20 text-xs text-cream rounded-lg px-2 py-2">
+            <option>Whole Bean</option>
+            <option>Espresso Grind</option>
+            <option>Filter Drip Grind</option>
+          </select>
+          <button onclick="addToBag('Sumatra Mandheling (' + document.getElementById('grind-p3').value + ')', 26)" class="px-4 py-2 bg-caramel hover:bg-cream text-espresso rounded-lg font-bold text-xs uppercase shrink-0">
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide Cart Drawer -->
+  <div id="cart-drawer" class="fixed inset-y-0 right-0 w-full max-w-sm bg-mocha border-l border-caramel/40 z-50 transform translate-x-full transition-transform duration-300 p-6 flex flex-col justify-between shadow-2xl">
+    <div class="space-y-6">
+      <div class="flex justify-between items-center border-b border-cream/10 pb-4">
+        <div class="flex items-center gap-2">
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-caramel"></i>
+          <h3 class="font-serif text-xl font-bold text-cream">Your Shopping Bag</h3>
+        </div>
+        <button onclick="toggleCartDrawer(false)" class="text-cream/60 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div id="cart-items" class="space-y-3 max-h-[55vh] overflow-y-auto pr-1">
+        <p id="empty-msg" class="text-xs text-cream/50 text-center py-8">Your bag is empty. Add a micro-lot above!</p>
+      </div>
+    </div>
+
+    <div class="border-t border-cream/10 pt-4 space-y-4">
+      <div class="flex justify-between text-sm">
+        <span class="text-cream/70">Subtotal:</span>
+        <span id="cart-total" class="font-mono text-caramel font-bold">$0.00</span>
+      </div>
+      <button onclick="alert('Order placed successfully! Fresh roast shipping in 24 hours.')" class="w-full py-3.5 rounded-xl bg-caramel text-espresso font-bold text-xs uppercase tracking-widest hover:bg-cream transition-colors">
+        Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-cream/10 text-center text-xs text-cream/40 max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-center justify-between gap-4">
+    <span>© 2026 ROAST &amp; ORIGIN COFFEE CO.</span>
+    <span class="font-serif italic text-caramel">"Crafted with patience, poured with passion."</span>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    let currentRatio = 16;
+    let cart = [];
+
+    const originData = {
+      ethiopia: {
+        region: 'East Africa • High Altitude 2,100m',
+        title: 'Ethiopia Yirgacheffe',
+        desc: 'Renowned as the birthplace of coffee. Grown in lush highlands, offering delicate tea-like body, vibrant citrus acidity, and intoxicating floral aromas of jasmine and lemongrass.',
+        tags: ['Jasmine', 'Bergamot', 'Meyer Lemon'],
+        roastVal: 'Light (2/5)', roastBar: '40%',
+        acidVal: 'Bright & Crisp (4/5)', acidBar: '80%',
+        bodyVal: 'Silky Tea-like (2/5)', bodyBar: '40%'
+      },
+      colombia: {
+        region: 'South America • Volcanic Soil 1,750m',
+        title: 'Colombia Huila Select',
+        desc: 'Balanced and rich with smooth caramel sweetness, red apple crispness, and a deep dark chocolate finish. Perfectly versatile for espresso or pour-over.',
+        tags: ['Caramel', 'Red Apple', 'Dark Chocolate'],
+        roastVal: 'Medium (3/5)', roastBar: '60%',
+        acidVal: 'Balanced Citric (3/5)', acidBar: '60%',
+        bodyVal: 'Medium Velvety (3/5)', bodyBar: '60%'
+      },
+      sumatra: {
+        region: 'Indonesia • Wet-Hulled Process 1,400m',
+        title: 'Sumatra Mandheling Reserve',
+        desc: 'Deeply complex and full-bodied with low acidity. Boasts wild earthy notes, pipe tobacco aroma, molasses sweetness, and a heavy cocoa body.',
+        tags: ['Earthy Spice', 'Molasses', 'Heavy Cocoa'],
+        roastVal: 'Dark (4/5)', roastBar: '80%',
+        acidVal: 'Mellow & Low (1/5)', acidBar: '20%',
+        bodyVal: 'Heavy Syrupy (5/5)', bodyBar: '100%'
+      },
+      costarica: {
+        region: 'Central America • High Volcanic Slopes 1,600m',
+        title: 'Costa Rica Tarrazú',
+        desc: 'Clean, honey-processed perfection. Offers bright tropical acidity, toasted almond nuttiness, and a smooth honey nectar finish.',
+        tags: ['Honey Nectar', 'Toasted Almond', 'Green Apple'],
+        roastVal: 'Light-Medium (2.5/5)', roastBar: '50%',
+        acidVal: 'Vibrant Tropical (4/5)', acidBar: '80%',
+        bodyVal: 'Medium Creamy (3/5)', bodyBar: '60%'
+      }
+    };
+
+    function showOrigin(key) {
+      document.querySelectorAll('.origin-tab').forEach(t => {
+        t.className = 'origin-tab px-5 py-2.5 rounded-xl border border-cream/20 bg-espresso text-cream/70 hover:border-caramel font-bold text-xs uppercase tracking-wider';
+      });
+      document.getElementById('tab-' + key).className = 'origin-tab px-5 py-2.5 rounded-xl border border-caramel bg-caramel text-espresso font-bold text-xs uppercase tracking-wider';
+
+      const data = originData[key];
+      document.getElementById('origin-region').textContent = data.region;
+      document.getElementById('origin-title').textContent = data.title;
+      document.getElementById('origin-desc').textContent = data.desc;
+      
+      const tagsContainer = document.getElementById('origin-tags');
+      tagsContainer.innerHTML = data.tags.map(t => `<span class="px-3 py-1 rounded-full bg-caramel/10 border border-caramel/30 text-caramel text-xs font-mono">${t}</span>`).join('');
+
+      document.getElementById('roast-val').textContent = data.roastVal;
+      document.getElementById('roast-bar').style.width = data.roastBar;
+      document.getElementById('acid-val').textContent = data.acidVal;
+      document.getElementById('acid-bar').style.width = data.acidBar;
+      document.getElementById('body-val').textContent = data.bodyVal;
+      document.getElementById('body-bar').style.width = data.bodyBar;
+    }
+
+    function setBrewMethod(method, ratio) {
+      currentRatio = ratio;
+      document.querySelectorAll('.bm-btn').forEach(b => {
+        b.className = 'bm-btn py-2.5 px-3 rounded-xl border border-cream/20 bg-espresso text-cream/70 font-bold text-xs uppercase';
+      });
+      document.getElementById('bm-' + method).className = 'bm-btn py-2.5 px-3 rounded-xl border border-caramel bg-caramel text-espresso font-bold text-xs uppercase';
+      
+      if(method === 'chemex') {
+        document.getElementById('grind-output').textContent = 'Medium-Coarse';
+        document.getElementById('time-output').textContent = '3:30 - 4:00 mins';
+      } else if(method === 'french') {
+        document.getElementById('grind-output').textContent = 'Coarse';
+        document.getElementById('time-output').textContent = '4:00 mins steep';
+      } else if(method === 'espresso') {
+        document.getElementById('grind-output').textContent = 'Fine (Espresso)';
+        document.getElementById('time-output').textContent = '25 - 30 seconds';
+      } else if(method === 'aeropress') {
+        document.getElementById('grind-output').textContent = 'Medium-Fine';
+        document.getElementById('time-output').textContent = '1:30 - 2:00 mins';
+      }
+
+      calculateBrew();
+    }
+
+    function calculateBrew() {
+      const dose = parseInt(document.getElementById('coffee-dose').value);
+      document.getElementById('dose-val').textContent = dose + ' grams';
+      const water = dose * currentRatio;
+      document.getElementById('water-output').textContent = water + ' ml';
+    }
+
+    function toggleCartDrawer(open) {
+      const drawer = document.getElementById('cart-drawer');
+      if(open) {
+        drawer.classList.remove('translate-x-full');
+      } else {
+        drawer.classList.add('translate-x-full');
+      }
+    }
+
+    function addToBag(title, price) {
+      cart.push({ title, price });
+      renderCart();
+      toggleCartDrawer(true);
+    }
+
+    function removeFromBag(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function renderCart() {
+      const badge = document.getElementById('cart-badge');
+      badge.textContent = cart.length;
+
+      const container = document.getElementById('cart-items');
+      const emptyMsg = document.getElementById('empty-msg');
+
+      if (cart.length === 0) {
+        container.innerHTML = '<p class="text-xs text-cream/50 text-center py-8">Your bag is empty. Add a micro-lot above!</p>';
+        document.getElementById('cart-total').textContent = '$0.00';
+        return;
+      }
+
+      let total = 0;
+      container.innerHTML = cart.map((item, idx) => {
+        total += item.price;
+        return `
+          <div class="bg-espresso p-3 rounded-xl border border-cream/10 flex justify-between items-center text-xs">
+            <div>
+              <div class="font-bold text-cream">${item.title}</div>
+              <div class="text-caramel font-mono font-bold">$${item.price}.00</div>
+            </div>
+            <button onclick="removeFromBag(${idx})" class="text-cream/40 hover:text-red-400 p-1">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
+      lucide.createIcons();
+    }
+
+    calculateBrew();
+  </script>
+</body>
+</html>

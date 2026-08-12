@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AURA EXPEDITIONS — Luxury Private Safaris & Alpine Retreats</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#12100e',
+            gold: '#d4af37',
+            'gold-light': '#f3e5ab',
+            terracotta: '#c86d51',
+            ivory: '#f9f6f0',
+            charcoal: '#1a1815',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #12100e; color: #f9f6f0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .gold-gradient { background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #c86d51 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .gold-border { border-color: rgba(212, 175, 55, 0.3); }
+    .gold-border:hover { border-color: rgba(212, 175, 55, 0.8); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+  
+  <!-- Navigation Header -->
+  <header class="border-b border-white/10 bg-obsidian/90 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full border border-gold/50 flex items-center justify-center bg-charcoal">
+        <i data-lucide="compass" class="w-5 h-5 text-gold"></i>
+      </div>
+      <div>
+        <span class="font-serif text-xl tracking-wider font-bold gold-gradient">AURA</span>
+        <span class="text-xs uppercase tracking-widest text-gold/70 block font-sans">Expeditions & Luxury Private Escapes</span>
+      </div>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest text-white/70 font-medium">
+      <a href="#destinations" class="hover:text-gold transition-colors">Destinations</a>
+      <a href="#experiences" class="hover:text-gold transition-colors">Experiences</a>
+      <a href="#estimator" class="hover:text-gold transition-colors">Private Booking</a>
+      <a href="#story" class="hover:text-gold transition-colors">Our Philosophy</a>
+    </nav>
+
+    <button onclick="document.getElementById('estimator').scrollIntoView({behavior:'smooth'})" class="px-5 py-2.5 rounded-full border border-gold/60 text-gold hover:bg-gold hover:text-obsidian transition-all duration-300 text-xs font-semibold uppercase tracking-wider">
+      Reserve Sanctuary
+    </button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative py-24 px-6 text-center overflow-hidden bg-gradient-to-b from-charcoal via-obsidian to-obsidian">
+    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:24px_24px]"></div>
+    
+    <div class="max-w-4xl mx-auto relative z-10 space-y-6">
+      <span class="inline-block px-4 py-1.5 rounded-full border border-gold/40 text-gold text-xs uppercase tracking-widest bg-gold/5">
+        Curated Bespoke Journeys for Connoisseurs
+      </span>
+      <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+        Uncharted Luxury. <br/>
+        <span class="italic font-normal gold-gradient">Unforgettable Horizons.</span>
+      </h1>
+      <p class="text-white/70 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
+        Immerse yourself in private safari conservancies, secluded Alpine chalets, and cliffside Mediterranean sanctuaries — designed with absolute privacy and Michelin-starred gastronomy.
+      </p>
+
+      <div class="pt-4 flex flex-wrap items-center justify-center gap-4 text-xs tracking-wider uppercase font-semibold text-gold/80">
+        <span class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-gold"></i> 100% Private Transfers</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="award" class="w-4 h-4 text-gold"></i> 24/7 Dedicated Butler</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4 text-gold"></i> Carbon-Neutral Expeditions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Destination Explorer -->
+  <section id="destinations" class="py-16 px-6 max-w-7xl mx-auto w-full space-y-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
+      <div>
+        <span class="text-xs uppercase tracking-widest text-gold font-semibold">Curated Collections</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-1">Private Sanctuaries & Retreats</h2>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="filterDest('all')" class="dest-btn px-4 py-2 rounded-full text-xs uppercase tracking-wider border border-gold text-gold bg-gold/10 font-semibold" data-cat="all">All (4)</button>
+        <button onclick="filterDest('safari')" class="dest-btn px-4 py-2 rounded-full text-xs uppercase tracking-wider border border-white/20 text-white/70 hover:border-gold font-semibold" data-cat="safari">Safari</button>
+        <button onclick="filterDest('alpine')" class="dest-btn px-4 py-2 rounded-full text-xs uppercase tracking-wider border border-white/20 text-white/70 hover:border-gold font-semibold" data-cat="alpine">Alpine</button>
+        <button onclick="filterDest('coastal')" class="dest-btn px-4 py-2 rounded-full text-xs uppercase tracking-wider border border-white/20 text-white/70 hover:border-gold font-semibold" data-cat="coastal">Coastal</button>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div id="dest-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Card 1 -->
+      <div class="dest-card rounded-2xl bg-charcoal border gold-border overflow-hidden transition-all duration-300 hover:-translate-y-1" data-category="safari" data-name="Serengeti Royal Camp" data-price="3800">
+        <div class="h-48 bg-gradient-to-br from-terracotta/40 to-charcoal p-6 flex flex-col justify-between relative overflow-hidden">
+          <span class="text-[10px] uppercase font-mono tracking-widest px-3 py-1 bg-obsidian/80 border border-gold/30 rounded-full w-max text-gold">Tanzania</span>
+          <div class="relative z-10">
+            <h3 class="font-serif text-xl font-bold text-white">Serengeti Royal Camp</h3>
+            <p class="text-xs text-white/70 font-light mt-1">Private Reserve & Solar Tented Suites</p>
+          </div>
+        </div>
+        <div class="p-5 space-y-4">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-white/60">Rating</span>
+            <span class="text-gold font-semibold flex items-center gap-1"><i data-lucide="star" class="w-3.5 h-3.5 fill-gold text-gold"></i> 4.98 (34 reviews)</span>
+          </div>
+          <div class="flex items-center justify-between text-xs border-t border-white/10 pt-3">
+            <span class="text-white/60">From</span>
+            <span class="font-serif text-lg text-gold font-bold">$3,800 <span class="text-xs font-sans text-white/50 font-normal">/ night</span></span>
+          </div>
+          <button onclick="selectDestination('Serengeti Royal Camp', 3800)" class="w-full py-2.5 rounded-xl border border-gold/40 text-gold hover:bg-gold hover:text-obsidian transition-colors text-xs font-semibold uppercase tracking-wider">
+            Configure Stay
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="dest-card rounded-2xl bg-charcoal border gold-border overflow-hidden transition-all duration-300 hover:-translate-y-1" data-category="alpine" data-name="Swiss Alps Summit Chalet" data-price="4200">
+        <div class="h-48 bg-gradient-to-br from-blue-900/40 to-charcoal p-6 flex flex-col justify-between relative overflow-hidden">
+          <span class="text-[10px] uppercase font-mono tracking-widest px-3 py-1 bg-obsidian/80 border border-gold/30 rounded-full w-max text-gold">Zermatt, Switzerland</span>
+          <div class="relative z-10">
+            <h3 class="font-serif text-xl font-bold text-white">Matterhorn Vista Chalet</h3>
+            <p class="text-xs text-white/70 font-light mt-1">Ski-in / Ski-out Ski Spa Haven</p>
+          </div>
+        </div>
+        <div class="p-5 space-y-4">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-white/60">Rating</span>
+            <span class="text-gold font-semibold flex items-center gap-1"><i data-lucide="star" class="w-3.5 h-3.5 fill-gold text-gold"></i> 5.0 (42 reviews)</span>
+          </div>
+          <div class="flex items-center justify-between text-xs border-t border-white/10 pt-3">
+            <span class="text-white/60">From</span>
+            <span class="font-serif text-lg text-gold font-bold">$4,200 <span class="text-xs font-sans text-white/50 font-normal">/ night</span></span>
+          </div>
+          <button onclick="selectDestination('Matterhorn Vista Chalet', 4200)" class="w-full py-2.5 rounded-xl border border-gold/40 text-gold hover:bg-gold hover:text-obsidian transition-colors text-xs font-semibold uppercase tracking-wider">
+            Configure Stay
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="dest-card rounded-2xl bg-charcoal border gold-border overflow-hidden transition-all duration-300 hover:-translate-y-1" data-category="coastal" data-name="Amalfi Cliffside Villa" data-price="3500">
+        <div class="h-48 bg-gradient-to-br from-emerald-900/40 to-charcoal p-6 flex flex-col justify-between relative overflow-hidden">
+          <span class="text-[10px] uppercase font-mono tracking-widest px-3 py-1 bg-obsidian/80 border border-gold/30 rounded-full w-max text-gold">Ravello, Italy</span>
+          <div class="relative z-10">
+            <h3 class="font-serif text-xl font-bold text-white">Amalfi Cliffside Estate</h3>
+            <p class="text-xs text-white/70 font-light mt-1">Infinity Pool & Private Yacht Dock</p>
+          </div>
+        </div>
+        <div class="p-5 space-y-4">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-white/60">Rating</span>
+            <span class="text-gold font-semibold flex items-center gap-1"><i data-lucide="star" class="w-3.5 h-3.5 fill-gold text-gold"></i> 4.96 (28 reviews)</span>
+          </div>
+          <div class="flex items-center justify-between text-xs border-t border-white/10 pt-3">
+            <span class="text-white/60">From</span>
+            <span class="font-serif text-lg text-gold font-bold">$3,500 <span class="text-xs font-sans text-white/50 font-normal">/ night</span></span>
+          </div>
+          <button onclick="selectDestination('Amalfi Cliffside Estate', 3500)" class="w-full py-2.5 rounded-xl border border-gold/40 text-gold hover:bg-gold hover:text-obsidian transition-colors text-xs font-semibold uppercase tracking-wider">
+            Configure Stay
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="dest-card rounded-2xl bg-charcoal border gold-border overflow-hidden transition-all duration-300 hover:-translate-y-1" data-category="coastal" data-name="Kyoto Bamboo Sanctuary" data-price="4900">
+        <div class="h-48 bg-gradient-to-br from-amber-900/40 to-charcoal p-6 flex flex-col justify-between relative overflow-hidden">
+          <span class="text-[10px] uppercase font-mono tracking-widest px-3 py-1 bg-obsidian/80 border border-gold/30 rounded-full w-max text-gold">Kyoto, Japan</span>
+          <div class="relative z-10">
+            <h3 class="font-serif text-xl font-bold text-white">Kyoto Bamboo Villa</h3>
+            <p class="text-xs text-white/70 font-light mt-1">Natural Onsen & Zen Gardens</p>
+          </div>
+        </div>
+        <div class="p-5 space-y-4">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-white/60">Rating</span>
+            <span class="text-gold font-semibold flex items-center gap-1"><i data-lucide="star" class="w-3.5 h-3.5 fill-gold text-gold"></i> 4.99 (51 reviews)</span>
+          </div>
+          <div class="flex items-center justify-between text-xs border-t border-white/10 pt-3">
+            <span class="text-white/60">From</span>
+            <span class="font-serif text-lg text-gold font-bold">$4,900 <span class="text-xs font-sans text-white/50 font-normal">/ night</span></span>
+          </div>
+          <button onclick="selectDestination('Kyoto Bamboo Villa', 4900)" class="w-full py-2.5 rounded-xl border border-gold/40 text-gold hover:bg-gold hover:text-obsidian transition-colors text-xs font-semibold uppercase tracking-wider">
+            Configure Stay
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Booking Estimator Widget -->
+  <section id="estimator" class="py-16 px-6 bg-charcoal border-y border-white/10">
+    <div class="max-w-5xl mx-auto space-y-8">
+      <div class="text-center space-y-2">
+        <span class="text-xs uppercase tracking-widest text-gold font-semibold">Interactive Pricing Engine</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Bespoke Reservation Estimator</h2>
+        <p class="text-white/60 text-sm max-w-xl mx-auto">Customize your stay duration, guest suite count, and luxury private services for a real-time investment calculation.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start bg-obsidian p-6 sm:p-8 rounded-3xl border border-gold/30 shadow-2xl">
+        <!-- Form Inputs Left -->
+        <div class="lg:col-span-7 space-y-6">
+          <!-- Destination Choice -->
+          <div>
+            <label class="block text-xs uppercase tracking-widest text-gold font-semibold mb-2">Select Sanctuary</label>
+            <select id="est-dest" onchange="calculateEstimate()" class="w-full bg-charcoal border border-white/20 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold">
+              <option value="3800" selected>Serengeti Royal Camp ($3,800 / night)</option>
+              <option value="4200">Matterhorn Vista Chalet ($4,200 / night)</option>
+              <option value="3500">Amalfi Cliffside Estate ($3,500 / night)</option>
+              <option value="4900">Kyoto Bamboo Villa ($4,900 / night)</option>
+            </select>
+          </div>
+
+          <!-- Nights Slider & Guests -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="text-xs uppercase tracking-widest text-gold font-semibold">Duration (Nights)</label>
+                <span id="nights-val" class="font-serif text-gold font-bold">5 Nights</span>
+              </div>
+              <input type="range" id="est-nights" min="1" max="14" value="5" oninput="calculateEstimate()" class="w-full accent-gold bg-charcoal rounded-lg h-2 cursor-pointer">
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="text-xs uppercase tracking-widest text-gold font-semibold">Guests Count</label>
+                <span id="guests-val" class="font-serif text-gold font-bold">2 Guests</span>
+              </div>
+              <input type="range" id="est-guests" min="1" max="8" value="2" oninput="calculateEstimate()" class="w-full accent-gold bg-charcoal rounded-lg h-2 cursor-pointer">
+            </div>
+          </div>
+
+          <!-- Luxury Add-Ons Checkboxes -->
+          <div>
+            <label class="block text-xs uppercase tracking-widest text-gold font-semibold mb-3">Optional Luxury Concierge Add-Ons</label>
+            <div class="space-y-3">
+              <label class="flex items-center justify-between p-3 rounded-xl border border-white/10 bg-charcoal/60 cursor-pointer hover:border-gold/50 transition-colors">
+                <div class="flex items-center gap-3 text-xs">
+                  <input type="checkbox" id="addon-jet" onchange="calculateEstimate()" class="accent-gold w-4 h-4">
+                  <div>
+                    <span class="font-semibold text-white">Private Jet Transfer</span>
+                    <p class="text-[11px] text-white/50">Roundtrip luxury jet charter</p>
+                  </div>
+                </div>
+                <span class="text-xs font-serif text-gold font-bold">+$4,500</span>
+              </label>
+
+              <label class="flex items-center justify-between p-3 rounded-xl border border-white/10 bg-charcoal/60 cursor-pointer hover:border-gold/50 transition-colors">
+                <div class="flex items-center gap-3 text-xs">
+                  <input type="checkbox" id="addon-chef" onchange="calculateEstimate()" class="accent-gold w-4 h-4">
+                  <div>
+                    <span class="font-semibold text-white">Michelin Private Chef</span>
+                    <p class="text-[11px] text-white/50">Full dining & wine pairing daily</p>
+                  </div>
+                </div>
+                <span class="text-xs font-serif text-gold font-bold">+$1,200 / day</span>
+              </label>
+
+              <label class="flex items-center justify-between p-3 rounded-xl border border-white/10 bg-charcoal/60 cursor-pointer hover:border-gold/50 transition-colors">
+                <div class="flex items-center gap-3 text-xs">
+                  <input type="checkbox" id="addon-heli" onchange="calculateEstimate()" class="accent-gold w-4 h-4">
+                  <div>
+                    <span class="font-semibold text-white">Helicopter Aerial Tour</span>
+                    <p class="text-[11px] text-white/50">Scenic regional flight experience</p>
+                  </div>
+                </div>
+                <span class="text-xs font-serif text-gold font-bold">+$850</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Breakdown Right -->
+        <div class="lg:col-span-5 bg-charcoal p-6 rounded-2xl border border-white/10 space-y-6 flex flex-col justify-between h-full">
+          <div>
+            <h3 class="font-serif text-xl font-bold text-white pb-3 border-b border-white/10 flex items-center justify-between">
+              <span>Investment Breakdown</span>
+              <i data-lucide="receipt" class="w-5 h-5 text-gold"></i>
+            </h3>
+
+            <div class="space-y-3 pt-4 text-xs font-mono">
+              <div class="flex justify-between text-white/70">
+                <span>Base Sanctuary Accommodation</span>
+                <span id="summary-base" class="text-white font-bold">$19,000</span>
+              </div>
+              <div class="flex justify-between text-white/70">
+                <span>Guest Surcharge</span>
+                <span id="summary-guest" class="text-white font-bold">$0</span>
+              </div>
+              <div class="flex justify-between text-white/70">
+                <span>Concierge Add-ons</span>
+                <span id="summary-addons" class="text-white font-bold">$0</span>
+              </div>
+              <div class="flex justify-between text-white/70">
+                <span>Private Service & Tax (10%)</span>
+                <span id="summary-tax" class="text-white font-bold">$1,900</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-gold/30 space-y-4">
+            <div class="flex items-baseline justify-between">
+              <span class="text-xs uppercase tracking-widest text-gold font-semibold">Total Estimated Price</span>
+              <span id="total-price" class="font-serif text-3xl text-gold font-bold">$20,900</span>
+            </div>
+
+            <button onclick="requestReservation()" class="w-full py-3.5 rounded-xl bg-gold hover:bg-gold-light text-obsidian font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-lg shadow-gold/10">
+              Submit Private Reservation Request
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation Confirmation Modal -->
+  <div id="modal-confirm" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-charcoal border border-gold rounded-3xl max-w-md w-full p-8 text-center space-y-6 shadow-2xl">
+      <div class="w-16 h-16 rounded-full bg-gold/20 border border-gold text-gold flex items-center justify-center mx-auto">
+        <i data-lucide="check-circle" class="w-8 h-8"></i>
+      </div>
+      <div>
+        <span class="text-xs uppercase font-mono tracking-widest text-gold">Booking Request Transmitted</span>
+        <h3 class="font-serif text-2xl font-bold text-white mt-1">Reservation Pending</h3>
+        <p class="text-xs text-white/70 mt-2 font-light">
+          Your private concierge agent has received your request. Confirmation code:
+          <span id="booking-id" class="font-mono text-gold font-bold">AURA-EXP-8942</span>
+        </p>
+      </div>
+
+      <div class="bg-obsidian p-4 rounded-xl text-left text-xs font-mono space-y-2 border border-white/10">
+        <div class="flex justify-between text-white/60"><span>Status:</span> <span class="text-emerald-400 font-semibold">VIP Priority Reserved</span></div>
+        <div class="flex justify-between text-white/60"><span>Est Total:</span> <span id="modal-total" class="text-gold font-bold">$20,900</span></div>
+        <div class="flex justify-between text-white/60"><span>Concierge ETA:</span> <span class="text-white">Under 2 Hours</span></div>
+      </div>
+
+      <button onclick="document.getElementById('modal-confirm').classList.add('hidden')" class="w-full py-3 rounded-xl bg-gold text-obsidian font-bold text-xs uppercase tracking-wider">
+        Return to Sanctuary Explorer
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-white/10 text-center text-xs text-white/40 font-light flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto w-full gap-4">
+    <span>© 2026 AURA EXPEDITIONS INC. All Rights Reserved.</span>
+    <span class="font-serif italic text-gold/70">"Travel is the only purchase that enriches the soul."</span>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    function filterDest(cat) {
+      document.querySelectorAll('.dest-btn').forEach(btn => {
+        if(btn.getAttribute('data-cat') === cat) {
+          btn.className = 'dest-btn px-4 py-2 rounded-full text-xs uppercase tracking-wider border border-gold text-gold bg-gold/10 font-semibold';
+        } else {
+          btn.className = 'dest-btn px-4 py-2 rounded-full text-xs uppercase tracking-wider border border-white/20 text-white/70 hover:border-gold font-semibold';
+        }
+      });
+
+      document.querySelectorAll('.dest-card').forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function selectDestination(name, price) {
+      const select = document.getElementById('est-dest');
+      for(let i=0; i<select.options.length; i++) {
+        if(parseInt(select.options[i].value) === price) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+      document.getElementById('estimator').scrollIntoView({behavior:'smooth'});
+      calculateEstimate();
+    }
+
+    function calculateEstimate() {
+      const baseNightPrice = parseInt(document.getElementById('est-dest').value);
+      const nights = parseInt(document.getElementById('est-nights').value);
+      const guests = parseInt(document.getElementById('est-guests').value);
+
+      document.getElementById('nights-val').textContent = nights + (nights === 1 ? ' Night' : ' Nights');
+      document.getElementById('guests-val').textContent = guests + (guests === 1 ? ' Guest' : ' Guests');
+
+      const baseTotal = baseNightPrice * nights;
+      const guestExtra = (guests > 2) ? (guests - 2) * 400 * nights : 0;
+
+      let addonsTotal = 0;
+      if (document.getElementById('addon-jet').checked) addonsTotal += 4500;
+      if (document.getElementById('addon-chef').checked) addonsTotal += (1200 * nights);
+      if (document.getElementById('addon-heli').checked) addonsTotal += 850;
+
+      const subtotal = baseTotal + guestExtra + addonsTotal;
+      const tax = Math.round(subtotal * 0.10);
+      const grandTotal = subtotal + tax;
+
+      document.getElementById('summary-base').textContent = '$' + baseTotal.toLocaleString();
+      document.getElementById('summary-guest').textContent = '$' + guestExtra.toLocaleString();
+      document.getElementById('summary-addons').textContent = '$' + addonsTotal.toLocaleString();
+      document.getElementById('summary-tax').textContent = '$' + tax.toLocaleString();
+      document.getElementById('total-price').textContent = '$' + grandTotal.toLocaleString();
+    }
+
+    function requestReservation() {
+      const total = document.getElementById('total-price').textContent;
+      const randomId = 'AURA-EXP-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('booking-id').textContent = randomId;
+      document.getElementById('modal-total').textContent = total;
+      const modal = document.getElementById('modal-confirm');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    calculateEstimate();
+  </script>
+</body>
+</html>

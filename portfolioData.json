@@ -1,0 +1,1896 @@
+{
+  "profile": {
+    "name": "Roshan Panday",
+    "firstName": "Roshan",
+    "lastName": "Panday",
+    "title": "System Architect & Full-Stack Developer",
+    "roleTagline": "I build cinematic digital experiences — from offline AI systems and custom CMS platforms to award-level animated storefronts. Every pixel has purpose.",
+    "availabilityStatus": "Available for Projects — 2026",
+    "hardwareSpec": "RTX 3070 Ti",
+    "mcaDegree": "MCA — AI & Database Architecture",
+    "photos": [
+      {
+        "id": 1,
+        "src": "./assets/img/profile.jpg",
+        "alt": "Roshan Panday Portrait",
+        "caption": "Primary Profile Photo"
+      },
+      {
+        "id": 2,
+        "src": "./assets/img/profile.jpg",
+        "alt": "Roshan Panday — Developer",
+        "caption": "Studio & Systems Setup"
+      }
+    ],
+    "stats": [
+      {
+        "number": "14+",
+        "label": "Projects Deployed"
+      },
+      {
+        "number": "MCA",
+        "label": "AI & DB Architecture"
+      },
+      {
+        "number": "100%",
+        "label": "Client Ownership"
+      }
+    ],
+    "techStack": [
+      "PHP / MySQL",
+      "React / Vite / Tailwind",
+      "Python & AI/LLM",
+      "Three.js / WebGL",
+      "C++ & Java",
+      "GSAP / Lenis"
+    ],
+    "contact": {
+      "whatsapp": "918700105930",
+      "email": "roshan.panday@gmail.com",
+      "github": "https://github.com/Roshan-Panday",
+      "resumePdf": "./assets/roshan-resume.pdf"
+    }
+  },
+  "about": {
+    "headline": "Crafting Digital Systems with Architectural Integrity",
+    "subheadline": "From raw C++ pointers and offline PyTorch LLMs to responsive React WebGL storefronts, every project is built from scratch with zero unnecessary abstractions.",
+    "heroBio": {
+      "name": "Roshan Panday",
+      "role": "Solo Freelance Architect & Systems Engineer",
+      "tagline": "Specializing in high-performance web systems, custom PHP CMS platforms, local offline AI (Project ROSA), and agency-tier WebGL experiences.",
+      "avatar": "./assets/img/profile.jpg",
+      "status": "Available for Projects — 2026",
+      "philosophy": "Zero bloated frameworks. Raw performance. Complete client ownership."
+    },
+    "metrics": [
+      {
+        "id": "m1",
+        "value": "14+",
+        "label": "Projects Deployed",
+        "detail": "Production CMS, E-Commerce & Full-Stack Systems",
+        "color": "#00d4ff",
+        "icon": "Layers"
+      },
+      {
+        "id": "m2",
+        "value": "MCA",
+        "label": "AI & DB Architecture",
+        "detail": "Master of Computer Applications Degree",
+        "color": "#7b00ff",
+        "icon": "GraduationCap"
+      },
+      {
+        "id": "m3",
+        "value": "< 50ms",
+        "label": "Local AI Response",
+        "detail": "Offline RTX 3070 Ti Llama-2 / Whisper Pipeline",
+        "color": "#00ff88",
+        "icon": "Zap"
+      },
+      {
+        "id": "m4",
+        "value": "100%",
+        "label": "Client Ownership",
+        "detail": "No monthly SaaS fees, full source code delivery",
+        "color": "#ff006e",
+        "icon": "ShieldCheck"
+      }
+    ],
+    "workstation": {
+      "title": "Development Workstation Specs",
+      "gpu": "NVIDIA RTX 3070 Ti (8GB VRAM)",
+      "aiArchitecture": "Local Llama-2 / Whisper LLM Pipeline",
+      "os": "Windows 11 Pro + WSL2 Linux",
+      "databases": [
+        "MySQL",
+        "PostgreSQL",
+        "Redis"
+      ],
+      "status": "OPERATIONAL — LOCAL LLM RUNNING"
+    },
+    "credentials": [
+      {
+        "id": "c1",
+        "title": "MCA — AI & DB Architecture",
+        "subtitle": "Master of Computer Applications",
+        "type": "DEGREE",
+        "status": "Verified",
+        "badgeColor": "#00d4ff"
+      },
+      {
+        "id": "c2",
+        "title": "BCA — Computer Applications",
+        "subtitle": "Bachelor of Computer Applications",
+        "type": "DEGREE",
+        "status": "Verified",
+        "badgeColor": "#7b00ff"
+      },
+      {
+        "id": "c3",
+        "title": "4x Cisco Network & Security Badges",
+        "subtitle": "Cybersecurity, Threat Management, Hardware & Networking",
+        "type": "CERTIFICATION",
+        "status": "Active",
+        "badgeColor": "#00ff88"
+      }
+    ],
+    "personalEvolution": {
+      "title": "Personal Evolution & Code Philosophy",
+      "desc": "Began with low-level C++ memory management and raw algorithm implementation during BCA. Expanded into cloud database optimization and distributed systems during MCA. Today, I combine hardware-accelerated local AI (Project ROSA) with agency-tier interactive web interfaces for high-value clients."
+    }
+  },
+  "storyTimeline": [
+    {
+      "id": "chapter-1",
+      "period": "JAN 2024 — PRESENT",
+      "chapter": "CHAPTER 01",
+      "title": "Independent Architect & AI Researcher",
+      "role": "Lead Systems Architect & Core Developer",
+      "quote": "Building systems that are as elegant to use as they are powerful under the hood.",
+      "desc": "Developing custom PHP-based CMS architectures and pioneering Project ROSA — a private offline AI assistant running on local RTX 3070 Ti hardware.",
+      "tech": [
+        "PHP CMS",
+        "Project ROSA",
+        "PyTorch",
+        "Local LLM",
+        "RTX 3070 Ti"
+      ],
+      "color": "#00d4ff",
+      "tag": "SYSTEMS"
+    },
+    {
+      "id": "chapter-2",
+      "period": "2023 [COMPLETED]",
+      "chapter": "CHAPTER 02",
+      "title": "Master of Computer Applications — MCA",
+      "role": "Maharaja Agrasen Himalayan Garhwal University",
+      "quote": "Deepening theoretical foundations in cloud architecture and distributed AI.",
+      "desc": "Specialised in Advanced Database Architecture, Cloud Systems & AI Integration. Mastered relational query optimization, distributed caches, and modern full-stack patterns.",
+      "tech": [
+        "Advanced DB",
+        "Distributed Systems",
+        "Cloud Arch",
+        "AI Integration"
+      ],
+      "color": "#7b00ff",
+      "tag": "ACADEMIC"
+    },
+    {
+      "id": "chapter-3",
+      "period": "MAR 2023 – APR 2023",
+      "chapter": "CHAPTER 03",
+      "title": "MSB E-Trade Securities",
+      "role": "Financial Systems & Support Specialist",
+      "quote": "Mission-critical connectivity where low-latency execution is paramount.",
+      "desc": "Managed mission-critical trading software support and backend financial connectivity systems with real-time transaction pipelines.",
+      "tech": [
+        "Trading Software",
+        "SQL Databases",
+        "Financial Backend",
+        "Low Latency"
+      ],
+      "color": "#ff006e",
+      "tag": "ENTERPRISE"
+    },
+    {
+      "id": "chapter-4",
+      "period": "AUG 2021 – DEC 2022",
+      "chapter": "CHAPTER 04",
+      "title": "Website & Office Coordinator — Labour Party of India",
+      "role": "Digital Infrastructure Lead",
+      "quote": "Digitizing large-scale operations for seamless data intelligence.",
+      "desc": "Digitized operational records, optimized website data flow and managed SQL databases for member tracking and voter data processing.",
+      "tech": [
+        "SQL Optimization",
+        "Member Portal",
+        "Data Analytics",
+        "Web Operations"
+      ],
+      "color": "#00ff88",
+      "tag": "ANALYTICS"
+    },
+    {
+      "id": "chapter-5",
+      "period": "2021 [COMPLETED]",
+      "chapter": "CHAPTER 05",
+      "title": "Bachelor of Computer Applications — BCA",
+      "role": "Maharaja Agrasen Himalayan Garhwal University",
+      "quote": "Where the journey began — raw algorithms, data structures, and object-oriented mastery.",
+      "desc": "Core foundation in Algorithms, Data Structures and OOP with C++ and Java. Developed custom physics game engines and memory-safe console software.",
+      "tech": [
+        "C++",
+        "Java OOP",
+        "Data Structures",
+        "Algorithms"
+      ],
+      "color": "#f59e0b",
+      "tag": "DEGREE"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "slug": "blue-heaven-camp",
+      "title": "Blue Heaven Camp",
+      "status": "PRODUCTION",
+      "tag": "PHP / MySQL / JS",
+      "tech": [
+        "PHP",
+        "MySQL",
+        "JavaScript",
+        "Fetch API"
+      ],
+      "desc": "High-performance custom CMS for a luxury riverside camping resort with real-time booking pipeline.",
+      "challenge": "Client needed a premium, fast-loading storefront for luxury tents with a direct WhatsApp booking pipeline.",
+      "solution": "Built highly optimized static site with dynamic component loader via Fetch API and custom PHP CMS.",
+      "result": "Sub-2s load times, direct WhatsApp booking conversions, SEO-optimized for holiday search traffic.",
+      "features": [
+        "Dynamic Include Architecture",
+        "Custom Lightbox Gallery",
+        "WhatsApp Booking Pipeline",
+        "SEO Optimized"
+      ],
+      "link": "https://blueheavencamps.in/",
+      "github": null,
+      "img": "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=800&q=80",
+      "color": "#00d4ff",
+      "featured": true,
+      "agencyCard": false,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": 2,
+      "slug": "bhandari-adventure",
+      "title": "Bhandari Adventure",
+      "status": "ENTERPRISE",
+      "tag": "PHP / JS / CMS",
+      "tech": [
+        "PHP",
+        "JavaScript",
+        "CSS3",
+        "MySQL"
+      ],
+      "desc": "Full-stack tourism CMS handling peak-season real-time bookings, a dynamic gallery, and SEO landings.",
+      "challenge": "Client needed a scalable backend capable of handling seasonal traffic spikes and media-heavy gallery.",
+      "solution": "Custom PHP CMS with image compression pipeline, booking system, and WhatsApp routing.",
+      "result": "Handles 10x peak traffic spikes, bookings increased by 40%, gallery serves 200+ compressed images.",
+      "features": [
+        "Custom Booking System",
+        "Dynamic Media Gallery",
+        "SEO Architecture",
+        "Mobile-First Design"
+      ],
+      "link": "http://bhandariadventure.com/",
+      "github": null,
+      "img": "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=800&q=80",
+      "color": "#ff006e",
+      "featured": true,
+      "agencyCard": false,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": 3,
+      "slug": "academia",
+      "title": "Academia",
+      "status": "ARCHIVE",
+      "tag": "Algorithms / Data Structures",
+      "tech": [
+        "Algorithms",
+        "Data Structures",
+        "C++",
+        "Java"
+      ],
+      "desc": "Repository of academic coursework, algorithm implementations, and core CS concepts.",
+      "challenge": "Organizing years of academic projects into a single accessible and well-documented resource.",
+      "solution": "Centralized GitHub repository serving as a knowledge base for core data structures and algorithms.",
+      "result": "Public reference used by peers; clean documentation and working examples for all major algorithms.",
+      "features": [
+        "Algorithm Implementations",
+        "Core Data Structures",
+        "Clean Code Documentation",
+        "Academic Reference"
+      ],
+      "link": "https://roshan-panday.github.io/Academia/",
+      "github": "https://github.com/Roshan-Panday/Academia",
+      "img": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80",
+      "color": "#7b00ff",
+      "featured": false,
+      "agencyCard": false,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": 4,
+      "slug": "project-rosa",
+      "title": "Project ROSA",
+      "status": "PROTOTYPE",
+      "tag": "Python / PyTorch / LLM",
+      "tech": [
+        "Python",
+        "PyTorch",
+        "Whisper",
+        "LLM"
+      ],
+      "desc": "Context-Aware offline AI Avatar running on local RTX 3070 Ti for absolute privacy and zero latency.",
+      "challenge": "Cloud AI compromises privacy and requires constant internet. Consumer hardware potential was untapped.",
+      "solution": "Runs on local RTX 3070 Ti using quantized LLMs. Zero network packets. Full voice-to-text via Whisper.",
+      "result": "Sub-50ms response latency, 100% offline, voice-controlled with full system API access.",
+      "features": [
+        "Local LLM Inference (Llama 2)",
+        "Voice-to-Text (Whisper)",
+        "System Control API",
+        "Zero-Latency Response"
+      ],
+      "link": null,
+      "github": "https://github.com/Roshan-Panday",
+      "img": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80",
+      "color": "#00d4ff",
+      "featured": true,
+      "agencyCard": false,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": 5,
+      "slug": "android-streamer",
+      "title": "Android Streamer",
+      "status": "TOOLKIT",
+      "tag": "C++ / ADB / FFmpeg",
+      "tech": [
+        "C++",
+        "ADB",
+        "FFmpeg",
+        "Low Latency"
+      ],
+      "desc": "Low-latency screen mirroring tool bypassing standard Android protocols by tapping raw ADB.",
+      "challenge": "Standard mirroring solutions suffer 200ms+ latency — unusable for gaming and real-time apps.",
+      "solution": "Bypassed casting protocols. Tapped directly into Android Debug Bridge raw frame buffer via FFmpeg.",
+      "result": "Sub-50ms latency achieved, fully open source toolkit for power users and developers.",
+      "features": [
+        "Zero-Lag Frame Buffer Access",
+        "Low-Resource C++ Client",
+        "Keymapping Support",
+        "Sub-50ms Latency"
+      ],
+      "link": null,
+      "github": "https://github.com/Roshan-Panday",
+      "img": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
+      "color": "#ff006e",
+      "featured": false,
+      "agencyCard": false,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": 6,
+      "slug": "tigml-analytics",
+      "title": "@tigml Analytics",
+      "status": "ACTIVE",
+      "tag": "Data Science / Excel",
+      "tech": [
+        "Data Science",
+        "Excel",
+        "Analytics"
+      ],
+      "desc": "Data-driven content growth framework for a 50k+ MOBA channel — predicting meta-shifts.",
+      "challenge": "The MOBA content market is saturated. Needed a way to predict virality before trends peak.",
+      "solution": "Built data analysis framework using Excel to identify win-rates and drive high-CTR content timing.",
+      "result": "50k+ subscribers, CTR consistently above platform average, viral timing predictions validated.",
+      "features": [
+        "Meta-Data Trend Analysis",
+        "Algorithmic Content Timing",
+        "Win-Rate Heatmaps",
+        "CTR Optimization"
+      ],
+      "link": "https://youtube.com/@tigml",
+      "github": null,
+      "img": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+      "color": "#7b00ff",
+      "featured": false,
+      "agencyCard": false,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": 7,
+      "slug": "mh-2d-engine",
+      "title": "MH_2D Engine",
+      "status": "LEGACY",
+      "tag": "Java / Physics / OOP",
+      "tech": [
+        "Java",
+        "Physics Engine",
+        "OOP"
+      ],
+      "desc": "Custom 2D Action RPG game engine built from scratch in Java — handling collision detection.",
+      "challenge": "Wanted to deeply understand game physics without relying on Unity or Godot abstractions.",
+      "solution": "Wrote custom Java engine handling collision, sprite rendering, and complex multi-phase boss AI state machine.",
+      "result": "Fully functional RPG engine with 60fps render loop, boss AI, and sprite management.",
+      "features": [
+        "Custom Collision Physics",
+        "State-Machine Boss AI",
+        "Sprite Asset Manager",
+        "60fps Render Loop"
+      ],
+      "link": null,
+      "github": "https://github.com/Roshan-Panday",
+      "img": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+      "color": "#00d4ff",
+      "featured": false,
+      "agencyCard": false,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": 8,
+      "slug": "secure-vault",
+      "title": "Secure Vault",
+      "status": "V2.4",
+      "tag": "C++ / Crypto / Pointers",
+      "tech": [
+        "C++",
+        "Cryptography",
+        "Pointers"
+      ],
+      "desc": "Terminal-based transaction management system with raw file encryption for secure banking data.",
+      "challenge": "Banking backends require absolute memory safety and data integrity without bloated frameworks.",
+      "solution": "C++ application using raw pointers for speed and AES-style encryption for secure transaction logs.",
+      "result": "Zero memory leaks (Valgrind-verified), AES encryption on all transaction files, passes audit trail.",
+      "features": [
+        "Encrypted Transaction Logs",
+        "Memory Safety (Raw Pointers)",
+        "User Authentication",
+        "Audit Trail"
+      ],
+      "link": null,
+      "github": "https://github.com/Roshan-Panday",
+      "img": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80",
+      "color": "#ff006e",
+      "featured": false,
+      "agencyCard": false,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": 9,
+      "slug": "shopeasy-ecommerce",
+      "title": "ShopEasy E-Commerce",
+      "status": "PRODUCTION",
+      "tag": "PHP / MySQL / UPI",
+      "tech": [
+        "PHP",
+        "MySQL",
+        "Razorpay"
+      ],
+      "desc": "Full-featured e-commerce store for a local fashion brand with UPI/card payment integration.",
+      "challenge": "Client needed a self-managed shop with inventory, orders, and customer data — no monthly Shopify fees.",
+      "solution": "Custom PHP storefront with product DB, cart logic, Razorpay integration, and admin dashboard.",
+      "result": "One-time cost vs recurring SaaS fees, full data ownership, UPI payments live with zero commission.",
+      "features": [
+        "Product Inventory System",
+        "Razorpay UPI/Card Gateway",
+        "Order Management Panel",
+        "WhatsApp Order Alerts"
+      ],
+      "link": null,
+      "github": "https://github.com/Roshan-Panday",
+      "img": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
+      "color": "#7b00ff",
+      "featured": true,
+      "agencyCard": false,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": 10,
+      "slug": "property-vista",
+      "title": "PropertyVista",
+      "status": "PRODUCTION",
+      "tag": "PHP / Leaflet.js / CMS",
+      "tech": [
+        "PHP",
+        "Leaflet.js",
+        "MySQL"
+      ],
+      "desc": "Real estate listing platform with interactive map-based property explorer and lead pipeline.",
+      "challenge": "Static real estate sites lose leads. Needed a map-first UX with live filtering by price, BHK, and area.",
+      "solution": "PHP CMS with Leaflet.js map integration. Properties load dynamically by filter via AJAX endpoints.",
+      "result": "3x lead capture improvement, agents manage listings independently, map explorer drives engagement.",
+      "features": [
+        "Interactive Property Map",
+        "Price & BHK Filter",
+        "Lead Capture Forms",
+        "SEO-Optimized Listings"
+      ],
+      "link": null,
+      "github": "https://github.com/Roshan-Panday",
+      "img": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+      "color": "#00d4ff",
+      "featured": false,
+      "agencyCard": false,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": 11,
+      "slug": "event-pulse",
+      "title": "EventPulse",
+      "status": "BETA",
+      "tag": "PHP / JWT / QR",
+      "tech": [
+        "PHP",
+        "JWT Auth",
+        "QR Codes"
+      ],
+      "desc": "End-to-end event ticketing system with QR-based gate check-in, seat mapping, and admin portal.",
+      "challenge": "Local event organizers relied on manual entry and cash — losses from fake tickets were critical.",
+      "solution": "PHP platform with JWT-secured QR tickets, organizer dashboard, and a mobile gate-check scanner page.",
+      "result": "Zero fake ticket incidents in pilot, gate check-in time reduced from 3min to 8sec per attendee.",
+      "features": [
+        "QR-Based Gate Check-in",
+        "Seat Map & Tier Pricing",
+        "Organizer Dashboard",
+        "Real-Time Attendance"
+      ],
+      "link": null,
+      "github": "https://github.com/Roshan-Panday",
+      "img": "https://images.unsplash.com/photo-1540039155733-d7696d4eb98e?auto=format&fit=crop&w=800&q=80",
+      "color": "#ff006e",
+      "featured": false,
+      "agencyCard": false,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1540039155733-d7696d4eb98e?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": 12,
+      "slug": "ignite-node-agency",
+      "title": "Roshan Panday Portfolio & Systems",
+      "status": "ACTIVE",
+      "tag": "Three.js / GSAP / PHP",
+      "tech": [
+        "Three.js",
+        "GSAP",
+        "React",
+        "Tailwind"
+      ],
+      "desc": "Founded & Operated by Roshan Panday. High-Performance Digital Architecture Studio featuring WebGL liquid shaders, GSAP animations, and interactive pricing tools.",
+      "challenge": "Demonstrating high-tier agency-level web engineering as a solo developer to win premium enterprise clients.",
+      "solution": "Built a cinematic React agency platform with custom R3F Three.js particle wireframes, Lenis smooth scroll, and CMS automation.",
+      "result": "Positions Roshan as a top-1% solo technical architect; drives high-ticket freelance client acquisition.",
+      "features": [
+        "WebGL Liquid Shaders",
+        "3D Wireframe Calculator",
+        "Solo Agency Architecture",
+        "Integrated CMS Admin"
+      ],
+      "link": "#",
+      "github": "https://github.com/Roshan-Panday/ignite-node",
+      "img": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+      "color": "#7b00ff",
+      "featured": true,
+      "agencyCard": true,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": 13,
+      "slug": "juris-global-legal",
+      "title": "Juris Global Legal Solutions",
+      "status": "PRODUCTION",
+      "tag": "React / Tailwind / Node / CMS",
+      "tech": [
+        "React",
+        "Tailwind CSS",
+        "Node.js",
+        "PostgreSQL"
+      ],
+      "desc": "Authoritative corporate law firm web platform with secure client intake portal, lawyer consultation scheduling, and legal document repository.",
+      "challenge": "Legal corporate clients demand high trust signals, absolute confidentiality, fast search of practice areas, and accessible retainer consultation booking.",
+      "solution": "Engineered modern corporate legal portal with dark-blue trust typography, encrypted client document upload, responsive practice area matrix, and calendar integration.",
+      "result": "45% increase in online consultation bookings, reduced client intake onboarding time from 2 days to 15 minutes.",
+      "features": [
+        "Encrypted Client Intake Portal",
+        "Interactive Practice Area Matrix",
+        "Consultation Booking Engine",
+        "Legal Document Repository"
+      ],
+      "link": null,
+      "github": "https://github.com/Roshan-Panday/law-firm-website",
+      "img": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=800&q=80",
+      "color": "#00f2fe",
+      "featured": true,
+      "agencyCard": false,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": 14,
+      "slug": "bill-invoice-generator",
+      "title": "Bill & Invoice Generator",
+      "status": "PRODUCTION",
+      "tag": "React / PrintJS / PDF Engine",
+      "tech": [
+        "React",
+        "HTML5 Print API",
+        "Tailwind",
+        "LocalStorage"
+      ],
+      "desc": "Embedded professional document automation utility for generating client receipts, project handover slips, and technical SOPs with instant PDF export.",
+      "challenge": "Freelancers waste hours crafting manual invoices and handover documents for clients, causing delayed payments and administrative overhead.",
+      "solution": "Built a zero-backend client-side invoice generator into the portfolio OS with dynamic line items, INR/USD currency conversion, official digital stamps, and print styles.",
+      "result": "Generates print-ready vector PDF documents in seconds; embedded directly in portfolio admin toolkit.",
+      "features": [
+        "Multi-Format Doc Builder (Receipt/Handover/SOP)",
+        "Instant Live Print/PDF Preview",
+        "Official Verified Digital Stamp",
+        "Currency Auto-Calculate"
+      ],
+      "link": "#doc-modal",
+      "github": "https://github.com/Roshan-Panday",
+      "img": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
+      "color": "#f59e0b",
+      "featured": true,
+      "agencyCard": false,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80"
+    }
+  ],
+  "services": [
+    {
+      "id": "web",
+      "category": "Web Packages",
+      "subtitle": "High-performance React, WebGL & custom PHP CMS web applications. Infrastructure note: Domain & hosting purchased separately.",
+      "supportsExtraPages": true,
+      "extraPageRateInr": 3500,
+      "extraPageRateUsd": 44,
+      "extraPageRate": {
+        "inr": 3500,
+        "usd": 44
+      },
+      "packages": [
+        {
+          "id": "essential",
+          "tierKey": "Essential",
+          "name": "Essential",
+          "subtitle": "1-Page High-Conversion Landing Site for fast turnaround and core functionality",
+          "inr": 10000,
+          "usd": 125,
+          "mrpInr": 13000,
+          "mrpUsd": 165,
+          "days": 4,
+          "badge": "MOST POPULAR",
+          "savings": "Save ₹3,000 / $40",
+          "features": [
+            "1-Page High-Conversion Landing Site",
+            "Mobile-First Responsive Design",
+            "Instant WhatsApp & Email Sync",
+            "Core SEO & Speed Optimization",
+            "3 Rounds of Design Revisions"
+          ]
+        },
+        {
+          "id": "growth",
+          "tierKey": "Growth",
+          "name": "Growth",
+          "subtitle": "Scalable, high-impact solution designed for growing businesses seeking full feature sets",
+          "inr": 25000,
+          "usd": 310,
+          "mrpInr": 33000,
+          "mrpUsd": 410,
+          "days": 10,
+          "badge": "BEST VALUE",
+          "savings": "Save ₹8,000 / $100",
+          "features": [
+            "Up to 5 Custom Architecture Pages",
+            "Interactive Contact & Map Sync",
+            "Advanced Schema.org SEO Structure",
+            "Sub-2s Lightning Speed Guarantee",
+            "5 Rounds of Design Revisions"
+          ]
+        },
+        {
+          "id": "enterprise",
+          "tierKey": "Enterprise",
+          "name": "Enterprise",
+          "subtitle": "Full powerhouse tier with bespoke architecture, custom admin panels, and dedicated support",
+          "inr": 40000,
+          "usd": 499,
+          "mrpInr": 55000,
+          "mrpUsd": 680,
+          "days": 21,
+          "badge": "PREMIUM",
+          "savings": "Save ₹15,000 / $181",
+          "features": [
+            "Product Catalog & E-Commerce Storefront",
+            "Razorpay / Stripe / UPI Gateways",
+            "Custom Admin Dashboard & Inventory Panel",
+            "WhatsApp Order Alerts & CRM Integration",
+            "Priority Support & Zero SaaS Subscriptions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "specialisation",
+      "category": "Specialisations",
+      "subtitle": "Bespoke 3D WebGL scenes, local offline AI systems (Project ROSA), brand identity systems, and high-CTR visual assets.",
+      "supportsExtraPages": false,
+      "extraPageRateInr": null,
+      "extraPageRateUsd": null,
+      "extraPageRate": null,
+      "packages": [
+        {
+          "id": "ui-ux",
+          "tierKey": "UI/UX Design System",
+          "name": "UI/UX Design System",
+          "subtitle": "Comprehensive UI/UX design system with component library and Figma tokens",
+          "inr": 18000,
+          "usd": 220,
+          "mrpInr": 23000,
+          "mrpUsd": 280,
+          "days": 5,
+          "badge": "DESIGN",
+          "savings": "Save ₹5,000 / $60",
+          "features": [
+            "Complete Figma Component Library",
+            "Typography & Color System Tokens",
+            "Interactive Prototype Screens",
+            "Design System Documentation"
+          ]
+        },
+        {
+          "id": "3d-motion",
+          "tierKey": "3D and Motion GSAP plus WebGL",
+          "name": "3D and Motion GSAP plus WebGL",
+          "subtitle": "Interactive 3D WebGL scenes with GSAP animation scroll triggers",
+          "inr": 22000,
+          "usd": 275,
+          "mrpInr": 28000,
+          "mrpUsd": 350,
+          "days": 6,
+          "badge": "3D & MOTION",
+          "savings": "Save ₹6,000 / $75",
+          "features": [
+            "Three.js / WebGL Custom Shaders",
+            "GSAP ScrollTrigger Timeline",
+            "3D Asset Optimization & Loading",
+            "Interactive Canvas Interactions"
+          ]
+        },
+        {
+          "id": "react-spa",
+          "tierKey": "React SPA Build",
+          "name": "React SPA Build",
+          "subtitle": "High-performance React single-page application with modern state architecture",
+          "inr": 15000,
+          "usd": 185,
+          "mrpInr": 20000,
+          "mrpUsd": 245,
+          "days": 5,
+          "badge": "REACT",
+          "savings": "Save ₹5,000 / $60",
+          "features": [
+            "React / Vite Component Architecture",
+            "Zustand State Management",
+            "Tailwind CSS Responsive Styling",
+            "Client-side Route Animations"
+          ]
+        },
+        {
+          "id": "php-backend",
+          "tierKey": "PHP Custom Backend",
+          "name": "PHP Custom Backend",
+          "subtitle": "Custom PHP & MySQL backend CMS with dynamic API endpoints",
+          "inr": 20000,
+          "usd": 250,
+          "mrpInr": 26000,
+          "mrpUsd": 325,
+          "days": 7,
+          "badge": "BACKEND",
+          "savings": "Save ₹6,000 / $75",
+          "features": [
+            "Custom PHP CMS Admin Portal",
+            "MySQL Relational Database Schema",
+            "REST API Endpoint Architecture",
+            "Role-Based Access Control"
+          ]
+        },
+        {
+          "id": "security",
+          "tierKey": "Security and Compliance",
+          "name": "Security and Compliance",
+          "subtitle": "Comprehensive web security audit, vulnerability hardening, and compliance",
+          "inr": 12000,
+          "usd": 150,
+          "mrpInr": 16000,
+          "mrpUsd": 200,
+          "days": 4,
+          "badge": "SECURITY",
+          "savings": "Save ₹4,000 / $50",
+          "features": [
+            "Penetration Testing & Vulnerability Audit",
+            "SQL Injection & XSS Hardening",
+            "CORS & Security Headers Config",
+            "SSL & Encrypted Data Handling"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "combined",
+      "category": "Combined Offers",
+      "subtitle": "Complete digital transformation combining Web Engineering, 3D WebGL Experiences, Custom AI Integration, and Full Brand Identity.",
+      "supportsExtraPages": true,
+      "extraPageRateInr": 3500,
+      "extraPageRateUsd": 44,
+      "extraPageRate": {
+        "inr": 3500,
+        "usd": 44
+      },
+      "packages": [
+        {
+          "id": "startup-complete",
+          "tierKey": "Startup Complete",
+          "name": "Startup Complete",
+          "subtitle": "All-in-one starter suite combining web engineering, brand identity, and payment sync",
+          "inr": 35000,
+          "usd": 435,
+          "mrpInr": 46000,
+          "mrpUsd": 570,
+          "days": 7,
+          "badge": "Save 11000 INR",
+          "savings": "Save 11000 INR",
+          "features": [
+            "Up to 5 Web Engineering Pages + 3D Hero",
+            "Complete Vector Brand Identity & Logo Kit",
+            "Integrated Payment Gateway & WhatsApp Sync",
+            "Basic Local AI Concierge Widget",
+            "6 Rounds of Revisions & Full Source Ownership"
+          ]
+        },
+        {
+          "id": "business-all-in",
+          "tierKey": "Business All-In",
+          "name": "Business All-In",
+          "subtitle": "10 pages with custom CMS, immersive 3D scene, offline AI voice assistant, and 1-yr care",
+          "inr": 65000,
+          "usd": 810,
+          "mrpInr": 90000,
+          "mrpUsd": 1120,
+          "days": 14,
+          "badge": "Save 25000 INR",
+          "savings": "Save 25000 INR",
+          "features": [
+            "Up to 10 Web Pages with Custom CMS Admin",
+            "Immersive 3D WebGL Scene & GSAP Cinematic Scroll",
+            "Complete Brand Ecosystem & Social Media Suite",
+            "Production Offline AI Assistant (Voice + RAG)",
+            "1-Year Priority Maintenance & Cloud Infrastructure"
+          ]
+        },
+        {
+          "id": "enterprise-premium",
+          "tierKey": "Enterprise Premium",
+          "name": "Enterprise Premium",
+          "subtitle": "Unlimited web architecture, bespoke shader world, local AI server deployment & 24/7 support",
+          "inr": 95000,
+          "usd": 1190,
+          "mrpInr": 135000,
+          "mrpUsd": 1690,
+          "days": 25,
+          "badge": "Save 40000 INR",
+          "savings": "Save 40000 INR",
+          "features": [
+            "Unlimited Custom Web Application Architecture",
+            "Bespoke Shader Engine & Interactive 3D World",
+            "Complete Enterprise Brand Book & Media Pipeline",
+            "Dedicated Local AI Server Deployment & APIs",
+            "24/7 Senior Architect Support & Full IP Transfer"
+          ]
+        }
+      ]
+    }
+  ],
+  "addons": [
+    {
+      "id": "addon-pages",
+      "name": "Extra Architecture Pages",
+      "label": "Extra Architecture Pages",
+      "description": "Additional custom page design and architecture",
+      "inr": 3500,
+      "usd": 44,
+      "days": 1,
+      "applicableTo": "web"
+    },
+    {
+      "id": "addon-blog",
+      "name": "Dynamic Blog Engine",
+      "label": "Dynamic Blog Engine",
+      "description": "Custom blog system with CMS publishing",
+      "inr": 8000,
+      "usd": 100,
+      "days": 2,
+      "applicableTo": "web"
+    },
+    {
+      "id": "addon-auth",
+      "name": "User Auth & JWT Portal",
+      "label": "User Auth & JWT Portal",
+      "description": "Secure user registration, login, JWT session management",
+      "inr": 9000,
+      "usd": 115,
+      "days": 2,
+      "applicableTo": "web"
+    },
+    {
+      "id": "addon-analytics",
+      "name": "Advanced Event Analytics",
+      "label": "Advanced Event Analytics",
+      "description": "Privacy-first event tracking dashboard and click heatmaps",
+      "inr": 7500,
+      "usd": 95,
+      "days": 1,
+      "applicableTo": "all"
+    },
+    {
+      "id": "addon-chatbot",
+      "name": "AI Chatbot Integration",
+      "label": "AI Chatbot Integration",
+      "description": "Private AI assistant chatbot widget for interactive support",
+      "inr": 15000,
+      "usd": 190,
+      "days": 3,
+      "applicableTo": "specialisation"
+    },
+    {
+      "id": "addon-3d",
+      "name": "3D & WebGL Shader Scene",
+      "label": "3D & WebGL Shader Scene",
+      "description": "Custom Three.js 3D model interaction and shader effects",
+      "inr": 20000,
+      "usd": 250,
+      "days": 4,
+      "applicableTo": "specialisation"
+    },
+    {
+      "id": "addon-gesture",
+      "name": "Gesture & Touch Controls",
+      "label": "Gesture & Touch Controls",
+      "description": "Custom mobile touch gestures and interactive haptics",
+      "inr": 6000,
+      "usd": 75,
+      "days": 1,
+      "applicableTo": "specialisation"
+    },
+    {
+      "id": "addon-video",
+      "name": "Video Banner & Motion",
+      "label": "Video Banner & Motion",
+      "description": "Custom video hero header background with auto-play",
+      "inr": 8000,
+      "usd": 100,
+      "days": 1,
+      "applicableTo": "web"
+    },
+    {
+      "id": "addon-payment",
+      "name": "Multi-Gateway Payment Integration",
+      "label": "Multi-Gateway Payment Integration",
+      "description": "Integration of Razorpay, Stripe, PayPal, and UPI QR",
+      "inr": 6500,
+      "usd": 80,
+      "days": 1,
+      "applicableTo": "web"
+    },
+    {
+      "id": "addon-seo",
+      "name": "Technical SEO & Schema Optimization",
+      "label": "Technical SEO & Schema Optimization",
+      "description": "Technical SEO audit, structured JSON-LD schema metadata, OpenGraph",
+      "inr": 7000,
+      "usd": 90,
+      "days": 2,
+      "applicableTo": "web"
+    },
+    {
+      "id": "addon-ads",
+      "name": "Ad Pixel & Marketing Sync",
+      "label": "Ad Pixel & Marketing Sync",
+      "description": "Meta Pixel, Google Ads conversion tracking, event tags",
+      "inr": 5000,
+      "usd": 65,
+      "days": 1,
+      "applicableTo": "all"
+    },
+    {
+      "id": "addon-social",
+      "name": "Social Media Suite",
+      "label": "Social Media Suite",
+      "description": "Live social feed embeds and dynamic share buttons",
+      "inr": 4500,
+      "usd": 55,
+      "days": 1,
+      "applicableTo": "all"
+    },
+    {
+      "id": "addon-multilang",
+      "name": "Multi-Language i18n Suite",
+      "label": "Multi-Language i18n Suite",
+      "description": "Dual or multi-language toggle system with instant language switching",
+      "inr": 9500,
+      "usd": 120,
+      "days": 2,
+      "applicableTo": "web"
+    },
+    {
+      "id": "addon-domain",
+      "name": "Domain & Infrastructure Setup",
+      "label": "Domain & Infrastructure Setup",
+      "description": "Cloud server setup, SSL certificates, DNS mapping, email routing",
+      "inr": 10000,
+      "usd": 125,
+      "days": 1,
+      "applicableTo": "all"
+    },
+    {
+      "id": "addon-care",
+      "name": "1-Year Concierge Care Plan",
+      "label": "1-Year Concierge Care Plan",
+      "description": "12 months of uptime monitoring, monthly security patch updates, backups",
+      "inr": 18000,
+      "usd": 220,
+      "days": 0,
+      "applicableTo": "all"
+    },
+    {
+      "id": "addon-express",
+      "name": "Express Priority Rush Delivery",
+      "label": "Express Priority Rush Delivery",
+      "description": "Accelerate project delivery timeline by moving project to #1 priority",
+      "inr": 5000,
+      "usd": 65,
+      "days": -2,
+      "applicableTo": "all"
+    },
+    {
+      "id": "addon-copy",
+      "name": "Conversion Copywriting",
+      "label": "Conversion Copywriting",
+      "description": "High-conversion headline, feature spec, and value proposition copywriting",
+      "inr": 9500,
+      "usd": 120,
+      "days": 2,
+      "applicableTo": "web"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "c1",
+      "title": "MCA Degree",
+      "category": "DEGREE",
+      "desc": "Master of Computer Applications — AI & Database Architecture.",
+      "src": "./assets/img/certificates/degree-mca.png",
+      "aspectRatio": "ar32"
+    },
+    {
+      "id": "c2",
+      "title": "BCA Degree",
+      "category": "DEGREE",
+      "desc": "Bachelor of Computer Applications.",
+      "src": "./assets/img/certificates/degree-bca.png",
+      "aspectRatio": "ar32"
+    },
+    {
+      "id": "c3",
+      "title": "Cybersecurity Intro",
+      "category": "CISCO",
+      "desc": "Network defense & threat identification certification.",
+      "src": "./assets/img/certificates/cisco-cybersecurity.png",
+      "aspectRatio": "ar32"
+    },
+    {
+      "id": "c4",
+      "title": "Threat Management",
+      "category": "CISCO",
+      "desc": "Advanced threat detection certification.",
+      "src": "./assets/img/certificates/cisco-threat-mgmt.png",
+      "aspectRatio": "ar32"
+    },
+    {
+      "id": "c5",
+      "title": "Networking Basics",
+      "category": "CISCO",
+      "desc": "Core routing, IP protocol, network architecture.",
+      "src": "./assets/img/certificates/cisco-networking.png",
+      "aspectRatio": "ar32"
+    },
+    {
+      "id": "c6",
+      "title": "Hardware Engineering",
+      "category": "CISCO",
+      "desc": "System assembly, diagnostics, hardware maintenance.",
+      "src": "./assets/img/certificates/cisco-hardware.png",
+      "aspectRatio": "ar32"
+    },
+    {
+      "id": "c7",
+      "title": "IIT Madras Cert",
+      "category": "PROFESSIONAL",
+      "desc": "Technical standard validation from IIT Madras.",
+      "src": "./assets/img/certificates/cert-iitm.png",
+      "aspectRatio": "ar32"
+    },
+    {
+      "id": "c8",
+      "title": "Merit Award",
+      "category": "AWARD",
+      "desc": "Bharat Vikas recognition for science & technical education.",
+      "src": "./assets/img/certificates/cert-bharat-vikas.png",
+      "aspectRatio": "ar32"
+    }
+  ],
+  "gallery": [],
+  "assets": [],
+  "demos": [
+    {
+      "id": "d1",
+      "title": "Aura Luxury Travel",
+      "category": "Millennial",
+      "desc": "Warm tones, parallax scroll, serif luxury booking.",
+      "iframeUrl": "demos/1-luxury-travel.html"
+    },
+    {
+      "id": "d2",
+      "title": "Artisan Roast Café",
+      "category": "Millennial",
+      "desc": "Earthy minimal storefront with GSAP scroll reveal.",
+      "iframeUrl": "demos/2-premium-coffee.html"
+    },
+    {
+      "id": "d3",
+      "title": "Vanguard Agency",
+      "category": "Millennial",
+      "desc": "Editorial grid typography digital portfolio.",
+      "iframeUrl": "demos/3-retro-agency.html"
+    },
+    {
+      "id": "d4",
+      "title": "FlowInvoice SaaS",
+      "category": "Mid-Generation",
+      "desc": "Professional dark mode billing and invoice UI.",
+      "iframeUrl": "demos/4-saas-billing.html"
+    },
+    {
+      "id": "d5",
+      "title": "CyberGuard IT",
+      "category": "Mid-Generation",
+      "desc": "Structured corporate cybersecurity & cloud portal.",
+      "iframeUrl": "demos/5-corporate-security.html"
+    },
+    {
+      "id": "d6",
+      "title": "EstatePulse Real Estate",
+      "category": "Mid-Generation",
+      "desc": "Map-centric property filter and lead engine.",
+      "iframeUrl": "demos/6-real-estate.html"
+    },
+    {
+      "id": "d7",
+      "title": "Nexus Gaming Hub",
+      "category": "Gen Z / Gen Alpha",
+      "desc": "Glassmorphism neon clan & esports portal.",
+      "iframeUrl": "demos/7-gaming-clan.html"
+    },
+    {
+      "id": "d8",
+      "title": "KAIZEN Drop",
+      "category": "Gen Z / Gen Alpha",
+      "desc": "Asymmetric streetwear countdown drop page.",
+      "iframeUrl": "demos/8-streetwear-drop.html"
+    },
+    {
+      "id": "d9",
+      "title": "AETHER AI Platform",
+      "category": "Gen Z / Gen Alpha",
+      "desc": "Holographic gradient mesh product launch.",
+      "iframeUrl": "demos/9-futuristic-ai.html"
+    },
+    {
+      "id": "d10",
+      "title": "FocusFlow Bento App",
+      "category": "Gen Z / Gen Alpha",
+      "desc": "Colorful bento grid study and productivity UI.",
+      "iframeUrl": "demos/10-study-productivity.html"
+    }
+  ],
+  "dynamicPages": [
+    {
+      "id": "demo-page",
+      "slug": "demo",
+      "title": "Demo Dynamic Page",
+      "sections": [
+        {
+          "id": "sec-1",
+          "type": "hero",
+          "title": "Dynamic Page Hero",
+          "subtitle": "This page was built using the CMS"
+        },
+        {
+          "id": "sec-2",
+          "type": "text",
+          "content": "This is a sample text section added via the Page Builder."
+        }
+      ]
+    }
+  ],
+  "studioAssets": [
+    {
+      "id": 1000,
+      "title": "1 by 1 Artwork",
+      "description": "Digital Artwork 1 by 1",
+      "imgUrl": "./assets/img/project-thumbnails/1 by 1/dc1.png",
+      "category": "Discord Banners",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1001,
+      "title": "1 by 1 Artwork",
+      "description": "Digital Artwork 1 by 1",
+      "imgUrl": "./assets/img/project-thumbnails/1 by 1/dc2.png",
+      "category": "Discord Banners",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1002,
+      "title": "1 by 1 Artwork",
+      "description": "Digital Artwork 1 by 1",
+      "imgUrl": "./assets/img/project-thumbnails/1 by 1/dc3.png",
+      "category": "Discord Banners",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1003,
+      "title": "1 by 1 Artwork",
+      "description": "Digital Artwork 1 by 1",
+      "imgUrl": "./assets/img/project-thumbnails/1 by 1/dc4.png",
+      "category": "Discord Banners",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1004,
+      "title": "1 by 1 Artwork",
+      "description": "Digital Artwork 1 by 1",
+      "imgUrl": "./assets/img/project-thumbnails/1 by 1/dc5.png",
+      "category": "Discord Banners",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1005,
+      "title": "1 by 1 Artwork",
+      "description": "Digital Artwork 1 by 1",
+      "imgUrl": "./assets/img/project-thumbnails/1 by 1/dc6.png",
+      "category": "Discord Banners",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1006,
+      "title": "1 by 1 Artwork",
+      "description": "Digital Artwork 1 by 1",
+      "imgUrl": "./assets/img/project-thumbnails/1 by 1/dc7.png",
+      "category": "Discord Banners",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1007,
+      "title": "4 by 1 Artwork",
+      "description": "Digital Artwork 4 by 1",
+      "imgUrl": "./assets/img/project-thumbnails/4 by 1/17c1a68d-6fb8-402d-a6d3-eaaf2a34b9dc.jpeg",
+      "category": "Discord Banners",
+      "aspectRatio": "ar41",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1008,
+      "title": "4 by 1 Artwork",
+      "description": "Digital Artwork 4 by 1",
+      "imgUrl": "./assets/img/project-thumbnails/4 by 1/62a4be09-ca15-487b-a82a-1182e325c777.jpeg",
+      "category": "Discord Banners",
+      "aspectRatio": "ar41",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1009,
+      "title": "4 by 1 Artwork",
+      "description": "Digital Artwork 4 by 1",
+      "imgUrl": "./assets/img/project-thumbnails/4 by 1/t12.png",
+      "category": "Discord Banners",
+      "aspectRatio": "ar41",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1010,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/1.png",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1011,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/2.png",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1012,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/3.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1013,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/4.jpeg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1014,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/5.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1015,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/6.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1016,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/7.png",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1017,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/8.png",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1018,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/9.png",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1019,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/10.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1020,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/11.webp",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1021,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/12.webp",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1022,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t4.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1023,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t5.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1024,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t6.png",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1025,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t7.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1026,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t8.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1027,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t9.png",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1028,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t10.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1029,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t11.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1030,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t13.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1031,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t14.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1032,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t15.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1033,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t16.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1034,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t17.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1035,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t18.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1036,
+      "title": "16 by 9 Artwork",
+      "description": "Digital Artwork 16 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/16 by 9/t20.jpg",
+      "category": "Thumbnails",
+      "aspectRatio": "ar169",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1037,
+      "title": "55 by 9 Artwork",
+      "description": "Digital Artwork 55 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/55 by 9/3rd_party_.jpeg",
+      "category": "Discord Banners",
+      "aspectRatio": "ar559",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1038,
+      "title": "55 by 9 Artwork",
+      "description": "Digital Artwork 55 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/55 by 9/graphics_leauge.jpeg",
+      "category": "Discord Banners",
+      "aspectRatio": "ar559",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1039,
+      "title": "55 by 9 Artwork",
+      "description": "Digital Artwork 55 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/55 by 9/gta_verse_mod.jpeg",
+      "category": "Discord Banners",
+      "aspectRatio": "ar559",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1040,
+      "title": "55 by 9 Artwork",
+      "description": "Digital Artwork 55 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/55 by 9/hok_mod.jpeg",
+      "category": "Discord Banners",
+      "aspectRatio": "ar559",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1041,
+      "title": "55 by 9 Artwork",
+      "description": "Digital Artwork 55 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/55 by 9/hok_offical_creator.jpeg",
+      "category": "Discord Banners",
+      "aspectRatio": "ar559",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1042,
+      "title": "55 by 9 Artwork",
+      "description": "Digital Artwork 55 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/55 by 9/how_to_play.png",
+      "category": "Discord Banners",
+      "aspectRatio": "ar559",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1043,
+      "title": "55 by 9 Artwork",
+      "description": "Digital Artwork 55 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/55 by 9/how_to_register.png",
+      "category": "Discord Banners",
+      "aspectRatio": "ar559",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1044,
+      "title": "55 by 9 Artwork",
+      "description": "Digital Artwork 55 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/55 by 9/point_system.png",
+      "category": "Discord Banners",
+      "aspectRatio": "ar559",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1045,
+      "title": "55 by 9 Artwork",
+      "description": "Digital Artwork 55 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/55 by 9/quick_command.jpeg",
+      "category": "Discord Banners",
+      "aspectRatio": "ar559",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1046,
+      "title": "55 by 9 Artwork",
+      "description": "Digital Artwork 55 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/55 by 9/report_.jpeg",
+      "category": "Discord Banners",
+      "aspectRatio": "ar559",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1047,
+      "title": "55 by 9 Artwork",
+      "description": "Digital Artwork 55 by 9",
+      "imgUrl": "./assets/img/project-thumbnails/55 by 9/shoutcasting.jpeg",
+      "category": "Discord Banners",
+      "aspectRatio": "ar559",
+      "platform": "Gallery",
+      "tools": [
+        "Photoshop"
+      ]
+    },
+    {
+      "id": 1048,
+      "title": "Brand Logo - logo.png",
+      "description": "Brand Identity",
+      "imgUrl": "./assets/img/project-logos/logo.png",
+      "category": "Brand Identities",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Illustrator"
+      ]
+    },
+    {
+      "id": 1049,
+      "title": "Brand Logo - logo1.png",
+      "description": "Brand Identity",
+      "imgUrl": "./assets/img/project-logos/logo1.png",
+      "category": "Brand Identities",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Illustrator"
+      ]
+    },
+    {
+      "id": 1050,
+      "title": "Brand Logo - logo2.png",
+      "description": "Brand Identity",
+      "imgUrl": "./assets/img/project-logos/logo2.png",
+      "category": "Brand Identities",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Illustrator"
+      ]
+    },
+    {
+      "id": 1051,
+      "title": "Brand Logo - logo3.png",
+      "description": "Brand Identity",
+      "imgUrl": "./assets/img/project-logos/logo3.png",
+      "category": "Brand Identities",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Illustrator"
+      ]
+    },
+    {
+      "id": 1052,
+      "title": "Brand Logo - logo4.png",
+      "description": "Brand Identity",
+      "imgUrl": "./assets/img/project-logos/logo4.png",
+      "category": "Brand Identities",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Illustrator"
+      ]
+    },
+    {
+      "id": 1053,
+      "title": "Brand Logo - scorch logo.png",
+      "description": "Brand Identity",
+      "imgUrl": "./assets/img/project-logos/scorch logo.png",
+      "category": "Brand Identities",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Illustrator"
+      ]
+    },
+    {
+      "id": 1054,
+      "title": "Brand Logo - trt-logo.png",
+      "description": "Brand Identity",
+      "imgUrl": "./assets/img/project-logos/trt-logo.png",
+      "category": "Brand Identities",
+      "aspectRatio": "ar11",
+      "platform": "Gallery",
+      "tools": [
+        "Illustrator"
+      ]
+    }
+  ]
+}

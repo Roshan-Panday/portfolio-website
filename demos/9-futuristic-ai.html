@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NEURAL MATRIX AI — Holographic Generative Intelligence Engine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['JetBrains Mono', 'monospace'],
+            sans: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#05050e',
+            cyber: '#38bdf8',
+            nebula: '#a855f7',
+            magenta: '#f43f5e',
+            panel: '#0f0f23',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #05050e; color: #f8fafc; font-family: 'Space Grotesk', sans-serif; }
+    .holo-glow { box-shadow: 0 0 30px rgba(56, 189, 248, 0.25); border: 1px solid rgba(56, 189, 248, 0.4); }
+    .gradient-text { background: linear-gradient(135deg, #38bdf8 0%, #a855f7 50%, #f43f5e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Header Navbar -->
+  <header class="border-b border-white/10 bg-obsidian/90 backdrop-blur-md sticky top-0 z-40 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyber via-nebula to-magenta p-0.5 shadow-lg shadow-cyber/20">
+        <div class="w-full h-full bg-obsidian rounded-[10px] flex items-center justify-center text-cyber">
+          <i data-lucide="cpu" class="w-5 h-5"></i>
+        </div>
+      </div>
+      <div>
+        <span class="font-bold text-xl tracking-wide text-white">NEURAL <span class="gradient-text font-mono font-extrabold">MATRIX</span></span>
+        <span class="text-[10px] uppercase font-mono tracking-widest text-cyber block">Generative AI Core v4.0</span>
+      </div>
+    </div>
+
+    <div class="hidden md:flex items-center gap-3 font-mono text-xs">
+      <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> ALL LATENCY SUB-10MS
+      </span>
+    </div>
+
+    <button onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'})" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyber to-nebula text-obsidian font-mono font-bold text-xs uppercase tracking-wider hover:brightness-125 transition-all">
+      Test Simulator
+    </button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-20 px-6 max-w-7xl mx-auto w-full text-center space-y-6">
+    <span class="inline-block px-4 py-1.5 rounded-full bg-cyber/10 border border-cyber/30 text-cyber text-xs font-mono font-semibold uppercase tracking-widest">
+      ⚡ Quantum Multimodal Generative Intelligence
+    </span>
+    <h1 class="text-4xl sm:text-7xl font-extrabold leading-tight">
+      THE NEXT QUANTUM LEAP IN <br/>
+      <span class="gradient-text">GENERATIVE AI MODELS.</span>
+    </h1>
+    <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto font-light leading-relaxed">
+      Empowering developers with real-time code synthesis, 3D mesh creation, and autonomous agent orchestration.
+    </p>
+
+    <div class="pt-4 flex flex-wrap justify-center gap-4 text-xs font-mono">
+      <div class="px-4 py-2 rounded-xl bg-panel border border-white/10 text-slate-300">
+        <span class="text-cyber font-bold">175B</span> Parameters
+      </div>
+      <div class="px-4 py-2 rounded-xl bg-panel border border-white/10 text-slate-300">
+        <span class="text-nebula font-bold">128K</span> Context Window
+      </div>
+      <div class="px-4 py-2 rounded-xl bg-panel border border-white/10 text-slate-300">
+        <span class="text-magenta font-bold">0.001s</span> Token Speed
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive AI Prompt Simulator Widget -->
+  <section id="simulator" class="py-16 px-6 max-w-6xl mx-auto w-full space-y-8">
+    <div class="text-center space-y-2 font-mono">
+      <span class="text-xs uppercase text-cyber font-semibold">Interactive Playground</span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Live AI Prompt Streaming Box</h2>
+    </div>
+
+    <div class="bg-panel p-6 sm:p-8 rounded-3xl holo-glow grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Inputs Left -->
+      <div class="lg:col-span-6 space-y-6">
+        <div>
+          <label class="block text-xs font-mono uppercase text-cyber font-bold mb-2">Preset Prompt Chips</label>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="setPrompt('Write a high-performance Async Python FastAPI service for microservices')" class="px-3 py-1.5 rounded-lg bg-obsidian border border-cyber/30 text-cyber hover:bg-cyber hover:text-obsidian text-xs font-mono transition-colors">Async Python Service</button>
+            <button onclick="setPrompt('Design a futuristic glassmorphic UI component in React Tailwind')" class="px-3 py-1.5 rounded-lg bg-obsidian border border-nebula/30 text-nebula hover:bg-nebula hover:text-obsidian text-xs font-mono transition-colors">Cyberpunk UI Component</button>
+            <button onclick="setPrompt('Analyze financial ledger for anomalies and detect suspicious transactions')" class="px-3 py-1.5 rounded-lg bg-obsidian border border-magenta/30 text-magenta hover:bg-magenta hover:text-obsidian text-xs font-mono transition-colors">Financial Audit</button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono uppercase text-slate-400 font-bold mb-1">Custom Prompt Input</label>
+          <textarea id="prompt-input" rows="3" class="w-full bg-obsidian border border-white/15 rounded-xl p-4 text-xs text-white font-mono focus:outline-none focus:border-cyber">Write a high-performance Async Python FastAPI service for microservices</textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 font-mono text-xs">
+          <div>
+            <div class="flex justify-between mb-1 text-slate-400">
+              <span>Temperature</span>
+              <span id="temp-val" class="text-cyber font-bold">0.7</span>
+            </div>
+            <input type="range" id="temp-slider" min="0" max="1" step="0.1" value="0.7" oninput="document.getElementById('temp-val').textContent = this.value" class="w-full accent-cyber bg-obsidian h-2 rounded-lg cursor-pointer">
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-1 text-slate-400">
+              <span>Max Tokens</span>
+              <span id="tokens-val" class="text-nebula font-bold">1024</span>
+            </div>
+            <input type="range" id="tokens-slider" min="256" max="4096" step="256" value="1024" oninput="document.getElementById('tokens-val').textContent = this.value" class="w-full accent-nebula bg-obsidian h-2 rounded-lg cursor-pointer">
+          </div>
+        </div>
+
+        <button onclick="generateAIOutput()" id="btn-generate" class="w-full py-4 rounded-xl bg-gradient-to-r from-cyber via-nebula to-magenta text-obsidian font-mono font-bold text-xs uppercase tracking-wider hover:brightness-125 transition-all shadow-lg">
+          ⚡ Generate Streaming Response
+        </button>
+      </div>
+
+      <!-- Typewriter Output Console Right -->
+      <div class="lg:col-span-6 bg-obsidian p-6 rounded-2xl border border-white/10 space-y-4 font-mono text-xs flex flex-col justify-between">
+        <div class="flex justify-between items-center border-b border-white/10 pb-3 text-slate-400">
+          <span class="flex items-center gap-2 text-cyber">
+            <i data-lucide="terminal" class="w-4 h-4"></i> AI STREAM OUTPUT
+          </span>
+          <span id="status-badge" class="text-[10px] text-emerald-400">READY</span>
+        </div>
+
+        <div id="ai-output" class="text-emerald-400 leading-relaxed font-mono whitespace-pre-wrap max-h-64 overflow-y-auto pr-1">
+Click 'Generate Output' above to simulate quantum streaming inference response...
+        </div>
+
+        <div class="pt-3 border-t border-white/10 flex justify-between text-[10px] text-slate-500">
+          <span>Model: Matrix-v4-Turbine</span>
+          <span id="tokens-generated">Tokens: 0</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Pricing Tiers with Annual Toggle -->
+  <section class="py-16 px-6 max-w-6xl mx-auto w-full space-y-8">
+    <div class="text-center space-y-3 font-mono">
+      <span class="text-xs uppercase text-cyber font-bold">API ACCESS TIERS</span>
+      <h2 class="text-3xl font-bold text-white">Choose Your Intelligence Capacity</h2>
+      
+      <div class="flex items-center justify-center gap-3 pt-2 text-xs">
+        <span class="text-slate-400">Monthly</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" id="annual-toggle" onchange="togglePricing()" class="sr-only peer">
+          <div class="w-11 h-6 bg-panel peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyber"></div>
+        </label>
+        <span class="text-cyber font-bold">Annual (Save 20%)</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Tier 1 -->
+      <div class="bg-panel p-6 rounded-2xl border border-white/10 space-y-4">
+        <span class="text-xs font-mono text-slate-400 font-bold uppercase">Developer</span>
+        <div class="font-bold text-3xl text-white font-mono"><span id="p1-price">$0</span> <span class="text-xs font-normal text-slate-400">/ mo</span></div>
+        <p class="text-xs text-slate-400">Ideal for personal experimental projects.</p>
+        <button onclick="alert('Developer plan active!')" class="w-full py-2.5 rounded-xl border border-white/20 text-white font-mono text-xs uppercase font-bold hover:border-cyber">Start Free</button>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="bg-panel p-6 rounded-2xl border border-cyber holo-glow space-y-4">
+        <span class="text-xs font-mono text-cyber font-bold uppercase">Pro Innovator</span>
+        <div class="font-bold text-3xl text-white font-mono"><span id="p2-price">$49</span> <span class="text-xs font-normal text-slate-400">/ mo</span></div>
+        <p class="text-xs text-slate-400">Unlimited API access with sub-10ms priority streaming.</p>
+        <button onclick="alert('Pro plan selected!')" class="w-full py-2.5 rounded-xl bg-cyber text-obsidian font-mono text-xs uppercase font-bold hover:bg-white">Upgrade to Pro</button>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="bg-panel p-6 rounded-2xl border border-white/10 space-y-4">
+        <span class="text-xs font-mono text-magenta font-bold uppercase">Enterprise Matrix</span>
+        <div class="font-bold text-3xl text-white font-mono"><span id="p3-price">$299</span> <span class="text-xs font-normal text-slate-400">/ mo</span></div>
+        <p class="text-xs text-slate-400">Dedicated GPU cluster &amp; custom fine-tuning weights.</p>
+        <button onclick="alert('Enterprise tier requested!')" class="w-full py-2.5 rounded-xl border border-magenta/40 text-magenta font-mono text-xs uppercase font-bold hover:bg-magenta hover:text-white">Contact Enterprise</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-white/10 text-center text-xs text-slate-500 font-mono max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-center gap-4">
+    <span>© 2026 NEURAL MATRIX AI LABS INC.</span>
+    <span class="gradient-text font-bold">QUANTUM GENERATIVE SYSTEMS</span>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    function setPrompt(text) {
+      document.getElementById('prompt-input').value = text;
+    }
+
+    function togglePricing() {
+      const isAnnual = document.getElementById('annual-toggle').checked;
+      document.getElementById('p1-price').textContent = '$0';
+      document.getElementById('p2-price').textContent = isAnnual ? '$39' : '$49';
+      document.getElementById('p3-price').textContent = isAnnual ? '$239' : '$299';
+    }
+
+    function generateAIOutput() {
+      const btn = document.getElementById('btn-generate');
+      const output = document.getElementById('ai-output');
+      const status = document.getElementById('status-badge');
+      const tokensCount = document.getElementById('tokens-generated');
+
+      btn.disabled = true;
+      status.textContent = 'STREAMING...';
+      status.className = 'text-[10px] text-amber-400 animate-pulse';
+
+      const prompt = document.getElementById('prompt-input').value;
+
+      const codeSnippets = [
+        `import asyncio\nfrom fastapi import FastAPI\n\napp = FastAPI(title="Neural Service v4")\n\n@app.get("/api/v1/matrix")\nasync def stream_matrix():\n    return {"status": "success", "latency_ms": 1.2, "quantum_state": "ACTIVE"}\n\n# Execution complete in 0.004s`,
+        `import { motion } from 'framer-motion';\n\nexport const HologramCard = () => (\n  <motion.div \n    whileHover={{ scale: 1.05, rotateY: 15 }}\n    className="backdrop-blur-xl bg-white/5 border border-cyan-500/40 rounded-3xl p-6 shadow-2xl"\n  >\n    <h3 className="text-xl text-cyan-400 font-bold">Holographic Canvas</h3>\n  </motion.div>\n);`
+      ];
+
+      const selectedCode = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+      output.textContent = '';
+
+      let idx = 0;
+      const interval = setInterval(() => {
+        output.textContent += selectedCode[idx];
+        idx++;
+        tokensCount.textContent = 'Tokens: ' + idx;
+        output.scrollTop = output.scrollHeight;
+
+        if(idx >= selectedCode.length) {
+          clearInterval(interval);
+          status.textContent = 'COMPLETE (200 OK)';
+          status.className = 'text-[10px] text-emerald-400';
+          btn.disabled = false;
+        }
+      }, 15);
+    }
+  </script>
+</body>
+</html>

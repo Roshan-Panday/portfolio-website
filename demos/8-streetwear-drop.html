@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HYPERDROP — Drop 009: Cyber Outcast Collection</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Anton', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            volt: '#84cc16',
+            flame: '#ff5722',
+            pitch: '#000000',
+            card: '#0d0d0d',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #000000; color: #ffffff; font-family: 'JetBrains Mono', monospace; }
+    .volt-glow { text-shadow: 0 0 12px rgba(132, 204, 22, 0.7); }
+    @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+    .animate-marquee { display: flex; width: 200%; animation: marquee 12s linear infinite; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Top Marquee Ticker -->
+  <div class="bg-volt text-pitch font-display text-sm uppercase py-1.5 overflow-hidden select-none border-b-2 border-white">
+    <div class="animate-marquee whitespace-nowrap flex gap-8">
+      <span>DROP 009 IS LIVE /// LIMITED TO 500 PIECES WORLDWIDE /// FREE EXPRESS SHIPPING OVER $150 /// NO RESTOCKS ///</span>
+      <span>DROP 009 IS LIVE /// LIMITED TO 500 PIECES WORLDWIDE /// FREE EXPRESS SHIPPING OVER $150 /// NO RESTOCKS ///</span>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="px-6 py-4 border-b border-white/10 bg-pitch/90 backdrop-blur-md sticky top-0 z-40 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="font-display text-3xl tracking-wider text-volt volt-glow">HYPERDROP</span>
+      <span class="text-[10px] uppercase font-bold text-gray-400">/// STREETWEAR REVOLUTION</span>
+    </div>
+
+    <button onclick="toggleCart(true)" class="relative px-4 py-2 bg-white text-pitch font-display text-sm uppercase hover:bg-volt transition-colors">
+      CART (<span id="cart-qty">0</span>)
+    </button>
+  </header>
+
+  <!-- Live Countdown & Hero Showcase -->
+  <section class="py-16 px-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    
+    <!-- Hero Details Left -->
+    <div class="lg:col-span-6 space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-flame/20 border border-flame text-flame text-xs font-bold uppercase">
+        🔥 DROP 009: CYBER OUTCAST HOODIE
+      </div>
+
+      <h1 class="font-display text-6xl sm:text-8xl text-white uppercase leading-none tracking-tight">
+        CYBER <br/>
+        <span class="text-volt volt-glow">OUTCAST</span> <br/>
+        HOODIE.
+      </h1>
+
+      <div class="flex items-baseline gap-4 font-mono">
+        <span class="font-display text-4xl text-volt">$165.00</span>
+        <span class="text-xs text-gray-400 line-through">$220.00</span>
+        <span class="text-xs font-bold text-flame">[SAVE 25%]</span>
+      </div>
+
+      <!-- Live Millisecond Timer -->
+      <div class="bg-card p-4 border border-white/20 rounded-none space-y-1">
+        <span class="text-[10px] text-gray-400 uppercase font-bold">DROP EXPIRATION TIMER</span>
+        <div id="drop-timer" class="font-display text-3xl text-volt">00d : 03h : 42m : 18s : 450ms</div>
+      </div>
+
+      <!-- Colorway Swatches -->
+      <div>
+        <span class="block text-xs font-bold uppercase text-gray-400 mb-2">Select Colorway</span>
+        <div class="flex gap-3">
+          <button onclick="setColorway('black')" id="swatch-black" class="w-8 h-8 rounded-full bg-black border-2 border-volt ring-2 ring-volt"></button>
+          <button onclick="setColorway('volt')" id="swatch-volt" class="w-8 h-8 rounded-full bg-volt border-2 border-white/20"></button>
+          <button onclick="setColorway('grey')" id="swatch-grey" class="w-8 h-8 rounded-full bg-gray-600 border-2 border-white/20"></button>
+        </div>
+      </div>
+
+      <!-- Interactive Size Selector Grid -->
+      <div>
+        <div class="flex justify-between items-center text-xs mb-2 font-bold">
+          <span class="text-gray-400 uppercase">Select Heavyweight Size</span>
+          <span id="stock-badge" class="text-volt">In Stock (Only 3 Left in L)</span>
+        </div>
+        <div class="grid grid-cols-5 gap-2 font-display text-sm">
+          <button onclick="selectSize('S')" class="size-btn py-3 bg-card border border-white/20 hover:border-volt text-white">S</button>
+          <button onclick="selectSize('M')" class="size-btn py-3 bg-card border border-white/20 hover:border-volt text-white">M</button>
+          <button onclick="selectSize('L')" class="size-btn py-3 bg-volt border border-volt text-pitch font-bold">L</button>
+          <button onclick="selectSize('XL')" class="size-btn py-3 bg-card border border-white/20 hover:border-volt text-white">XL</button>
+          <button onclick="selectSize('XXL')" class="size-btn py-3 bg-card border border-white/10 text-gray-600 cursor-not-allowed">XXL</button>
+        </div>
+      </div>
+
+      <button onclick="addDropToCart()" class="w-full py-4 bg-volt text-pitch font-display text-xl uppercase tracking-wider hover:bg-white transition-colors shadow-lg">
+        ADD TO CART — $165.00
+      </button>
+    </div>
+
+    <!-- Product Showcase Image Mock Right -->
+    <div class="lg:col-span-6 bg-card border-2 border-white/20 p-8 flex flex-col justify-between h-[480px] relative overflow-hidden">
+      <div class="flex justify-between items-start font-mono text-xs">
+        <span class="px-3 py-1 bg-volt text-pitch font-bold uppercase">500GSM HEAVY FLEECE</span>
+        <span class="text-gray-400">ITEM #HD-009-BLK</span>
+      </div>
+
+      <div class="text-center space-y-2 relative z-10">
+        <div id="product-preview-box" class="w-48 h-48 mx-auto bg-gradient-to-tr from-volt/30 via-flame/30 to-pitch border border-volt/40 flex items-center justify-center font-display text-4xl text-volt">
+          HOODIE
+        </div>
+        <span id="selected-spec" class="text-xs font-bold text-gray-300 block">Color: Obsidian Black | Size: L</span>
+      </div>
+
+      <div class="flex justify-between items-center text-xs font-mono border-t border-white/10 pt-4">
+        <span>CUSTOM PUFF PRINT GRAPHIC</span>
+        <span class="text-volt">OVERSIZED FIT</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide Cart Drawer -->
+  <div id="cart-drawer" class="fixed inset-y-0 right-0 w-full max-w-sm bg-card border-l-2 border-volt z-50 transform translate-x-full transition-transform duration-300 p-6 flex flex-col justify-between">
+    <div class="space-y-6">
+      <div class="flex justify-between items-center border-b border-white/10 pb-4">
+        <span class="font-display text-2xl text-volt">YOUR STREET BAG</span>
+        <button onclick="toggleCart(false)" class="text-white hover:text-volt">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <div id="cart-items" class="space-y-3 font-mono text-xs">
+        <p id="empty-msg" class="text-gray-500 text-center py-8">Your cart is empty.</p>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-4 space-y-4 font-mono">
+      <div class="flex justify-between text-sm">
+        <span>SUBTOTAL:</span>
+        <span id="cart-total" class="font-display text-xl text-volt">$0.00</span>
+      </div>
+      <button onclick="alert('Checkout initiated! Express order processing.')" class="w-full py-4 bg-volt text-pitch font-display text-lg uppercase">
+        EXPRESS APPLE PAY CHECKOUT
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-white/10 text-center text-xs font-mono text-gray-500 max-w-7xl mx-auto w-full flex justify-between items-center">
+    <span>© 2026 HYPERDROP LABS INC.</span>
+    <span class="text-volt">AUTHENTIC STREETWEAR ARTIFACTS</span>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    let selectedSize = 'L';
+    let selectedColor = 'Obsidian Black';
+    let cart = [];
+
+    // Live Millisecond Timer
+    function updateTimer() {
+      const now = new Date();
+      const end = new Date(now.getTime() + 3 * 3600 * 1000 + 42 * 60 * 1000);
+      const diff = end - now;
+
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+      const ms = Math.floor((diff % 1000));
+
+      document.getElementById('drop-timer').textContent = 
+        `00d : ${String(hours).padStart(2,'0')}h : ${String(mins).padStart(2,'0')}m : ${String(secs).padStart(2,'0')}s : ${String(ms).padStart(3,'0')}ms`;
+
+      requestAnimationFrame(updateTimer);
+    }
+    requestAnimationFrame(updateTimer);
+
+    function selectSize(sz) {
+      selectedSize = sz;
+      document.querySelectorAll('.size-btn').forEach(btn => {
+        if(btn.textContent === sz) {
+          btn.className = 'size-btn py-3 bg-volt border border-volt text-pitch font-bold';
+        } else if(btn.textContent !== 'XXL') {
+          btn.className = 'size-btn py-3 bg-card border border-white/20 hover:border-volt text-white';
+        }
+      });
+      document.getElementById('selected-spec').textContent = `Color: ${selectedColor} | Size: ${selectedSize}`;
+    }
+
+    function setColorway(color) {
+      if(color === 'black') selectedColor = 'Obsidian Black';
+      if(color === 'volt') selectedColor = 'Neon Volt Edition';
+      if(color === 'grey') selectedColor = 'Acid Wash Concrete';
+      document.getElementById('selected-spec').textContent = `Color: ${selectedColor} | Size: ${selectedSize}`;
+    }
+
+    function toggleCart(open) {
+      const drawer = document.getElementById('cart-drawer');
+      if(open) drawer.classList.remove('translate-x-full');
+      else drawer.classList.add('translate-x-full');
+    }
+
+    function addDropToCart() {
+      cart.push({ title: `CYBER OUTCAST HOODIE (${selectedColor} / ${selectedSize})`, price: 165 });
+      document.getElementById('cart-qty').textContent = cart.length;
+
+      const container = document.getElementById('cart-items');
+      let total = 0;
+      container.innerHTML = cart.map(item => {
+        total += item.price;
+        return `<div class="p-3 bg-pitch border border-white/20 flex justify-between"><span>${item.title}</span><span class="text-volt font-bold">$${item.price}</span></div>`;
+      }).join('');
+
+      document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
+      toggleCart(true);
+    }
+  </script>
+</body>
+</html>

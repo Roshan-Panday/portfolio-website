@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FLOWSPACE — Gamified Study, Bento Planner & Dopamine Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            night: '#0f172a',
+            bento: '#1e293b',
+            purple: '#c084fc',
+            mint: '#4ade80',
+            coral: '#fb7185',
+            yellow: '#fde047',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0f172a; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .purple-glow { box-shadow: 0 0 20px rgba(192, 132, 252, 0.3); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Gamified Top Header Bar -->
+  <header class="border-b border-slate-800 bg-night/90 backdrop-blur-md sticky top-0 z-40 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-2xl bg-purple/20 border border-purple flex items-center justify-center text-purple">
+        <i data-lucide="sparkles" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <span class="font-display font-bold text-2xl text-white tracking-wide">FLOW<span class="text-purple">SPACE</span></span>
+        <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-widest">Dopamine Gamified Productivity</span>
+      </div>
+    </div>
+
+    <!-- Gamified Badges Right -->
+    <div class="flex items-center gap-4 text-xs font-bold font-display">
+      <div class="px-3 py-1.5 rounded-full bg-amber-500/20 border border-amber-500 text-amber-400 flex items-center gap-1.5">
+        🔥 <span id="streak-val">14 DAY STREAK</span>
+      </div>
+      <div class="hidden sm:flex px-3 py-1.5 rounded-full bg-purple/20 border border-purple text-purple items-center gap-1.5">
+        ⚡ <span id="xp-val">2,450 / 3,000 XP</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Bento Grid Section -->
+  <section class="py-10 px-6 max-w-7xl mx-auto w-full space-y-6">
+    
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+      
+      <!-- Bento Card 1: Functional Pomodoro Timer Widget (5 cols) -->
+      <div class="md:col-span-5 bg-bento p-6 sm:p-8 rounded-3xl border border-purple/40 purple-glow space-y-6 text-center">
+        <div class="flex justify-between items-center border-b border-slate-700 pb-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-purple flex items-center gap-2">
+            <i data-lucide="timer" class="w-4 h-4 text-purple"></i> FOCUS TIMER
+          </span>
+          <span id="pomo-mode-badge" class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-purple/20 text-purple uppercase">POMODORO 25M</span>
+        </div>
+
+        <!-- Timer Circle View -->
+        <div class="relative w-48 h-48 mx-auto flex items-center justify-center">
+          <svg class="w-full h-full transform -rotate-90">
+            <circle cx="96" cy="96" r="88" stroke="#334155" stroke-width="12" fill="transparent" />
+            <circle id="pomo-ring" cx="96" cy="96" r="88" stroke="#c084fc" stroke-width="12" fill="transparent" stroke-dasharray="552" stroke-dashoffset="0" stroke-linecap="round" class="transition-all duration-1000" />
+          </svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <span id="pomo-display" class="font-display font-bold text-4xl text-white">25:00</span>
+            <span class="text-[10px] text-slate-400 font-bold uppercase mt-1">DEEP WORK SESSION</span>
+          </div>
+        </div>
+
+        <!-- Mode Selectors -->
+        <div class="flex justify-center gap-2 text-xs font-bold font-display">
+          <button onclick="setPomoMode(25, 'POMODORO 25M')" id="pm-25" class="px-3 py-1.5 rounded-xl bg-purple text-night">Focus (25m)</button>
+          <button onclick="setPomoMode(5, 'SHORT BREAK 5M')" id="pm-5" class="px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white">Break (5m)</button>
+          <button onclick="setPomoMode(15, 'LONG BREAK 15M')" id="pm-15" class="px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white">Long (15m)</button>
+        </div>
+
+        <!-- Timer Action Controls -->
+        <div class="flex justify-center gap-3">
+          <button onclick="togglePomoTimer()" id="btn-pomo-start" class="px-6 py-3 rounded-2xl bg-purple hover:bg-white text-night font-display font-bold text-xs uppercase tracking-wider transition-all shadow-lg">
+            START SESSION
+          </button>
+          <button onclick="resetPomoTimer()" class="p-3 rounded-2xl bg-slate-800 text-slate-300 hover:text-white border border-slate-700">
+            <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bento Card 2: Interactive Task Planner Checklist (7 cols) -->
+      <div class="md:col-span-7 bg-bento p-6 sm:p-8 rounded-3xl border border-slate-700 space-y-6">
+        <div class="flex justify-between items-center border-b border-slate-700 pb-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-mint flex items-center gap-2">
+            <i data-lucide="check-square" class="w-4 h-4 text-mint"></i> DAILY STUDY QUEST CHECKLIST
+          </span>
+          <span class="text-[10px] text-slate-400 font-mono">+50 XP PER COMPLETED QUEST</span>
+        </div>
+
+        <!-- Add Task Input -->
+        <form onsubmit="addQuest(event)" class="flex gap-2">
+          <input type="text" id="quest-input" required placeholder="Add new study quest (e.g. Finish Calculus Chapter 4)..." class="flex-1 bg-night border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple">
+          <button type="submit" class="px-4 py-2.5 rounded-xl bg-mint text-night font-display font-bold text-xs uppercase shrink-0 hover:bg-white transition-colors">
+            + Add Quest
+          </button>
+        </form>
+
+        <!-- Quest Checklist -->
+        <div id="quest-list" class="space-y-3 max-h-64 overflow-y-auto pr-1 text-xs">
+          <!-- Item 1 -->
+          <div class="quest-item bg-night p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between transition-all">
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" onchange="toggleQuest(this)" class="w-4 h-4 accent-mint rounded">
+              <span class="quest-label font-medium text-white">Review System Architecture Notes for Exam</span>
+            </label>
+            <span class="px-2.5 py-1 rounded-full bg-purple/20 text-purple font-mono text-[10px] font-bold">+50 XP</span>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="quest-item bg-night p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between transition-all">
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" onchange="toggleQuest(this)" class="w-4 h-4 accent-mint rounded">
+              <span class="quest-label font-medium text-white">Solve 3 LeetCode Dynamic Programming Challenges</span>
+            </label>
+            <span class="px-2.5 py-1 rounded-full bg-purple/20 text-purple font-mono text-[10px] font-bold">+50 XP</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Row Bento Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Soundscape Audio Widget -->
+      <div class="bg-bento p-6 rounded-3xl border border-slate-700 space-y-4">
+        <div class="flex justify-between items-center">
+          <span class="text-xs font-bold uppercase text-coral flex items-center gap-2">
+            <i data-lucide="headphones" class="w-4 h-4 text-coral"></i> FOCUS SOUNDSCAPES
+          </span>
+          <span id="audio-status" class="text-[10px] font-mono text-slate-400">OFF</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 text-xs font-bold font-display">
+          <button onclick="toggleAudio('Lofi Rain')" class="sound-btn p-3 rounded-2xl bg-night border border-slate-800 hover:border-coral text-slate-300 flex items-center gap-2">🌧️ Lofi Rain</button>
+          <button onclick="toggleAudio('Cyber Cafe')" class="sound-btn p-3 rounded-2xl bg-night border border-slate-800 hover:border-coral text-slate-300 flex items-center gap-2">☕ Cyber Cafe</button>
+          <button onclick="toggleAudio('Deep Space')" class="sound-btn p-3 rounded-2xl bg-night border border-slate-800 hover:border-coral text-slate-300 flex items-center gap-2">🚀 Deep Space</button>
+          <button onclick="toggleAudio('Forest')" class="sound-btn p-3 rounded-2xl bg-night border border-slate-800 hover:border-coral text-slate-300 flex items-center gap-2">🌲 Forest Birds</button>
+        </div>
+      </div>
+
+      <!-- Hydration Tracker Widget -->
+      <div class="bg-bento p-6 rounded-3xl border border-slate-700 space-y-4 text-center">
+        <span class="text-xs font-bold uppercase text-sky-400 flex items-center justify-center gap-2">
+          <i data-lucide="droplet" class="w-4 h-4 text-sky-400"></i> HYDRATION TRACKER
+        </span>
+
+        <div>
+          <div id="water-count" class="font-display font-bold text-3xl text-sky-400">5 / 8 Glasses</div>
+          <p class="text-xs text-slate-400 mt-1">Keep your brain hydrated for peak focus!</p>
+        </div>
+
+        <button onclick="addWater()" class="px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-night font-display font-bold text-xs uppercase">
+          +1 Glass Water 💧
+        </button>
+      </div>
+
+      <!-- Daily Habit Checklist -->
+      <div class="bg-bento p-6 rounded-3xl border border-slate-700 space-y-4">
+        <span class="text-xs font-bold uppercase text-yellow flex items-center gap-2">
+          <i data-lucide="zap" class="w-4 h-4 text-yellow"></i> DAILY BRAIN BOOSTERS
+        </span>
+
+        <div class="space-y-2 text-xs font-medium">
+          <label class="flex items-center gap-2 text-slate-300"><input type="checkbox" checked class="accent-yellow"> 10 Min Morning Meditation</label>
+          <label class="flex items-center gap-2 text-slate-300"><input type="checkbox" checked class="accent-yellow"> Read 20 Pages Tech Book</label>
+          <label class="flex items-center gap-2 text-slate-300"><input type="checkbox" class="accent-yellow"> No Phone First 30 Mins</label>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-slate-800 text-center text-xs text-slate-500 font-sans max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-center gap-4">
+    <span>© 2026 FLOWSPACE APP LABS.</span>
+    <span class="text-purple font-display">GAMIFY YOUR STUDY ROUTINE</span>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    let pomoMinutes = 25;
+    let pomoSeconds = 0;
+    let timerRunning = false;
+    let timerInterval = null;
+    let xp = 2450;
+    let glasses = 5;
+    let playingSound = null;
+
+    function setPomoMode(mins, label) {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      pomoMinutes = mins;
+      pomoSeconds = 0;
+
+      document.getElementById('btn-pomo-start').textContent = 'START SESSION';
+      document.getElementById('pomo-mode-badge').textContent = label;
+      updateDisplay();
+    }
+
+    function togglePomoTimer() {
+      const btn = document.getElementById('btn-pomo-start');
+      if (timerRunning) {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        btn.textContent = 'RESUME SESSION';
+      } else {
+        timerRunning = true;
+        btn.textContent = 'PAUSE SESSION';
+        timerInterval = setInterval(() => {
+          if (pomoSeconds === 0) {
+            if (pomoMinutes === 0) {
+              clearInterval(timerInterval);
+              timerRunning = false;
+              alert('🎉 Pomodoro Session Completed! Earned +200 XP!');
+              xp += 200;
+              document.getElementById('xp-val').textContent = `${xp} / 3,000 XP`;
+              return;
+            }
+            pomoMinutes--;
+            pomoSeconds = 59;
+          } else {
+            pomoSeconds--;
+          }
+          updateDisplay();
+        }, 1000);
+      }
+    }
+
+    function resetPomoTimer() {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      pomoMinutes = 25;
+      pomoSeconds = 0;
+      document.getElementById('btn-pomo-start').textContent = 'START SESSION';
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      const display = document.getElementById('pomo-display');
+      display.textContent = `${String(pomoMinutes).padStart(2,'0')}:${String(pomoSeconds).padStart(2,'0')}`;
+    }
+
+    function toggleQuest(chk) {
+      const label = chk.closest('.quest-item').querySelector('.quest-label');
+      if(chk.checked) {
+        label.classList.add('line-through', 'text-slate-500');
+        xp += 50;
+        document.getElementById('xp-val').textContent = `${xp} / 3,000 XP`;
+      } else {
+        label.classList.remove('line-through', 'text-slate-500');
+        xp -= 50;
+        document.getElementById('xp-val').textContent = `${xp} / 3,000 XP`;
+      }
+    }
+
+    function addQuest(e) {
+      e.preventDefault();
+      const input = document.getElementById('quest-input');
+      const val = input.value.trim();
+      if(!val) return;
+
+      const list = document.getElementById('quest-list');
+      const div = document.createElement('div');
+      div.className = 'quest-item bg-night p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between transition-all';
+      div.innerHTML = `
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input type="checkbox" onchange="toggleQuest(this)" class="w-4 h-4 accent-mint rounded">
+          <span class="quest-label font-medium text-white">${val}</span>
+        </label>
+        <span class="px-2.5 py-1 rounded-full bg-purple/20 text-purple font-mono text-[10px] font-bold">+50 XP</span>
+      `;
+      list.appendChild(div);
+      input.value = '';
+    }
+
+    function toggleAudio(name) {
+      const status = document.getElementById('audio-status');
+      if (playingSound === name) {
+        playingSound = null;
+        status.textContent = 'OFF';
+        status.className = 'text-[10px] font-mono text-slate-400';
+      } else {
+        playingSound = name;
+        status.textContent = `PLAYING (${name.toUpperCase()})`;
+        status.className = 'text-[10px] font-mono text-coral font-bold animate-pulse';
+      }
+    }
+
+    function addWater() {
+      if (glasses < 8) glasses++;
+      document.getElementById('water-count').textContent = `${glasses} / 8 Glasses`;
+    }
+  </script>
+</body>
+</html>

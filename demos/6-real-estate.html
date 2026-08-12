@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NEXUS REALTORS — Luxury Modern Homes & Architectural Estates</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            nightfall: '#0f172a',
+            amber: '#f59e0b',
+            slatecard: '#1e293b',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0f172a; color: #f8fafc; font-family: 'Outfit', sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Navigation Bar -->
+  <header class="border-b border-slate-800 bg-nightfall/90 backdrop-blur-md sticky top-0 z-40 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-amber/20 border border-amber flex items-center justify-center text-amber">
+        <i data-lucide="home" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <span class="font-serif text-2xl font-bold tracking-wide text-white">NEXUS <span class="text-amber font-sans font-normal text-xs uppercase block tracking-widest">Luxury Real Estate</span></span>
+      </div>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest text-slate-300 font-medium">
+      <a href="#listings" class="hover:text-amber transition-colors">Estates</a>
+      <a href="#map-section" class="hover:text-amber transition-colors">Map Explorer</a>
+      <a href="#calculator" class="hover:text-amber transition-colors">Mortgage Calculator</a>
+    </nav>
+
+    <button onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})" class="px-5 py-2.5 rounded-xl bg-amber text-nightfall font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors">
+      Schedule Private Tour
+    </button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-16 px-6 max-w-7xl mx-auto w-full text-center space-y-6">
+    <span class="inline-block px-4 py-1.5 rounded-full bg-amber/10 border border-amber/30 text-amber text-xs uppercase tracking-widest font-semibold">
+      Curated Modern Architectural Estates
+    </span>
+    <h1 class="font-serif text-4xl sm:text-6xl font-bold leading-tight">
+      Find Your Next <br/>
+      <span class="italic font-normal text-amber">Architectural Masterpiece.</span>
+    </h1>
+    <p class="text-slate-400 text-base max-w-xl mx-auto font-light leading-relaxed">
+      Explore premier luxury waterfront villas, urban high-rise penthouses, and private mountain estates with integrated smart home tech.
+    </p>
+
+    <!-- Multi-Parameter Filter Bar -->
+    <div class="bg-slatecard p-4 rounded-2xl border border-slate-700 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-medium">
+      <div>
+        <label class="block text-slate-400 text-[10px] uppercase font-bold mb-1">Property Type</label>
+        <select id="filter-type" onchange="filterProperties()" class="w-full bg-nightfall border border-slate-700 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-amber">
+          <option value="all">All Types (Villas &amp; Penthouses)</option>
+          <option value="villa">Waterfront Villa</option>
+          <option value="penthouse">Skyline Penthouse</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-slate-400 text-[10px] uppercase font-bold mb-1">City / Location</label>
+        <select id="filter-city" onchange="filterProperties()" class="w-full bg-nightfall border border-slate-700 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-amber">
+          <option value="all">All Cities</option>
+          <option value="malibu">Malibu, CA</option>
+          <option value="miami">Miami Beach, FL</option>
+          <option value="aspen">Aspen, CO</option>
+        </select>
+      </div>
+
+      <div>
+        <div class="flex justify-between items-center text-[10px] uppercase font-bold mb-1">
+          <span class="text-slate-400">Max Budget</span>
+          <span id="max-price-label" class="text-amber font-bold">$10,000,000</span>
+        </div>
+        <input type="range" id="filter-price" min="2000000" max="10000000" value="10000000" step="500000" oninput="filterProperties()" class="w-full accent-amber bg-nightfall h-2 rounded-lg cursor-pointer">
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Map & Listings Split Section -->
+  <section id="listings" class="py-12 px-6 max-w-7xl mx-auto w-full space-y-8">
+    <div id="map-section" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Interactive SVG Vector Map Pane Left -->
+      <div class="lg:col-span-5 bg-slatecard p-6 rounded-3xl border border-slate-700 space-y-4">
+        <div class="flex justify-between items-center border-b border-slate-700 pb-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-amber"></i> Interactive Vector Map Pins
+          </span>
+          <span class="text-[10px] text-slate-400">Click pin to highlight</span>
+        </div>
+
+        <div class="h-80 bg-nightfall rounded-2xl relative border border-slate-800 flex items-center justify-center p-4 overflow-hidden">
+          <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
+          
+          <!-- Map Pins -->
+          <button onclick="highlightListing('prop-1')" class="map-pin absolute top-[25%] left-[30%] px-2.5 py-1 rounded-full bg-amber text-nightfall font-bold text-xs shadow-lg hover:scale-110 transition-transform">
+            $4.8M
+          </button>
+          <button onclick="highlightListing('prop-2')" class="map-pin absolute top-[60%] left-[55%] px-2.5 py-1 rounded-full bg-amber text-nightfall font-bold text-xs shadow-lg hover:scale-110 transition-transform">
+            $3.2M
+          </button>
+          <button onclick="highlightListing('prop-3')" class="map-pin absolute top-[40%] right-[20%] px-2.5 py-1 rounded-full bg-amber text-nightfall font-bold text-xs shadow-lg hover:scale-110 transition-transform">
+            $5.9M
+          </button>
+        </div>
+      </div>
+
+      <!-- Listings Grid Right -->
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6" id="prop-grid">
+        <!-- Property 1 -->
+        <div id="prop-1" class="prop-card bg-slatecard rounded-2xl border border-slate-700 overflow-hidden space-y-4 p-5 hover:border-amber transition-all" data-type="villa" data-city="malibu" data-price="4800000">
+          <div class="h-40 bg-gradient-to-br from-amber/30 to-nightfall rounded-xl p-4 flex flex-col justify-between">
+            <span class="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 bg-nightfall/80 rounded-full w-max text-amber">Malibu, CA</span>
+            <div class="font-serif text-xl font-bold text-white">The Glass Horizon Villa</div>
+          </div>
+          <div class="space-y-2">
+            <div class="flex justify-between items-baseline">
+              <span class="font-serif text-2xl font-bold text-amber">$4,800,000</span>
+              <span class="text-xs text-slate-400 font-mono">5 Bed • 6 Bath • 5,400 sqft</span>
+            </div>
+            <button onclick="openTourModal('The Glass Horizon Villa', '$4,800,000')" class="w-full py-2.5 rounded-xl border border-amber/40 text-amber hover:bg-amber hover:text-nightfall transition-colors text-xs font-bold uppercase tracking-wider">
+              Request Private Tour
+            </button>
+          </div>
+        </div>
+
+        <!-- Property 2 -->
+        <div id="prop-2" class="prop-card bg-slatecard rounded-2xl border border-slate-700 overflow-hidden space-y-4 p-5 hover:border-amber transition-all" data-type="penthouse" data-city="miami" data-price="3200000">
+          <div class="h-40 bg-gradient-to-br from-blue-900/40 to-nightfall rounded-xl p-4 flex flex-col justify-between">
+            <span class="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 bg-nightfall/80 rounded-full w-max text-amber">Miami Beach, FL</span>
+            <div class="font-serif text-xl font-bold text-white">Skyline Crown Penthouse</div>
+          </div>
+          <div class="space-y-2">
+            <div class="flex justify-between items-baseline">
+              <span class="font-serif text-2xl font-bold text-amber">$3,200,000</span>
+              <span class="text-xs text-slate-400 font-mono">3 Bed • 4 Bath • 3,800 sqft</span>
+            </div>
+            <button onclick="openTourModal('Skyline Crown Penthouse', '$3,200,000')" class="w-full py-2.5 rounded-xl border border-amber/40 text-amber hover:bg-amber hover:text-nightfall transition-colors text-xs font-bold uppercase tracking-wider">
+              Request Private Tour
+            </button>
+          </div>
+        </div>
+
+        <!-- Property 3 -->
+        <div id="prop-3" class="prop-card bg-slatecard rounded-2xl border border-slate-700 overflow-hidden space-y-4 p-5 hover:border-amber transition-all" data-type="villa" data-city="aspen" data-price="5900000">
+          <div class="h-40 bg-gradient-to-br from-emerald-900/40 to-nightfall rounded-xl p-4 flex flex-col justify-between">
+            <span class="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 bg-nightfall/80 rounded-full w-max text-amber">Aspen, CO</span>
+            <div class="font-serif text-xl font-bold text-white">Alpine Sanctuary Estate</div>
+          </div>
+          <div class="space-y-2">
+            <div class="flex justify-between items-baseline">
+              <span class="font-serif text-2xl font-bold text-amber">$5,900,000</span>
+              <span class="text-xs text-slate-400 font-mono">6 Bed • 7 Bath • 7,200 sqft</span>
+            </div>
+            <button onclick="openTourModal('Alpine Sanctuary Estate', '$5,900,000')" class="w-full py-2.5 rounded-xl border border-amber/40 text-amber hover:bg-amber hover:text-nightfall transition-colors text-xs font-bold uppercase tracking-wider">
+              Request Private Tour
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Mortgage Payment Calculator Widget -->
+  <section id="calculator" class="py-16 px-6 max-w-5xl mx-auto w-full space-y-8">
+    <div class="text-center space-y-2">
+      <span class="text-xs uppercase tracking-widest text-amber font-semibold">Financial Planning Tool</span>
+      <h2 class="font-serif text-4xl font-bold text-white">Mortgage Payment Calculator</h2>
+    </div>
+
+    <div class="bg-slatecard p-8 rounded-3xl border border-slate-700 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+      <div class="md:col-span-7 space-y-6">
+        <div>
+          <label class="block text-xs uppercase font-bold text-slate-400 mb-1">Home Price ($)</label>
+          <input type="number" id="mort-price" value="4800000" step="100000" oninput="calcMortgage()" class="w-full bg-nightfall border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-amber">
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs uppercase font-bold text-slate-400 mb-1">Down Payment (20%)</label>
+            <input type="number" id="mort-down" value="960000" step="50000" oninput="calcMortgage()" class="w-full bg-nightfall border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-amber">
+          </div>
+
+          <div>
+            <label class="block text-xs uppercase font-bold text-slate-400 mb-1">Interest Rate (%)</label>
+            <input type="number" id="mort-rate" value="6.5" step="0.1" oninput="calcMortgage()" class="w-full bg-nightfall border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-amber">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase font-bold text-slate-400 mb-1">Loan Term</label>
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="setLoanTerm(30)" id="term-30" class="term-btn py-2.5 rounded-xl border border-amber bg-amber text-nightfall font-bold text-xs uppercase">30-Year Fixed</button>
+            <button onclick="setLoanTerm(15)" id="term-15" class="term-btn py-2.5 rounded-xl border border-slate-700 bg-nightfall text-slate-300 font-bold text-xs uppercase">15-Year Fixed</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-5 bg-nightfall p-6 rounded-2xl border border-slate-800 text-center space-y-6">
+        <div>
+          <span class="text-xs uppercase font-mono tracking-widest text-slate-400">Estimated Monthly Payment</span>
+          <div id="mort-monthly" class="font-serif text-4xl text-amber font-bold mt-1">$24,272 / mo</div>
+        </div>
+
+        <div class="space-y-2 text-xs font-mono border-t border-slate-800 pt-4 text-left">
+          <div class="flex justify-between text-slate-400"><span>Principal &amp; Interest:</span> <span id="m-pi" class="text-white font-bold">$24,272</span></div>
+          <div class="flex justify-between text-slate-400"><span>Property Tax (1.2%):</span> <span id="m-tax" class="text-white font-bold">$4,800</span></div>
+          <div class="flex justify-between text-slate-400"><span>Homeowners Insurance:</span> <span id="m-ins" class="text-white font-bold">$800</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tour Lead Modal -->
+  <div id="tour-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-slatecard border border-amber rounded-3xl max-w-md w-full p-8 text-center space-y-6 shadow-2xl">
+      <div>
+        <span class="text-xs uppercase font-mono tracking-widest text-amber">VIP Private Viewing</span>
+        <h3 id="tour-title" class="font-serif text-2xl font-bold text-white mt-1">Schedule Tour</h3>
+      </div>
+
+      <form onsubmit="submitTour(event)" class="space-y-4 text-left text-xs font-medium">
+        <div>
+          <label class="text-slate-400 block mb-1">Your Full Name</label>
+          <input type="text" required placeholder="John Doe" class="w-full bg-nightfall border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-amber">
+        </div>
+        <div>
+          <label class="text-slate-400 block mb-1">Preferred Tour Format</label>
+          <select class="w-full bg-nightfall border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none">
+            <option>Virtual 3D Interactive Walkthrough</option>
+            <option>In-Person VIP Escorted Tour</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-amber text-nightfall font-bold text-xs uppercase tracking-wider">
+          Confirm Tour Request
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-slate-800 text-center text-xs text-slate-500 font-sans max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-center gap-4">
+    <span>© 2026 NEXUS LUXURY REALTORS LLC.</span>
+    <span>EQUAL HOUSING OPPORTUNITY</span>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    let loanYears = 30;
+
+    function filterProperties() {
+      const type = document.getElementById('filter-type').value;
+      const city = document.getElementById('filter-city').value;
+      const maxPrice = parseInt(document.getElementById('filter-price').value);
+
+      document.getElementById('max-price-label').textContent = '$' + maxPrice.toLocaleString();
+
+      document.querySelectorAll('.prop-card').forEach(card => {
+        const cType = card.getAttribute('data-type');
+        const cCity = card.getAttribute('data-city');
+        const cPrice = parseInt(card.getAttribute('data-price'));
+
+        const matchType = (type === 'all' || cType === type);
+        const matchCity = (city === 'all' || cCity === city);
+        const matchPrice = (cPrice <= maxPrice);
+
+        if (matchType && matchCity && matchPrice) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function highlightListing(id) {
+      document.querySelectorAll('.prop-card').forEach(c => c.classList.remove('border-amber', 'scale-[1.02]'));
+      const card = document.getElementById(id);
+      if(card) {
+        card.classList.add('border-amber', 'scale-[1.02]');
+        card.scrollIntoView({behavior:'smooth'});
+      }
+    }
+
+    function setLoanTerm(years) {
+      loanYears = years;
+      document.getElementById('term-30').className = years === 30 ? 'term-btn py-2.5 rounded-xl border border-amber bg-amber text-nightfall font-bold text-xs uppercase' : 'term-btn py-2.5 rounded-xl border border-slate-700 bg-nightfall text-slate-300 font-bold text-xs uppercase';
+      document.getElementById('term-15').className = years === 15 ? 'term-btn py-2.5 rounded-xl border border-amber bg-amber text-nightfall font-bold text-xs uppercase' : 'term-btn py-2.5 rounded-xl border border-slate-700 bg-nightfall text-slate-300 font-bold text-xs uppercase';
+      calcMortgage();
+    }
+
+    function calcMortgage() {
+      const price = parseFloat(document.getElementById('mort-price').value) || 0;
+      const down = parseFloat(document.getElementById('mort-down').value) || 0;
+      const rate = (parseFloat(document.getElementById('mort-rate').value) || 0) / 100 / 12;
+      const n = loanYears * 12;
+
+      const principal = Math.max(0, price - down);
+      let monthlyPI = 0;
+
+      if(rate > 0 && n > 0 && principal > 0) {
+        monthlyPI = principal * (rate * Math.pow(1 + rate, n)) / (Math.pow(1 + rate, n) - 1);
+      }
+
+      const monthlyTax = Math.round((price * 0.012) / 12);
+      const monthlyIns = 800;
+      const grandMonthly = Math.round(monthlyPI + monthlyTax + monthlyIns);
+
+      document.getElementById('mort-monthly').textContent = '$' + grandMonthly.toLocaleString() + ' / mo';
+      document.getElementById('m-pi').textContent = '$' + Math.round(monthlyPI).toLocaleString();
+      document.getElementById('m-tax').textContent = '$' + monthlyTax.toLocaleString();
+    }
+
+    function openTourModal(name) {
+      document.getElementById('tour-title').textContent = 'Tour: ' + name;
+      const modal = document.getElementById('tour-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function submitTour(e) {
+      e.preventDefault();
+      alert('Tour request submitted! Our concierge broker will contact you shortly.');
+      document.getElementById('tour-modal').classList.add('hidden');
+    }
+
+    calcMortgage();
+  </script>
+</body>
+</html>

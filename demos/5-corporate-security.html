@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CYBERGUARD ENTERPRISE — Zero-Trust Cloud & SOC Security Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['Space Grotesk', 'monospace'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            abyss: '#0a192f',
+            navy: '#112240',
+            teal: '#64ffda',
+            shield: '#1d4ed8',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0a192f; color: #e2e8f0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .teal-glow { text-shadow: 0 0 10px rgba(100, 255, 218, 0.4); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Corporate Header -->
+  <header class="border-b border-navy bg-abyss/90 backdrop-blur-md sticky top-0 z-40 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-teal/10 border border-teal flex items-center justify-center text-teal">
+        <i data-lucide="shield-alert" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <span class="font-mono font-bold text-lg text-white tracking-wide">CYBER<span class="text-teal">GUARD</span></span>
+        <span class="text-[10px] uppercase font-mono tracking-widest text-teal/70 block">Enterprise Zero-Trust Platform</span>
+      </div>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="hidden md:flex items-center gap-6 text-[11px] font-mono">
+      <span class="px-2.5 py-1 rounded bg-navy border border-teal/20 text-teal flex items-center gap-1.5">
+        <i data-lucide="check" class="w-3.5 h-3.5"></i> SOC-2 Type II
+      </span>
+      <span class="px-2.5 py-1 rounded bg-navy border border-teal/20 text-teal flex items-center gap-1.5">
+        <i data-lucide="check" class="w-3.5 h-3.5"></i> ISO 27001
+      </span>
+      <span class="px-2.5 py-1 rounded bg-navy border border-teal/20 text-teal flex items-center gap-1.5">
+        <i data-lucide="check" class="w-3.5 h-3.5"></i> HIPAA Certified
+      </span>
+    </div>
+
+    <button onclick="document.getElementById('scanner').scrollIntoView({behavior:'smooth'})" class="px-5 py-2.5 rounded-xl bg-teal text-abyss font-mono font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors shadow-lg shadow-teal/10">
+      Run Posture Scan
+    </button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-20 px-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7 space-y-6">
+      <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy border border-teal/30 text-teal text-xs font-mono font-semibold">
+        <span class="w-2 h-2 rounded-full bg-teal animate-ping"></span> Real-Time SOC 24/7 Threat Protection
+      </span>
+      <h1 class="font-mono text-4xl sm:text-6xl font-bold text-white leading-tight">
+        FORTIFY YOUR <br/>
+        <span class="text-teal teal-glow">CLOUD INFRASTRUCTURE.</span>
+      </h1>
+      <p class="text-slate-400 text-base sm:text-lg max-w-xl font-light leading-relaxed">
+        Autonomous AI threat detection, zero-trust cloud network architecture, and continuous vulnerability auditor tailored for enterprise scale.
+      </p>
+
+      <div class="grid grid-cols-3 gap-4 pt-2 font-mono text-xs border-t border-navy">
+        <div>
+          <span class="text-slate-400 block">Threats Blocked</span>
+          <span class="text-teal font-bold text-xl">4.8M / Day</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block">Response Time</span>
+          <span class="text-white font-bold text-xl">&lt; 1.2 Seconds</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block">Uptime Guarantee</span>
+          <span class="text-teal font-bold text-xl">99.999%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Threat Feed Widget Right -->
+    <div class="lg:col-span-5 bg-navy p-6 rounded-3xl border border-teal/30 space-y-4 font-mono text-xs shadow-2xl">
+      <div class="flex justify-between items-center border-b border-abyss pb-3">
+        <span class="text-teal font-bold flex items-center gap-2">
+          <i data-lucide="radio" class="w-4 h-4 text-rose-500 animate-pulse"></i> LIVE THREAT ATTACK TICKER
+        </span>
+        <span class="text-slate-400 text-[10px]">AUTO-UPDATED</span>
+      </div>
+
+      <div id="threat-feed" class="space-y-2.5 max-h-56 overflow-y-auto pr-1">
+        <div class="p-2.5 rounded bg-abyss border border-teal/10 flex justify-between items-center text-[11px]">
+          <span class="text-slate-300"><span class="text-rose-400 font-bold">[BLOCKED]</span> DDoS Flood from 194.26.29.12</span>
+          <span class="text-teal text-[10px]">Just now</span>
+        </div>
+        <div class="p-2.5 rounded bg-abyss border border-teal/10 flex justify-between items-center text-[11px]">
+          <span class="text-slate-300"><span class="text-emerald-400 font-bold">[MITIGATED]</span> SQLi attempt on API Gateway</span>
+          <span class="text-teal text-[10px]">2s ago</span>
+        </div>
+        <div class="p-2.5 rounded bg-abyss border border-teal/10 flex justify-between items-center text-[11px]">
+          <span class="text-slate-300"><span class="text-amber-400 font-bold">[ISOLATED]</span> Suspicious OAuth Token Payload</span>
+          <span class="text-teal text-[10px]">5s ago</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Security Posture Scanner Widget -->
+  <section id="scanner" class="py-16 px-6 max-w-5xl mx-auto w-full space-y-8">
+    <div class="text-center space-y-2 font-mono">
+      <span class="text-xs uppercase tracking-widest text-teal font-semibold">Instant Audit Engine</span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Vulnerability Posture Simulator</h2>
+      <p class="text-slate-400 text-xs font-sans max-w-md mx-auto">Enter an enterprise domain or IP to simulate a multi-layer Zero-Trust vulnerability assessment.</p>
+    </div>
+
+    <div class="bg-navy p-8 rounded-3xl border border-teal/40 space-y-6 shadow-2xl">
+      <form onsubmit="runSecurityScan(event)" class="flex flex-col sm:flex-row gap-3">
+        <div class="relative flex-1">
+          <i data-lucide="globe" class="w-5 h-5 text-teal absolute left-4 top-3.5"></i>
+          <input type="text" id="scan-target" value="enterprise-corp.com" required class="w-full bg-abyss border border-teal/30 rounded-xl pl-12 pr-4 py-3 text-sm text-white font-mono focus:outline-none focus:border-teal">
+        </div>
+        <button type="submit" id="btn-scan" class="px-6 py-3 rounded-xl bg-teal text-abyss font-mono font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors shrink-0">
+          Run Vulnerability Scan
+        </button>
+      </form>
+
+      <!-- Scan Progress Bar Container -->
+      <div id="scan-progress-box" class="hidden space-y-3 font-mono text-xs border-t border-abyss pt-6">
+        <div class="flex justify-between items-center text-teal">
+          <span id="scan-step-text">Initializing SSL/TLS 1.3 handshake verification...</span>
+          <span id="scan-pct" class="font-bold">0%</span>
+        </div>
+        <div class="w-full bg-abyss h-3 rounded-full overflow-hidden border border-teal/20">
+          <div id="scan-progress-bar" class="bg-teal h-full w-[0%] transition-all duration-300"></div>
+        </div>
+      </div>
+
+      <!-- Scan Results Box -->
+      <div id="scan-results-box" class="hidden bg-abyss p-6 rounded-2xl border border-teal/30 space-y-6 font-mono">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-navy pb-4">
+          <div>
+            <span class="text-xs text-slate-400">Security Health Grade</span>
+            <div class="text-3xl font-bold text-teal flex items-center gap-2 mt-1">
+              <span>A+ (98 / 100)</span>
+              <span class="text-xs font-normal px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400">HARDENED</span>
+            </div>
+          </div>
+          <button onclick="alert('Downloading Enterprise Audit Report PDF...')" class="px-4 py-2.5 rounded-xl bg-navy border border-teal/30 text-teal hover:bg-teal hover:text-abyss text-xs font-bold transition-colors">
+            Download Audit Report (PDF)
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+          <div class="p-4 rounded-xl bg-navy border border-teal/10 space-y-1">
+            <span class="text-slate-400">SSL Certificate</span>
+            <div class="text-white font-bold">TLS 1.3 2048-bit RSA</div>
+            <span class="text-emerald-400 text-[10px]">VALID (Expires 2027)</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-navy border border-teal/10 space-y-1">
+            <span class="text-slate-400">DNSSEC &amp; DMARC</span>
+            <div class="text-white font-bold">Strict Policy Enforced</div>
+            <span class="text-emerald-400 text-[10px]">NO SPOOF RISK</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-navy border border-teal/10 space-y-1">
+            <span class="text-slate-400">Open Ports Audit</span>
+            <div class="text-white font-bold">443 (HTTPS), 22 (SSH)</div>
+            <span class="text-teal text-[10px]">RESTRICTED TO SOC IP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Tabbed Solutions Grid -->
+  <section class="py-16 px-6 max-w-7xl mx-auto w-full space-y-8">
+    <div class="text-center space-y-2 font-mono">
+      <span class="text-xs uppercase tracking-widest text-teal font-semibold">Modular Security Architecture</span>
+      <h2 class="text-3xl font-bold text-white">Enterprise Defense Modules</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-navy p-6 rounded-2xl border border-teal/20 space-y-4 hover:border-teal transition-all">
+        <div class="w-10 h-10 rounded-xl bg-teal/10 text-teal flex items-center justify-center">
+          <i data-lucide="cloud-lightning" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-mono text-xl font-bold text-white">Cloud Zero-Trust Mesh</h3>
+        <p class="text-slate-400 text-xs leading-relaxed font-sans">
+          Micro-segmentation for Kubernetes, AWS, and Azure workloads guaranteeing micro-perimeter isolation.
+        </p>
+      </div>
+
+      <div class="bg-navy p-6 rounded-2xl border border-teal/20 space-y-4 hover:border-teal transition-all">
+        <div class="w-10 h-10 rounded-xl bg-teal/10 text-teal flex items-center justify-center">
+          <i data-lucide="cpu" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-mono text-xl font-bold text-white">Autonomous SOC AI</h3>
+        <p class="text-slate-400 text-xs leading-relaxed font-sans">
+          Sub-second threat isolation using neural pattern recognition to block zero-day exploits automatically.
+        </p>
+      </div>
+
+      <div class="bg-navy p-6 rounded-2xl border border-teal/20 space-y-4 hover:border-teal transition-all">
+        <div class="w-10 h-10 rounded-xl bg-teal/10 text-teal flex items-center justify-center">
+          <i data-lucide="lock" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-mono text-xl font-bold text-white">Identity Access Management</h3>
+        <p class="text-slate-400 text-xs leading-relaxed font-sans">
+          FIDO2 passwordless biometric authentication with real-time risk-based multi-factor verification.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-navy text-center text-xs text-slate-500 font-mono max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-center gap-4">
+    <span>© 2026 CYBERGUARD ENTERPRISE SECURITY INC.</span>
+    <span class="text-teal">MISSION CRITICAL CYBER DEFENSE SYSTEMS</span>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Simulated attack feed ticker
+    const simulatedAttacks = [
+      { type: 'BLOCKED', text: 'Brute Force SSH Attack from 89.208.29.11', color: 'text-rose-400' },
+      { type: 'MITIGATED', text: 'Cross-Site Scripting (XSS) payload', color: 'text-emerald-400' },
+      { type: 'ISOLATED', text: 'Unrecognized Microservice Token', color: 'text-amber-400' },
+      { type: 'NEUTRALIZED', text: 'DNS Tunneling exfiltration attempt', color: 'text-teal' }
+    ];
+
+    setInterval(() => {
+      const feed = document.getElementById('threat-feed');
+      const item = simulatedAttacks[Math.floor(Math.random() * simulatedAttacks.length)];
+      const div = document.createElement('div');
+      div.className = 'p-2.5 rounded bg-abyss border border-teal/10 flex justify-between items-center text-[11px] animate-in fade-in duration-300';
+      div.innerHTML = `
+        <span class="text-slate-300"><span class="${item.color} font-bold">[${item.type}]</span> ${item.text}</span>
+        <span class="text-teal text-[10px]">Just now</span>
+      `;
+      feed.insertBefore(div, feed.firstChild);
+      if(feed.children.length > 5) feed.removeChild(feed.lastChild);
+    }, 3000);
+
+    function runSecurityScan(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btn-scan');
+      btn.disabled = true;
+      btn.textContent = 'Scanning Target...';
+
+      const progressBox = document.getElementById('scan-progress-box');
+      const resultsBox = document.getElementById('scan-results-box');
+      const stepText = document.getElementById('scan-step-text');
+      const pctText = document.getElementById('scan-pct');
+      const bar = document.getElementById('scan-progress-bar');
+
+      progressBox.classList.remove('hidden');
+      resultsBox.classList.add('hidden');
+
+      const steps = [
+        'Analyzing SSL/TLS 1.3 Cipher Suite...',
+        'Scanning Port 80, 443, 22, 8080...',
+        'Verifying DNSSEC & DMARC Spoof Records...',
+        'Auditing Cloud Zero-Trust Access Policies...'
+      ];
+
+      let progress = 0;
+      let stepIdx = 0;
+
+      const interval = setInterval(() => {
+        progress += 10;
+        if(progress > 100) progress = 100;
+
+        pctText.textContent = progress + '%';
+        bar.style.width = progress + '%';
+
+        if(progress % 25 === 0 && stepIdx < steps.length) {
+          stepText.textContent = steps[stepIdx];
+          stepIdx++;
+        }
+
+        if(progress >= 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            progressBox.classList.add('hidden');
+            resultsBox.classList.remove('hidden');
+            btn.disabled = false;
+            btn.textContent = 'Re-Run Vulnerability Scan';
+          }, 400);
+        }
+      }, 250);
+    }
+  </script>
+</body>
+</html>
